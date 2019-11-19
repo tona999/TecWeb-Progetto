@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<head>
+	<script src="js/ingredient.js"></script>
+	<link rel="stylesheet" type="text/css" href="styles/ingredient.css">
+</head>
+
+<body>
+<div class="ingredient">
+	<input type="text" maxlength="40" id="ingredientName" placeholder="Ingredient Name">
+	<button id="closeButton" onclick="removeIngredient(this)">X</button>
+<hr>
+
+	<div id="sampleGramsDiv">
+		<input type="number" maxlength="4" min="0" id="sampleGrams" value="100" placeholder="..." oninput="onSampleGramsChanged()">
+		<p>g of product contain</p>
+	</div>
+	<div id="sampleCarbsDiv">
+		<input type="number" maxlength="4" min="0"  id="sampleCarbs" placeholder="..." oninput="onSampleCarbsChanged()">
+		<p> g of carbs</p>
+	</div>
+<hr>
+	<div id="totalGramsDiv">
+		<input type="number" maxlength="4"  min="0" id="totalGrams" placeholder="..." oninput="onTotalGramsChanged()">
+		<p> g of product</p>
+	</div>
+	<div id="totalBreadUnitsDiv">
+		<input type="number" maxlength="4" min="0" step="0.5" id="totalBreadUnits" placeholder="..." oninput="onTotalBreadUnitsChanged()">
+		<p> bread units</p>
+	</div>
+<hr>
+	<div id="thirdRow">
+		<p>Divided in </p>
+		<input type="number" maxlength="3" min="0" id="piecesNumber" placeholder="0" oninput="onPiecesNumberChanged()">
+		<p>pieces</p>
+
+		<button type="button" id="plusButton" onclick="onSignClicked(1)">+</button>
+		<button type="button" id="minusButton" onclick="onSignClicked(-1)">-</button>
+	</div>
+		<table>
+		<tr>
+			<th>grams</th>
+			<th>units</th>
+			<th>carbs</th>
+		</tr>
+		<tr>
+			<td id="gramsPerPieceResultText">0</td>
+			<td id="breadUnitsPerPieceResultText">0</td>
+			<td id="carbsPerPieceResultText">0</td>
+		</tr>
+		</table>
+</div>
+</body>
+</html>
