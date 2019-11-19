@@ -6,48 +6,49 @@
 
 <body>
 <div class="ingredient">
-	<input type="text" maxlength="40" id="ingredientName" placeholder="Ingredient Name">
-	<button id="closeButton" onclick="removeIngredient(this)">X</button>
+	<input type="text" maxlength="40" class="ingredientName" id="ingredientName" placeholder="Ingredient Name">
+	<button id="closeButton">X</button>
 <hr>
-
-	<div id="sampleGramsDiv">
+	<div class="sampleGramsDiv">
 		<input type="number" maxlength="4" min="0" id="sampleGrams" value="100" placeholder="..." oninput="onSampleGramsChanged()">
 		<p>g of product contain</p>
 	</div>
-	<div id="sampleCarbsDiv">
+	<div class="sampleCarbsDiv">
 		<input type="number" maxlength="4" min="0"  id="sampleCarbs" placeholder="..." oninput="onSampleCarbsChanged()">
 		<p> g of carbs</p>
 	</div>
 <hr>
-	<div id="totalGramsDiv">
+	<div class="totalGramsDiv">
 		<input type="number" maxlength="4"  min="0" id="totalGrams" placeholder="..." oninput="onTotalGramsChanged()">
 		<p> g of product</p>
 	</div>
-	<div id="totalBreadUnitsDiv">
+
+	<!--<img src="images/arrows.png">-->
+	<div class="totalBreadUnitsDiv">
 		<input type="number" maxlength="4" min="0" step="0.5" id="totalBreadUnits" placeholder="..." oninput="onTotalBreadUnitsChanged()">
 		<p> bread units</p>
 	</div>
 <hr>
-	<div id="thirdRow">
+	<div class="thirdRow">
 		<p>Divided in </p>
 		<input type="number" maxlength="3" min="0" id="piecesNumber" placeholder="0" oninput="onPiecesNumberChanged()">
 		<p>pieces</p>
 
 		<button type="button" id="plusButton" onclick="onSignClicked(1)">+</button>
 		<button type="button" id="minusButton" onclick="onSignClicked(-1)">-</button>
-	</div>
 		<table>
 		<tr>
-			<th>grams</th>
-			<th>units</th>
-			<th>carbs</th>
+			<td class="gramsPP" id="gramsPP">0</td>
+			<td class="breadUnitsPP" id="breadUnitsPP">0</td>
+			<td class="carbsPP" id="carbsPP">0</td>
 		</tr>
 		<tr>
-			<td id="gramsPerPieceResultText">0</td>
-			<td id="breadUnitsPerPieceResultText">0</td>
-			<td id="carbsPerPieceResultText">0</td>
+			<th>grams</th>
+			<th>bread units</th>
+			<th>carbs</th>
 		</tr>
 		</table>
+	</div>
 </div>
 </body>
 </html>

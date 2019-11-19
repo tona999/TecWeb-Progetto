@@ -3,6 +3,7 @@
 	font-size: 1.15em;
 }
 
+/*INGREDIENT*/
 .ingredient
 {
 	background-color: white;
@@ -24,133 +25,116 @@
 	margin: 0em 0.25em 0em 0.25em;
 }
 
-.invalidInput{
-	border-color: red;	
-}
-
-#ingredientName
+/*FIRST ROW*/
+.ingredientName
 {
-	text-align: left;
-	width: 70%;
+	text-align: left !important;
+	width: 80%;
 }
 
-#sampleGramsDiv p, #sampleCarbsDiv p{
+/*SAMPLE ROW*/
+.sampleGramsDiv p, .sampleCarbsDiv p{
 	float:left;
 	height: 2em;
 	white-space: nowrap;
 }
 
-#sampleGramsDiv input, #sampleCarbsDiv input{
+.sampleGramsDiv input, .sampleCarbsDiv input{
 	width: 4em;
 	float:left;
 }
 
-#sampleGramsDiv
+.sampleGramsDiv
 {
 	float:left;
 }
 
-#sampleCarbsDiv
+.sampleCarbsDiv
 {
 	white-space: nowrap;
 	float:left;
 }
 
 
-#totalGramsDiv, #totalBreadUnitsDiv
+/*TOTALS ROW*/
+.totalGramsDiv, .totalBreadUnitsDiv
 {
 	padding:0.5em;
 	margin-bottom: 0.5em;
- 	border-radius: 0.65em;
+ 	border-radius: 0.75em;
+ 	max-width: 42%;
 }
 
-#gramsPerPieceResultText, #carbsPerPieceResultText, #breadUnitsPerPieceResultText
+.totalGramsDiv
+{
+	background-color: rgba(230, 120, 210, 0.75);
+	float:left;
+	clear:both;
+}
+
+.totalBreadUnitsDiv
+{
+	background-color: rgba(120, 230, 230, 0.75);
+	float:right;
+}
+
+.totalBreadUnitsDiv input, .totalGramsDiv input {
+	max-width: 95%;
+}
+
+/*PIECES ROW*/
+.gramsPP, .carbsPP, .breadUnitsPP
 {
 	padding: 0.1em 0.4em 0.1em 0.4em;
 	border-radius: 0.65em;
 }
 
-#totalGramsDiv
-{
-	background-color: rgba(230, 120, 210, 0.75);
-	float:left;
-	clear:both;
-	max-width: 42%;
-}
-
-#totalBreadUnitsDiv
-{
-	background-color: rgba(120, 230, 230, 0.75);
-	float:right;
-	max-width: 42%;
-}
-
-#totalBreadUnitsDiv p, #totalGramsDiv p {
-	clear: both;
-	white-space: wrap;
-}
-
-#totalBreadUnitsDiv input, #totalGramsDiv input {
-	max-width: 95%;
-}
-
-#totalCarbsDiv
-{
-	clear:both;
-	background-color: rgba(240, 170, 60, 0.75);
-	margin: 4.25em 0em 0em 0em;
-}
-
-#thirdRow p
+.thirdRow p
 {
 	float:left;
 }
 
-#thirdRow input
+.thirdRow input
 {
 	width: 4em;
 	float: left;
 }
 
-#thirdRow button
+.thirdRow button
 {
 	float:right;
 }
 
-#gramsPerPieceResultText
+.gramsPP
 {
 	background-color: rgba(230, 120, 210, 0.75);
 }
 
-#carbsPerPieceResultText
+.carbsPP
 {
 	background-color: rgba(240, 170, 60, 0.75);
 }
 
-#breadUnitsPerPieceResultText
+.breadUnitsPP
 {
 	background-color: rgba(120, 230, 230, 0.75);
 }
 
-hr
-{
-	clear:both;
-	margin: 0.5em;
-}
-
-table{
+.thirdRow table{
+	padding-top:0.5em;
 	width: 100%;
 	text-align: center;
+	font-size: 0.85em;
 }
 
-table th{
+.thirdRow table th{
 	font-style: italic;
 	font-weight: normal;
-	font-size: 1em;
+	width: 33%;
 }
 
-
-#plusButton, #minusButton
+/*BUTTONS*/
+#plusButton, #minusButton, #closeButton
 {
 	cursor: pointer;
 	border-radius: 100%;
@@ -166,6 +150,17 @@ table th{
 #closeButton
 {
 	float:right;
+	color:white;
+	background-color: red;
 }
 
+/*GENERAL*/
+hr
+{
+	clear:both;
+	margin: 0.5em;
+}
 
+.invalidInput{
+	border-color: red;	
+}
