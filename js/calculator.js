@@ -5,9 +5,12 @@ function start()
 
 function addIngredient()
 {
-	var ingredient = document.createElement("iframe");
-	ingredient.src = "ingredient.html";
-
 	var receipt = document.getElementById("receipt")
+	var ingredient = document.createElement("object");
+	ingredient.type = "text/html";
+	ingredient.data = "ingredient.html";
+
 	receipt.appendChild(ingredient);
+	
+	//ingredient.removeAttribute("id");
 }

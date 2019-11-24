@@ -90,9 +90,9 @@ function getSampleCarbsElement(){	return document.getElementById("sampleCarbs");
 function getTotalGramsElement(){	return document.getElementById("totalGrams");}
 function getTotalBreadUnitsElement(){	return document.getElementById("totalBreadUnits");}
 function getPiecesNumberElement(){	return document.getElementById("piecesNumber");}
-function getGramsPerPieceElement(){	return document.getElementById("gramsPerPieceResultText");}
-function getCarbsPerPieceElement(){	return document.getElementById("carbsPerPieceResultText");}
-function getBreadUnitsPerPieceElement(){	return document.getElementById("breadUnitsPerPieceResultText");}
+function getGramsPerPieceElement(){	return document.getElementById("gramsPP");}
+function getCarbsPerPieceElement(){	return document.getElementById("carbsPP");}
+function getBreadUnitsPerPieceElement(){	return document.getElementById("breadUnitsPP");}
 
 function getSampleGrams(){	return genericGetter(getSampleGramsElement());}
 function getSampleCarbs(){	return genericGetter(getSampleCarbsElement());}
