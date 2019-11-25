@@ -134,7 +134,7 @@
 }
 
 /*BUTTONS*/
-#plusButton, #minusButton, #closeButton
+.plusButton, .minusButton, .closeButton
 {
 	cursor: pointer;
 	border-radius: 100%;
@@ -147,7 +147,7 @@
  	font-size: 1em;
 }
 
-#closeButton
+.closeButton
 {
 	float:right;
 	color:white;
@@ -163,4 +163,11 @@ hr
 
 .invalidInput{
 	border-color: red;	
+}
+
+
+
+#sampleIngredient
+{
+	display: none;
 }

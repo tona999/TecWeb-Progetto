@@ -1,15 +1,15 @@
 //Events & Setters --------------------------------------------
-function onSampleGramsChanged() {
-  	var sg = getSampleGramsElement();
+function onSampleGramsChanged(ingredient) {
+  	var sg = ingredient.sampleGrams;
   	if (sg.value <= 0)
 		sg.value = "";
 	else
 		sg.value = parseFloat(sg.value).toFixed(0);
 	checkMaxSize(sg);
-	checkSampleDataValidity(true);
+	checkSampleDataValidity(ingredient, true);
 }
 
-function onSampleCarbsChanged(){
+function onSampleCarbsChanged(ingredient){
   	var sc = getSampleCarbsElement();
   	if (sc.value <= 0)
 		sc.value = "";
@@ -18,7 +18,7 @@ function onSampleCarbsChanged(){
 	checkSampleDataValidity(false);
 }
 
-function onTotalGramsChanged(){
+function onTotalGramsChanged(ingredient){
   	var tg = getTotalGramsElement();
   	if (tg.value <= 0)
 		tg.value = "";
@@ -28,7 +28,7 @@ function onTotalGramsChanged(){
 	calculateSecondRow(true);
 }
 
-function onTotalBreadUnitsChanged(){
+function onTotalBreadUnitsChanged(ingredient){
   	var tbu = getTotalBreadUnitsElement();
   	if (tbu.value <= 0)
 		tbu.value = "";
@@ -38,7 +38,7 @@ function onTotalBreadUnitsChanged(){
 	calculateSecondRow(false);
 }
 
-function onPiecesNumberChanged(){
+function onPiecesNumberChanged(ingredient){
 	var pn = getPiecesNumberElement();
 	if (pn.value <= 0)
 		pn.value = "";
@@ -46,14 +46,14 @@ function onPiecesNumberChanged(){
 	calculateThirdRow();
 }
 
-function onSignClicked(increment){
+function onSignClicked(ingredient, increment){
 	var pn = getPiecesNumberElement();
 	pn.value = getPiecesNumber()+increment;
 
 	onPiecesNumberChanged();
 }
 
-function checkSampleDataValidity(sampleGramsChanged)
+function checkSampleDataValidity(ingredient, sampleGramsChanged)
 {
 	var sg = getSampleGramsElement();
 	var sc = getSampleCarbsElement();
@@ -82,26 +82,6 @@ function checkMaxSize(field)
 {
 	if (field.value.length > field.maxLength)
 		field.value = field.value.slice(0, field.maxLength);
-}
-
-//Getters---------------------------------------------------------------
-function getSampleGramsElement(){	return document.getElementById("sampleGrams");}
-function getSampleCarbsElement(){	return document.getElementById("sampleCarbs");}
-function getTotalGramsElement(){	return document.getElementById("totalGrams");}
-function getTotalBreadUnitsElement(){	return document.getElementById("totalBreadUnits");}
-function getPiecesNumberElement(){	return document.getElementById("piecesNumber");}
-function getGramsPerPieceElement(){	return document.getElementById("gramsPP");}
-function getCarbsPerPieceElement(){	return document.getElementById("carbsPP");}
-function getBreadUnitsPerPieceElement(){	return document.getElementById("breadUnitsPP");}
-
-function getSampleGrams(){	return genericGetter(getSampleGramsElement());}
-function getSampleCarbs(){	return genericGetter(getSampleCarbsElement());}
-function getTotalGrams(){	return genericGetter(getTotalGramsElement());}
-function getTotalBreadUnits(){	return genericGetter(getTotalBreadUnitsElement());}
-function getPiecesNumber(){	return genericGetter(getPiecesNumberElement());}
-function genericGetter(target){
-	if (target.value == "") return 0;
-	else return parseInt(target.value);
 }
 
 //Utilities----------------------------------------------------------------
@@ -151,31 +131,4 @@ function calculateThirdRow()
 		getBreadUnitsPerPieceElement().innerHTML = 0.0;
 
 	}
-}
-
-function setSecondRow(status){
-	getTotalGramsElement().disabled = !status;
-	getTotalBreadUnitsElement().disabled = !status;
-}
-
-
-function getIngredientRoot(element)
-{
-	if (element == null)
-		return null;
-
-	root = element;
-	while (root.tagName !="iframe" && root.parentElement!=null)
-	{
-		window.alert(root);
-		root = root.parentElement;
-	}
-	window.alert(root);
-	return root;
-}
-
-function removeIngredient(element)
-{
-	var frame = getIngredientRoot(element);
-	document.getElementById("receipt").removeChild(frame);
 }

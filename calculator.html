@@ -2,6 +2,7 @@
 <head>
 	<script src="js/calculator.js"></script>
 	<link rel="stylesheet" type="text/css" href="styles/calculator.css">
+	<link rel="stylesheet" type="text/css" href="styles/ingredient.css">
 </head>
 
 <body onload="start()">
@@ -9,5 +10,53 @@
 
 	</div>
 	<button id="addNewBtn" onclick="addIngredient()">Add New Ingredient</button>
+	
+
+	<div id="sampleIngredient" class = "ingredient">
+		<input type="text" maxlength="40" class="ingredientName" id="ingredientName" placeholder="Ingredient Name">
+		<button class="closeButton" id="closeButton">X</button>
+	<hr>
+		<div class="sampleGramsDiv">
+			<input type="number" maxlength="4" min="0" id="sampleGrams" value="100" placeholder="...">
+			<p>g of product contain</p>
+		</div>
+		<div class="sampleCarbsDiv">
+			<input type="number" maxlength="4" min="0"  id="sampleCarbs" placeholder="...">
+			<p> g of carbs</p>
+		</div>
+	<hr>
+		<div class="totalGramsDiv">
+			<input type="number" maxlength="4"  min="0" id="totalGrams" placeholder="...">
+			<p> g of product</p>
+		</div>
+
+		<div class="totalBreadUnitsDiv">
+			<input type="number" maxlength="4" min="0" id="totalBreadUnits" placeholder="...">
+			<p> bread units</p>
+		</div>
+	<hr>
+		<div class="thirdRow">
+			<p>Divided in </p>
+			<input type="number" maxlength="3" min="0" id="piecesNumber" placeholder="0" value='0'>
+			<p>pieces</p>
+
+			<button type="button" class="plusButton" id="plusButton">+</button>
+			<button type="button" class="minusButton" id="minusButton">-</button>
+			<table>
+			<tr>
+				<td class="gramsPP" id="gramsPP">0</td>
+				<td class="breadUnitsPP" id="breadUnitsPP">0</td>
+				<td class="carbsPP" id="carbsPP">0</td>
+			</tr>
+			<tr>
+				<th>grams</th>
+				<th>bread units</th>
+				<th>carbs</th>
+			</tr>
+			</table>
+		</div>
+	</div>
+
+
 </body>
 </html>
