@@ -1,2 +1,4 @@
 Ricordarsi di scrivere nella relazione che il file degli ingredienti caricato dinamicamente non è tracciato dai motori di ricerca(?).
 [Modifica: l'ingrediente ora è inserito nella pagina ma è nascosto (display:hidden), così è facile clonarlo. Dire che ora è visibile dal motore di ricerca ed è più veloce perchè non deve fare richieste al server]
+
+Usare Balsamiq (obbligatorio)
