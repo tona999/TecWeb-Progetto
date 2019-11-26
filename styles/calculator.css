@@ -7,13 +7,41 @@ body
 	background-color: magenta;
 }
 
-#addNewBtn{
-	margin:auto;
-	margin-top: 1em;
-	margin-bottom: 1em;
+#receipt
+{
+	height: 90% !important;
+}
+
+#addNewBtn, #loadReceiptCardBtn, #saveReceiptBtn{
+	cursor: pointer;
 	display: block;
-	font-size: 2em;
-	background-color: lightgreen;
-	padding:2em;
-	border-radius: 1em;
+	margin: 0.15em 0.15em 0em 0em;
+	font-size: 3em;
+	background-color: yellow;
+	border-radius: 100%;
+	height:1.5em;
+	width:1.5em;
+	float:right;
+}
+
+#controlPanel {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: purple;
+   height: 10%;
+}
+
+#controlPanel table
+{
+	color:white;
+	float:left;
+	font-size: 1em;
+	margin: 0.5em 0em 0em 1em;
+}
+
+#receiptView
+{
+
 }

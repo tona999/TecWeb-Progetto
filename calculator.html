@@ -6,11 +6,33 @@
 </head>
 
 <body onload="start()">
-	<div id="receipt">
+	<div id="receipt"></div>
+	<div id="controlPanel">
+		<table>
+			<tr>
+				<td>Total Grams: </td>
+				<td id="totalReceiptGrams">0</td>
+			</tr>
+			<tr>
+				<td>Total Carbs: </td>
+				<td id="totalReceiptCarbs">0</td>
+			</tr>
+		</table>
+
+		<button id="addNewBtn" onclick="addIngredient()">+</button>
+		<button id="loadReceiptCardBtn" onclick="refreshReceiptData()">^</button>
+		<button id="saveReceiptBtn" onclick="">S</button>
+	</div>
+
+	<div id="receiptView">
 
 	</div>
-	<button id="addNewBtn" onclick="addIngredient()">Add New Ingredient</button>
 	
+
+
+
+
+
 
 	<div id="sampleIngredient" class = "ingredient">
 		<input type="text" maxlength="40" class="ingredientName" id="ingredientName" placeholder="Ingredient Name">
@@ -37,7 +59,7 @@
 	<hr>
 		<div class="thirdRow">
 			<p>Divided in </p>
-			<input type="number" maxlength="3" min="0" id="piecesNumber" placeholder="0" value='0'>
+			<input type="number" maxlength="3" min="0" id="piecesNumber" placeholder="0">
 			<p>pieces</p>
 
 			<button type="button" class="plusButton" id="plusButton">+</button>
@@ -56,7 +78,6 @@
 			</table>
 		</div>
 	</div>
-
 
 </body>
 </html>
