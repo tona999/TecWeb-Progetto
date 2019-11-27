@@ -1,7 +1,10 @@
 var sampleIngredientCopy;
-var totalGramsLastChanged = true;
 function start()
 {
+	document.getElementById("addNewBtn").addEventListener('click', function(){addIngredient();});
+	document.getElementById("loadReceiptCardBtn").addEventListener('click', function(){refreshReceiptData();});
+	document.getElementById("saveReceiptBtn").addEventListener('click', function(){saveReceipt();});
+
 	sampleIngredientCopy = document.getElementById("sampleIngredient").cloneNode(true);
 	document.getElementById("sampleIngredient").remove();
 	addIngredient();
@@ -25,6 +28,7 @@ function addIngredient()
 	ing.gramsPP = 			document.getElementById("gramsPP");
 	ing.breadUnitsPP = 		document.getElementById("breadUnitsPP");
 	ing.carbsPP = 			document.getElementById("carbsPP");
+	ing.totalGramsLastChanged = true;
 
 	ing.closeButton.addEventListener('click', function(){onCloseClicked(ing)}, false);
 	ing.sampleGrams.addEventListener('input', function(){onSampleGramsChanged(ing)}, false);
@@ -49,19 +53,191 @@ function addIngredient()
 	ing.carbsPP.removeAttribute("id");
 } 
 
-function refreshReceiptData()
+//Events & Setters --------------------------------------------
+function onCloseClicked(ingredient){
+	ingredient.remove();
+
+	refreshReceiptData();
+}
+
+function onSampleGramsChanged(ingredient) {
+	checkInputFormat(ingredient.sampleGrams);
+	checkSampleDataValidity(ingredient, true);
+	if (isSampleRowValid(ingredient))
+		Refresh(ingredient);
+
+	refreshReceiptData();
+}
+
+function onSampleCarbsChanged(ingredient){
+  	checkInputFormat(ingredient.sampleCarbs);
+  	checkSampleDataValidity(ingredient, false);
+	if (isSampleRowValid(ingredient))
+		Refresh(ingredient);
+
+	refreshReceiptData();
+}
+
+function onTotalGramsChanged(ingredient){
+	ingredient.totalGramsLastChanged = true;
+	checkInputFormat(ingredient.totalGrams);
+	if (isSampleRowValid(ingredient))
+		Refresh(ingredient);
+
+	refreshReceiptData();
+}
+
+function onTotalBreadUnitsChanged(ingredient){
+	ingredient.totalGramsLastChanged = false;
+	checkInputFormat(ingredient.totalBreadUnits);
+	if (isSampleRowValid(ingredient))
+		Refresh(ingredient);
+
+	refreshReceiptData();
+}
+
+function onSignClicked(ingredient, increment){
+	ingredient.piecesNumber.value = toInteger(ingredient.piecesNumber.value) + increment;
+
+	onPiecesNumberChanged(ingredient);
+}
+
+function onPiecesNumberChanged(ingredient){
+	checkInputFormat(ingredient.piecesNumber);
+	if (isSampleRowValid(ingredient))
+		calculateThirdRow(ingredient);
+}
+
+//Getters & Setters----------------------------------------------------------
+function getSampleGrams(ingredient){if(ingredient.sampleGrams.value=="") return toInteger(ingredient.sampleGrams.getAttribute("placeholder")); return toInteger(ingredient.sampleGrams.value);}
+function getSampleCarbs(ingredient){return toInteger(ingredient.sampleCarbs.value);}
+function getTotalGrams(ingredient){return toFloat(ingredient.totalGrams.value);}
+function getTotalBreadUnits(ingredient){return toFloat(ingredient.totalBreadUnits.value)}
+function getPiecesNumber(ingredient){return toInteger(ingredient.piecesNumber.value)}
+
+function getTotalCarbs(ingredient){return getTotalGrams(ingredient)*getSampleCarbs(ingredient)/getSampleGrams(ingredient);} //Not visible in the ingredient
+
+function getTotalReceiptGrams(){return document.getElementById("totalReceiptGrams")}
+function getTotalReceiptCarbs(){return document.getElementById("totalReceiptCarbs")}
+
+function setTotalGrams(ingredient, val)
 {
-	var receipt = document.getElementById("receipt");
+	if(val!=0)
+		ingredient.totalGrams.value = toFloat(val);
+	else
+		ingredient.totalGrams.value = "";
+}
+function setTotalBreadUnits(ingredient, val){
+	if(val!=0)
+		ingredient.totalBreadUnits.value = toFloat(val);
+	else
+		ingredient.totalBreadUnits.value = "";
+}
 
-	var totalReceiptGrams = 0;
-	var totalReceiptCarbs = 0;
+//Structure-----------------------------------------------------------------
+function isSampleRowValid(ingredient)
+{
+	var sg = getSampleGrams(ingredient);
+	var sc = getSampleCarbs(ingredient);
+	return (sg >= 0 && sc >= 0 && sg >= sc);
+}
 
-	for (var i=0; i<receipt.childNodes.length; i++){
-		totalReceiptGrams = totalReceiptGrams + toInteger(receipt.childNodes[i].totalGrams.value);
+function setValidityStatus(field, status)
+{
+	if (status)
+		field.classList.remove("invalidInput");
+	else
+		field.className = "invalidInput";
+}
+
+function checkSampleDataValidity(ingredient, sampleGramsChanged)
+{
+	if (getSampleCarbs(ingredient) > getSampleGrams(ingredient))
+	{
+		if (sampleGramsChanged){
+			setValidityStatus(ingredient.sampleGrams, false);
+			setValidityStatus(ingredient.sampleCarbs, true);
+		}
+		else{
+			setValidityStatus(ingredient.sampleCarbs, false);
+			setValidityStatus(ingredient.sampleGrams, true);
+		}
 	}
+	else
+	{
+		setValidityStatus(ingredient.sampleGrams, true);
+		setValidityStatus(ingredient.sampleCarbs, true);
+	}
+}
 
-	document.getElementById("totalReceiptGrams").innerHTML = totalReceiptGrams;
-	document.getElementById("totalReceiptCarbs");
+function checkInputFormat(field)
+{
+	if (field.value.length > field.maxLength)
+		field.value = toInteger(field.value.slice(0, field.maxLength));
+
+	  if (toInteger(field.value) <= 0)
+		field.value = ""; //Placeholder is shown, therefore removing of value zero is not needed before new value insertion
+}
+//Modifiers--------------------------------------------------------------------
+
+function Refresh(ingredient)
+{
+	calculateSecondRow(ingredient);
+	calculateThirdRow(ingredient);
+}
+
+function calculateSecondRow(ingredient)
+{
+	if (ingredient.totalGramsLastChanged)
+		setTotalBreadUnits(ingredient, totalGramsToBreadUnits(ingredient));
+	else{
+		if (getSampleCarbs(ingredient) != 0){ //Division by zero
+			setTotalGrams(ingredient, totalBreadUnitsToGrams(ingredient));
+		}
+		else
+			setValidityStatus(ingredient.sampleCarbs, false);
+	}
+}
+
+function calculateThirdRow(ingredient)
+{
+	var pieces = getPiecesNumber(ingredient);
+	if (pieces > 0)
+	{
+		var tg = getTotalGrams(ingredient);
+		totalCarbs = (tg*getSampleCarbs(ingredient))/getSampleGrams(ingredient);
+
+		ingredient.gramsPP.innerHTML = toFloat(tg/pieces);
+		ingredient.carbsPP.innerHTML = toFloat(totalCarbs/pieces);
+		ingredient.breadUnitsPP.innerHTML = toFloat(carbsToBreadUnits(totalCarbs)/pieces);
+	}
+	else
+	{
+		ingredient.gramsPP.innerHTML = 0.0;
+		ingredient.carbsPP.innerHTML = 0.0;
+		ingredient.breadUnitsPP.innerHTML = 0.0;
+	}
+}
+
+function totalGramsToBreadUnits(ingredient)
+{
+	totalCarbs = (getTotalGrams(ingredient)*getSampleCarbs(ingredient))/getSampleGrams(ingredient);
+	return toFloat(carbsToBreadUnits(totalCarbs));
+}
+
+function totalBreadUnitsToGrams(ingredient)
+{
+	totalCarbs = breadUnitsToCarbs(getTotalBreadUnits(ingredient));
+	return toFloat((totalCarbs*getSampleGrams(ingredient))/getSampleCarbs(ingredient));
+}
+
+//Utilities----------------------------------------------------------------
+function carbsToBreadUnits(carbs){
+	return toFloat(carbs/12.0);
+}
+
+function breadUnitsToCarbs(breadUnits){
+	return toFloat(breadUnits*12.0);
 }
 
 function toInteger(str)
@@ -82,161 +258,31 @@ function toFloat(str)
 	return 0;
 }
 
-//Events & Setters --------------------------------------------
-function onCloseClicked(ingredient){
-	ingredient.remove();
-}
+//DATABASE----------------------------------------------------------------------------------
 
-function onSampleGramsChanged(ingredient) {
-  	var sg = ingredient.sampleGrams;
-  	if (toInteger(sg.value) <= 0)
-		sg.value = "";
-	else
-		sg.value = toInt(sg.value);
-	
-	checkMaxSize(sg);
-	checkSampleDataValidity(ingredient, true);
-	calculateSecondRow(ingredient, totalGramsLastChanged);
-	calculateThirdRow(ingredient);
-}
-
-function onSampleCarbsChanged(ingredient){
-  	var sc = ingredient.sampleCarbs;
-  	if (toInteger(sc.value) <= 0)
-		sc.value = "";
-
-	checkMaxSize(sc);
-	checkSampleDataValidity(ingredient, false);
-	calculateSecondRow(ingredient, totalGramsLastChanged);
-	calculateThirdRow(ingredient);
-}
-
-function onTotalGramsChanged(ingredient){
-	totalGramsLastChanged = true;
-  	var tg = ingredient.totalGrams;
-  	if (toInteger(tg.value) <= 0)
-		tg.value = "";
-
-	checkMaxSize(tg);
-	calculateSecondRow(ingredient, true);
-	calculateThirdRow(ingredient);
-}
-
-function onTotalBreadUnitsChanged(ingredient){
-	totalGramsLastChanged = false;
-  	var tbu = ingredient.totalBreadUnits;
-  	if (toFloat(tbu.value) <= 0)
-		tbu.value = "";
-
-	checkMaxSize(tbu);
-	calculateSecondRow(ingredient, false);
-	calculateThirdRow(ingredient);
-}
-
-function onPiecesNumberChanged(ingredient){
-	var pn = ingredient.piecesNumber;
-	if (toInteger(pn.value) <= 0)
-		pn.value = "";
-
-	calculateThirdRow(ingredient);
-}
-
-function onSignClicked(ingredient, increment){
-	var pn = ingredient.piecesNumber;
-	pn.value = toInteger(ingredient.piecesNumber.value) + increment;
-
-	onPiecesNumberChanged(ingredient);
-}
-
-//Structure-----------------------------------------------------------------
-function checkSampleDataValidity(ingredient, sampleGramsChanged)
+function refreshReceiptData()
 {
-	var sg = ingredient.sampleGrams;
-	var sc = ingredient.sampleCarbs;
+	var receipt = document.getElementById("receipt");
 
-	if (toInteger(ingredient.sampleCarbs.value) > toInteger(ingredient.sampleGrams.value))
-	{
-		if (sampleGramsChanged){
-			sg.className = "invalidInput";
-			sc.classList.remove("invalidInput");
-		}
-		else{
-			sc.className = "invalidInput";
-			sg.classList.remove("invalidInput");
-		}
-		return false;
+	var totalReceiptGrams = 0;
+	var totalReceiptCarbs = 0;
+
+	for (var i=0; i<receipt.childNodes.length; i++){
+		totalReceiptGrams += toInteger(getTotalGrams(receipt.childNodes[i]));
+		totalReceiptCarbs += getTotalCarbs(receipt.childNodes[i]); 
 	}
-	else
-	{
-		sg.classList.remove("invalidInput");
-		sc.classList.remove("invalidInput");
-		return true;
-	}
+
+	document.getElementById("totalReceiptGrams").innerHTML = toInteger(totalReceiptGrams);
+	document.getElementById("totalReceiptCarbs").innerHTML = toInteger(totalReceiptCarbs);
 }
 
-function checkMaxSize(field)
+function createReceiptIngredient()
 {
-	if (field.value.length > field.maxLength)
-		field.value = field.value.slice(0, field.maxLength);
+
 }
 
-//Modifiers--------------------------------------------------------------------
 
-function calculateSecondRow(ingredient, totalGramsChanged)
+function saveReceipt()
 {
-	if (!isSampleRowValid(ingredient))
-		return;
 
-	if (totalGramsChanged == true)
-		ingredient.totalBreadUnits.value = toFloat(totalGramsToBreadUnits(ingredient));
-	else
-		ingredient.totalGrams.value = toFloat(totalBreadUnitsToGrams(ingredient));
-}
-
-function calculateThirdRow(ingredient)
-{
-	if (!isSampleRowValid(ingredient))
-		return;
-
-	pieces = toInteger(ingredient.piecesNumber.value);
-	if (pieces > 0)
-	{
-		totalCarbs = (ingredient.totalGrams.value*ingredient.sampleCarbs.value)/ingredient.sampleGrams.value;
-
-		ingredient.gramsPP.innerHTML = toFloat(ingredient.totalGrams.value/pieces);
-		ingredient.carbsPP.innerHTML = toFloat(totalCarbs/pieces);
-		ingredient.breadUnitsPP.innerHTML = toFloat(carbsToBreadUnits(totalCarbs)/pieces);
-	}
-	else
-	{
-		ingredient.gramsPP.innerHTML = 0.0;
-		ingredient.carbsPP.innerHTML = 0.0;
-		ingredient.breadUnitsPP.innerHTML = 0.0;
-	}
-}
-
-function totalGramsToBreadUnits(ingredient)
-{
-	totalCarbs = (ingredient.totalGrams.value*ingredient.sampleCarbs.value)/ingredient.sampleGrams.value;
-	return carbsToBreadUnits(totalCarbs);
-}
-
-function totalBreadUnitsToGrams(ingredient)
-{
-	totalCarbs = breadUnitsToCarbs(ingredient.totalBreadUnits.value);
-	return (totalCarbs*ingredient.sampleGrams.value)/ingredient.sampleCarbs.value;
-}
-
-function isSampleRowValid(ingredient)
-{
-	return !(toInteger(ingredient.sampleGrams.value) == 0 || toInteger(ingredient.sampleCarbs.value) == 0);
-}
-
-//Utilities----------------------------------------------------------------
-function carbsToBreadUnits(carbs){
-	return carbs/12.0;
-}
-
-function breadUnitsToCarbs(breadUnits){
-	return breadUnits*12.0;
 }

@@ -19,10 +19,12 @@
 			</tr>
 		</table>
 
-		<button id="addNewBtn" onclick="addIngredient()">+</button>
-		<button id="loadReceiptCardBtn" onclick="refreshReceiptData()">^</button>
-		<button id="saveReceiptBtn" onclick="">S</button>
+		<button id="addNewBtn">+</button>
+		<button id="loadReceiptCardBtn">^</button>
+		<button id="saveReceiptBtn">S</button>
 	</div>
+
+
 
 	<div id="receiptView">
 
@@ -31,29 +33,26 @@
 
 
 
-
-
-
 	<div id="sampleIngredient" class = "ingredient">
 		<input type="text" maxlength="40" class="ingredientName" id="ingredientName" placeholder="Ingredient Name">
 		<button class="closeButton" id="closeButton">X</button>
 	<hr>
 		<div class="sampleGramsDiv">
-			<input type="number" maxlength="4" min="0" id="sampleGrams" value="100" placeholder="...">
+			<input type="number" maxlength="4" min="0" id="sampleGrams" placeholder="100">
 			<p>g of product contain</p>
 		</div>
 		<div class="sampleCarbsDiv">
-			<input type="number" maxlength="4" min="0"  id="sampleCarbs" placeholder="...">
+			<input type="number" maxlength="4" min="0"  id="sampleCarbs" placeholder="0">
 			<p> g of carbs</p>
 		</div>
 	<hr>
 		<div class="totalGramsDiv">
-			<input type="number" maxlength="4"  min="0" id="totalGrams" placeholder="...">
+			<input type="number" maxlength="4"  min="0" id="totalGrams" placeholder="0">
 			<p> g of product</p>
 		</div>
 
 		<div class="totalBreadUnitsDiv">
-			<input type="number" maxlength="4" min="0" id="totalBreadUnits" placeholder="...">
+			<input type="number" maxlength="4" min="0" id="totalBreadUnits" placeholder="0">
 			<p> bread units</p>
 		</div>
 	<hr>
