@@ -190,13 +190,8 @@ function calculateSecondRow(ingredient)
 {
 	if (ingredient.totalGramsLastChanged)
 		setTotalBreadUnits(ingredient, totalGramsToBreadUnits(ingredient));
-	else{
-		if (getSampleCarbs(ingredient) != 0){ //Division by zero
+	else if (getSampleCarbs(ingredient) != 0) //Division by zero
 			setTotalGrams(ingredient, totalBreadUnitsToGrams(ingredient));
-		}
-		else
-			setValidityStatus(ingredient.sampleCarbs, false);
-	}
 }
 
 function calculateThirdRow(ingredient)
