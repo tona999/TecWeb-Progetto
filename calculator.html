@@ -2,81 +2,87 @@
 <head>
 	<script src="js/calculator.js"></script>
 	<link rel="stylesheet" type="text/css" href="styles/calculator.css">
-	<link rel="stylesheet" type="text/css" href="styles/ingredient.css">
 </head>
 
 <body onload="start()">
 	<div id="receipt"></div>
+
 	<div id="controlPanel">
-		<table>
-			<tr>
-				<td>Total Grams: </td>
-				<td id="totalReceiptGrams">0</td>
-			</tr>
-			<tr>
-				<td>Total Carbs: </td>
-				<td id="totalReceiptCarbs">0</td>
-			</tr>
-		</table>
+		<p>
+			Total Grams:
+			<span id="totalReceiptGrams">0</span>
+		</p>
+		<p>
+			Total Carbs:
+			<span id="totalReceiptCarbs">0</span>
+		</p>
 
 		<button id="addNewBtn">+</button>
 		<button id="loadReceiptCardBtn">^</button>
 		<button id="saveReceiptBtn">S</button>
 	</div>
 
+	<div id="receiptView"></div>
 
+	<!-- Ingredient -->
+	<form id="sampleIngredient" action="" class = "ingredient">
+		<fieldset>
+			<legend>Ingredient</legend>
+			<input type="text" maxlength="40" id="ingredientName" placeholder="Ingredient Name">
+			<input type="button" value="Save" id="saveButton">
+			<input type="button" value="Close" id="closeButton">
+		</fieldset>
 
-	<div id="receiptView">
+		<fieldset class="carbs">
+			<legend>Carbs</legend>
+			<label>
+				<input type="number" maxlength="4" min="0" id="sampleGrams" value="100" placeholder="...">	
+				g of product
+			</label>
+			<label> 
+				<input type="number" maxlength="4" min="0"  id="sampleCarbs" placeholder="...">
+				g of carbs
+			</label>
+		</fieldset>
 
-	</div>
+		<fieldset class="bread-units">
+			<legend>Bread Units</legend>
+			<label> 
+				<input type="number" maxlength="4"  min="0" id="totalGrams" placeholder="...">
+				g of product
+			</label>
+
+			<label> 
+				<input type="number" maxlength="4" min="0" id="totalBreadUnits" placeholder="...">
+				bread units
+			</label>
+		</fieldset>
 	
+		<fieldset class="divided">
+			<legend>Divided in</legend>
+			<label>
+				<input type="number" maxlength="3" min="0" id="piecesNumber" placeholder="0">
+				pieces
+			</label>
+			<div class="controls-container">
+				<input class="action-btn" type="button" value="+" id="plusButton">
+				<input class="action-btn" type="button" value="-" id="minusButton">
+			</div>
+		</fieldset>
 
-
-
-	<div id="sampleIngredient" class = "ingredient">
-		<input type="text" maxlength="40" class="ingredientName" id="ingredientName" placeholder="Ingredient Name">
-		<button class="closeButton" id="closeButton">X</button>
-	<hr>
-		<div class="sampleGramsDiv">
-			<input type="number" maxlength="4" min="0" id="sampleGrams" placeholder="100">
-			<p>g of product contain</p>
-		</div>
-		<div class="sampleCarbsDiv">
-			<input type="number" maxlength="4" min="0"  id="sampleCarbs" placeholder="0">
-			<p> g of carbs</p>
-		</div>
-	<hr>
-		<div class="totalGramsDiv">
-			<input type="number" maxlength="4"  min="0" id="totalGrams" placeholder="0">
-			<p> g of product</p>
-		</div>
-
-		<div class="totalBreadUnitsDiv">
-			<input type="number" maxlength="4" min="0" id="totalBreadUnits" placeholder="0">
-			<p> bread units</p>
-		</div>
-	<hr>
-		<div class="thirdRow">
-			<p>Divided in </p>
-			<input type="number" maxlength="3" min="0" id="piecesNumber" placeholder="0">
-			<p>pieces</p>
-
-			<button type="button" class="plusButton" id="plusButton">+</button>
-			<button type="button" class="minusButton" id="minusButton">-</button>
-			<table>
-			<tr>
-				<td class="gramsPP" id="gramsPP">0</td>
-				<td class="breadUnitsPP" id="breadUnitsPP">0</td>
-				<td class="carbsPP" id="carbsPP">0</td>
-			</tr>
+		<table class="ingredient-report">
 			<tr>
 				<th>grams</th>
 				<th>bread units</th>
 				<th>carbs</th>
 			</tr>
-			</table>
-		</div>
-	</div>
+			<tr>
+				<td class="gramsPP" id="gramsPP">0</td>
+				<td class="breadUnitsPP" id="breadUnitsPP">0</td>
+				<td class="carbsPP" id="carbsPP">0</td>
+			</tr>
+		</table>
+	</form>
 
 </body>
 </html>
