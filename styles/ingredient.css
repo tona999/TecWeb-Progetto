@@ -1,0 +1,173 @@
+*{
+	margin: 0px;
+	font-size: 1.15em;
+}
+
+/*INGREDIENT*/
+.ingredient
+{
+	background-color: white;
+	padding:1em;
+	margin: auto;
+	margin-top: 1em;
+	overflow: auto;
+	max-width: 37em;
+	min-width: 20em;
+	border-radius: 0.75em;
+}
+
+.ingredient p{
+	font-style: italic;
+}
+
+.ingredient input{
+	text-align: center;
+	margin: 0em 0.25em 0em 0.25em;
+}
+
+/*FIRST ROW*/
+.ingredientName
+{
+	text-align: left !important;
+	width: 80%;
+}
+
+/*SAMPLE ROW*/
+.sampleGramsDiv p, .sampleCarbsDiv p{
+	float:left;
+	height: 2em;
+	white-space: nowrap;
+}
+
+.sampleGramsDiv input, .sampleCarbsDiv input{
+	width: 4em;
+	float:left;
+}
+
+.sampleGramsDiv
+{
+	float:left;
+}
+
+.sampleCarbsDiv
+{
+	white-space: nowrap;
+	float:left;
+}
+
+
+/*TOTALS ROW*/
+.totalGramsDiv, .totalBreadUnitsDiv
+{
+	padding:0.5em;
+	margin-bottom: 0.5em;
+ 	border-radius: 0.75em;
+ 	max-width: 42%;
+}
+
+.totalGramsDiv
+{
+	background-color: rgba(230, 120, 210, 0.75);
+	float:left;
+	clear:both;
+}
+
+.totalBreadUnitsDiv
+{
+	background-color: rgba(120, 230, 230, 0.75);
+	float:right;
+}
+
+.totalBreadUnitsDiv input, .totalGramsDiv input {
+	max-width: 95%;
+}
+
+/*PIECES ROW*/
+.gramsPP, .carbsPP, .breadUnitsPP
+{
+	padding: 0.1em 0.4em 0.1em 0.4em;
+	border-radius: 0.65em;
+}
+
+.thirdRow p
+{
+	float:left;
+}
+
+.thirdRow input
+{
+	width: 4em;
+	float: left;
+}
+
+.thirdRow button
+{
+	float:right;
+}
+
+.gramsPP
+{
+	background-color: rgba(230, 120, 210, 0.75);
+}
+
+.carbsPP
+{
+	background-color: rgba(240, 170, 60, 0.75);
+}
+
+.breadUnitsPP
+{
+	background-color: rgba(120, 230, 230, 0.75);
+}
+
+.thirdRow table{
+	padding-top:0.5em;
+	width: 100%;
+	text-align: center;
+	font-size: 0.85em;
+}
+
+.thirdRow table th{
+	font-style: italic;
+	font-weight: normal;
+	width: 33%;
+}
+
+/*BUTTONS*/
+.plusButton, .minusButton, .closeButton
+{
+	cursor: pointer;
+	border-radius: 100%;
+	background-color: lightgrey;
+  	border-color: lightgrey;
+  	border-width: 0.05em;
+ 	width: 1.75em;
+ 	height: 1.75em;
+ 	margin: 0em 0.1em 0em 0.1em;
+ 	font-size: 1em;
+}
+
+.closeButton
+{
+	float:right;
+	color:white;
+	background-color: red;
+}
+
+/*GENERAL*/
+hr
+{
+	clear:both;
+	margin: 0.5em;
+}
+
+.invalidInput{
+	border-color: red;	
+}
+
+
+
+#sampleIngredient
+{
+	display: none;
+}

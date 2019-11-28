@@ -1,83 +1,47 @@
 *{
-    font-family: sans-serif;
-    margin: 0;
-    padding: 0;
+	margin: 0px;
 }
 
-#receipt{
-    margin-bottom: 5em; /* needed to avoid bottom bar override */
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+body
+{
+	background-color: magenta;
 }
 
-/*** INGREDIENT ***/
-
-    form{
-        border: 1px solid black;
-        border-radius: 8px;
-        padding: .5em;
-        margin: 1em;
-        margin-top: .5em;
-    }
-    fieldset{
-        border: none;
-        border-top: 1px dashed black;
-    }
-
-    /* Label and inputs inside ingredients */
-    label{
-        display: inline-block;
-    }
-    input{
-        margin: .5em;
-    }
-    input[type="number"]{
-        width: 5em;
-    }
-    input[type="button"]{
-        padding: .25em;
-        min-width: 2em;
-    }
-
-    /* Report table for ingredients */
-    .ingredient-report{
-        margin: auto;
-        margin-top: .5em;
-        border-collapse: collapse;
-    }
-    .ingredient-report td, .ingredient-report th{
-        border: 1px solid black;
-        padding: .3em;
-        text-align: center;
-    }
-
-    /* Pieces number buttons (+ -) */
-    .controls-container{
-        width: 100%;
-        text-align: center;
-    }
-    
-/******************/
-
-/* Bottom bar (controls container) */
-#controlPanel{
-    text-align: right;
-    position: fixed;
-    width: 98%;
-    bottom: 0;
-    right: 0;
-    padding: .5em;
-    background-color: #ECECEC;
-    border-top: 1px solid black;
-    justify-content: right;
-}
-#controlPanel *{
-    margin-left: .2em;
-    margin-right: .2em;
-    display: inline;
-}
-#controlPanel .buttons{
-    display: inline-block;
+#receipt
+{
+	height: 90% !important;
 }
 
+#addNewBtn, #loadReceiptCardBtn, #saveReceiptBtn{
+	cursor: pointer;
+	display: block;
+	margin: 0.15em 0.15em 0em 0em;
+	font-size: 3em;
+	background-color: yellow;
+	border-radius: 100%;
+	height:1.5em;
+	width:1.5em;
+	float:right;
+}
+
+#controlPanel {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: purple;
+   height: 10%;
+}
+
+#controlPanel table
+{
+	color:white;
+	float:left;
+	font-size: 1em;
+	margin: 0.5em 0em 0em 1em;
+}
+
+#receiptView
+{
+
+}
