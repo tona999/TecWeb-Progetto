@@ -1,5 +1,6 @@
 *{
     font-family: sans-serif;
+    font-size: 1.1em; /*otherwise too small for phones*/
     margin: 0;
     padding: 0;
 }
@@ -19,6 +20,7 @@
         padding: .5em;
         margin: 1em;
         max-width: max-content;
+        min-width: 28em;
     }
     fieldset{
         border: none;
@@ -31,6 +33,7 @@
     }
     input{
         margin: .5em;
+        text-align: center;
     }
     input[type="number"]{
         width: 5em;
@@ -38,6 +41,7 @@
 	input[type="button"]{
 		min-width: 2em;
 		height: 2em;
+		padding:0.15em;
 	}
     #controlPanel button{
 		height: 2em;
@@ -54,19 +58,31 @@
         border: 1px solid black;
         padding: .3em;
         text-align: center;
+        font-weight: normal;
+        font-size: 1em;
     }
 
     /* Pieces number buttons (+ -) */
+    .divided label{
+    	float:left;
+    }
     .controls-container{
-        width: 100%;
-        text-align: center;
+        margin-top: -3em;
+        float:left;
+    }
+
+    /*invalid data was inserted by user*/
+    .invalidInput
+    {
+    	background: red;
+    	color: white;
     }
     
 /******************/
 
 /* Bottom bar (controls container) */
 #controlPanel{
-    text-align: right;
+    text-align: center;
     position: fixed;
     width: 98%;
     bottom: 0;
@@ -74,7 +90,6 @@
     padding: .5em;
     background-color: #ECECEC;
     border-top: 1px solid black;
-    justify-content: right;
 }
 #controlPanel *{
     margin-left: .2em;
@@ -84,4 +99,3 @@
 #controlPanel .buttons{
     display: inline-block;
 }
-
