@@ -51,6 +51,9 @@ function addIngredient()
 	ing.gramsPP.removeAttribute("id");
 	ing.breadUnitsPP.removeAttribute("id");
 	ing.carbsPP.removeAttribute("id");
+
+
+	return ing;
 } 
 
 //Events & Setters --------------------------------------------
