@@ -1,21 +1,60 @@
 var sampleIngredientCopy;
+var receiptView;
+
+var nameMaxLength = 25;
+
 function start()
 {
-	document.getElementById("addNewBtn").addEventListener('click', function(){addIngredient();});
+	document.getElementById("addNewBtn").addEventListener('click', function(){addIngredientToReceipt();});
 	document.getElementById("loadReceiptCardBtn").addEventListener('click', function(){refreshReceiptData();});
 	document.getElementById("saveReceiptBtn").addEventListener('click', function(){saveReceipt();});
 
 	sampleIngredientCopy = document.getElementById("sampleIngredient").cloneNode(true);
 	document.getElementById("sampleIngredient").remove();
-	addIngredient("pasta", 100, 50, 150, 5, 2);
+
+	//receipt view
+	receiptView = sampleIngredientCopy.cloneNode(true);
+	document.getElementById("receiptView").appendChild(receiptView);
+	initialiseIngredient(receiptView);
+
+
+	addIngredientToReceipt("Salame Piccante", 100, 0, 50, -1, 16);
+	addIngredientToReceipt("Mozzarella", 100, 20, 150, -1, 0);
+	addIngredientToReceipt("Sugo di Pomodoro", 100, 15, 80, -1, 0);
 }
 
 //Constructors-----------------------------------------------------------------------------------------------------
-function createIngredient()
+function addIngredientToReceipt(name = "", sampleGrams = 100, sampleCarbs = 0, totalGrams = 0, totalBreadUnits = 0, pieces = 0)
 {
 	var ing = sampleIngredientCopy.cloneNode(true);
-	ing.removeAttribute("id");
 	document.getElementById("receipt").appendChild(ing);
+	initialiseIngredient(ing);
+
+	setName(ing, name);
+	setSampleGrams(ing, toInteger(sampleGrams));
+	setSampleCarbs(ing, toInteger(sampleCarbs));
+	setPiecesNumber(ing, toInteger(pieces));
+	
+	//totalGrams = -1 if the value the user inserted is totalBreadUnits, and viceversa. Only one of the totalgrams and totalBreadUnits values is required and the other one is negative, then it is calculated. As a precaution, if both are < 0 then totalGrams is set to 0 
+	if (totalBreadUnits >= 0 ){
+		setTotalBreadUnits(ing, toFloat(totalBreadUnits));
+		ing.totalGramsLastChanged = false;
+	}
+	else{
+		if (totalGrams < 0){
+			totalGrams = 0;
+			window.alert("Error: Both totalGrams and totalBreadUnits are negative!");
+		}
+		setTotalGrams(ing, toFloat(totalGrams));
+		ing.totalGramsLastChanged = true;
+	}
+
+	Refresh(ing);
+}
+
+function initialiseIngredient(ing)
+{
+	ing.removeAttribute("id");
 
 	ing.ingredientName = 	document.getElementById("ingredientName");
 	ing.closeButton = 		document.getElementById("closeButton");
@@ -56,30 +95,6 @@ function createIngredient()
 	return ing;
 }
 
-function addIngredient(name = "", sampleGrams = 100, sampleCarbs = 0, totalGrams = 0, totalBreadUnits = 0, pieces = 0)
-{
-	var ing = createIngredient();
-	setName(ing, name);
-	setSampleGrams(ing, toInteger(sampleGrams));
-	setSampleCarbs(ing, toInteger(sampleCarbs));
-	//totalGrams = -1 if the value the user inserted is totalBreadUnits, and viceversa. Only one of the totalgrams and totalBreadUnits values is required and the other one is negative, then it is calculated. As a precaution, if both are < 0 then totalGrams is set to 0 
-	if (totalBreadUnits >= 0 ){
-		setTotalBreadUnits(ing, toFloat(totalBreadUnits));
-		ing.totalGramsLastChanged = false;
-	}
-	else{
-		if (totalGrams < 0){
-			totalGrams = 0;
-			window.alert("Both totalGrams and totalBreadUnits are negative");
-		}
-		setTotalGrams(ing, toFloat(totalGrams));
-		ing.totalGramsLastChanged = true;
-	}
-	setPiecesNumber(ing, toInteger(pieces));
-
-	Refresh(ing);
-}
-
 //Ingredient Getters & Setters-----------------------------------------------
 function getSampleGrams(ingredient){if(ingredient.sampleGrams.value=="") return toInteger(ingredient.sampleGrams.getAttribute("placeholder")); return toInteger(ingredient.sampleGrams.value);}
 function getSampleCarbs(ingredient){return toInteger(ingredient.sampleCarbs.value);}
@@ -90,7 +105,7 @@ function getPiecesNumber(ingredient){return toInteger(ingredient.piecesNumber.va
 function getTotalCarbs(ingredient){return getTotalGrams(ingredient)*getSampleCarbs(ingredient)/getSampleGrams(ingredient);} //Not visible in the ingredient
 
 ///Events are not triggered by using setters, they are mainly used for ingredient construction
-function setName(ingredient, val){}
+function setName(ingredient, val){ingredient.ingredientName.value = val.substring(0, nameMaxLength-1)}
 function setSampleGrams(ingredient, val){ingredient.sampleGrams.value = fromInteger(val);}
 function setSampleCarbs(ingredient, val){ingredient.sampleCarbs.value = fromInteger(val);}
 function setTotalGrams(ingredient, val){ingredient.totalGrams.value = fromFloat(val);}
@@ -136,7 +151,10 @@ function onTotalBreadUnitsChanged(ingredient){
 }
 
 function onSignClicked(ingredient, increment){
-	ingredient.piecesNumber.value = toInteger(ingredient.piecesNumber.value) + increment;
+	var n = toInteger(ingredient.piecesNumber.value) + increment;
+	if (n < 0)
+		n = 0;
+	ingredient.piecesNumber.value = n;
 
 	onPiecesNumberChanged(ingredient);
 }
@@ -255,7 +273,7 @@ function toInteger(str)
 	if (str == "")
 		return 0;
 	if (!isNaN(str))
-		return parseInt(str);
+		return Math.abs(parseInt(str));
 	return 0;
 }
 
@@ -264,7 +282,7 @@ function toFloat(str)
 	if (str == "")
 		return 0;
 	if (!isNaN(str))
-		return parseFloat(str).toFixed(2);
+		return Math.abs(parseFloat(str).toFixed(2));
 	return 0;
 }
 
@@ -272,14 +290,14 @@ function fromInteger(int)
 {
 	if (int == 0)
 		return "";
-	return toInteger(int);
+	return toInteger(Math.abs(int));
 }
 
 function fromFloat(flo)
 {
 	if (flo == 0)
 		return "";
-	return toFloat(flo);
+	return toFloat(Math.abs(flo));
 }
 
 //DATABASE----------------------------------------------------------------------------------
@@ -296,8 +314,18 @@ function refreshReceiptData()
 		totalReceiptCarbs += getTotalCarbs(receipt.childNodes[i]); 
 	}
 
-	document.getElementById("totalReceiptGrams").innerHTML = toInteger(totalReceiptGrams);
-	document.getElementById("totalReceiptCarbs").innerHTML = toInteger(totalReceiptCarbs);
+	totalReceiptGrams = toInteger(totalReceiptGrams);
+	totalReceiptCarbs = toInteger(totalReceiptCarbs);
+
+	document.getElementById("totalReceiptGrams").innerHTML = totalReceiptGrams;
+	document.getElementById("totalReceiptCarbs").innerHTML = totalReceiptCarbs;
+
+	/*RECEIPT VIEW*/
+	setSampleGrams(receiptView, totalReceiptGrams);
+	setSampleCarbs(receiptView, totalReceiptCarbs);
+	//totalReceiptGrams and totalReceiptCarbs are not changed by the user, therefore the events are not called 
+	calculateTotalsRow(receiptView);
+	calculatePiecesRow(receiptView);
 }
 
 function saveReceipt()
