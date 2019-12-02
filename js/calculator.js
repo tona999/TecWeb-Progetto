@@ -7,10 +7,11 @@ function start()
 
 	sampleIngredientCopy = document.getElementById("sampleIngredient").cloneNode(true);
 	document.getElementById("sampleIngredient").remove();
-	addIngredient();
+	addIngredient("pasta", 100, 50, 150, 5, 2);
 }
 
-function addIngredient()
+//Constructors-----------------------------------------------------------------------------------------------------
+function createIngredient()
 {
 	var ing = sampleIngredientCopy.cloneNode(true);
 	ing.removeAttribute("id");
@@ -52,14 +53,57 @@ function addIngredient()
 	ing.breadUnitsPP.removeAttribute("id");
 	ing.carbsPP.removeAttribute("id");
 
-
 	return ing;
-} 
+}
+
+function addIngredient(name = "", sampleGrams = 100, sampleCarbs = 0, totalGrams = 0, totalBreadUnits = 0, pieces = 0)
+{
+	var ing = createIngredient();
+	setName(ing, name);
+	setSampleGrams(ing, toInteger(sampleGrams));
+	setSampleCarbs(ing, toInteger(sampleCarbs));
+	//totalGrams = -1 if the value the user inserted is totalBreadUnits, and viceversa. Only one of the totalgrams and totalBreadUnits values is required and the other one is negative, then it is calculated. As a precaution, if both are < 0 then totalGrams is set to 0 
+	if (totalBreadUnits >= 0 ){
+		setTotalBreadUnits(ing, toFloat(totalBreadUnits));
+		ing.totalGramsLastChanged = false;
+	}
+	else{
+		if (totalGrams < 0){
+			totalGrams = 0;
+			window.alert("Both totalGrams and totalBreadUnits are negative");
+		}
+		setTotalGrams(ing, toFloat(totalGrams));
+		ing.totalGramsLastChanged = true;
+	}
+	setPiecesNumber(ing, toInteger(pieces));
+
+	Refresh(ing);
+}
+
+//Ingredient Getters & Setters-----------------------------------------------
+function getSampleGrams(ingredient){if(ingredient.sampleGrams.value=="") return toInteger(ingredient.sampleGrams.getAttribute("placeholder")); return toInteger(ingredient.sampleGrams.value);}
+function getSampleCarbs(ingredient){return toInteger(ingredient.sampleCarbs.value);}
+function getTotalGrams(ingredient){return toFloat(ingredient.totalGrams.value);}
+function getTotalBreadUnits(ingredient){return toFloat(ingredient.totalBreadUnits.value)}
+function getPiecesNumber(ingredient){return toInteger(ingredient.piecesNumber.value)}
+
+function getTotalCarbs(ingredient){return getTotalGrams(ingredient)*getSampleCarbs(ingredient)/getSampleGrams(ingredient);} //Not visible in the ingredient
+
+///Events are not triggered by using setters, they are mainly used for ingredient construction
+function setName(ingredient, val){}
+function setSampleGrams(ingredient, val){ingredient.sampleGrams.value = fromInteger(val);}
+function setSampleCarbs(ingredient, val){ingredient.sampleCarbs.value = fromInteger(val);}
+function setTotalGrams(ingredient, val){ingredient.totalGrams.value = fromFloat(val);}
+function setTotalBreadUnits(ingredient, val){ingredient.totalBreadUnits.value = fromFloat(val);}
+function setPiecesNumber(ingredient, val){ingredient.piecesNumber.value = fromInteger(val);}
+
+//Receipt Getters & Setters--------------------------------------------------
+function getTotalReceiptGrams(){return document.getElementById("totalReceiptGrams")}
+function getTotalReceiptCarbs(){return document.getElementById("totalReceiptCarbs")}
 
 //Events & Setters --------------------------------------------
 function onCloseClicked(ingredient){
 	ingredient.remove();
-
 	refreshReceiptData();
 }
 
@@ -68,8 +112,6 @@ function onSampleGramsChanged(ingredient) {
 	checkSampleDataValidity(ingredient, true);
 	if (isSampleRowValid(ingredient))
 		Refresh(ingredient);
-
-	refreshReceiptData();
 }
 
 function onSampleCarbsChanged(ingredient){
@@ -77,8 +119,6 @@ function onSampleCarbsChanged(ingredient){
   	checkSampleDataValidity(ingredient, false);
 	if (isSampleRowValid(ingredient))
 		Refresh(ingredient);
-
-	refreshReceiptData();
 }
 
 function onTotalGramsChanged(ingredient){
@@ -86,8 +126,6 @@ function onTotalGramsChanged(ingredient){
 	checkInputFormat(ingredient.totalGrams);
 	if (isSampleRowValid(ingredient))
 		Refresh(ingredient);
-
-	refreshReceiptData();
 }
 
 function onTotalBreadUnitsChanged(ingredient){
@@ -95,8 +133,6 @@ function onTotalBreadUnitsChanged(ingredient){
 	checkInputFormat(ingredient.totalBreadUnits);
 	if (isSampleRowValid(ingredient))
 		Refresh(ingredient);
-
-	refreshReceiptData();
 }
 
 function onSignClicked(ingredient, increment){
@@ -108,36 +144,10 @@ function onSignClicked(ingredient, increment){
 function onPiecesNumberChanged(ingredient){
 	checkInputFormat(ingredient.piecesNumber);
 	if (isSampleRowValid(ingredient))
-		calculateThirdRow(ingredient);
+		calculatePiecesRow(ingredient);
 }
 
-//Getters & Setters----------------------------------------------------------
-function getSampleGrams(ingredient){if(ingredient.sampleGrams.value=="") return toInteger(ingredient.sampleGrams.getAttribute("placeholder")); return toInteger(ingredient.sampleGrams.value);}
-function getSampleCarbs(ingredient){return toInteger(ingredient.sampleCarbs.value);}
-function getTotalGrams(ingredient){return toFloat(ingredient.totalGrams.value);}
-function getTotalBreadUnits(ingredient){return toFloat(ingredient.totalBreadUnits.value)}
-function getPiecesNumber(ingredient){return toInteger(ingredient.piecesNumber.value)}
-
-function getTotalCarbs(ingredient){return getTotalGrams(ingredient)*getSampleCarbs(ingredient)/getSampleGrams(ingredient);} //Not visible in the ingredient
-
-function getTotalReceiptGrams(){return document.getElementById("totalReceiptGrams")}
-function getTotalReceiptCarbs(){return document.getElementById("totalReceiptCarbs")}
-
-function setTotalGrams(ingredient, val)
-{
-	if(val!=0)
-		ingredient.totalGrams.value = toFloat(val);
-	else
-		ingredient.totalGrams.value = "";
-}
-function setTotalBreadUnits(ingredient, val){
-	if(val!=0)
-		ingredient.totalBreadUnits.value = toFloat(val);
-	else
-		ingredient.totalBreadUnits.value = "";
-}
-
-//Structure-----------------------------------------------------------------
+//Structure------------------------------------------------------------------
 function isSampleRowValid(ingredient)
 {
 	var sg = getSampleGrams(ingredient);
@@ -185,11 +195,13 @@ function checkInputFormat(field)
 
 function Refresh(ingredient)
 {
-	calculateSecondRow(ingredient);
-	calculateThirdRow(ingredient);
+	calculateTotalsRow(ingredient);
+	calculatePiecesRow(ingredient);
+
+	refreshReceiptData();
 }
 
-function calculateSecondRow(ingredient)
+function calculateTotalsRow(ingredient)
 {
 	if (ingredient.totalGramsLastChanged)
 		setTotalBreadUnits(ingredient, totalGramsToBreadUnits(ingredient));
@@ -197,7 +209,7 @@ function calculateSecondRow(ingredient)
 			setTotalGrams(ingredient, totalBreadUnitsToGrams(ingredient));
 }
 
-function calculateThirdRow(ingredient)
+function calculatePiecesRow(ingredient)
 {
 	var pieces = getPiecesNumber(ingredient);
 	if (pieces > 0)
@@ -256,6 +268,20 @@ function toFloat(str)
 	return 0;
 }
 
+function fromInteger(int)
+{
+	if (int == 0)
+		return "";
+	return toInteger(int);
+}
+
+function fromFloat(flo)
+{
+	if (flo == 0)
+		return "";
+	return toFloat(flo);
+}
+
 //DATABASE----------------------------------------------------------------------------------
 
 function refreshReceiptData()
@@ -274,13 +300,8 @@ function refreshReceiptData()
 	document.getElementById("totalReceiptCarbs").innerHTML = toInteger(totalReceiptCarbs);
 }
 
-function createReceiptIngredient()
-{
-
-}
-
-
 function saveReceipt()
 {
-
+	//Send data to database
 }
+
