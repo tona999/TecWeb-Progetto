@@ -133,10 +133,10 @@ class Ingredient{
 	}
 
 	/*MATHS*/
-	Refresh(ingredient)
+	Refresh()
 	{	if (this.isSampleDataValid()){
-			this.calculateTotalsRow(ingredient);
-			this.calculatePiecesRow(ingredient);
+			this.calculateTotalsRow();
+			this.calculatePiecesRow();
 			this.Display();
 
 			refreshReceiptData();
@@ -177,7 +177,7 @@ class Ingredient{
 		return toFloat(carbsToBreadUnits(totalCarbs));
 	}
 
-	totalBreadUnitsToGrams(ingredient)
+	totalBreadUnitsToGrams()
 	{
 		var totalCarbs = breadUnitsToCarbs(this.totalBreadUnits);
 		return toFloat((totalCarbs*this.sampleGrams)/this.sampleCarbs);
