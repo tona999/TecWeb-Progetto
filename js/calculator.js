@@ -1,3 +1,106 @@
+class Ingredient{
+	constructor(name = "", sampleGrams = 100, sampleCarbs = 0, totalGrams = 0, totalBreadUnits = 0, piecesNumber = 0) 
+	{
+		this.ingredientName = name;
+		this.sampleGrams = sampleGrams;
+		this.sampleCarbs = sampleCarbs;
+		this.totalGrams = totalGrams;
+
+		if (totalBreadUnits >= 0)
+		{
+			this.totalBreadUnits = totalBreadUnits;
+			this.totalGrams = 0;
+			this.totalGramsLastChanged = false;
+		}
+		else
+		{
+			if(totalGrams > 0)
+				this.totalGrams = totalGrams;
+			else
+				this.totalGrams = 0;
+			this.totalBreadUnits = 0;
+			this.totalGramsLastChanged = true;
+		}
+
+		this.piecesNumber = piecesNumber;
+    }
+
+    Connect(htmlIng)
+    {
+    	htmlIng.removeAttribute("id");
+
+    	this.totalGramsLastChanged = true;
+
+		this.ingredientNameRef = 	document.getElementById("ingredientName");
+		this.closeButtonRef = 		document.getElementById("closeButton");
+		this.sampleGramsRef = 		document.getElementById("sampleGrams");
+		this.sampleCarbsRef = 		document.getElementById("sampleCarbs");
+		this.totalGramsRef = 		document.getElementById("totalGrams");
+		this.totalBreadUnitsRef = 	document.getElementById("totalBreadUnits");
+		this.piecesNumberRef = 		document.getElementById("piecesNumber");
+		this.plusButtonRef = 		document.getElementById("plusButton");
+		this.minusButtonRef = 		document.getElementById("minusButton");
+		this.gramsPPRef = 			document.getElementById("gramsPP");
+		this.breadUnitsPPRef = 		document.getElementById("breadUnitsPP");
+		this.carbsPPRef = 			document.getElementById("carbsPP");
+
+		this.closeButtonRef.addEventListener('click', this.onCloseClicked);
+		this.sampleGramsRef.addEventListener('input', this.onSampleGramsChanged);
+		this.sampleCarbsRef.addEventListener('input', this.onSampleCarbsChanged);
+		this.totalGramsRef.addEventListener('input', this.onTotalGramsChanged);
+		this.totalBreadUnitsRef.addEventListener('input', this.onTotalBreadUnitsChanged);
+		this.piecesNumberRef.addEventListener('input', this.onPiecesNumberChanged);
+		this.plusButtonRef.addEventListener('click', function(){this.onSignClicked(1)}, false);
+		this.minusButtonRef.addEventListener('click', function(){this.onSignClicked(-1)}, false);
+
+		this.ingredientNameRef.removeAttribute("id");
+		this.closeButtonRef.removeAttribute("id");
+		this.sampleGramsRef.removeAttribute("id");
+		this.sampleCarbsRef.removeAttribute("id");
+		this.totalGramsRef.removeAttribute("id");
+		this.totalBreadUnitsRef.removeAttribute("id");
+		this.piecesNumberRef.removeAttribute("id");
+		this.plusButtonRef.removeAttribute("id");
+		this.minusButtonRef.removeAttribute("id");
+		this.gramsPPRef.removeAttribute("id");
+		this.breadUnitsPPRef.removeAttribute("id");
+		this.carbsPPRef.removeAttribute("id");
+    }
+
+    Display()
+    {
+    	this.ingredientNameRef.value = this.ingredientName;		
+		this.sampleGramsRef.value = this.sampleGrams;
+		this.sampleCarbsRef.value = this.sampleCarbs
+		this.totalGramsRef.value = this.totalGrams;
+		this.totalBreadUnitsRef.value = this.totalBreadUnits;
+		this.piecesNumberRef.value = this.piecesNumber;
+		this.gramsPPRef.value = 1;
+		this.breadUnitsPPRef.value = 2;
+		this.carbsPPRef.value = 3;
+    }
+
+    onCloseClicked(){window.alert("close clicekd" + this.piecesNumber);}
+	onSampleGramsChanged(){}
+	onSampleCarbsChanged(){}
+	onTotalGramsChanged(){}
+	onTotalBreadUnitsChanged(){}
+	onPiecesNumberChanged(){}
+	onSignClicked(){}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 var sampleIngredientCopy;
 var receiptView;
 
@@ -5,14 +108,22 @@ var nameMaxLength = 25;
 
 function start()
 {
+	/*
 	document.getElementById("addNewBtn").addEventListener('click', function(){addIngredientToReceipt();});
 	document.getElementById("loadReceiptCardBtn").addEventListener('click', function(){refreshReceiptData();});
-	document.getElementById("saveReceiptBtn").addEventListener('click', function(){saveReceipt();});
+	document.getElementById("saveReceiptBtn").addEventListener('click', function(){saveReceipt();});*/
 
 	sampleIngredientCopy = document.getElementById("sampleIngredient").cloneNode(true);
 	document.getElementById("sampleIngredient").remove();
 
-	//receipt view
+	var htmlIng = sampleIngredientCopy.cloneNode(true);
+	document.getElementById("receipt").appendChild(htmlIng);
+
+	var ing = new Ingredient("Salame Piccante", 100, 0, 50, -1, 25);
+	ing.Connect(htmlIng);
+	ing.Display();
+/*
+	//receipt VIEW
 	receiptView = sampleIngredientCopy.cloneNode(true);
 	document.getElementById("receiptView").appendChild(receiptView);
 	initialiseIngredient(receiptView);
@@ -21,6 +132,7 @@ function start()
 	addIngredientToReceipt("Salame Piccante", 100, 0, 50, -1, 16);
 	addIngredientToReceipt("Mozzarella", 100, 20, 150, -1, 0);
 	addIngredientToReceipt("Sugo di Pomodoro", 100, 15, 80, -1, 0);
+	*/
 }
 
 //Constructors-----------------------------------------------------------------------------------------------------
