@@ -1,5 +1,5 @@
 class Ingredient{
-	constructor(name = "", sampleGrams = 100, sampleCarbs = 0, totalGrams = 0, totalBreadUnits = 0, piecesNumber = 0) 
+	constructor(connect = false, name = "", sampleGrams = 100, sampleCarbs = 0, totalGrams = 0, totalBreadUnits = -1, piecesNumber = 0) 
 	{
 		//Format checks are needed, thus the use of the setters
 		this.setName(name);
@@ -23,6 +23,9 @@ class Ingredient{
 			this.totalBreadUnits = 0;
 			this.totalGramsLastChanged = true;
 		}
+
+		if (connect)
+			this.connect(Calculator.getNewIngredientBody());
     }
 
     connect(htmlIng)
@@ -86,7 +89,7 @@ class Ingredient{
     }
 
     /*INGREDIENT GETTERS & SETTERS*/
-	setName(val){this.ingredientName = val.substring(0, nameMaxLength-1);}
+	setName(val){this.ingredientName = (val.toString()).substring(0, 25);}
 	setSampleGrams(val){this.sampleGrams = MathUtilities.toInteger(val);}
 	setSampleCarbs(val){this.sampleCarbs = MathUtilities.toInteger(val);}
 	setTotalGrams(val){this.totalGrams = MathUtilities.toFloat(val);}
@@ -132,9 +135,9 @@ class Ingredient{
 		this.refresh();
 	}
 
-	onInsertInReceipt(receipt, index){ //Called when the ingredient is inserted into a receipt. An ingredient can be standalone.
-		this.closeButtonRef.addEventListener('click', function(){receipt.removeIngredient(index)});
-		this.receiptRef = receipt;
+	onInsertInRecipe(recipe, index){ //Called when the ingredient is inserted into a recipe. An ingredient can be standalone.
+		this.closeButtonRef.addEventListener('click', function(){recipe.removeIngredient(index)});
+		this.recipeRef = recipe;
 	}
 
 	/*MATHS*/
@@ -144,8 +147,8 @@ class Ingredient{
 			this.calculatePiecesRow();
 			this.display();
 
-			if (this.receiptRef)
-				this.receiptRef.refreshReceiptData();
+			if (this.recipeRef)
+				this.recipeRef.refreshRecipeData();
 		}
 	}
 
@@ -230,5 +233,11 @@ class Ingredient{
 			field.classList.remove("invalidInput");
 		else
 			field.className = "invalidInput";
+	}
+
+	/*USER INTERACTION*/
+	save()
+	{
+
 	}
 }

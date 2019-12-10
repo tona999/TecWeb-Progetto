@@ -5,7 +5,7 @@
     padding: 0;
 }
 
-#receipt{
+#recipe{
     margin-bottom: 5em; /* needed to avoid bottom bar override */
 	display: flex;
 	flex-wrap: wrap;
@@ -100,13 +100,13 @@
     display: inline-block;
 }
 
-/*Receipt View*/
-#receiptView{
+/*Recipe View*/
+#recipeView{
     margin-bottom: 5em;
     background-color: #ECECEC; 
 }
 
-#receiptView .ingredient{
+#recipeView .ingredient{
     margin:auto;
     margin-top: 1em;
     margin-bottom: 1em;
