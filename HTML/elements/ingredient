@@ -1,0 +1,11 @@
+<div class="ingredient-overview">
+
+    <h3>ingredientName</h3>
+
+    <span>***numero***</span>
+    <span>g of product</span>
+
+    <span>***numero2***</span>
+    <span>g of carbs</span>
+
+</div>

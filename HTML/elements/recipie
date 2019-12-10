@@ -1,0 +1,11 @@
+<div class="recipe-overview">
+
+    <h3>recipeName</h3>
+
+    <ul>
+      <li>ingredientName0</li>
+      <li>ingredientName1</li>
+      <li>ingredientName2</li>
+    </ul>
+
+</div>

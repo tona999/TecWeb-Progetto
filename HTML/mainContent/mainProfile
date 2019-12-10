@@ -1,0 +1,38 @@
+<main>
+    <!-- Contenuto specifico della pagina -->
+    [ Login ]
+    <!-- se non è loggato -->
+    <form action="*****.php" method="post">
+
+        <label for="username"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="username" required>
+
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" required>
+
+        <button type="submit">Login</button>
+
+        <label>
+          <input type="checkbox" checked="checked" name="remember"> Remember me
+        </label>
+    </form>
+
+    <!-- se è loggato -->
+    <div id="ingredients">
+      <h2>Ingredients</h2>
+      <ul title="Ingredients">
+        <li>Bread</li>
+        <li>Pasta</li>
+        <li>Ragu'</li>
+      </ul>
+    </div>
+
+    <div id="recipies">
+      <h2>Recipies</h2>
+      <ul title="Recipies">
+        <li>Pasta Bolognese</li>
+      </ul>
+    </div>
+
+
+</main>

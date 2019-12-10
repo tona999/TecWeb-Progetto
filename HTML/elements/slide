@@ -1,0 +1,11 @@
+<div class="slide">
+  <!-- Template del contenuto di una slide di Home o Info -->
+  <section id="*******">
+    <h2> ** Title ** </h2>
+    <p> **Description** </p>
+    <a href="info.html#info"> Find out more...</a> <!-- #info collega direttamente alla sezione giusta -->
+    <img src="" alt="">
+    <button type="button" name="button"></button>
+  </section>
+
+</div>
