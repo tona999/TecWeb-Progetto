@@ -1,0 +1,38 @@
+*{
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    padding: 1em;
+    background-color: rgb(89, 231, 184);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+menu{
+    padding: 1em;
+    background-color: rgb(163, 255, 224);
+}
+menu ul{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+menu ul li{
+    margin: 0 3em 0 3em;
+}
+
+main{
+    padding: 1em;
+}
+main a{
+    display: block;
+}
+main *{
+    margin-top: .5em;
+    margin-bottom: .5em;
+}
