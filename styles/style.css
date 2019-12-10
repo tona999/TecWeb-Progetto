@@ -26,13 +26,9 @@ menu ul li{
     margin: 0 3em 0 3em;
 }
 
-main{
-    padding: 1em;
-}
 main a{
     display: block;
 }
-main *{
-    margin-top: .5em;
-    margin-bottom: .5em;
+main p, main h1, main h2, main a{
+    margin:1em;
 }
