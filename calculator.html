@@ -1,13 +1,33 @@
 <!DOCTYPE html>
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<script src="js/Calculator.js"></script>
 	<script src="js/MathUtilities.js"></script>
 	<script src="js/Recipe.js"></script>
 	<script src="js/Ingredient.js"></script>
-	<link rel="stylesheet" type="text/css" href="styles/calculator.css">
+    <link rel="stylesheet" href="styles/style.css">	
+	<link rel="stylesheet" type="text/css" href="styles/calculator.css"> 
 </head>
 
 <body onload="start()">
+
+    <header>
+        <!-- Top bar --> 
+        <h1> Diabetes <abbr title="Calculator">Calc</abbr> </h1>
+        <a href="login.html"> Login </a>
+    </header>
+    
+    <menu>
+        <!-- Menu (Bottom bar, nella visualizzazione mobile) -->
+        <ul>
+            <li><a href="index.html"><img src="img/icons/home.svg" alt=""> Home </a></li>
+            <li><a href="info.html"><img src="img/icons/info.svg" alt=""><abbr title="Informations"> Info </abbr></a></li>
+            <li><img src="img/icons/tool.svg" alt=""> Calculator </li>
+        </ul>
+	</menu>
+	
+	<main>
 	<div id="recipe"></div>
 
 	<div id="controlPanel">
@@ -64,28 +84,27 @@
 			<legend>Divided In</legend>
 			<label>
 				<input type="number" maxlength="3" min="0" id="piecesNumber" placeholder="0 pieces">
+				<div class="controls-container">
+					<input class="action-btn" type="button" value="-" id="minusButton">
+					<input class="action-btn" type="button" value="+" id="plusButton">
+				</div>
 			</label>
-
-			<table class="ingredient-report">
-				<tr>
-					<th>grams</th>
-					<th>bread units</th>
-					<th>carbs</th>
-				</tr>
-				<tr>
-					<td class="gramsPP" id="gramsPP">0</td>
-					<td class="breadUnitsPP" id="breadUnitsPP">0</td>
-					<td class="carbsPP" id="carbsPP">0</td>
-				</tr>
-			</table>
-
-			<div class="controls-container">
-				<input class="action-btn" type="button" value="-" id="minusButton">
-				<input class="action-btn" type="button" value="+" id="plusButton">
-			</div>
-
 		</fieldset>
+
+		<table class="ingredient-report">
+			<tr>
+				<th>grams</th>
+				<th>bread units</th>
+				<th>carbs</th>
+			</tr>
+			<tr>
+				<td class="gramsPP" id="gramsPP">0</td>
+				<td class="breadUnitsPP" id="breadUnitsPP">0</td>
+				<td class="carbsPP" id="carbsPP">0</td>
+			</tr>
+		</table>
 	</form>
 
+	</main>
 </body>
 </html>
