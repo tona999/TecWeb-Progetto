@@ -31,6 +31,7 @@ class Ingredient{
     connect(htmlIng)
     {
     	htmlIng.removeAttribute("id");
+    	this.htmlIngRef = htmlIng;
 
     	this.totalGramsLastChanged = true;
 
@@ -54,7 +55,7 @@ class Ingredient{
 		this.totalBreadUnitsRef.addEventListener('input', function(){t.onTotalBreadUnitsChanged(this.value);});
 		this.piecesNumberRef.addEventListener('input', function(){t.onPiecesNumberChanged(this.value);});
 
-		this.closeButtonRef.addEventListener('click', function(){t.onCloseClicked(htmlIng);}); //function.bind could also be used
+		this.closeButtonRef.addEventListener('click', function(){t.onCloseClicked();}); //function.bind could also be used
 		this.plusButtonRef.addEventListener('click', function(){t.onSignClicked(1);});
 		this.minusButtonRef.addEventListener('click', function(){t.onSignClicked(-1);});
 
@@ -100,8 +101,8 @@ class Ingredient{
 	getTotalCarbs(){return this.totalGrams*this.sampleCarbs/this.sampleGrams;} //Not visible in the ingredient
 
     /*EVENTS*/
-    onCloseClicked(htmlRoot){
-    	htmlRoot.remove();
+    onCloseClicked(){
+    	this.htmlIngRef.remove();
     }
 	onSampleGramsChanged(val){
 		this.setSampleGrams(val);
@@ -138,6 +139,7 @@ class Ingredient{
 	onInsertInRecipe(recipe, index){ //Called when the ingredient is inserted into a recipe. An ingredient can be standalone.
 		this.closeButtonRef.addEventListener('click', function(){recipe.removeIngredient(index)});
 		this.recipeRef = recipe;
+		this.refresh();
 	}
 
 	/*MATHS*/
