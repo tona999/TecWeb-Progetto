@@ -2,7 +2,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<script src="js/calculator.js"></script>
+	<script src="js/Calculator.js"></script>
+	<script src="js/MathUtilities.js"></script>
+	<script src="js/Recipe.js"></script>
+	<script src="js/Ingredient.js"></script>
     <link rel="stylesheet" href="styles/style.css">	
 	<link rel="stylesheet" type="text/css" href="styles/calculator.css"> 
 </head>
@@ -25,31 +28,29 @@
 	</menu>
 	
 	<main>
-
-	<div id="receipt"></div>
+	<div id="recipe"></div>
 
 	<div id="controlPanel">
 		<p>
 			Total Grams:
-			<span id="totalReceiptGrams">0</span>
+			<span id="totalRecipeGrams">0</span>
 		</p>
 		<p>
 			Total Carbs:
-			<span id="totalReceiptCarbs">0</span>
+			<span id="totalRecipeCarbs">0</span>
 		</p>
 
-		<input type="button" id="loadReceiptCardBtn" value="^">
-		<input type="button" id="saveReceiptBtn" value="S">
+		<input type="button" id="loadRecipeCardBtn" value="^">
+		<input type="button" id="saveRecipeBtn" value="S">
 		<input type="button" id="addNewBtn" value="+">
 	</div>
 
-	<fieldset id="receiptView"></fieldset>
+	<fieldset id="recipeView"></fieldset>
 
 	<!-- Ingredient -->
 	<form id="sampleIngredient" action="" class = "ingredient">
 		<fieldset>
 			<input type="text" maxlength="40" id="ingredientName" placeholder="Ingredient Name">
-			<input type="button" value="Load" id="loadButton">
 			<input type="button" value="Save" id="saveButton">
 			<input type="button" value="Close" id="closeButton">
 		</fieldset>
