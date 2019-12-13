@@ -125,6 +125,9 @@ class Ingredient{
 		this.refresh();
 	}
 	onSignClicked(increment){
+		if (!this.isSampleDataValid())
+		return;
+		
 		var n = this.piecesNumber + increment;
 		if (n>=0)
 			this.onPiecesNumberChanged(n);
@@ -151,7 +154,9 @@ class Ingredient{
 
 			if (this.recipeRef)
 				this.recipeRef.refreshRecipeData();
+			return true;
 		}
+		return false;
 	}
 
 	calculateTotalsRow()
