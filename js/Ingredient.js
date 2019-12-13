@@ -125,8 +125,10 @@ class Ingredient{
 		this.refresh();
 	}
 	onSignClicked(increment){
-		if (!this.isSampleDataValid())
-		return;
+		if (!this.isSampleDataValid()){
+			window.alert("Please check " + this.ingredientName + " Sample Values");
+			return;
+		}
 		
 		var n = this.piecesNumber + increment;
 		if (n>=0)
