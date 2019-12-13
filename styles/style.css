@@ -4,16 +4,18 @@
     padding: 0;
 }
 
+/* Header */
 header{
-    padding: 1em;
+    padding: .5em;
     background-color: rgb(89, 231, 184);
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
+/* Menu */
 menu{
-    padding: 1em;
+    padding: .5em;
     background-color: rgb(163, 255, 224);
 }
 menu ul{
@@ -27,11 +29,12 @@ menu ul li{
 }
 menu img{
     display: block;
-    height: 1.7em;
+    height: 1.5em;
     width: 100%;
     padding-bottom: .5em;
 }
 
+/* Main content */
 main a{
     display: block;
 }
