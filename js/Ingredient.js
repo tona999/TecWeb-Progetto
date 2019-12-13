@@ -244,6 +244,26 @@ class Ingredient{
 			field.className = "invalidInput";
 	}
 
+	switchVisibility()
+	{
+		if (this.htmlIngRef.className == "hiddenIngredient"){
+			this.setVisibility(true);
+			return true;
+		}
+		else{
+			this.setVisibility(false);
+			return false;
+		}
+	}
+
+	setVisibility(status)
+	{
+		if (!status)
+			this.htmlIngRef.className = "hiddenIngredient";
+		else
+			this.htmlIngRef.classList = "ingredient";
+	}
+
 	/*USER INTERACTION*/
 	save()
 	{

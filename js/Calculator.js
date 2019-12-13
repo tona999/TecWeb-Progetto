@@ -5,14 +5,14 @@ function start()
 {
 	sampleIngredientCopy = document.getElementById("sampleIngredient").cloneNode(true);
 	document.getElementById("sampleIngredient").remove();
-	initializeReceiptStructure();
+	initializeRecipeStructure();
 
 	Ing1 = new Ingredient(true, "Sliced Bread", 100, 50, 320, -1, 12);
 
 	currentRecipe.addIngredient(Ing1);
 }
 
-function initializeReceiptStructure()
+function initializeRecipeStructure()
 {
 	//recipe VIEW
 	var rv = new Ingredient(false);

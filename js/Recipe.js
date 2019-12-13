@@ -36,7 +36,7 @@ class Recipe{
 
 	save()
 	{
-		window.alert("Saving Receipt Demo...");
+		window.alert("Saving Recipe Demo...");
 	}
 
 	reset()
@@ -53,7 +53,14 @@ class Recipe{
 
 	showRecipeView()
 	{
-		window.alert("Pop Up Recipe View");
+		if(this.recipeViewRef.switchVisibility())
+		{
+			//recipeVIew was shown, change the receipt container class to fit the ingredients better and switch button icon
+		}
+		else
+		{
+			//recipeVIew was hidden, change the receipt container class to occupy all the space and switch button icon
+		}
 	}
 
 	refreshRecipeData()
