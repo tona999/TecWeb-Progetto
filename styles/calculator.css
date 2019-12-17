@@ -1,0 +1,126 @@
+*{
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+#recipe{
+	display: flex;
+	flex-wrap: wrap;
+    justify-content: center;
+}
+
+#recipeWithView
+{
+    margin-bottom: 10em; /* needed to avoid bottom bar override */
+}
+
+#recipeWithoutView
+{
+    margin-bottom: 4em; /* needed to avoid bottom bar override */
+}
+
+/*** INGREDIENT ***/
+
+    form{
+    font-size: .9em;
+        border: 1px solid black;
+        border-radius: 4px;
+        margin: .5em;
+        padding: .5em;
+        width: 90%;
+        width: max-content;
+    }
+    fieldset{
+        border: none;
+        padding: .5em;
+    }
+    fieldset input[type="text"]{
+        width:  9em;
+    }
+
+    /* Label and inputs inside ingredients */
+    label{
+        display: inline-block;
+    }
+    input{
+        text-align: center;
+    }
+    input[type="number"]{
+        width: 3em;
+	}
+	input[type="button"]{
+		min-width: 2em;
+		padding:0.2em;
+	}
+    #controlPanel button{
+		height: 2em;
+		width: 2em;
+	}
+
+    /* Report table for ingredients */
+    .ingredient-report{
+        margin: auto;
+        border-collapse: collapse;
+    }
+    .ingredient-report td, .ingredient-report th{
+        border: 1px solid black;
+        padding: .3em;
+        text-align: center;
+        font-weight: normal;
+        font-size: 1em;
+    }
+
+    /* Pieces number buttons (+ -) */
+    .divided label *{
+        display: inline;
+    }
+
+    /*invalid data was inserted by user*/
+    .invalidInput
+    {
+    	background: red;
+    	color: white;
+    }
+    
+/******************/
+
+/* Bottom bar (controls container) */
+#controlPanel{
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    padding: .5em;
+    background-color: #ECECEC;
+    border-top: 1px solid black;
+}
+#controlPanel *{
+    margin-left: .2em;
+    margin-right: .2em;
+    display: inline;
+}
+#controlPanel .buttons{
+    display: inline-block;
+}
+
+/*Recipe View*/
+#recipeView{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin-bottom: 2.6em;
+    background-color: #ECECEC;
+}
+
+.hiddenIngredient{
+    display: none;
+}
+
+#recipeView .ingredient{
+    margin:auto;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
