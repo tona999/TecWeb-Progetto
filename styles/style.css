@@ -9,14 +9,16 @@ body{
     margin: auto;
 }
 
+/* Header */
 header{
-    padding: 1em;
+    padding: .5em;
     background-color: rgb(89, 231, 184);
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
+/* Menu */
 menu{
     float: left;
     box-sizing: border-box;
