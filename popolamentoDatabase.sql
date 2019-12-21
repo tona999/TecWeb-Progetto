@@ -7,13 +7,13 @@ INSERT INTO User (Id, Name, Surname, Email, Password, Birthdate) VALUES
 INSERT INTO Ingredient (Id, UserId, Name, GramsProduct, GramsCarbs) VALUES
 (1, 1, 'Pasta', 100, 75),
 (2, 1, 'Sugo al pomodoro', 100, 7),
-(3, 1, 'Fette Biscottate', 100, 82.3),
+(3, 1, 'Fette Biscottate', 100, 82),
 (4, 1, 'Kiwi', 100, 9),
 (5, 1, 'Latte', 100, 5),
-(6, 1, 'Pancetta', 100, 0.5),
+(6, 1, 'Pancetta', 100, 1),
 (7, 2, 'Piselli', 100, 14),
-(8, 2, 'Panna', 100, 3.7),
-(9, 2, 'Caffè', 100, 1.7),
+(8, 2, 'Panna', 100, 4),
+(9, 2, 'Caffè', 100, 2),
 (10, 2, 'Cornetto', 100, 46),
 (11, 2, 'Pasta', 100, 75),
 (12, 3, 'Farina 00', 100, 73),
@@ -24,7 +24,7 @@ INSERT INTO Ingredient (Id, UserId, Name, GramsProduct, GramsCarbs) VALUES
 (17, 4, 'Farina 00', 100, 73),
 (18, 4, 'Biscotti Pan di Stelle', 100, 65),
 (19, 4, 'Latte', 100, 5),
-(20, 4, 'Budino al cioccolato', 100, 18.8),
+(20, 4, 'Budino al cioccolato', 100, 19),
 
 INSERT INTO Recipe (Id, UserId, Name) VALUES
 (1, 1, 'Pasta al pomodoro'),

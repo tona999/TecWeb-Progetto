@@ -17,8 +17,8 @@ CREATE TABLE Ingredient(
   Id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   UserId INT NOT NULL,
   Name varchar(50) NOT NULL,
-  GramsProduct FLOAT NOT NULL,
-  GramsCarbs FLOAT NOT NULL,
+  GramsProduct INT NOT NULL,
+  GramsCarbs INT NOT NULL,
   PRIMARY KEY (Id, UserId),
   FOREIGN KEY (UserId) REFERENCES User(Id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -38,8 +38,8 @@ DROP TABLE IF EXISTS Contains;
 CREATE TABLE Contains(
   RecipeId INT NOT NULL,
   IngredientId INT NOT NULL,
-  GramsIngredient FLOAT NOT NULL,
-  Units FLOAT NOT NULL,
+  GramsIngredient INT NOT NULL,
+  Units DECIMAL NOT NULL,
   Pieces INT NOT NULL,
   PRIMARY KEY (RecipeId,IngredientId),
   FOREIGN KEY (RecipeId) REFERENCES Recipe(Id) ON DELETE CASCADE,
