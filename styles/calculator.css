@@ -8,35 +8,22 @@
 	display: flex;
 	flex-wrap: wrap;
     justify-content: center;
-}
-
-#recipeWithView
-{
-    margin-bottom: 10em; /* needed to avoid bottom bar override */
-}
-
-#recipeWithoutView
-{
     margin-bottom: 4em; /* needed to avoid bottom bar override */
 }
 
 /*** INGREDIENT ***/
-
     form{
-    font-size: .9em;
+        font-size: .9em;
         border: 1px solid black;
         border-radius: 4px;
         margin: .5em;
         padding: .5em;
         width: 90%;
-        width: max-content;
+        max-width: 30em;
     }
     fieldset{
         border: none;
         padding: .5em;
-    }
-    fieldset input[type="text"]{
-        width:  9em;
     }
 
     /* Label and inputs inside ingredients */
@@ -45,6 +32,8 @@
     }
     input{
         text-align: center;
+        height: 2em;
+        text-align: left;
     }
     input[type="number"]{
         width: 3em;
@@ -52,7 +41,10 @@
 	input[type="button"]{
 		min-width: 2em;
 		padding:0.2em;
-	}
+    }
+	input[type="text"]{
+        width: 50%;
+    }
     #controlPanel button{
 		height: 2em;
 		width: 2em;
@@ -97,11 +89,7 @@
     border-top: 1px solid black;
 }
 #controlPanel *{
-    margin-left: .2em;
-    margin-right: .2em;
-    display: inline;
-}
-#controlPanel .buttons{
+    margin: .2em 0 .2em 0;
     display: inline-block;
 }
 
