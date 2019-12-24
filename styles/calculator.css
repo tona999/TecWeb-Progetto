@@ -5,10 +5,10 @@
 }
 
 #recipe{
-    margin-bottom: 4em; /* needed to avoid bottom bar override */
 	display: flex;
 	flex-wrap: wrap;
     justify-content: center;
+    margin-bottom: 4em; /* needed to avoid bottom bar override */
 }
 
 /*** INGREDIENT ***/
@@ -98,8 +98,16 @@
 
 /*Recipe View*/
 #recipeView{
-    padding-bottom: 5em;
-    background-color: #ECECEC; 
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin-bottom: 2.6em;
+    background-color: #ECECEC;
+}
+
+.hiddenIngredient{
+    display: none;
 }
 
 #recipeView .ingredient{

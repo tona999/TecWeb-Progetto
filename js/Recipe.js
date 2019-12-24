@@ -5,11 +5,15 @@ class Recipe{
 		this.name = name;
 	}
 
+	addEmptyIngredient()
+	{
+		this.addIngredient(new Ingredient(true));
+	}
+
 	addIngredient(ing)
 	{
 		this.ingredients.push(ing);
 		ing.onInsertInRecipe(this, this.ingredients.length-1); //Connecting Event for Close Button on Ingredient
-		this.refreshRecipeData();
 	}
 
 	removeIngredient(index)
@@ -28,6 +32,35 @@ class Recipe{
 		this.totalRecipeGramsRef = totalRecipeGramsRef;
 		this.totalRecipeCarbsRef = totalRecipeCarbsRef;
 		this.recipeViewRef = recipeViewRef;
+	}
+
+	save()
+	{
+		window.alert("Saving Recipe Demo...");
+	}
+
+	reset()
+	{
+		for (var i=0; i<this.ingredients.length; i++){
+			if (this.ingredients[i]!=undefined){
+				this.ingredients[i].onCloseClicked();
+			}
+		}
+		this.ingredients = [];
+
+		this.addEmptyIngredient();
+	}
+
+	showRecipeView()
+	{
+		if(this.recipeViewRef.switchVisibility())
+		{
+			//recipeVIew was shown, change the receipt container class to fit the ingredients better and switch button icon
+		}
+		else
+		{
+			//recipeVIew was hidden, change the receipt container class to occupy all the space and switch button icon
+		}
 	}
 
 	refreshRecipeData()
