@@ -14,26 +14,28 @@
 /*** INGREDIENT ***/
     form{
         font-size: .9em;
-        border: 1px solid black;
-        border-radius: 4px;
+        background-color: #fff;
+        box-shadow: 0 1px 4px #00000030;
+        border-radius: 8px;
         margin: .5em;
         padding: .5em;
         width: 90%;
         max-width: 30em;
     }
     fieldset{
-        border: none;
         padding: .5em;
+        border: none;
+        border-bottom: 1px solid #00000030;
     }
 
     /* Label and inputs inside ingredients */
     label{
         display: inline-block;
+        min-width: 45%;
     }
     input{
         text-align: center;
         height: 2em;
-        text-align: left;
     }
     input[type="number"]{
         width: 3em;
@@ -43,7 +45,7 @@
 		padding:0.2em;
     }
 	input[type="text"]{
-        width: 50%;
+        width: 60%;
     }
     #controlPanel button{
 		height: 2em;
@@ -53,6 +55,7 @@
     /* Report table for ingredients */
     .ingredient-report{
         margin: auto;
+        margin-top: .5em;
         border-collapse: collapse;
     }
     .ingredient-report td, .ingredient-report th{

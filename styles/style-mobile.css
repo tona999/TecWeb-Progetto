@@ -4,9 +4,19 @@
     padding: 0;
 }
 
+body{
+    background-color: #f6f8fa;
+}
+body.dark{
+    background-color: #2F4858;
+}
+h1{
+    font-weight: normal;
+}
+
 header{
     padding: 1em;
-    background-color: rgb(89, 231, 184);
+    background-color: #00A4A8;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -14,7 +24,7 @@ header{
 
 menu{
     padding: 1em;
-    background-color: rgb(163, 255, 224);
+    background-color: #00C4B2;
 }
 menu ul{
     list-style: none;
@@ -22,7 +32,7 @@ menu ul{
     justify-content: space-around;
     align-items: center;
 }
-menu ul li{
+menu li{
     text-align: center;
 }
 menu img{
