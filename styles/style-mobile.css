@@ -1,31 +1,10 @@
-*{
-    font-family: sans-serif;
-    margin: 0;
-    padding: 0;
-}
-
-body{
-    background-color: #f6f8fa;
-}
-body.dark{
-    background-color: #2F4858;
-}
-h1{
-    font-weight: normal;
-}
-
-header{
-    padding: 1em;
-    background-color: #00A4A8;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
 menu{
-    padding: 1em;
-    background-color: #00C4B2;
+    float: none;
+    width: 100%;
+    padding: .5em 0;
+    border-radius: 0;
 }
+
 menu ul{
     list-style: none;
     display: flex;
@@ -42,9 +21,7 @@ menu img{
     padding-bottom: .5em;
 }
 
-main a{
-    display: block;
-}
-main p, main h1, main h2, main a{
-    margin:1em;
+main{
+    float: none;
+    width: 100%;
 }

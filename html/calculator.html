@@ -2,13 +2,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<script src="js/Calculator.js"></script>
-	<script src="js/MathUtilities.js"></script>
-	<script src="js/Recipe.js"></script>
-	<script src="js/Ingredient.js"></script>
-    <link rel="stylesheet" type="text/css" href="styles/style.css" media="(min-width: 800px)">	
-    <link rel="stylesheet" type="text/css" href="styles/style-mobile.css" media="(max-width: 800px)">	
-	<link rel="stylesheet" type="text/css" href="styles/calculator.css"> 
+	<script src="../js/Calculator.js"></script>
+	<script src="../js/MathUtilities.js"></script>
+	<script src="../js/Recipe.js"></script>
+	<script src="../js/Ingredient.js"></script>
+    <link rel="stylesheet" type="text/css" href="../styles/style.css">	
+    <link rel="stylesheet" type="text/css" href="../styles/style-mobile.css" media="(max-width: 800px)">	
+	<link rel="stylesheet" type="text/css" href="../styles/calculator.css"> 
 </head>
 
 <body onload="start()">
@@ -22,9 +22,9 @@
     <menu>
         <!-- Menu (Bottom bar, nella visualizzazione mobile) -->
         <ul>
-            <li><a href="index.html"><img src="img/icons/home.svg" alt=""> Home </a></li>
-            <li><a href="info.html"><img src="img/icons/info.svg" alt=""><abbr title="Informations"> Info </abbr></a></li>
-            <li><img src="img/icons/tool.svg" alt=""> Calculator </li>
+            <li><a href="../html/index.html"><img src="../img/icons/home.svg" alt=""> Home </a></li>
+            <li><a href="../html/info.html"><img src="../img/icons/info.svg" alt=""><abbr title="Informations"> Info </abbr></a></li>
+            <li><img src="../img/icons/tool.svg" alt=""> Calculator </li>
         </ul>
 	</menu>
 	
@@ -33,11 +33,11 @@
 
 	<div id="controlPanel">
 		<p>
-			Total Grams:
+			Grams:
 			<span id="totalRecipeGrams">0</span>
 		</p>
 		<p>
-			Total Carbs:
+			Carbs:
 			<span id="totalRecipeCarbs">0</span>
 		</p>
 
@@ -57,8 +57,8 @@
 	<form id="sampleIngredient" action="" class = "ingredient">
 		<fieldset>
 			<input type="text" maxlength="40" id="ingredientName" placeholder="Ingredient Name"/>
-			<input type="button" value="Save" id="saveButton"/>
-			<input type="button" value="Close" id="closeButton"/>
+			<input type="button" value="SAVE" id="saveButton"/>
+			<input type="button" value="CLOSE" id="closeButton"/>
 		</fieldset>
 
 		<fieldset class="carbs">
