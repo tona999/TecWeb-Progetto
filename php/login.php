@@ -1,13 +1,14 @@
 <?php
 
 require_once("connection.php");
+
 if(!isset($_POST["email"]) || !isset($_POST["password"])) {
-    header("Location: ../login.html");
+    header("Location: ../login.php");
 }
 
 /*  TODO: 
     - sanitize input 
-    - add password check (also in js) */
+    - add mail check (also in js) */
 $email = $_POST["email"];
 $password = $_POST["password"];
 
@@ -23,7 +24,7 @@ if($result->num_rows > 0){
     /* TODO: edit pages for logged users */
     header("Location: ../index.php");
 }
-else{ /* gets login page and add message */
+else{ //gets login page and add message
     $login = "../html/login.html";
     $tag = "<!-- ERROR LOG -->";
     $message = "<p>Wrong email or password !</p>";

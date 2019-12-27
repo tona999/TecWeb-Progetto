@@ -1,41 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Login - Diabetes Calc </title>
-    <link rel="stylesheet" type="text/css" href="../styles/style.css">	
-    <link rel="stylesheet" type="text/css" href="../styles/style-mobile.css" media="(max-width: 800px)">	
-</head>
-<body>
-    <header>
-        <!-- Top bar --> 
-        <h1> Diabetes <abbr title="Calculator">Calc</abbr> </h1>
-    </header>
-    
-    <menu>
-        <!-- Menu (Bottom bar, nella visualizzazione mobile) -->
-        <ul>
-            <li><a href="../html/index.html"><img src="../img/icons/home.svg" alt=""> Home </a></li>
-            <li><a href="../html/info.html"><img src="../img/icons/info.svg" alt=""><abbr title="Informations"> Info </abbr></a></li>
-            <li><a href="../html/calculator.html"><img src="../img/icons/tool.svg" alt=""> Calculator </a></li>
-        </ul>
-    </menu>
-
-    <main>
-        <!-- Contenuto specifico della pagina -->
-        <form id="login" action="../php/login.php" method="post">
-            <label>
-                E-mail:
-                <input type="text" name="email" id="email">
-            </label>
-            <label>
-                Password:
-                <input type="password" name="password" id="password">
-            </label>
-            <!-- ERROR LOG --> <!-- To be replaced with php -->
-            <input type="submit" value="Login">
-        </form>
-    </main>
-</body>
-</html>
+<main>
+    <!-- Contenuto specifico della pagina -->
+    <form id="login" action="php/login.php" method="post">
+        <label>
+            E-mail:
+            <input type="text" name="email" id="email">
+        </label>
+        <label>
+            Password:
+            <input type="password" name="password" id="password">
+        </label>
+        <!-- ERROR LOG --> <!-- To be replaced with php -->
+        <input type="submit" value="Login">
+    </form>
+</main>
