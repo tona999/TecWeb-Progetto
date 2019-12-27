@@ -17,6 +17,7 @@ function initializeRecipeStructure()
 	//recipe VIEW
 	var rv = new Ingredient(false);
 	rv.connect(Calculator.getNewIngredientBody("recipeView"));
+    rv.setVisibility(false);
 
 	currentRecipe = new Recipe();
 	currentRecipe.connect(document.getElementById("totalRecipeGrams"), document.getElementById("totalRecipeCarbs"), rv);
