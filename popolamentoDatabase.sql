@@ -1,9 +1,9 @@
-INSERT INTO User (Id, Name, Surname, Email, Password_hash, Birthdate) VALUES
-(1, 'Admin', 'Admin', 'admin@admin.com', 'admin', '1998-02-03'),
-(2, 'Mario', 'Rossi', 'mariorossi@gmail.com', 'password', '1999-05-24'),
-(3, 'Luigi', 'Verdi', 'luigiverdi87@gmail.com', 'password2', '1987-09-01'),
-(4, 'Guido', 'LaVespa', 'guido.veloce@libero.it', 'passwordComplessa', '1969-11-19'),
-(5, 'Ben', 'Solo', 'kyloren@gmail.com', 'nasoGrosso', '1991-03-30');
+INSERT INTO User (Id, Name, Surname, Email, Password_hash, Admin, Birthdate) VALUES
+(1, 'Admin', 'Admin', 'admin@admin.com', 'admin', true, '1998-02-03'),
+(2, 'Mario', 'Rossi', 'mariorossi@gmail.com', 'password', false, '1999-05-24'),
+(3, 'Luigi', 'Verdi', 'luigiverdi87@gmail.com', 'password2', false, '1987-09-01'),
+(4, 'Guido', 'LaVespa', 'guido.veloce@libero.it', 'passwordComplessa', false, '1969-11-19'),
+(5, 'Ben', 'Solo', 'kyloren@gmail.com', 'nasoGrosso', false, '1991-03-30');
 
 INSERT INTO Ingredient (Id, UserId, Name, GramsProduct, GramsCarbs) VALUES
 (1, 1, 'Pasta', 100, 75),
