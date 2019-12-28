@@ -5,8 +5,7 @@ menu{
     border-radius: 0;
 }
 
-menu ul{
-    list-style: none;
+menu{
     display: flex;
     justify-content: space-around;
     align-items: center;

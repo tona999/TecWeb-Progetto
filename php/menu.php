@@ -15,5 +15,5 @@ else{
         "",
         $menu);
 }
-echo $menu;
+
 ?>

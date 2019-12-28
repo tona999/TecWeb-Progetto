@@ -3,13 +3,13 @@
     <form id="login" action="php/login.php" method="post">
         <label>
             E-mail:
-            <input type="text" name="email" id="email">
+            <input type="text" name="email" id="email" required="required">
         </label>
         <label>
             Password:
-            <input type="password" name="password" id="password">
+            <input type="password" name="password" id="password" required="required">
         </label>
-        <!-- ERROR LOG --> <!-- To be replaced with php -->
+        <_ERROR/>
         <input type="submit" value="Login">
     </form>
 </main>
