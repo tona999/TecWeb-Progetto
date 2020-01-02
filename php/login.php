@@ -18,11 +18,10 @@ $result = $mysql->query(
     AND Password_hash = '$password' "); //TODO: change with actually the HASH!
 
 if($result->num_rows > 0){
-    session_start();
-    $_SESSION["logged"] = true;
-    
-    echo "Logged <br>";
+    session_start();    
+
     while($row = $result->fetch_assoc()){
+        $_SESSION["userId"] = $row["Id"];
         $_SESSION["admin"] = $row["Admin"];
     }
 

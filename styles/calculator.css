@@ -7,11 +7,12 @@
 #recipe{
 	display: flex;
 	flex-wrap: wrap;
-    justify-content: center;
+    justify-content: start;
     margin-bottom: 4em; /* needed to avoid bottom bar override */
 }
 
 /*** INGREDIENT ***/
+    
     form{
         font-size: 0.9em;
         width: 90%;

@@ -27,23 +27,20 @@ header{
 
 /* Menu */
 menu{
-    float: left;
-    width: 20%;
     background-color: #00C4B2;
-    padding: 1em;
-    border-radius: 0 0 32px 0;
+    padding: .5em;
     list-style: none;
 }
 menu li{
+    display: inline-block;
     margin: .5em;
 }
 menu img{
     display: none;
 }
 
+/* Main */
 main{
-    float: left;
-    width: 70%;
 }
 main p, main h1, main h2, main a{
     display: block;
