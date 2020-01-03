@@ -28,8 +28,8 @@ header{
 /* Menu */
 menu{
     background-color: #00C4B2;
-    padding: .5em;
     list-style: none;
+    padding: .5em;
 }
 menu li{
     display: inline-block;
@@ -40,8 +40,6 @@ menu img{
 }
 
 /* Main */
-main{
-}
 main p, main h1, main h2, main a{
     display: block;
     margin: 1em;

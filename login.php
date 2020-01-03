@@ -6,12 +6,20 @@ $html->setMeta("");
 $html->setLogged();
 $html->setBodyPath("html/login.html");
     
-//checks for error in login
-if(isset($_GET["error"])){
-    $html->body = str_replace(
-        "<ERROR/>",
-        "<span>Wrong username or password!</span>",
-        $html->body);
+//checks for errors in login
+if(isset($_GET["err"])){
+    if($_GET["err"]=="pass"){
+        $html->body = str_replace(
+            "<ERROR/>",
+            "<span>Wrong username or password!</span>",
+            $html->body);
+    }
+    else if($_GET["err"]=="email"){
+        $html->body = str_replace(
+            "<ERROR/>",
+            "<span>Invalid email!</span>",
+            $html->body);
+    }
 } 
 else{
     $html->body = str_replace("<ERROR/>","",$html->body);
