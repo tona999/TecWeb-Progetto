@@ -6,19 +6,21 @@ if(!isset($_POST["email"]) || !isset($_POST["password"]) || !isset($_POST["passw
     header("Location: ../registerPage.php");
 }
 
-/* Email sanitize and check */
+
 $email = filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
-if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-    header("Location: ../registerPage.php?err=email");
-    die;
-}
 $password = $_POST["password"];
 $password2 = $_POST["password2"];
-
 $name = $_POST["name"];
 $surname = $_POST["surname"];
 $birthdate = $_POST["birthdate"];
 
+
+/* Email sanitize and check */
+if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+    header("Location: ../registerPage.php?err=email");
+    die;
+}
+// check if the passwords are matching
 if($password != $password2){
     header("Location: ../registerPage.php?err=password");
     die;
@@ -33,11 +35,12 @@ if($checkDuplicateEmail->num_rows > 0) {
   die;
 }
 
-
+// insertion query
 $insert = $mysql->query(
     "INSERT INTO User (Name, Surname, Email, Password_hash, Admin, Birthdate)
     VALUES ('$name', '$surname','$email','$password',false,'$birthdate')");
 
+// check if has been inserted and gives the Id for this session
 $isInserted = $mysql->query(
         "SELECT * FROM User
         WHERE Email = '$email' ");
