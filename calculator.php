@@ -8,7 +8,6 @@ $html->setMeta(
     '<script src="js/MathUtilities.js"></script>'.
     '<script src="js/Recipe.js"></script>'.
     '<link rel="stylesheet" type="text/css" href="styles/calculator.css">');
-$html->setLogged();
 $html->setBodyPath("html/calculator.html");
 $html->noFooter();
 

@@ -10,11 +10,13 @@ class Page{
         $this->header = file_get_contents("html/header.html");
         $this->menu = file_get_contents("html/menu.html");
         $this->footer = file_get_contents("html/footer.html");
+        $this->setLogged();
     }
 
     /** Set the title of the document */
     public function setTitle($title){
         $this->header = str_replace("<TITLE/>", $title, $this->header);
+        $this->setCurrent(strtolower($title));
     }
 
     /** Add metatags */
@@ -37,6 +39,40 @@ class Page{
         }
         $this->header = str_replace("<LOGIN/>", $login_r, $this->header);
         $this->menu = str_replace("<MENU_LOGGED/>", $menu_r, $this->menu);
+    } 
+
+    /** Set current page and remove the menu link*/
+    public function setCurrent($entry){
+        switch($entry){
+            case "home":
+                $this->menu = str_replace(
+                    '<a href="index.php"><img src="img/icons/home.svg" alt=""/>Home</a>',
+                    '<img src="img/icons/home.svg" alt=""/>Home',
+                    $this->menu
+                );
+                break;
+            case "info":
+                $this->menu = str_replace(
+                    '<a href="info.php"><img src="img/icons/info.svg" alt=""/>Info</a>',
+                    '<img src="img/icons/info.svg" alt=""/>Info',
+                    $this->menu
+                );
+                break;
+            case "calc":
+                $this->menu = str_replace(
+                    '<a href="calculator.php"><img src="img/icons/tool.svg" alt=""/>Calculator</a>',
+                    '<img src="img/icons/tool.svg" alt=""/>Calculator',
+                    $this->menu
+                );
+                break;
+            case "login":
+                $this->header = str_replace(
+                    '<a href="login.php">Login</a>',
+                    '',
+                    $this->header
+                );
+                break;
+        }
     }
 
     /** Sets the content of the body (require the html path) */
