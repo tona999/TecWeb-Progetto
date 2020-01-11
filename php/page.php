@@ -28,13 +28,18 @@ class Page{
     public function setLogged(){
         session_start();
         if(isset($_SESSION["userId"])){
-            $login_r = '<a href="php/logout.php">Logout</a>';
+            $login_r = '<script src="js/Hamburger.js"></script>
+            <button onclick="hideMenu();">MENU</button>';
             $menu_r = 
-                '<li><a href="ingredients.php"><img src="img/icons/tool.svg" alt=""> Ingredients </a></li>'.
-                '<li><a href="recipes.php"><img src="img/icons/tool.svg" alt=""> Recipes </a></li>';
+                '<menu id="profileMenu">'.
+                '<li><a href="profile.php">PROFILE</a></li>'.
+                '<li><a href="ingredients.php">INGREDIENTS</a></li>'.
+                '<li><a href="recipes.php">RECIPES</a></li>'.
+                '<li><a href="logout.php">LOGOUT</a></li>'.
+                '</menu>';
         }
         else{
-            $login_r = '<a href="login.php">Login</a>';
+            $login_r = '<a href="login.php">LOGIN</a>';
             $menu_r = "";
         }
         $this->header = str_replace("<LOGIN/>", $login_r, $this->header);
@@ -46,28 +51,28 @@ class Page{
         switch($entry){
             case "home":
                 $this->menu = str_replace(
-                    '<a href="index.php"><img src="img/icons/home.svg" alt=""/>Home</a>',
-                    '<img src="img/icons/home.svg" alt=""/>Home',
+                    '<a href="index.php"><img src="img/icons/home.svg" alt=""/>HOME</a>',
+                    '<img src="img/icons/home.svg" alt=""/>HOME',
                     $this->menu
                 );
                 break;
             case "info":
                 $this->menu = str_replace(
-                    '<a href="info.php"><img src="img/icons/info.svg" alt=""/>Info</a>',
-                    '<img src="img/icons/info.svg" alt=""/>Info',
+                    '<a href="info.php"><img src="img/icons/info.svg" alt=""/>INFO</a>',
+                    '<img src="img/icons/info.svg" alt=""/>INFO',
                     $this->menu
                 );
                 break;
             case "calc":
                 $this->menu = str_replace(
-                    '<a href="calculator.php"><img src="img/icons/tool.svg" alt=""/>Calculator</a>',
-                    '<img src="img/icons/tool.svg" alt=""/>Calculator',
+                    '<a href="calculator.php"><img src="img/icons/tool.svg" alt=""/>CALC</a>',
+                    '<img src="img/icons/tool.svg" alt=""/>CALC',
                     $this->menu
                 );
                 break;
             case "login":
                 $this->header = str_replace(
-                    '<a href="login.php">Login</a>',
+                    '<a href="login.php">LOGIN</a>',
                     '',
                     $this->header
                 );

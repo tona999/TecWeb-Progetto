@@ -32,11 +32,23 @@ menu{
     padding: .5em;
 }
 menu li{
+    font-size: .9em;
     display: inline-block;
-    margin: .5em;
+    padding: .5em;
+    border-radius: 8px;
+}
+menu a{
+    text-decoration: none;
 }
 menu img{
     display: none;
+}
+#profileMenu {
+    float: right;
+    display: block;
+}
+#profileMenu li{
+    margin: 0 .25em 0 .25em;
 }
 
 /* Main */

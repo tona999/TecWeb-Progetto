@@ -20,6 +20,24 @@ menu img{
     padding-bottom: .5em;
 }
 
+
+.hidden{
+    position: fixed;
+    top: 0;
+    right: -100%;
+}
+#profileMenu{
+    background-color: #2F4858;
+}
+#profileMenu a{
+    color: white;
+}
+#profileMenu li{
+    display: block;
+    text-align: left;
+    display: block;
+}
+
 main{
     float: none;
     width: 100%;
