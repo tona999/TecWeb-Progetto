@@ -20,22 +20,38 @@ menu img{
     padding-bottom: .5em;
 }
 
-
+#hamburger{
+    display: block;
+    background-color: #00000000;
+    cursor: pointer;
+    background-image: url(../img/icons/menu.svg);
+    background-repeat: no-repeat;
+    width: 2em;
+    border: none;
+}
 .hidden{
     position: fixed;
-    top: 0;
-    right: -100%;
+    top: -100%;
 }
 #profileMenu{
-    background-color: #2F4858;
+    background-color: rgb(87, 106, 136);
+    padding: 0;
 }
 #profileMenu a{
     color: white;
 }
 #profileMenu li{
+    margin: 0;
+    padding: .9em;
+    border-radius: 0;
     display: block;
     text-align: left;
     display: block;
+}
+#profileMenu li:hover{
+    background-color: #f6f8facc;
+    color: #2F4858;
+    font-weight: bold;
 }
 
 main{

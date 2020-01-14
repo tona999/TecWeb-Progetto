@@ -13,9 +13,12 @@ $html->noFooter();
 
 //set body for starting on load
 $html->header = str_replace(
-    "<body>",
-    '<body onload="start()">',
+    '<body onload="',
+    '<body onload="start(); ',
     $html->header);
-
+$html->header = str_replace(
+    '<body>',
+    '<body onload="start();">',
+        $html->header);
 $html->printHtml();
 ?>

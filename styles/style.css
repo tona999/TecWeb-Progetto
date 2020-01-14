@@ -10,7 +10,7 @@ body{
     background-color: #f6f8fa;
 }
 body.dark{
-    background-color: #2F4858;
+    background-color: #7792BC;
 }
 h1{
     font-weight: normal;
@@ -19,29 +19,51 @@ h1{
 /* Header */
 header{
     padding: .5em;
-    background-color: #00A4A8;
+    color: #7792BC;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+header h1 img{
+    height: 1.5em;
+    vertical-align: middle;
+}
 
 /* Menu */
 menu{
-    background-color: #00C4B2;
+    color: #E6F4F1;
+    background-color: #7792BC;
     list-style: none;
     padding: .5em;
 }
-menu li{
+menu li, #aLogin{
     font-size: .9em;
     display: inline-block;
     padding: .5em;
-    border-radius: 8px;
 }
-menu a{
+menu a li:hover{
+    background-color: #F2FAFF;
+    border-radius: 4px;
+}
+menu a, #aLogin{
     text-decoration: none;
+    color: black;
 }
 menu img{
     display: none;
+}
+
+#aLogin:hover{
+    background-color: #7792BC;
+    color: white;
+    border-radius: 4px;
+}
+
+#hamburger{
+    display: none;
+}
+#hamburger:focus{
+    outline: none;
 }
 #profileMenu {
     float: right;
@@ -84,12 +106,19 @@ input[type="button"], input[type="submit"], button{
     border-radius: 4px;
     border: none;
 }
+input[type="button"]:hover, input[type="submit"]:hover, button:hover{
+    background-color: #7792BC;
+    cursor: pointer;
+}
 
 footer{
     clear: both;
     font-size: .7em;
-    background-color: #2F4858;
+    background-color: #CF7B56;
     color: white;
     padding: .5em;
     text-align: center;
+}
+footer *{
+    white-space: nowrap;
 }

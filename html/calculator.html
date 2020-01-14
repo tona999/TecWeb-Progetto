@@ -12,11 +12,11 @@
 	</p>
 
 	<div class="buttons">
-	<input type="button" id="showRecipeViewBtn" value="^"/>
-	<input type="button" id="loadRecipeBtn" value="LOAD"/>
-	<input type="button" id="resetRecipeBtn" value="RESET"/>
-	<input type="button" id="saveRecipeBtn" value="SAVE"/>
-	<input type="button" id="addNewIngredientBtn" value="+"/>
+	<input type="button" class="calcBarBtn showBtn" id="showRecipeViewBtn" value="SHOW"/>
+	<input type="button" class="calcBarBtn loadBtn" id="loadRecipeBtn" value="LOAD"/>
+	<input type="button" class="calcBarBtn resetBtn" id="resetRecipeBtn" value="RESET"/>
+	<input type="button" class="calcBarBtn saveBtn" id="saveRecipeBtn" value="SAVE"/>
+	<input type="button" class="calcBarBtn addBtn" id="addNewIngredientBtn" value="ADD"/>
 	</div>
 
 </div>
@@ -27,8 +27,8 @@
 <form id="sampleIngredient" action="" class = "ingredient">
 	<fieldset>
 		<input type="text" maxlength="40" id="ingredientName" placeholder="Ingredient Name"/>
-		<input type="button" value="SAVE" id="saveButton"/>
-		<input type="button" value="CLOSE" id="closeButton"/>
+		<input type="button" class="calcBtn saveBtn" value="SAVE" id="saveButton"/>
+		<input type="button" class="calcBtn closeBtn" value="CLOSE" id="closeButton"/>
 	</fieldset>
 
 	<fieldset class="carbs">
