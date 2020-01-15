@@ -43,6 +43,7 @@ menu li, #aLogin{
 }
 menu a li:hover{
     background-color: #F2FAFF;
+    box-shadow: 0 1px 4px #00000030;
     border-radius: 4px;
 }
 menu a, #aLogin{
@@ -56,6 +57,7 @@ menu img{
 #aLogin:hover{
     background-color: #7792BC;
     color: white;
+    box-shadow: 0 1px 4px #00000030;
     border-radius: 4px;
 }
 
