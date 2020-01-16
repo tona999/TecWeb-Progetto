@@ -31,10 +31,10 @@ class Page{
             $login_r = '<button id="hamburger" onclick="hideMenu();"></button>';    //hamburger button
             $menu_r = 
                 '<menu id="profileMenu">'.  //profile menu (dark blue)
-                '<a href="profile.php"><li>PROFILE</li></a>'.
-                '<a href="ingredients.php"><li>INGREDIENTS</li></a>'.
-                '<a href="recipes.php"><li>RECIPES</li></a>'.
-                '<a href="php/logout.php"><li>LOGOUT</li></a>'.
+                '<li><a href="profile.php">PROFILE</a></li>'.
+                '<li><a href="ingredients.php">INGREDIENTS</a></li>'.
+                '<li><a href="recipes.php">RECIPES</a></li>'.
+                '<li><a href="php/logout.php">LOGOUT</a></li>'.
                 '</menu>';
             $this->header = str_replace('</head>',
                 "<script src='js/Hamburger.js'></script>\n</head>",     //import hamburger script before </head>
@@ -53,22 +53,22 @@ class Page{
     public function setCurrent($entry){
         switch($entry){
             case "home":
-                $this->menu = str_replace(
-                    '<a href="index.php"><li><img src="img/icons/home.svg" alt=""/>HOME</li></a>',
+                $this->menu = str_replace( 
+                    '<li><a href="index.php"><img src="img/icons/home.svg" alt=""/>HOME</a></li>',
                     '<li><img src="img/icons/home.svg" alt=""/>HOME</li>',
                     $this->menu
                 );
                 break;
             case "info":
                 $this->menu = str_replace(
-                    '<a href="info.php"><li><img src="img/icons/info.svg" alt=""/>INFO</li></a>',
+                    '<li><a href="info.php"><img src="img/icons/info.svg" alt=""/>INFO</a></li>',
                     '<li><img src="img/icons/info.svg" alt=""/>INFO</li>',
                     $this->menu
                 );
                 break;
             case "calc":
                 $this->menu = str_replace(
-                    '<a href="calculator.php"><li><img src="img/icons/tool.svg" alt=""/>CALC</li></a>',
+                    '<li><a href="calculator.php"><img src="img/icons/tool.svg" alt=""/>CALC</a></li>',
                     '<li><img src="img/icons/tool.svg" alt=""/>CALC</li>',
                     $this->menu
                 );

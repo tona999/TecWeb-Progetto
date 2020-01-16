@@ -1,9 +1,9 @@
 <?php
 
 $host = "localhost";
-$username = "root";
-$passwd = "";
-$dbname = "tecweb";
+$username = "fcarboni";
+$passwd = "aeWai3veeyiach8F";
+$dbname = "fcarboni";
 
 $mysql = new mysqli($host, $username, $passwd, $dbname);
 
