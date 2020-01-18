@@ -31,7 +31,6 @@ header h1 img{
 
 /* Menu */
 menu{
-    color: #E6F4F1;
     background-color: #7792BC;
     list-style: none;
     padding: .5em;
@@ -39,11 +38,19 @@ menu{
 menu li, #aLogin{
     font-size: .9em;
     display: inline-block;
-    padding: .5em;
 }
 menu a, #aLogin{
+    display: inline-block;
     text-decoration: none;
     color: black;
+    padding: .5em;
+}
+.disabled *{
+    color: rgba(230, 244, 241, 0.726);
+}
+.disabled:hover{
+    background-color: initial;
+    box-shadow: initial;
 }
 menu img{
     display: none;
@@ -85,8 +92,11 @@ form{
     background-color: #fff;
     box-shadow: 0 1px 4px #00000030;
     border-radius: 8px;
-    margin: 1em auto;
+    margin: 1em;
     padding: 1em;
+}
+#login{
+    margin: 1em auto;
 }
 #login * {
     margin-bottom: 1em;

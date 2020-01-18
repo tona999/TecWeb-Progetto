@@ -7,7 +7,7 @@
 #recipe{
 	display: flex;
 	flex-wrap: wrap;
-    justify-content: start;
+    justify-content: center;
     margin-bottom: 4em; /* needed to avoid bottom bar override */
 }
 
