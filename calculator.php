@@ -3,7 +3,7 @@
     $header = file_get_contents("html/header.html");
     $header = str_replace(
         "<_TITLE/>",
-        "Calc",
+        "T1D Calculator",
         $header);
     $header = str_replace(
         "<_META_TAGS/>",
@@ -25,10 +25,11 @@
 
     //Content
     $content = file_get_contents("html/calculator.html");
+    $content = str_replace("<_SAMPLE_INGREDIENT/>", file_get_contents("html/sampleIngredient.html"), $content);
     echo $content;
 
     //Footer
     $footer = file_get_contents("html/footer.html");
-    $footer = str_replace("<footer>", "<footer hidden>",$footer); //TODO: find better way to hide footer
+    $footer = str_replace("<footer>", "<footer hidden>",$footer); //TODO: find better way to hide footer, or do not insert it at all.
     echo $footer;
 ?>

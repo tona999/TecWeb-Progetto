@@ -1,0 +1,14 @@
+
+input[type="number"], input[type="text"]{
+	padding:0.25em 0.5em 0.25em 0.5em;
+	text-align:center;
+}
+
+.non_editable{
+	border:none;
+}
+
+.non_editable:disabled{
+	background-color:white;
+	color:black;
+}

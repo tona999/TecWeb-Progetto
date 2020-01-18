@@ -23,6 +23,7 @@ if($result->num_rows > 0){
     
     echo "Logged <br>";
     while($row = $result->fetch_assoc()){
+    	$_SESSION["userId"] = $row["Id"];
         $_SESSION["admin"] = $row["Admin"];
     }
 

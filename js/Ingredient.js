@@ -35,18 +35,18 @@ class Ingredient{
 
     	this.totalGramsLastChanged = true;
 
-		this.ingredientNameRef = 	document.getElementById("ingredientName");
-		this.closeButtonRef = 		document.getElementById("closeButton");
-		this.sampleGramsRef = 		document.getElementById("sampleGrams");
-		this.sampleCarbsRef = 		document.getElementById("sampleCarbs");
-		this.totalGramsRef = 		document.getElementById("totalGrams");
-		this.totalBreadUnitsRef = 	document.getElementById("totalBreadUnits");
-		this.piecesNumberRef = 		document.getElementById("piecesNumber");
-		this.plusButtonRef = 		document.getElementById("plusButton");
-		this.minusButtonRef = 		document.getElementById("minusButton");
-		this.gramsPPRef = 			document.getElementById("gramsPP");
-		this.breadUnitsPPRef = 		document.getElementById("breadUnitsPP");
-		this.carbsPPRef = 			document.getElementById("carbsPP");
+		this.ingredientNameRef = 	htmlIng.querySelector("[name='ingredientName']");
+		this.closeButtonRef = 		htmlIng.querySelector("[name='closeButton']");
+		this.sampleGramsRef = 		htmlIng.querySelector("[name='sampleGrams']");
+		this.sampleCarbsRef = 		htmlIng.querySelector("[name='sampleCarbs']");
+		this.totalGramsRef = 		htmlIng.querySelector("[name='totalGrams']");
+		this.totalBreadUnitsRef = 	htmlIng.querySelector("[name='totalBreadUnits']");
+		this.piecesNumberRef = 		htmlIng.querySelector("[name='piecesNumber']");
+		this.plusButtonRef = 		htmlIng.querySelector("[name='plusButton']");
+		this.minusButtonRef = 		htmlIng.querySelector("[name='minusButton']");
+		this.gramsPPRef = 		htmlIng.querySelector("[name='gramsPP']");
+		this.breadUnitsPPRef = 		htmlIng.querySelector("[name='breadUnitsPP']");
+		this.carbsPPRef = 		htmlIng.querySelector("[name='carbsPP']");
 		
 		var t = this;//t is this ingredient object, while "this" in the inline function is the input element that called the event, so this.value is the value of that input element
 		this.sampleGramsRef.addEventListener('input', function(){t.onSampleGramsChanged(this.value);});
@@ -58,19 +58,6 @@ class Ingredient{
 		this.closeButtonRef.addEventListener('click', function(){t.onCloseClicked();}); //function.bind could also be used
 		this.plusButtonRef.addEventListener('click', function(){t.onSignClicked(1);});
 		this.minusButtonRef.addEventListener('click', function(){t.onSignClicked(-1);});
-
-		this.ingredientNameRef.removeAttribute("id");
-		this.closeButtonRef.removeAttribute("id");
-		this.sampleGramsRef.removeAttribute("id");
-		this.sampleCarbsRef.removeAttribute("id");
-		this.totalGramsRef.removeAttribute("id");
-		this.totalBreadUnitsRef.removeAttribute("id");
-		this.piecesNumberRef.removeAttribute("id");
-		this.plusButtonRef.removeAttribute("id");
-		this.minusButtonRef.removeAttribute("id");
-		this.gramsPPRef.removeAttribute("id");
-		this.breadUnitsPPRef.removeAttribute("id");
-		this.carbsPPRef.removeAttribute("id");
 
 		this.refresh();
 		this.display();
