@@ -1,32 +1,22 @@
 <?php
+require_once("php/page.php");
+$html = new Page();
+$html->setTitle("Your Recipes");
+$html->setMeta(
+    "<link rel='stylesheet' type='text/css' href='styles/buttons.css'>");
+$html->setBodyPath("html/recipes.html");
 
-    //Header
-    $header = file_get_contents("html/header.html");
-    $header = str_replace(
-        "<_TITLE/>",
-        "Your Recipes",
-        $header);
-    $header = str_replace(
-		"<_META_TAGS/>",
-		"<link rel='stylesheet' type='text/css' href='styles/buttons.css'>",
-		$header);
-    echo $header;
-
-    //Menu
-    require_once("php/menu.php");
-    echo $menu;
-
-    //Content
     require_once("php/connection.php");
-    $recipesList = "";
 
-	$q ="	SELECT R.Id AS RId, R.Name AS RName, I.Name AS IName, C.GramsIngredient AS GI FROM Recipe as R, Ingredient as I, Contains as C WHERE C.RecipeId = R.Id AND C.IngredientId = I.Id AND R.UserId = I.UserId =" . $_SESSION['userId'];
+    $q ="SELECT R.Id AS RId, R.Name AS RName, I.Name AS IName, C.GramsIngredient AS GI
+	 FROM Recipe as R, Ingredient as I, Contains as C
+	 WHERE C.RecipeId = R.Id AND C.IngredientId = I.Id AND R.UserId = I.UserId = {$_SESSION['userId']}";
 
     $result = $mysql->query($q);
 
-    $recipeDescription = file_get_contents("html/recipeDescription.html");
-
     //START INGREDIENTS LIST
+    $recipesList = "";
+    $recipeDescription = file_get_contents("html/recipeDescription.html");
     $currentId = -1;
     $ingredientsList = "";
     $tmpDescr = $recipeDescription;
@@ -51,12 +41,7 @@
     $recipesList = $recipesList . $tmpDescr;
     //END INGREDIENTS LIST
 
-    $recipes =  file_get_contents("html/recipes.html");
-    $recipes = str_replace("<_RECIPES_LIST/>", $recipesList, $recipes);
-	
-    echo $recipes;
+    $html->body = str_replace("<_RECIPES_LIST/>", $recipesList, $html->body);
 
-    //Footer
-    $footer = file_get_contents("html/footer.html");
-    echo $footer;
+$html->printHtml();
 ?>

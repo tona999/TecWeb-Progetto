@@ -1,29 +1,28 @@
 <?php
-    //Header
-    $header = file_get_contents("html/header.html");
-    $header = str_replace(
-        "<_TITLE/>",
-        "Login",
-        $header);
-    $header = str_replace("<_META_TAGS/>","",$header);
-    echo $header;
-
-    //Menu
-    require_once("php/menu.php");
-    echo $menu;
-
-    //Content
-    $content = file_get_contents("html/login.html");
-    //checks for error in login
-    if(isset($_GET["error"])){
-        $content = str_replace(
-            "<_ERROR/>",
+require_once("php/page.php");
+$html = new Page();
+$html->setTitle("Login");
+$html->setMeta("");
+$html->setBodyPath("html/login.html");
+    
+//checks for errors in login
+if(isset($_GET["err"])){
+    if($_GET["err"]=="pass"){
+        $html->body = str_replace(
+            "<ERROR/>",
             "<span>Wrong username or password!</span>",
-            $content);
-    } else $content = str_replace("<_ERROR/>","",$content);
-    echo $content;
+            $html->body);
+    }
+    else if($_GET["err"]=="email"){
+        $html->body = str_replace(
+            "<ERROR/>",
+            "<span>Invalid email!</span>",
+            $html->body);
+    }
+} 
+else{
+    $html->body = str_replace("<ERROR/>","",$html->body);
+}
 
-    //Footer
-    $footer = file_get_contents("html/footer.html");
-    echo $footer;
+$html->printHtml();
 ?>

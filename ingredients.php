@@ -1,26 +1,16 @@
 <?php
+require_once("php/page.php");
+$html = new Page();
+$html->setTitle("Your Ingredients");
+$html->setMeta(
+    "<link rel='stylesheet' type='text/css' href='styles/ingredient-description.css'>".
+    "<link rel='stylesheet' type='text/css' href='styles/buttons.css'>".
+    "<script src='js/IngredientDescription.js'></script>".
+    "<script src='js/Ingredients.js'></script>");
+$html->setBodyPath("html/ingredients.html");
 
-    //Header
-    $header = file_get_contents("html/header.html");
-    $header = str_replace(
-        "<_TITLE/>",
-        "Your Ingredients",
-        $header);
-    $header = str_replace(
-		"<_META_TAGS/>",
-		"<link rel='stylesheet' type='text/css' href='styles/ingredient-description.css'>".
-		"<link rel='stylesheet' type='text/css' href='styles/buttons.css'>".
-		"<script src='js/IngredientDescription.js'></script>".
-		"<script src='js/Ingredients.js'></script>"
-		,$header);
-    echo $header;
-
-    //Menu
-    require_once("php/menu.php");
-    echo $menu;
-
-    //Content
     require_once("php/connection.php");
+
     $ingredientsList = "";
     $result = $mysql->query("SELECT * FROM Ingredient WHERE UserId = " . $_SESSION["userId"]);
 
@@ -34,18 +24,12 @@
 	$ingredientsList = $ingredientsList . $tmpDescr;
     }
 
-    $ingredients =  file_get_contents("html/ingredients.html");
-    $ingredients = str_replace("<_INGREDIENTS_LIST/>", $ingredientsList, $ingredients);
+    $html->body = str_replace("<_INGREDIENTS_LIST/>", $ingredientsList, $html->body);
 
     if (isset($_GET["InvInp"])) //Invalid Input In New Ingredient Insertion
-	$ingredients = str_replace("<_ERROR/>","<span>Please insert valid data and try again.</span>",$ingredients);
+	$html->body = str_replace("<_ERROR/>","<span>Please insert valid data and try again.</span>",$html->body);
     else
-    	$ingredients = str_replace("<_ERROR/>","",$ingredients);
-	
-    echo $ingredients;
+    	$html->body = str_replace("<_ERROR/>","",$html->body);
 
-    //Footer
-    $footer = file_get_contents("html/footer.html");
-    echo $footer;
-
+$html->printHtml();
 ?>

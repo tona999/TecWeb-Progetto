@@ -6,10 +6,12 @@ if(!isset($_POST["email"]) || !isset($_POST["password"])) {
     header("Location: ../login.php");
 }
 
-/*  TODO: 
-    - sanitize input 
-    - add mail check (also in js) */
+/* Email sanitize and check */
 $email = filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
+if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+    header("Location: ../login.php?err=email");
+    die;
+}
 $password = $_POST["password"];
 
 $result = $mysql->query(
@@ -18,12 +20,10 @@ $result = $mysql->query(
     AND Password_hash = '$password' "); //TODO: change with actually the HASH!
 
 if($result->num_rows > 0){
-    session_start();
-    $_SESSION["logged"] = true;
-    
-    echo "Logged <br>";
+    session_start();    
+
     while($row = $result->fetch_assoc()){
-    	$_SESSION["userId"] = $row["Id"];
+        $_SESSION["userId"] = $row["Id"];
         $_SESSION["admin"] = $row["Admin"];
     }
 
@@ -31,7 +31,7 @@ if($result->num_rows > 0){
     header("Location: ../index.php");
 }
 else{ //gets login page and add message
-    header("Location: ../login.php?error");
+    header("Location: ../login.php?err=pass");
 }
 
 ?>

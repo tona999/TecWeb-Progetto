@@ -12,6 +12,7 @@
 }
 
 /*** INGREDIENT ***/
+    
     form{
         font-size: 0.9em;
         width: 90%;
@@ -37,7 +38,7 @@
 	}
 	input[type="button"]{
 		min-width: 2em;
-		padding:0.2em;
+		padding:0.5em;
     }
 	input[type="text"]{
         width: 60%;
@@ -109,4 +110,30 @@
     margin:auto;
     margin-top: 1em;
     margin-bottom: 1em;
+}
+
+.calcBarBtn, .calcBtn{
+    width: 2em;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 1.3em;
+    color: #00000000;
+}
+.showBtn{
+    background-image: url(../img/icons/up.svg);
+}
+.loadBtn{
+    background-image: url(../img/icons/upload.svg);
+}
+.saveBtn{
+    background-image: url(../img/icons/save.svg);    
+}
+.resetBtn{
+    background-image: url(../img/icons/delete.svg);
+}
+.addBtn{
+    background-image: url(../img/icons/add.svg);
+}
+.closeBtn{
+    background-image: url(../img/icons/close.svg);
 }
