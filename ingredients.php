@@ -31,5 +31,10 @@ $html->setBodyPath("html/ingredients.html");
     else
     	$html->body = str_replace("<_ERROR/>","",$html->body);
 
+$html->header = str_replace(
+    '<body>',
+    '<body onload="start();">',
+        $html->header);
+        
 $html->printHtml();
 ?>

@@ -13,7 +13,7 @@ class IngredientDescription{
 		this.loadBtn = ingDescHtml.querySelector("input[name='loadBtn']");
 		this.removeBtn = ingDescHtml.querySelector("input[name='removeBtn']");
 
-		this.warningSpan = ingDescHtml.querySelector("span[name='warningSpan']");
+		this.warningSpan = ingDescHtml.querySelector("span[class='warningSpan']");
 		this.editing = false;
 
 		this.setEditable(false);

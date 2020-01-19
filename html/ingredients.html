@@ -1,27 +1,27 @@
-<body onload="start()">
-<h1>Your Ingredients </h1>
-<form action="php/insertIngredient.php" method="post" target="_self" id="insertForm">
-	<legend>INSERT A NEW INGREDIENT</legend>
+<main>
+	<h2>Your Ingredients </h2>
+	<form action="php/insertIngredient.php" method="post" target="_self" id="insertForm">
+		<h3>Insert a new ingredient</h3>
 
-	<label>
-		Ingredient Name:
-		<input maxlength="40" type="text" placeholder="Name" name="name" required/>
-	</label>
-	<label>
-		<input type="number" min='0' placeholder="Sample Grams" value="100" name="sg" id="newSampleGrams" required/>
-		grams of product contain
-	</label>
-	<label>
-		<input type="number" min='0' placeholder="Sample Carbs" name="sc" id="newSampleCarbs" required/>
-		grams of carbs
-	</label>
-	<input type="submit" value="SAVE NEW"/>
-</form>
+		<label>
+			Ingredient Name:
+			<input maxlength="40" type="text" placeholder="Name" name="name" required/>
+		</label>
+		<label>
+			<input type="number" min='0' placeholder="Sample Grams" value="100" name="sg" id="newSampleGrams" required/>
+			grams of product contain
+		</label>
+		<label>
+			<input type="number" min='0' placeholder="Sample Carbs" name="sc" id="newSampleCarbs" required/>
+			grams of carbs
+		</label>
+		<input type="submit" value="SAVE NEW"/>
+	</form>
 
-<_ERROR/>
-<span id="warningSpan"></span>
+	<_ERROR/>
+	<span id="warningSpan"></span>
 
-<div id="ingredientDescriptions">
-<_INGREDIENTS_LIST/>
-</div>
-</body>
+	<div id="ingredientDescriptions">
+	<_INGREDIENTS_LIST/>
+	</div>
+</main>

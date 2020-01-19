@@ -1,16 +1,18 @@
 <form action="calculator.php" method="get">
 	<input type="hidden" name="ingredientId" value="<_INGREDIENT_ID/>"/>
-	<input class="non_editable" disabled="true" type="text" name="ingredientName" placeholder="Ingredient Name" value ="<_INGREDIENT_NAME/>"/>
+	<input class="non_editable" disabled="disabled" type="text" name="ingredientName" placeholder="Ingredient Name" value ="<_INGREDIENT_NAME/>"/>
 	<label>
-		<input class="non_editable" type="number" min='0' disabled="true" placeholder="Sample Grams" name="sampleGrams" value="<_SAMPLE_GRAMS/>"/> g product
+		<input class="non_editable" type="number" min='0' disabled="disabled" placeholder="Sample Grams" name="sampleGrams" value="<_SAMPLE_GRAMS/>"/> g product
 	</label>
 	<label>
-		<input class="non_editable" type="number" min='0' disabled="true" placeholder="Sample Carbs" name="sampleCarbs" value="<_SAMPLE_CARBS/>"/> g carbs
+		<input class="non_editable" type="number" min='0' disabled="disabled" placeholder="Sample Carbs" name="sampleCarbs" value="<_SAMPLE_CARBS/>"/> g carbs
 	</label>
 
-	<input type="button" value="Edit" class="editBtn" name="editBtn"/>
-	<input type="submit" value="Load In Calculator" name="loadBtn"/>
-	<input type="button" value="X" class="closeBtn" name="removeBtn"/>
+	<span>
+		<input type="button" value="Edit" class="editBtn" name="editBtn"/>
+		<input type="submit" value="Load In Calculator" name="loadBtn"/>
+		<input type="button" value="Delete" class="closeBtn" name="removeBtn"/>
+	</span>
 
-	<span name="warningSpan"></span>
+	<span class="warningSpan"></span>
 </form>

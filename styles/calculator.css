@@ -29,10 +29,6 @@
         display: inline-block;
         min-width: 45%;
     }
-    input{
-        text-align: center;
-        height: 2em;
-    }
     input[type="number"]{
         width: 3em;
 	}
