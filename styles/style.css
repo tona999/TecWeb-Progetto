@@ -118,7 +118,6 @@ input{
 }
 input[type="button"], input[type="submit"], button{
     padding: .5em;
-    background-color: lightgray;
     height: 2em;
     border-radius: 4px;
     border: none;

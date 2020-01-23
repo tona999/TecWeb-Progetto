@@ -1,21 +1,21 @@
 .closeBtn{
-	background-color:#ec407a !important;
+	background-color:#ec407a ;
 	color:white;
 }
 
 .editBtn{
-	background-color:#039be5 !important;
+	background-color:#039be5 ;
 	color:white;
 }
 
 .saveBtn{
-	background-color:#ec407a  !important;
+	background-color:#ec407a  ;
 	color:white;
 }
 
 input[type="button"]:disabled, input[type="submit"]:disabled
 {
-	background-color:grey !important;
+	background-color:grey ;
 }
 
 input[type="submit"]{
