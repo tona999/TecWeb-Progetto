@@ -3,7 +3,8 @@ require_once("php/page.php");
 $html = new Page();
 $html->setTitle("Your Recipes");
 $html->setMeta(
-    "<link rel='stylesheet' type='text/css' href='styles/buttons.css'>");
+    "<link rel='stylesheet' type='text/css' href='styles/buttons.css'>
+    <link rel='stylesheet' type='text/css' href='styles/ingredient-description.css'>");
 $html->setBodyPath("html/recipes.html");
 
     require_once("php/connection.php");
