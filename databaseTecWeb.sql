@@ -7,7 +7,7 @@ CREATE TABLE User(
   Id int PRIMARY KEY AUTO_INCREMENT,
   Name varchar(50) NOT NULL,
   Surname varchar(50) NOT NULL,
-  Email varchar(100) NOT NULL UNIQUE,
+  Email varchar(255) NOT NULL UNIQUE,
   Password_hash varchar(100) NOT NULL,
   Admin boolean NOT NULL,
   Birthdate DATE NOT NULL

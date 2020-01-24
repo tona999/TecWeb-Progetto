@@ -1,4 +1,6 @@
+<main>
 <div id="recipe"></div>
+
 <div id="controlPanel">
 	<p>
 		Grams:
@@ -10,14 +12,73 @@
 	</p>
 
 	<div class="buttons">
-	<input type="button" class="calcBarBtn showBtn" id="showRecipeViewBtn" value="SHOW"/>
-	<input type="button" class="calcBarBtn loadBtn" id="loadRecipeBtn" value="LOAD"/>
-	<input type="button" class="calcBarBtn resetBtn" id="resetRecipeBtn" value="RESET"/>
-	<input type="button" class="calcBarBtn saveBtn" id="saveRecipeBtn" value="SAVE"/>
-	<input type="button" class="calcBarBtn addBtn" id="addNewIngredientBtn" value="ADD"/>
+	<input type="button" id="showRecipeViewBtn" value="^"/>
+	<input type="button" id="loadRecipeBtn" value="LOAD"/>
+	<input type="button" id="resetRecipeBtn" value="RESET"/>
+	<input type="button" id="saveRecipeBtn" value="SAVE"/>
+	<input type="button" id="addNewIngredientBtn" value="+"/>
 	</div>
+
 </div>
 
 <fieldset id="recipeView"></fieldset>
 
-<_SAMPLE_INGREDIENT/>
+<!-- Ingredient -->
+<form id="sampleIngredient" action="" class = "ingredient">
+	<fieldset>
+		<input type="text" maxlength="40" id="ingredientName" placeholder="Ingredient Name"/>
+		<input type="button" value="SAVE" id="saveButton"/>
+		<input type="button" value="CLOSE" id="closeButton"/>
+	</fieldset>
+
+	<fieldset class="carbs">
+		<label>
+			<input type="number" maxlength="4" min="0" id="sampleGrams" value="100" placeholder="100"/>	
+			g of product
+		</label>
+		<label> 
+			<input type="number" maxlength="4" min="0"  id="sampleCarbs" placeholder="0"/>
+			g of carbs
+		</label>
+	</fieldset>
+
+	<fieldset class="bread-units">
+		<label> 
+			<input type="number" maxlength="4"  min="0" id="totalGrams" placeholder="0"/>
+			g of product
+		</label>
+
+		<label> 
+			<input type="number" maxlength="4" min="0" id="totalBreadUnits" placeholder="0"/>
+			bread units
+		</label>
+	</fieldset>
+
+	<fieldset class="divided">
+		<legend>Divided In</legend>
+		<label>
+			<input type="number" maxlength="3" min="0" id="piecesNumber" placeholder="0"/>
+			pieces
+			<div class="controls-container">
+				<input class="action-btn" type="button" value="-" id="minusButton"/>
+				<input class="action-btn" type="button" value="+" id="plusButton"/>
+			</div>
+		</label>
+	</fieldset>
+
+	<table class="ingredient-report">
+		<tr>
+			<th>grams</th>
+			<th>bread units</th>
+			<th>carbs</th>
+		</tr>
+		<tr>
+			<td class="gramsPP" id="gramsPP">0</td>
+			<td class="breadUnitsPP" id="breadUnitsPP">0</td>
+			<td class="carbsPP" id="carbsPP">0</td>
+		</tr>
+	</table>
+</form>
+
+
+</main>

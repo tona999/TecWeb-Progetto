@@ -1,0 +1,33 @@
+<script type="text/javascript" src="../registerValidation.js">
+</script>
+<main>
+  <!-- Contenuto specifico della pagina -->
+    <form  id="login" action="php/register.php" method="post" onsubmit="return validazioneForm();">
+        <label>
+            Name:
+            <input type="text" name="name" id="name" required="required" />
+        </label>
+        <label>
+            Surname:
+            <input type="text" name="surname" id="surname" required="required" />
+        </label>
+        <label>
+            E-mail:
+            <input type="text" name="email" id="email" required="required" />
+        </label>
+        <label>
+            Birthdate:
+            <input type="date" name="birthdate" id="birthdate" required="required" placeholder="yyyy/mm/dd" />
+        </label>
+        <label>
+            Password:
+            <input type="password" name="password1" id="password1" required="required" />
+        </label>
+        <label>
+            Confirm Password:
+            <input type="password" name="password2" id="password2" required="required" />
+        </label>
+        <ERROR/>
+        <input type="submit" value="Register" />
+    </form>
+</main>

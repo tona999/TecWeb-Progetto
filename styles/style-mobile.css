@@ -20,41 +20,6 @@ menu img{
     padding-bottom: .5em;
 }
 
-#hamburger{
-    display: block;
-    background-color: #00000000;
-    cursor: pointer;
-    background-image: url(../img/icons/menu.svg);
-    background-repeat: no-repeat;
-    width: 2em;
-    border: none;
-}
-.hidden{
-    position: fixed;
-    top: -100%;
-}
-#profileMenu{
-    background-color: rgb(87, 106, 136);
-    padding: 0;
-}
-#profileMenu a{
-    box-sizing: border-box;
-    padding: .9em;
-    width: 100%;
-    color: white;
-}
-#profileMenu li{
-    margin:0;
-    border-radius: 0;
-    text-align: left;
-    display: block;
-}
-#profileMenu li:hover{
-    background-color: #f6f8facc;
-    color: #2F4858;
-    font-weight: bold;
-}
-
 main{
     float: none;
     width: 100%;
