@@ -1,5 +1,5 @@
 class Ingredient{
-	constructor(connect = false, name = "", sampleGrams = 100, sampleCarbs = 0, totalGrams = 0, totalBreadUnits = -1, piecesNumber = 0) 
+	constructor(connect = false, name = "", sampleGrams = 100, sampleCarbs = 0, totalGrams = 0, totalBreadUnits = -1, piecesNumber = 0, id = -1) 
 	{
 		//Format checks are needed, thus the use of the setters
 		this.setName(name);
@@ -24,6 +24,8 @@ class Ingredient{
 			this.totalGramsLastChanged = true;
 		}
 
+		this.ingredientId = id;
+
 		if (connect)
 			this.connect(Calculator.getNewIngredientBody());
     }
@@ -35,8 +37,10 @@ class Ingredient{
 
     	this.totalGramsLastChanged = true;
 
+		this.ingredientIdRef =		htmlIng.querySelector("[name='ingredientId']");
 		this.ingredientNameRef = 	htmlIng.querySelector("[name='ingredientName']");
 		this.closeButtonRef = 		htmlIng.querySelector("[name='closeButton']");
+		this.saveButtonRef = 		htmlIng.querySelector("[name='saveButton']");
 		this.sampleGramsRef = 		htmlIng.querySelector("[name='sampleGrams']");
 		this.sampleCarbsRef = 		htmlIng.querySelector("[name='sampleCarbs']");
 		this.totalGramsRef = 		htmlIng.querySelector("[name='totalGrams']");
@@ -58,6 +62,9 @@ class Ingredient{
 		this.closeButtonRef.addEventListener('click', function(){t.onCloseClicked();}); //function.bind could also be used
 		this.plusButtonRef.addEventListener('click', function(){t.onSignClicked(1);});
 		this.minusButtonRef.addEventListener('click', function(){t.onSignClicked(-1);});
+
+		if(this.ingredientId > -1)
+			this.convertToSaved();
 
 		this.refresh();
 		this.display();
@@ -86,6 +93,7 @@ class Ingredient{
 
 	getTotalGrams(){return this.totalGrams;}
 	getTotalCarbs(){return this.totalGrams*this.sampleCarbs/this.sampleGrams;} //Not visible in the ingredient
+	getId(){return this.ingredientId;}
 
     /*EVENTS*/
     onCloseClicked(){
@@ -252,8 +260,33 @@ class Ingredient{
 	}
 
 	/*USER INTERACTION*/
+	convertToSaved()
+	{
+		this.ingredientNameRef.disabled = this.sampleGramsRef.disabled = this.sampleCarbsRef.disabled = true;
+		this.ingredientNameRef.classList = this.sampleGramsRef.classList = this.sampleCarbsRef.classList = "non_editable"
+		this.saveButtonRef.remove();
+	}
+
+	convertToRecipeView()
+	{
+		this.sampleGramsRef.disabled = this.sampleCarbsRef.disabled = true;
+		this.sampleGramsRef.classList = this.sampleCarbsRef.classList = "non_editable"
+	}
+
+	convertToSavedRecipeView()
+	{
+		this.ingredientNameRef.disabled = this.sampleGramsRef.disabled = this.sampleCarbsRef.disabled = true;
+		this.ingredientNameRef.classList = this.sampleGramsRef.classList = this.sampleCarbsRef.classList = "non_editable"
+
+	}
+
+	removeCloseButton()
+	{
+		this.closeButtonRef.remove();
+	}
+
 	save()
 	{
-
+		
 	}
 }

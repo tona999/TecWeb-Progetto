@@ -51,6 +51,18 @@ class Recipe{
 		this.addEmptyIngredient();
 	}
 
+	hasIngredientWithId(id)
+	{
+		for (var i=0; i<this.ingredients.length; i++){
+			if (this.ingredients[i]!=undefined){
+			console.log(this.ingredients[i].getId());
+				if(this.ingredients[i].getId()==id)
+					return true;
+			}
+		}
+		return false;
+	}
+
 	showRecipeView()
 	{
 		if(this.recipeViewRef.switchVisibility())
@@ -86,5 +98,19 @@ class Recipe{
 		this.recipeViewRef.setSampleCarbs(totalRecipeCarbs);
 		//totalRecipeGrams and totalRecipeCarbs are not changed by the user, therefore the events are not called 
 		this.recipeViewRef.refresh();
+	}
+
+	getIngredientsJson()
+	{
+		var arr = new Array();
+		for (var i=0; i<this.ingredients.length; i++){
+			if (this.ingredients[i]!=undefined){
+				var tmp = {};
+				tmp.id = this.ingredients[i].getId();
+				tmp.grams = this.ingredients[i].getTotalGrams();
+				arr.push(tmp);
+			}
+		}
+		return JSON.stringify(arr);
 	}
 }

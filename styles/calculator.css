@@ -115,6 +115,16 @@
     background-size: 1.3em;
     color: #00000000;
 }
+
+.non_editable{
+	border:none;
+}
+
+.non_editable:disabled{
+	background-color:white;
+	color:black;
+}
+
 .showBtn{
     background-image: url(../img/icons/up.svg);
 }
