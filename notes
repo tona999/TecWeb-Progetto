@@ -7,3 +7,21 @@ Facendo così se viene modidicato sampleGrams/sampleCarbs va aggiornato il campo
 Esempio: l'utente vuole dedicare k unità di insulina ad un ingrediente, allora quando carico l'ingrediente nella ricetta e modifico sampleGrams/sampleCarbs viene aggiornato il totalGrams mentre il totalBreadUnits rimane k.
 
 Usare trim($stringa) per evitare di avere solo uno spazio in un campo required
+
+-css stampa
+-bottone registrati
+-pagina faq
+-home
+-password hash (federico e nicola)
+-relazione
+-xhtml per pagine statiche (no calcolatore, ingredienti e ricette)
+-ERRORI in rosso
+-click logo
+
+
+
+
+
+-calculator logged in vs logged out
+-remove ingredient
+-order by name
