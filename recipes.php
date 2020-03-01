@@ -4,14 +4,16 @@ $html = new Page();
 $html->setTitle("Your Recipes");
 $html->setMeta(
     "<link rel='stylesheet' type='text/css' href='styles/buttons.css'>
-    <link rel='stylesheet' type='text/css' href='styles/ingredient-description.css'>");
+    <link rel='stylesheet' type='text/css' href='styles/ingredient-description.css'>
+    <script src='js/Recipes.js'></script>
+    <script src='js/RecipeDescription.js'></script>");
 $html->setBodyPath("html/recipes.html");
 
     require_once("php/connection.php");
 
     $q ="SELECT R.Id AS RId, R.Name AS RName, I.Name AS IName, C.GramsIngredient AS GI
 	 FROM Recipe as R, Ingredient as I, Contains as C
-	 WHERE C.RecipeId = R.Id AND C.IngredientId = I.Id AND R.UserId = I.UserId = {$_SESSION['userId']}";
+	 WHERE C.RecipeId = R.Id AND C.IngredientId = I.Id AND R.UserId = I.UserId AND R.UserId = {$_SESSION['userId']}";
 
     $result = $mysql->query($q);
 
@@ -43,6 +45,8 @@ $html->setBodyPath("html/recipes.html");
     //END INGREDIENTS LIST
 
     $html->body = str_replace("<_RECIPES_LIST/>", $recipesList, $html->body);
+
+    $html->header = str_replace('<body>','<body onload="start();">',$html->header);
 
 $html->printHtml();
 ?>
