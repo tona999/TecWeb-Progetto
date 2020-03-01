@@ -1,19 +1,17 @@
 <main>
 	<h2>Your Ingredients </h2>
-	
-
 	<_ERROR/>
 	<span id="warningSpan"></span>
-	<form action="php/insertIngredient.php" method="post" target="_self" id="insertForm">
+	<form action="php/insertIngredientIngs.php" method="post" target="_self" id="insertForm">
 		<h3>Add Ingredient</h3>
 		
-		<input maxlength="40" type="text" placeholder="Ingredient Name" name="name" required />
+		<input maxlength="40" type="text" placeholder="Ingredient Name" name="ingredientName" required />
 		<label>
-			<input type="number" min='0' placeholder="Sample Grams" value="100" name="sg" id="newSampleGrams" required/>
+			<input type="number" min='0' placeholder="Sample Grams" value="100" name="sampleGrams" id="newSampleGrams" required/>
 			g product
 		</label>
 		<label>
-			<input type="number" min='0' placeholder="Sample Carbs" name="sc" id="newSampleCarbs" required/>
+			<input type="number" min='0' placeholder="Sample Carbs" name="sampleCarbs" id="newSampleCarbs" required/>
 			g carbs
 		</label>
 		<input type="submit" value="SAVE NEW"/>
@@ -22,5 +20,4 @@
 	<div id="ingredientDescriptions">
 	<_INGREDIENTS_LIST/>
 	</div>
-
 </main>

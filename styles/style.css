@@ -153,3 +153,8 @@ footer *{
     max-width: 10em;
     margin: 1em;
 }
+
+.warningSpan, #warningSpan{
+    line-height: 2em;
+    color:red;
+}

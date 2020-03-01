@@ -1,6 +1,7 @@
 var sampleIngredientCopy;
 var currentRecipe;
 var ingSel;
+var rv;
 
 function start()
 {
@@ -11,6 +12,8 @@ function start()
 		var id = selected.getAttribute('data-id');
 		var name = selected.getAttribute('data-name');
 
+		if (id==-1)return false;
+
 		if (currentRecipe.hasIngredientWithId(id))
 		{
 			window.alert(name + " has already been inserted.");
@@ -19,11 +22,9 @@ function start()
 
 		var sg = selected.getAttribute('data-sg');
 		var sc = selected.getAttribute('data-sc');
-		var name = selected.getAttribute('data-name');
 		
 		var Ing = new Ingredient(true, name, sg, sc, 0, -1, 1, id);
 		currentRecipe.addIngredient(Ing);
-			
 	});
 
 	document.getElementById("refreshIngredientsBtn").addEventListener('click',  refreshIngredientsList);
@@ -37,35 +38,43 @@ function start()
 function initializeRecipeStructure()
 {
 	//recipe VIEW
-	var rv = new Ingredient(false);
+	rv = new Ingredient(false);
 	rv.connect(Calculator.getNewIngredientBody("recipeView"));
-	rv.removeCloseButton();
 	rv.convertToRecipeView();
-	rv.saveButtonRef.addEventListener
-    	rv.setVisibility(false);
+	rv.saveButtonRef.addEventListener('click', saveCurrentRecipe);
+
+    rv.setVisibility(false);
 
 	currentRecipe = new Recipe();
 	currentRecipe.connect(document.getElementById("totalRecipeGrams"), document.getElementById("totalRecipeCarbs"), rv);
 
-	//Add Ingredient To Receipt Event, Save Receipt Event, View Receipt Event
-	document.getElementById("addNewIngredientBtn").addEventListener('click', function(){currentRecipe.addIngredient(new Ingredient(true));});
-	document.getElementById("showRecipeViewBtn").addEventListener('click', function(){currentRecipe.showRecipeView();});
-	document.getElementById("saveRecipeBtn").addEventListener('click', function(){currentRecipe.save();});
+	//Add Ingredient To Receipt Event, Save Receipt Event, View Receipt Event, Reset Recipe Ingredient
+	document.getElementById("addNewIngredientBtn").addEventListener('click', function(){currentRecipe.addEmptyIngredient();});
+	document.getElementById("showRecipeViewBtn").addEventListener('click', showRecipeView);
+	document.getElementById("saveRecipeBtn").addEventListener('click', saveCurrentRecipe);
 	document.getElementById("resetRecipeBtn").addEventListener('click', function(){currentRecipe.reset();});
 }
 
+function saveCurrentRecipe()
+{
+	window.alert("saveCurrentRecipe");
+}
+
+function showRecipeView()
+{
+	rv.switchVisibility();
+}
 
 function refreshIngredientsList()
 {
 	var xhttp = new XMLHttpRequest();
-	
 	xhttp.onreadystatechange = function(){
 		if(this.readyState == 4 && this.status == 200)
 		{
-			var s = "";
-			var json = JSON.parse(this.responseText);
-			for (i = 0; i < json.names.length; i++) {
-				s = s + "<option data-id='" + json.ids[i] + "' data-sg='" + json.sampleGrams[i] + "' data-sc='" + json.sampleCarbs[i] + "' data-name='" + json.names[i] + "'>" + json.names[i] + "</option>";
+			var s = "<option data-id='-1'>--SELECT AN INGREDIENT--</option>";;
+			var j = JSON.parse(this.responseText);
+			for (i = 0; i < j.length; i++) {
+				s = s + "<option data-id='" + j[i].id + "' data-sg='" + j[i].sampleGrams + "' data-sc='" + j[i].sampleCarbs + "' data-name='" + j[i].name + "'>" + j[i].name + "</option>";
 			}
 			ingSel.innerHTML = s;
 		}

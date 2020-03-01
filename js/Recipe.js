@@ -55,24 +55,11 @@ class Recipe{
 	{
 		for (var i=0; i<this.ingredients.length; i++){
 			if (this.ingredients[i]!=undefined){
-			console.log(this.ingredients[i].getId());
 				if(this.ingredients[i].getId()==id)
 					return true;
 			}
 		}
 		return false;
-	}
-
-	showRecipeView()
-	{
-		if(this.recipeViewRef.switchVisibility())
-		{
-			//recipeVIew was shown, change the receipt container class to fit the ingredients better and switch button icon
-		}
-		else
-		{
-			//recipeVIew was hidden, change the receipt container class to occupy all the space and switch button icon
-		}
 	}
 
 	refreshRecipeData()
@@ -96,7 +83,7 @@ class Recipe{
 		//RECEIPT VIEW
 		this.recipeViewRef.setSampleGrams(totalRecipeGrams);
 		this.recipeViewRef.setSampleCarbs(totalRecipeCarbs);
-		//totalRecipeGrams and totalRecipeCarbs are not changed by the user, therefore the events are not called 
+		//totalRecipeGrams and totalRecipeCarbs are not changed by the user, therefore the events are not triggered 
 		this.recipeViewRef.refresh();
 	}
 
@@ -112,5 +99,14 @@ class Recipe{
 			}
 		}
 		return JSON.stringify(arr);
+	}
+
+	isReadyForSave()
+	{
+		for (var i=0; i<this.ingredients.length; i++){
+			if (this.ingredients[i]!=undefined){
+				
+			}
+		}
 	}
 }

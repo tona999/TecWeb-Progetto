@@ -37,7 +37,6 @@ class Ingredient{
 
     	this.totalGramsLastChanged = true;
 
-		this.ingredientIdRef =		htmlIng.querySelector("[name='ingredientId']");
 		this.ingredientNameRef = 	htmlIng.querySelector("[name='ingredientName']");
 		this.closeButtonRef = 		htmlIng.querySelector("[name='closeButton']");
 		this.saveButtonRef = 		htmlIng.querySelector("[name='saveButton']");
@@ -51,8 +50,10 @@ class Ingredient{
 		this.gramsPPRef = 		htmlIng.querySelector("[name='gramsPP']");
 		this.breadUnitsPPRef = 		htmlIng.querySelector("[name='breadUnitsPP']");
 		this.carbsPPRef = 		htmlIng.querySelector("[name='carbsPP']");
+		this.warningSpan = htmlIng.querySelector(".warningSpan");
 		
 		var t = this;//t is this ingredient object, while "this" in the inline function is the input element that called the event, so this.value is the value of that input element
+		this.ingredientNameRef.addEventListener('input', function(){t.onIngredientNameChanged(this.value);});
 		this.sampleGramsRef.addEventListener('input', function(){t.onSampleGramsChanged(this.value);});
 		this.sampleCarbsRef.addEventListener('input', function(){t.onSampleCarbsChanged(this.value);});
 		this.totalGramsRef.addEventListener('input', function(){t.onTotalGramsChanged(this.value);});
@@ -63,8 +64,10 @@ class Ingredient{
 		this.plusButtonRef.addEventListener('click', function(){t.onSignClicked(1);});
 		this.minusButtonRef.addEventListener('click', function(){t.onSignClicked(-1);});
 
-		if(this.ingredientId > -1)
-			this.convertToSaved();
+		this.saveButtonRef.addEventListener('click', function(){t.save()});
+
+		if(this.getId() > -1) //A new ingredient will have id=-1
+			this.convertToSaved(this.getId());
 
 		this.refresh();
 		this.display();
@@ -84,6 +87,7 @@ class Ingredient{
     }
 
     /*INGREDIENT GETTERS & SETTERS*/
+    setId(val){this.ingredientId = MathUtilities.toInteger(val);}
 	setName(val){this.ingredientName = (val.toString()).substring(0, 25);}
 	setSampleGrams(val){this.sampleGrams = MathUtilities.toInteger(val);}
 	setSampleCarbs(val){this.sampleCarbs = MathUtilities.toInteger(val);}
@@ -98,6 +102,9 @@ class Ingredient{
     /*EVENTS*/
     onCloseClicked(){
     	this.htmlIngRef.remove();
+    }
+    onIngredientNameChanged(val){
+    	this.ingredientName=val;
     }
 	onSampleGramsChanged(val){
 		this.setSampleGrams(val);
@@ -121,7 +128,7 @@ class Ingredient{
 	}
 	onSignClicked(increment){
 		if (!this.isSampleDataValid()){
-			window.alert("Please check " + this.ingredientName + " Sample Values");
+			this.setWarning("Please check " + this.ingredientName + " Sample Values");
 			return;
 		}
 		
@@ -201,6 +208,7 @@ class Ingredient{
 	{
 		if (this.sampleCarbs > this.sampleGrams)
 		{
+			this.setWarning("Please Check The Data Inserted.");
 			if (sampleGramsChanged){
 				Ingredient.setValidityStatus(this.sampleGramsRef, false);
 				Ingredient.setValidityStatus(this.sampleCarbsRef, true);
@@ -212,9 +220,14 @@ class Ingredient{
 		}
 		else
 		{
+			this.setWarning("");
 			Ingredient.setValidityStatus(this.sampleGramsRef, true);
 			Ingredient.setValidityStatus(this.sampleCarbsRef, true);
 		}
+	}
+
+	setWarning(message){
+		this.warningSpan.innerHTML=message;
 	}
 
 	isSampleDataValid()
@@ -239,6 +252,7 @@ class Ingredient{
 			field.className = "invalidInput";
 	}
 
+	/*GRAPHICS*/
 	switchVisibility()
 	{
 		if (this.htmlIngRef.className == "hiddenIngredient"){
@@ -260,33 +274,70 @@ class Ingredient{
 	}
 
 	/*USER INTERACTION*/
-	convertToSaved()
+	convertToSaved(id)
 	{
+		this.setId(id);
+		this.removeSaveButton();
 		this.ingredientNameRef.disabled = this.sampleGramsRef.disabled = this.sampleCarbsRef.disabled = true;
-		this.ingredientNameRef.classList = this.sampleGramsRef.classList = this.sampleCarbsRef.classList = "non_editable"
-		this.saveButtonRef.remove();
+		this.ingredientNameRef.className = this.sampleGramsRef.className = this.sampleCarbsRef.className = "non_editable";
 	}
 
 	convertToRecipeView()
 	{
+		this.removeCloseButton();
+		this.saveButtonRef.removeEventListener("click", function(){});
 		this.sampleGramsRef.disabled = this.sampleCarbsRef.disabled = true;
-		this.sampleGramsRef.classList = this.sampleCarbsRef.classList = "non_editable"
+		this.sampleGramsRef.className = this.sampleCarbsRef.className = "non_editable"
+		this.ingredientNameRef.placeholder="RECIPE NAME";
+		this.saveButtonRef.value="SAVE RECIPE";
 	}
 
 	convertToSavedRecipeView()
 	{
+		convertToRecipeView();
 		this.ingredientNameRef.disabled = this.sampleGramsRef.disabled = this.sampleCarbsRef.disabled = true;
-		this.ingredientNameRef.classList = this.sampleGramsRef.classList = this.sampleCarbsRef.classList = "non_editable"
-
+		this.ingredientNameRef.className = this.sampleGramsRef.className = this.sampleCarbsRef.className = "non_editable"
 	}
 
-	removeCloseButton()
-	{
-		this.closeButtonRef.remove();
-	}
+	removeCloseButton(){this.closeButtonRef.remove();}
+	removeSaveButton(){this.saveButtonRef.remove();}
 
 	save()
 	{
-		
+		if (this.isReadyForSave())
+		{
+			var params = "ingredientName="+this.ingredientName+"&sampleGrams="+this.sampleGrams+"&sampleCarbs="+this.sampleCarbs;
+			var xhttp = new XMLHttpRequest();
+			var t = this;
+			xhttp.onreadystatechange = function(){
+				if(this.readyState == 4 && this.status == 200)
+				{
+					if (parseInt(this.responseText)<0)
+						this.setWarning("Saving Failed");
+					else
+						t.convertToSaved(parseInt(this.responseText));
+				}
+			}
+			xhttp.open("POST", "php/insertIngredientCalc.php", true);
+			xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			xhttp.send(params);
+
+			this.setWarning("");
+		}
+	}
+
+	/*UTILITIES*/
+	isReadyForSave()
+	{
+		if (this.ingredientName.trim()==""){
+			this.setWarning("Please Insert A Name Before Saving.");
+			return false;
+		}
+		else if(!this.isSampleDataValid()){
+			this.setWarning("Please Check The Data Inserted.");
+			return false;
+		}
+		this.setWarning("");
+		return true;
 	}
 }

@@ -1,27 +1,19 @@
 <?php
 	require_once("connection.php");
-	
 	session_start();
 
-	$name = $_POST['name'];
-	$sg = intval($_POST['sg']);
-	$sc = intval($_POST['sc']);
+	$name = $_POST['ingredientName'];
+	$sg = intval($_POST['sampleGrams']);
+	$sc = intval($_POST['sampleCarbs']);
 	$userId = $_SESSION['userId'];
 	
 	//Input Check
 	if(trim($name)=="" || $sg<$sc || $sg < 0 || $sc < 0){
-		header("Location: ../ingredients.php?InvInp");
+		echo "Invalid Input";
 		return;
 	}
 
-	$name = "'".$name."'";
+	$q = "INSERT INTO Ingredient (UserId, Name, GramsProduct, GramsCarbs) VALUES ($userId, '{$name}', $sg, $sc)";
 
-	$q = "INSERT INTO Ingredient (UserId, Name,GramsProduct,GramsCarbs) VALUES ($userId, $name, $sg, $sc)";
-
-        $mysql->query($q);
-
-	if($mysql->affected_rows > 0)
-		header("Location: ../ingredients.php?last=".$mysql->insert_id);
-	else
-		header("Location: ../ingredients.php?last=-1");
+    $mysql->query($q);
 ?>

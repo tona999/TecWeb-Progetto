@@ -1,6 +1,5 @@
 <form id="sampleIngredient" action="" class = "ingredient">
 	<fieldset>
-		<input type="hidden" name="ingredientId"/>
 		<input type="text" maxlength="40" name="ingredientName" placeholder="Ingredient Name"/>
 		<input type="button" value="SAVE" name="saveButton"/>
 		<input type="button" value="X" name="closeButton"/>
@@ -30,8 +29,8 @@
 	</fieldset>
 
 	<fieldset class="divided">
-		<legend>Divided In</legend>
 		<label>
+			Divided in
 			<input type="number" maxlength="3" min="0" name="piecesNumber" placeholder="0"/>
 			pieces
 			<div class="controls-container">
@@ -39,9 +38,8 @@
 				<input class="action-btn" type="button" value="+" name="plusButton"/>
 			</div>
 		</label>
-	</fieldset>
 
-	<table class="ingredient-report">
+		<table class="ingredient-report">
 		<tr>
 			<th>grams</th>
 			<th>bread units</th>
@@ -53,4 +51,7 @@
 			<td class="carbsPP" name="carbsPP">0</td>
 		</tr>
 	</table>
+	</fieldset>
+
+	<span class="warningSpan"></span>
 </form>

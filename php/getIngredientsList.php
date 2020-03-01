@@ -3,14 +3,17 @@
 	session_start();
 
 	$q = "SELECT * FROM Ingredient WHERE UserId='{$_SESSION["userId"]}'";
-        $res = $mysql->query($q);
+    $res = $mysql->query($q);
 
 	while($row = $res->fetch_assoc()){
-		$json->ids[] = $row['Id'];
-		$json->names[] = $row['Name'];
-		$json->sampleGrams[] = $row['GramsProduct'];
-		$json->sampleCarbs[] = $row['GramsCarbs'];
+		$ing = new \stdClass();
+		$ing->id = $row['Id'];
+		$ing->name = $row['Name'];
+		$ing->sampleGrams = $row['GramsProduct'];
+		$ing->sampleCarbs = $row['GramsCarbs'];
+
+		$ings[] = $ing;
 	}
 
-	echo json_encode($json);
+	echo json_encode($ings);
 ?>
