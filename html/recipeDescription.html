@@ -1,7 +1,10 @@
 <form action="calculator.php" method="get">
+	<fieldset>
 	<input type="hidden" value="<_RECIPE_ID/>" name="recipeId"/>
+	<input type="hidden" value="<_RECIPE_NAME/>" name="recipeName"/>
 	<h3 name="recipeName"><_RECIPE_NAME/></h3>
-	<div><_INGREDIENTS_LIST/></div>
-	<input type="submit" value="Load In Calculator"/>
+	<_INGREDIENTS_LIST/>
 	<input type="button" value="Remove" name="removeBtn" class="closeBtn"/>
+	<input type="submit" value="Load In Calculator"/>
+</fieldset>
 </form>

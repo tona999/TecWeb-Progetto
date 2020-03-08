@@ -6,8 +6,6 @@ class RecipeDescription{
 		this.recipeName = recDescHtml.querySelector("[name='recipeName']").innerHTML;
 		this.removeBtn = recDescHtml.querySelector("input[name='removeBtn']");
 
-		recDescHtml.querySelector("[name='recipeId']").remove();
-
 		var t = this;
 		this.removeBtn.addEventListener('click', function(){t.onRemoveRequested();});
 	}
@@ -42,6 +40,6 @@ class RecipeDescription{
 
 	onRemoveFailed()
 	{
-		
+		window.alert("Saving Failed");
 	}
 }

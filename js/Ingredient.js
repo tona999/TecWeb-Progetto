@@ -30,7 +30,7 @@ class Ingredient{
 			this.connect(Calculator.getNewIngredientBody());
     }
 
-    connect(htmlIng)
+    connect(htmlIng, isRecipeView = false)
     {
     	htmlIng.removeAttribute("id");
     	this.htmlIngRef = htmlIng;
@@ -60,14 +60,15 @@ class Ingredient{
 		this.totalBreadUnitsRef.addEventListener('input', function(){t.onTotalBreadUnitsChanged(this.value);});
 		this.piecesNumberRef.addEventListener('input', function(){t.onPiecesNumberChanged(this.value);});
 
-		this.closeButtonRef.addEventListener('click', function(){t.onCloseClicked();}); //function.bind could also be used
 		this.plusButtonRef.addEventListener('click', function(){t.onSignClicked(1);});
 		this.minusButtonRef.addEventListener('click', function(){t.onSignClicked(-1);});
 
-		this.saveButtonRef.addEventListener('click', function(){t.save()});
-
-		if(this.getId() > -1) //A new ingredient will have id=-1
-			this.convertToSaved(this.getId());
+		if (!isRecipeView){
+			this.closeButtonRef.addEventListener('click', function(){t.onCloseClicked();}); //function.bind could also be used
+			this.saveButtonRef.addEventListener('click', function(){t.save()});
+			if(this.getId() > -1) //A new ingredient will have id=-1
+				this.convertToSaved(this.getId());
+		}
 
 		this.refresh();
 		this.display();
@@ -88,7 +89,7 @@ class Ingredient{
 
     /*INGREDIENT GETTERS & SETTERS*/
     setId(val){this.ingredientId = MathUtilities.toInteger(val);}
-	setName(val){this.ingredientName = (val.toString()).substring(0, 25);}
+	setName(val){this.ingredientName = val.toString().trim().substring(0, 40);}
 	setSampleGrams(val){this.sampleGrams = MathUtilities.toInteger(val);}
 	setSampleCarbs(val){this.sampleCarbs = MathUtilities.toInteger(val);}
 	setTotalGrams(val){this.totalGrams = MathUtilities.toFloat(val);}
@@ -98,6 +99,9 @@ class Ingredient{
 	getTotalGrams(){return this.totalGrams;}
 	getTotalCarbs(){return this.totalGrams*this.sampleCarbs/this.sampleGrams;} //Not visible in the ingredient
 	getId(){return this.ingredientId;}
+	getName(){return this.ingredientName;}
+
+	isSaved(){return this.getId()>=0;}
 
     /*EVENTS*/
     onCloseClicked(){
@@ -143,7 +147,7 @@ class Ingredient{
 		this.refresh();
 	}
 
-	onInsertInRecipe(recipe, index){ //Called when the ingredient is inserted into a recipe. An ingredient can be standalone.
+	onInsertInRecipe(recipe, index){ //Called when the ingredient is inserted into a recipe. An ingredient is modular and can be standalone.
 		this.closeButtonRef.addEventListener('click', function(){recipe.removeIngredient(index)});
 		this.recipeRef = recipe;
 		this.refresh();
@@ -292,11 +296,18 @@ class Ingredient{
 		this.saveButtonRef.value="SAVE RECIPE";
 	}
 
-	convertToSavedRecipeView()
+	convertToSavedRecipeView(id, name="")
 	{
-		convertToRecipeView();
+		if (name!="")
+		{
+			this.setName(name);
+			this.ingredientNameRef.value = name;
+		}
+		this.setId(id);
+		this.convertToRecipeView();
 		this.ingredientNameRef.disabled = this.sampleGramsRef.disabled = this.sampleCarbsRef.disabled = true;
 		this.ingredientNameRef.className = this.sampleGramsRef.className = this.sampleCarbsRef.className = "non_editable"
+		this.saveButtonRef.value="SAVE CHANGES";
 	}
 
 	removeCloseButton(){this.closeButtonRef.remove();}
@@ -339,5 +350,23 @@ class Ingredient{
 		}
 		this.setWarning("");
 		return true;
+	}
+
+	requireSave()
+	{
+		this.setWarning("Please Save The Ingredient Before Proceeding.");
+	}
+
+	savingFailed()
+	{
+		this.setWarning("Saving Failed.");
+	}
+
+	toSaveableEntity(){
+		var tmp = {};
+		tmp.ingredientName = this.ingredientName;
+		tmp.sampleGrams = this.sampleGrams;
+		tmp.sampleCarbs = this.sampleCarbs;
+		return tmp;
 	}
 }

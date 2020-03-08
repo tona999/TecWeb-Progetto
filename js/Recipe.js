@@ -2,7 +2,7 @@ class Recipe{
 	constructor(name = "")
 	{
 		this.ingredients = [];
-		this.name = name;
+		this.recipeName = name;
 	}
 
 	addEmptyIngredient()
@@ -18,7 +18,7 @@ class Recipe{
 
 	removeIngredient(index)
 	{
-		this.ingredients[index]=undefined;
+		this.ingredients[index]=undefined; //ingredients are bounded to array indexes for quick search => the indexes can not shift
 		this.refreshRecipeData();
 	}
 
@@ -34,11 +34,6 @@ class Recipe{
 		this.recipeViewRef = recipeViewRef;
 	}
 
-	save()
-	{
-		window.alert("Saving Recipe Demo...");
-	}
-
 	reset()
 	{
 		for (var i=0; i<this.ingredients.length; i++){
@@ -47,8 +42,14 @@ class Recipe{
 			}
 		}
 		this.ingredients = [];
+	}
 
-		this.addEmptyIngredient();
+	getName()
+	{
+		if (this.recipeViewRef != undefined)
+			return this.recipeViewRef.getName().trim();
+		else
+			return this.name; //an abstract recipe
 	}
 
 	hasIngredientWithId(id)
@@ -80,7 +81,7 @@ class Recipe{
 		this.totalRecipeGramsRef.innerHTML = totalRecipeGrams;
 		this.totalRecipeCarbsRef.innerHTML = totalRecipeCarbs;
 
-		//RECEIPT VIEW
+		//RECIPE VIEW
 		this.recipeViewRef.setSampleGrams(totalRecipeGrams);
 		this.recipeViewRef.setSampleCarbs(totalRecipeCarbs);
 		//totalRecipeGrams and totalRecipeCarbs are not changed by the user, therefore the events are not triggered 
@@ -103,10 +104,120 @@ class Recipe{
 
 	isReadyForSave()
 	{
+		if (this.getName()=="")
+		{
+			this.recipeViewRef.setWarning("Please Assign A Name To Your Recipe And Try Again.");
+			return false;
+		}
+		else
+			this.recipeViewRef.setWarning("");
+
+		return true;
+	}
+
+	//Automatically saves new ingredients which were not explicitly saved if the necessary criteria are met. Returns true if there aren't any unsaved ingredients in the recipe.
+	tryAutomaticIngredientSave(){
+		var allIngsReady = true;
+		var arr = new Array();
 		for (var i=0; i<this.ingredients.length; i++){
-			if (this.ingredients[i]!=undefined){
-				
+			var ing = this.ingredients[i];
+			if (ing!=undefined && !ing.isSaved()){
+				if (ing.isReadyForSave()){
+					var se = ing.toSaveableEntity();
+					se.idInList = i;
+					arr.push(se);
+				}
+				else
+					allIngsReady = false;
 			}
 		}
+		if (!allIngsReady)
+		{
+			this.onAutomaticIngredientSaveFail();
+			return;
+		}
+
+
+		if(arr.length==0) //Nothing to save, 
+		{
+			this.onAutomaticIngredientSaveSuccess();
+			return;
+		}
+
+		var j = JSON.stringify(arr);
+		
+		var xhttp = new XMLHttpRequest();
+		var t = this;
+		xhttp.onreadystatechange = function(){
+			if(this.readyState == 4 && this.status == 200)
+			{
+				var result = JSON.parse(this.responseText);
+				for(var i=0; i<result.successIds.length; i++)
+				{
+					t.ingredients[result.successIds[i].idInList].convertToSaved(result.successIds[i].id);
+				}
+				
+				for (var k=0; k<result.failIds.length; k++)
+				{
+					t.ingredients[result.failIds[i].idInList].savingFailed();
+				}
+
+				if (result.failIds.length>0)
+					t.onAutomaticIngredientSaveFail();
+				else
+					t.onAutomaticIngredientSaveSuccess();
+			}
+		}
+
+		xhttp.open("POST", "php/insertIngredientGroup.php", true);
+		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		var params = "json=";
+		xhttp.send(params.concat(j));
+	}
+
+	//There were ingredients to save and saving succeeded
+	onAutomaticIngredientSaveFail(){
+		this.recipeViewRef.setWarning("Please Check Ingredients Data And Try Saving Again.");
+	}
+
+	//There were ingredients to save and saving failed
+	onAutomaticIngredientSaveSuccess(){
+		this.recipeViewRef.setWarning("");
+		this.effectiveSave();
+	}
+
+	save()
+	{	
+		if (this.isReadyForSave())
+			this.tryAutomaticIngredientSave();
+	}
+
+	effectiveSave() //Save recipe in database
+	{
+		var j = this.getIngredientsJson();
+
+		var xhttp = new XMLHttpRequest();
+		var t = this;
+		xhttp.onreadystatechange = function(){
+			if(this.readyState == 4 && this.status == 200)
+			{
+				var id = parseInt(this.responseText);
+				if (id<0)
+					t.recipeViewRef.setWarning("Saving Failed.");
+				else
+					t.recipeViewRef.setWarning("");
+					t.recipeViewRef.convertToSavedRecipeView(id);
+			}
+		}
+		var params = "";
+		params = params.concat("recipeId=", t.recipeViewRef.getId(),"&recipeName=", t.recipeViewRef.getName(), "&json=", j);
+		xhttp.open("POST", "php/saveRecipe.php", true);
+		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xhttp.send(params);
+	}
+
+	loadFromJson(json, keepCurrent = true)
+	{
+		var ingredients = JSON.parse(json);
 	}
 }

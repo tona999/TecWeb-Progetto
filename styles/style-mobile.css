@@ -55,11 +55,13 @@ menu img{
     font-weight: bold;
 }
 
-main{
-    float: none;
+#recipe_screen select{
+    margin: auto;
+    margin-top: .5em;
     width: 100%;
 }
 
-.ingredient-report{
+main{
+    float: none;
     width: 100%;
 }

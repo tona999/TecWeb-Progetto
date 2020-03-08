@@ -1,7 +1,7 @@
 <?php
 require_once("php/page.php");
 $html = new Page();
-$html->setTitle("Calc");
+$html->setTitle("Calculator");
 $html->setMeta(
     '<script src="js/Calculator.js"></script>'.
     '<script src="js/Ingredient.js"></script>'.

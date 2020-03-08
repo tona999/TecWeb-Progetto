@@ -1,7 +1,7 @@
-<select id='ingredientsSelect' placeholder="Select an Ingredient..."></select>
-<input type="button" id="refreshIngredientsBtn" value="Refresh Ingredients List"/>
-
-<div id="recipe"></div>
+<div id="recipe_screen">
+	<select id='ingredientsSelect' placeholder="Select an Ingredient..."></select>
+	<div id="recipe"></div>
+</div>
 <div id="controlPanel">
 	<p>
 		Grams:
@@ -13,14 +13,15 @@
 	</p>
 
 	<div class="buttons">
-	<input type="button" class="calcBarBtn showBtn" id="showRecipeViewBtn" value="SHOW"/>
-	<input type="button" class="calcBarBtn loadBtn" id="loadRecipeBtn" value="LOAD"/>
+	<input type="button" class="calcBarBtn showBtn" id="showRecipeViewBtn" value="BAKE"/>
 	<input type="button" class="calcBarBtn resetBtn" id="resetRecipeBtn" value="RESET"/>
 	<input type="button" class="calcBarBtn saveBtn" id="saveRecipeBtn" value="SAVE"/>
 	<input type="button" class="calcBarBtn addBtn" id="addNewIngredientBtn" value="ADD"/>
 	</div>
 </div>
 
-<fieldset id="recipeView"></fieldset>
+<div id="recipeView" class="hidden_recipe_view">
+	<p>Here you see your recipe as a homogeneous combination of Ingredients. You can save the recipe and work on it later!</p>
+</div>
 
 <_SAMPLE_INGREDIENT/>

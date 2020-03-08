@@ -1,7 +1,10 @@
-
-input[type="number"], input[type="text"]{
-	padding:0.25em 0.5em 0.25em 0.5em;
+input{
 	text-align:center;
+	padding: 0.25em 0em 0.25em 0em;
+}
+
+fieldset{
+	border:none;
 }
 
 .non_editable{
@@ -9,7 +12,7 @@ input[type="number"], input[type="text"]{
 }
 
 .non_editable:disabled{
-	background-color:white;
+	background-color:#ececec;
 	color:black;
 }
 
@@ -19,8 +22,22 @@ input[type="number"], input[type="text"]{
 	flex-wrap: wrap;
 	align-items: center;
 }
-#insertForm > *{
-	margin: .5em;
+#insertForm h3{
+	width: 100%;
+}
+
+#insertForm input[type="text"]{
+	max-width: 40em;
+}
+#insertForm input[type="number"]{
+	width: 7em;
+}
+#insertForm fieldset{
+	width: 100%;
+}
+fieldset legend{
+	font-size: 0.9em;
+	color: grey;
 }
 
 #ingredientDescriptions, #recipesList {
@@ -29,20 +46,27 @@ input[type="number"], input[type="text"]{
 	justify-content: center;
 	align-self: stretch;
 }
-form{
-	width: max-content;
+
+#ingredientDescriptions form fieldset > *, #insertForm > *, #insertForm fieldset > *{
+	display: inline-block;
+	margin: .2em;
 }
-form > *{
-	display: block;
-	margin: .3em auto;
+
+#insertForm input[name="sampleGrams"]
+{
+	margin-bottom:.4em;
 }
+
 input[type="number"]{
 	font-weight: bold;
-	text-align: right;
 	width: 5em;
 }
 input[type="text"]{
 	font-weight: bold;
+	width: 100%;
+}
+.ingredientDescriptions form input[type="button"]{
+	margin: .3em;
 }
 
 table{
@@ -54,4 +78,19 @@ td, th{
 	padding: .3em;
 	text-align: center;
 	font-size: 1em;
+}
+
+#recipesList form{
+	flex-grow: 1;
+    min-width: 30%;
+    max-width: 40em;
+}
+
+#recipesList form h3{
+	display: inline-block;
+	padding: .2em 0em .2em 0em;
+}
+
+#recipesList input{
+	margin: .5em .5em .5em 0em;
 }
