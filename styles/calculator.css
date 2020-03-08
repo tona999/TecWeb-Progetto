@@ -11,6 +11,18 @@
     margin-bottom: 4em; /* needed to avoid bottom bar override */
 }
 
+/*Log In or Register Warning*/
+body>h1{
+    text-align: center;
+    padding: 2em;
+    color: darkslategrey;
+    line-height: 1.5em;
+}
+
+body>h1>a{
+    white-space: nowrap;
+}
+
 /*** INGREDIENT ***/
     
     .ingredient{
