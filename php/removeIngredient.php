@@ -3,7 +3,6 @@
 	session_start();
 
 	$id = $_POST['id'];
-
 	$q = "DELETE FROM Ingredient WHERE UserId={$_SESSION['userId']} AND Id={$id}";
 	$mysql->query($q);
 

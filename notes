@@ -1,9 +1,4 @@
 Usare Balsamiq (obbligatorio)
-Per igni istanza di ingrediente che fa parte di una ricetta memorizzare anche se era stato modificato il totalGrams o i totalBreadUnits. (too late)
-Facendo così se viene modidicato sampleGrams/sampleCarbs va aggiornato il campo giusto (totalGrams/totalBreadUnuts) in base alle preferenze dell'utente.
-Esempio: l'utente vuole dedicare k unità di insulina ad un ingrediente, allora quando carico l'ingrediente nella ricetta e modifico sampleGrams/sampleCarbs viene aggiornato il totalGrams mentre il totalBreadUnits rimane k.
-
-Usare trim($stringa) per evitare di avere solo uno spazio in un campo required
 
 -css stampa
 -bottone registrati
@@ -12,11 +7,3 @@ Usare trim($stringa) per evitare di avere solo uno spazio in un campo required
 -password hash (federico e nicola)
 -relazione
 -xhtml per pagine statiche (no calcolatore, ingredienti e ricette)
--ERRORI in rosso
-
-
-
-
-
--calculator logged in vs logged out
--order by name

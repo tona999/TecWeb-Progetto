@@ -1,6 +1,5 @@
 <?php
 	require_once("connection.php");
-	
 	session_start();
 
 	$id = $_POST['id'];
