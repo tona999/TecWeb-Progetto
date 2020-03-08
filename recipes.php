@@ -13,7 +13,7 @@ $html->setBodyPath("html/recipes.html");
 
     $q ="SELECT R.Id AS RId, R.Name AS RName, I.Name AS IName, C.GramsIngredient AS GI
 	 FROM Recipe as R, Ingredient as I, Contains as C
-	 WHERE C.RecipeId = R.Id AND C.IngredientId = I.Id AND R.UserId = I.UserId AND R.UserId = {$_SESSION['userId']}";
+	 WHERE C.RecipeId = R.Id AND C.IngredientId = I.Id AND R.UserId = I.UserId AND R.UserId = {$_SESSION['userId']} ORDER BY RName";
 
     $result = $mysql->query($q);
 

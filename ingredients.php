@@ -12,7 +12,7 @@ $html->setBodyPath("html/ingredients.html");
     require_once("php/connection.php");
 
     $ingredientsList = "";
-    $result = $mysql->query("SELECT * FROM Ingredient WHERE UserId = " . $_SESSION["userId"]);
+    $result = $mysql->query("SELECT * FROM Ingredient WHERE UserId={$_SESSION['userId']} ORDER BY NAME");
 
     $ingredientDescription = file_get_contents("html/ingredientDescription.html");
     while($row = $result->fetch_assoc()){
