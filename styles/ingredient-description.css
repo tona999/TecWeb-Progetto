@@ -11,7 +11,7 @@ fieldset{
 	border:none;
 }
 
-.non_editable:disabled{
+.non_editable:read-only{
 	background-color:#ececec;
 	color:black;
 }

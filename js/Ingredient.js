@@ -282,7 +282,7 @@ class Ingredient{
 	{
 		this.setId(id);
 		this.removeSaveButton();
-		this.ingredientNameRef.disabled = this.sampleGramsRef.disabled = this.sampleCarbsRef.disabled = true;
+		this.ingredientNameRef.readOnly = this.sampleGramsRef.readOnly = this.sampleCarbsRef.readOnly = true;
 		this.ingredientNameRef.className = this.sampleGramsRef.className = this.sampleCarbsRef.className = "non_editable";
 	}
 
@@ -290,7 +290,7 @@ class Ingredient{
 	{
 		this.removeCloseButton();
 		this.saveButtonRef.removeEventListener("click", function(){});
-		this.sampleGramsRef.disabled = this.sampleCarbsRef.disabled = true;
+		this.sampleGramsRef.readOnly = this.sampleCarbsRef.readOnly = true;
 		this.sampleGramsRef.className = this.sampleCarbsRef.className = "non_editable"
 		this.ingredientNameRef.placeholder="RECIPE NAME";
 		this.saveButtonRef.value="SAVE RECIPE";
@@ -305,7 +305,7 @@ class Ingredient{
 		}
 		this.setId(id);
 		this.convertToRecipeView();
-		this.ingredientNameRef.disabled = this.sampleGramsRef.disabled = this.sampleCarbsRef.disabled = true;
+		this.ingredientNameRef.readOnly = this.sampleGramsRef.readOnly = this.sampleCarbsRef.readOnly = true;
 		this.ingredientNameRef.className = this.sampleGramsRef.className = this.sampleCarbsRef.className = "non_editable"
 		this.saveButtonRef.value="SAVE CHANGES";
 	}

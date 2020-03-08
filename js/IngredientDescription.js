@@ -108,9 +108,10 @@ class IngredientDescription{
 
 
 	setEditable(status){
-		this.nameIF.disabled = !status;
-		this.sampleGramsIF.disabled = !status;
-		this.sampleCarbsIF.disabled = !status;
+		this.nameIF.readOnly = !status;
+		this.sampleGramsIF.readOnly = !status;
+		this.sampleCarbsIF.readOnly = !status;
+
 		this.loadBtn.disabled=status;
 		this.removeBtn.disabled=status;
 

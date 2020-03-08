@@ -143,9 +143,10 @@
 	border:none;
 }
 
-.non_editable:disabled{
+.non_editable:read-only{
 	background-color:white;
 	color:black;
+    outline: none;
 }
 
 .showBtn{

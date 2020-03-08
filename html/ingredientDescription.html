@@ -2,12 +2,12 @@
 	<fieldset>
 	<legend>Ingredient Data</legend>
 		<input type="hidden" name="ingredientId" value="<_INGREDIENT_ID/>"/>
-		<input class="non_editable" disabled="disabled" type="text" name="ingredientName" placeholder="Ingredient Name" value ="<_INGREDIENT_NAME/>"/>
+		<input class="non_editable" readonly type="text" name="ingredientName" placeholder="Ingredient Name" value ="<_INGREDIENT_NAME/>"/>
 		<label>
-			<input class="non_editable" type="number" min='0' disabled="disabled" placeholder="Sample Grams" name="sampleGrams" value="<_SAMPLE_GRAMS/>"/> g product has
+			<input class="non_editable" type="number" min='0' readonly placeholder="Sample Grams" name="sampleGrams" value="<_SAMPLE_GRAMS/>"/> g product has
 		</label>
 		<label>
-			<input class="non_editable" type="number" min='0' disabled="disabled" placeholder="Sample Carbs" name="sampleCarbs" value="<_SAMPLE_CARBS/>"/> g carbs
+			<input class="non_editable" type="number" min='0' readonly placeholder="Sample Carbs" name="sampleCarbs" value="<_SAMPLE_CARBS/>"/> g carbs
 		</label>
 		<span>
 		<input type="button" value="Delete" class="closeBtn" name="removeBtn"/>
