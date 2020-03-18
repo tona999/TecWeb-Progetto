@@ -7,7 +7,7 @@ $html->setMeta(
     '<script src="js/Ingredient.js"></script>'.
     '<script src="js/MathUtilities.js"></script>'.
     '<script src="js/Recipe.js"></script>'.
-    '<link rel="stylesheet" type="text/css" href="styles/calculator.css">');
+    '<link rel="stylesheet" type="text/css" href="styles/calculator.css" media="screen">');
     $html->noFooter();
 
 if (isset($_SESSION["userId"]))
