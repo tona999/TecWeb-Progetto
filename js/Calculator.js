@@ -77,8 +77,6 @@ function onIngredientsLoaded()
 					var ings = JSON.parse(this.responseText);
 					for (var i=0; i<ings.length; i++)
 					{
-						console.log(ings[i].id);
-						console.log(ings[i].grams);
 						loadIngredient(ings[i].id, ings[i].grams);
 					}
 					rv.convertToSavedRecipeView(id, name);

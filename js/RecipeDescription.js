@@ -40,6 +40,6 @@ class RecipeDescription{
 
 	onRemoveFailed()
 	{
-		window.alert("Saving Failed");
+		window.alert("Remove Failed");
 	}
 }

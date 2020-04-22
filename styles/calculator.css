@@ -47,14 +47,14 @@ body>h1>a{
         min-width: 45%;
     }
     input[type="number"]{
-        width: 3em;
+        width: 4em;
 	}
 	input[type="button"]{
 		min-width: 2em;
 		padding:0.5em;
     }
 	input[type="text"]{
-        width: 60%;
+        width: 53%;
     }
     #controlPanel button{
 		height: 2em;
@@ -63,6 +63,11 @@ body>h1>a{
 
     .ingredient input[name="closeButton"] {
         float: right;
+    }
+
+    .ingredient legend{
+        color: grey;
+        line-height: 1.5em;
     }
 
     /* Report table for ingredients */
@@ -97,6 +102,18 @@ body>h1>a{
     {
     	background: red;
     	color: white;
+    }
+
+    /*Hide Arrows on Input Fields*/
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    }
+
+    /* Firefox */
+    input[type=number] {
+        -moz-appearance: textfield;
     }
     
 /******************/
