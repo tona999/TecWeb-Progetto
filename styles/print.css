@@ -1,0 +1,94 @@
+* {
+    font-family: 'Times New Roman', Times, serif;
+    text-align: start;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-size: 12pt;
+    width: auto;
+    margin: 6pt;
+}
+
+header img {
+    width: 20pt;
+    margin-right: 12pt;
+    vertical-align: middle;
+}
+
+menu {
+    display: none;
+}
+
+button,
+input[type="submit"],
+input[type="button"] {
+    display: none;
+}
+
+input {
+    border: none;
+    text-decoration: underline;
+}
+
+.ingredient {
+    border: 1px solid black;
+    margin-bottom: 12pt;
+}
+
+form {
+    border: 1px solid black;
+    margin: 6pt 0;
+    padding: 6pt;
+}
+
+fieldset {
+    border: none;
+}
+
+fieldset legend {
+    display: none;
+}
+
+footer {
+    text-align: center;
+    margin-top: 12pt;
+    padding-top: 6pt;
+    font-style: italic;
+    border-top: 1pt dotted black;
+}
+
+td,
+th,
+caption {
+    padding: 2pt;
+    border: 1px solid black;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+select {
+    display: none;
+}
+
+p,
+h1,
+h2 {
+    margin: 12pt 0;
+}
+
+#insertForm {
+    display: none;
+}
+
+#aLogin {
+    display: none;
+}
+
+#tutorial img {
+    margin: 2pt;
+    max-width: 400pt;
+}

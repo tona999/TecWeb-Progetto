@@ -1,125 +1,152 @@
-*{
+* {
     font-family: sans-serif;
     margin: 0;
     padding: 0;
 }
 
-#recipe{
-	display: flex;
-	flex-wrap: wrap;
+#recipe {
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    margin-bottom: 4em; /* needed to avoid bottom bar override */
+    margin-bottom: 4em;
+    /* needed to avoid bottom bar override */
 }
 
+
 /*Log In or Register Warning*/
-body>h1{
+
+body>h1 {
     text-align: center;
     padding: 2em;
     color: darkslategrey;
     line-height: 1.5em;
 }
 
-body>h1>a{
+body>h1>a {
     white-space: nowrap;
 }
 
+
 /*** INGREDIENT ***/
-    
-    .ingredient{
-        font-size: 0.9em;
-        width: 90%;
-        max-width: 30em;
-        background-color: #fff;
-        box-shadow: 0 1px 4px #00000030;
-        border-radius: 8px;
-        padding: 1em;
-        margin: 0.5em;
-    }
-    fieldset{
-        padding: .5em;
-        border: none;
-        border-bottom: 1px solid #00000030;
-    }
 
-    /* Label and inputs inside ingredients */
-    label{
-        display: inline-block;
-        min-width: 45%;
-    }
-    input[type="number"]{
-        width: 4em;
-	}
-	input[type="button"]{
-		min-width: 2em;
-		padding:0.5em;
-    }
-	input[type="text"]{
-        width: 53%;
-    }
-    #controlPanel button{
-		height: 2em;
-		width: 2em;
-	}
+.ingredient {
+    font-size: 0.9em;
+    width: 90%;
+    max-width: 30em;
+    background-color: #fff;
+    box-shadow: 0 1px 4px #00000030;
+    border-radius: 8px;
+    padding: 1em;
+    margin: 0.5em;
+}
 
-    .ingredient input[name="closeButton"] {
-        float: right;
-    }
+fieldset {
+    padding: .5em;
+    border: none;
+    border-bottom: 1px solid #00000030;
+}
 
-    .ingredient legend{
-        color: grey;
-        line-height: 1.5em;
-    }
 
-    /* Report table for ingredients */
-    .ingredient-report{
-        border-collapse: collapse;
-        width: 100%;
-    }
-    .ingredient-report td, .ingredient-report th{
-        border: 1px solid lightgrey;
-        padding: .3em;
-        text-align: center;
-        font-weight: normal;
-        font-size: 1em;
-    }
+/* Label and inputs inside ingredients */
 
-    /*Label and Report Table on the same row*/
-    .divided label{
-        margin: 0em 0.5em 0.5em 0em;
-    }
+label {
+    display: inline-block;
+    min-width: 45%;
+}
 
-    .divided{
-        border-bottom: none;
-    }
+input[type="number"] {
+    width: 4em;
+}
 
-    /* Pieces number buttons (+ -) */
-    .divided label *{
-        display: inline;
-    }
+input[type="button"] {
+    min-width: 2em;
+    padding: 0.5em;
+}
 
-    /*invalid data was inserted by user*/
-    .invalidInput
-    {
-    	background: red;
-    	color: white;
-    }
+input[type="text"] {
+    width: 53%;
+}
 
-    /*Hide Arrows on Input Fields*/
-    input::-webkit-outer-spin-button,
-    input::-webkit-inner-spin-button {
+#controlPanel button {
+    height: 2em;
+    width: 2em;
+}
+
+.ingredient input[name="closeButton"] {
+    float: right;
+}
+
+.ingredient legend {
+    color: grey;
+    line-height: 1.5em;
+}
+
+
+/* Report table for ingredients */
+
+.ingredient-report {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.ingredient-report td,
+.ingredient-report th {
+    border: 1px solid lightgrey;
+    padding: .3em;
+    text-align: center;
+    font-weight: normal;
+    font-size: 1em;
+}
+
+
+/*Label and Report Table on the same row*/
+
+.divided label {
+    margin: 0em 0.5em 0.5em 0em;
+}
+
+.divided {
+    border-bottom: none;
+}
+
+
+/* Pieces number buttons (+ -) */
+
+.divided label * {
+    display: inline;
+}
+
+
+/*invalid data was inserted by user*/
+
+.invalidInput {
+    background: rgb(206, 43, 43);
+    color: white;
+}
+
+
+/*Hide Arrows on Input Fields*/
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
-    }
+}
 
-    /* Firefox */
-    input[type=number] {
-        -moz-appearance: textfield;
-    }
-    
+
+/* Firefox */
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+
 /******************/
 
+
 /* Bottom bar (controls container) */
-#controlPanel{
+
+#controlPanel {
     text-align: center;
     position: fixed;
     bottom: 0;
@@ -129,38 +156,46 @@ body>h1>a{
     background-color: #ECECEC;
     border-top: 1px solid black;
 }
-#controlPanel *{
+
+#controlPanel * {
     margin: .2em 0 .2em 0;
     display: inline-block;
 }
 
-.hiddenIngredient{
+.hiddenIngredient {
     display: none;
 }
 
-#recipeView{
+#recipeView {
     padding: 1em 0.25em 1em 0.25em;
 }
 
-#recipeView p{
+#recipeView p {
     text-align: center;
     color: #546e7a;
     margin: 1em;
 }
 
-.recipe_with_view{
-    display: none !IMPORTANT;
+#recipeView .ingredient {
+    border: 4px solid #7792BC;
 }
 
-.hidden_recipe_view{
-    display: none !IMPORTANT;
+.recipe_with_view {
+    position: fixed;
+    left: -10000%;
 }
 
-#recipeView .ingredient{
-    margin:auto;
+.hidden_recipe_view {
+    position: fixed;
+    top: -200%;
 }
 
-.calcBarBtn, .calcBtn{
+#recipeView .ingredient {
+    margin: auto;
+}
+
+.calcBarBtn,
+.calcBtn {
     width: 2em;
     background-repeat: no-repeat;
     background-position: center;
@@ -168,43 +203,51 @@ body>h1>a{
     color: #00000000;
 }
 
-.non_editable{
-	border:none;
+.non_editable {
+    border: none;
 }
 
-.non_editable:read-only{
-	background-color:white;
-	color:black;
+.non_editable:read-only {
+    background-color: white;
+    color: black;
     outline: none;
 }
 
-.showBtn{
-    background-image: url(../img/icons/up.svg);
+.showBtn {
+    background-image: url(../img/icons/eye.svg);
 }
-.loadBtn{
+
+.loadBtn {
     background-image: url(../img/icons/upload.svg);
 }
-.saveBtn{
-    background-image: url(../img/icons/save.svg);    
+
+.saveBtn {
+    background-image: url(../img/icons/save.svg);
 }
-.resetBtn{
+
+.resetBtn {
     background-image: url(../img/icons/delete.svg);
 }
-.addBtn{
+
+.addBtn {
     background-image: url(../img/icons/add.svg);
 }
-.closeBtn{
+
+.closeBtn {
     background-image: url(../img/icons/close.svg);
 }
 
+
 /*Select Box for Ingredient and Recipe Selection*/
-select{
-    margin: 1em;
-    border-radius: 3em;
-    padding: 1em;
-    outline: none;
+
+select {
+    margin: .5em;
+    padding: .5em;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 1px 2px #00000030;
 }
 
-select:click{
+select:click {
     font-size: 5em;
 }

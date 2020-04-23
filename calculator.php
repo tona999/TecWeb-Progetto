@@ -7,7 +7,7 @@ $html->setMeta(
     '<script src="js/Ingredient.js"></script>'.
     '<script src="js/MathUtilities.js"></script>'.
     '<script src="js/Recipe.js"></script>'.
-    '<link rel="stylesheet" type="text/css" href="styles/calculator.css">');
+    '<link rel="stylesheet" type="text/css" href="styles/calculator.css" media="screen">');
     $html->noFooter();
 
 if (isset($_SESSION["userId"]))
@@ -20,7 +20,7 @@ if (isset($_SESSION["userId"]))
 }
 else
 {
-    $html->body = "<h1>PLEASE <a href='register.php'>REGISTER</a> AND <a href='login.php'>LOG IN</a> TO USE OUR CALCULATOR.</h1>";
+    $html->body = "<h1>Please <a href='register.php'>register</a> or <a href='login.php'>log in</a> to use the calculator.</h1>";
 }
 
 $html->printHtml();
