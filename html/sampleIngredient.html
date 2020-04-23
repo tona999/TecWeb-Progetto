@@ -6,9 +6,10 @@
     </fieldset>
 
     <fieldset class="carbs">
+        <legend>Nutrition Facts</legend>
         <label>
-			<input type="number" min="0" name="sampleGrams" value="100" placeholder="100"/>	
-			g of product
+			<input type="number" maxlength="4" min="0" name="sampleGrams" value="100" placeholder="100"/>	
+			g contains
 		</label>
         <label> 
 			<input type="number" min="0"  name="sampleCarbs" placeholder="0"/>
@@ -17,14 +18,15 @@
     </fieldset>
 
     <fieldset class="bread-units">
-        <label> 
-			<input type="number"  min="0" name="totalGrams" placeholder="0"/>
-			g of product
+        <legend>Grammage/Insulin Units</legend>
+        <label>
+			<input type="number" maxlength="4"  min="0" name="totalGrams" placeholder="0"/>
+			g require
 		</label>
 
         <label> 
-			<input type="number" min="0" name="totalBreadUnits" placeholder="0"/>
-			bread units
+			<input type="number" maxlength="4" min="0" name="totalBreadUnits" placeholder="0"/>
+			insulin units
 		</label>
     </fieldset>
 
@@ -39,17 +41,17 @@
             <input class="action-btn" type="button" value="+" name="plusButton" />
         </div>
 
-        <table class="ingredient-report">
+        <table summary="Values per piece of product" class="ingredient-report">
             <caption>Values per piece of product</caption>
             <tr>
                 <th>grams</th>
-                <th>bread units</th>
+                <th>insulin units</th>
                 <th>carbs</th>
             </tr>
             <tr>
-                <td id="gramsPP">0</td>
-                <td id="breadUnitsPP">0</td>
-                <td id="carbsPP">0</td>
+                <td class="gramsPP" name="gramsPP">0</td>
+                <td class="breadUnitsPP" name="breadUnitsPP">0</td>
+                <td class="carbsPP" name="carbsPP">0</td>
             </tr>
         </table>
     </fieldset>
