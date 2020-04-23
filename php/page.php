@@ -65,10 +65,24 @@ class Page{
                     $this->menu
                 );
                 break;
-            case "calc":
+            case "calculator":
                 $this->menu = str_replace(
-                    '<li><a href="calculator.php"><img src="img/icons/tool.svg" alt=""/>CALCULATOR</a></li>',
-                    '<li class="disabled"><a><img src="img/icons/tool.svg" alt=""/>CALCULATOR</a></li>',
+                    '<li><a href="calculator.php"><img src="img/icons/tool.svg" alt=""/>CALC</a></li>',
+                    '<li class="disabled"><a><img src="img/icons/tool.svg" alt=""/>CALC</a></li>',
+                    $this->menu
+                );
+                break;
+            case "your recipes":
+                $this->menu = str_replace(
+                    '<li><a href="recipes.php">RECIPES</a></li>',
+                    '<li class="disabled"><a>RECIPES</a></li>',
+                    $this->menu
+                );
+                break;
+            case "your ingredients":
+                $this->menu = str_replace(
+                    '<li><a href="ingredients.php">INGREDIENTS</a></li>',
+                    '<li class="disabled"><a>INGREDIENTS</a></li>',
                     $this->menu
                 );
                 break;
@@ -99,5 +113,3 @@ class Page{
             $this->footer;
     }
 }
-
-?>
