@@ -18,11 +18,10 @@ function start() {
     currentRecipe = new Recipe();
     currentRecipe.connect(document.getElementById("totalRecipeGrams"), document.getElementById("totalRecipeCarbs"), rv);
 
-    //Add Ingredient To Receipt Event, Save Receipt Event, View Receipt Event, Reset Recipe Ingredient
+    //Add Ingredient To Receipt Event, Save Receipt Event, View Receipt Event
     document.getElementById("addNewIngredientBtn").addEventListener('click', function() { currentRecipe.addEmptyIngredient(); });
     document.getElementById("showRecipeViewBtn").addEventListener('click', switchRecipeView);
     document.getElementById("saveRecipeBtn").addEventListener('click', saveCurrentRecipe);
-    document.getElementById("resetRecipeBtn").addEventListener('click', function() { currentRecipe.reset(); });
 
     //Load Ingredients For In-Calculator Selection
     ingSel = document.getElementById("ingredientsSelect");

@@ -182,7 +182,7 @@ input[type=number] {
 
 .recipe_with_view {
     position: fixed;
-    top: -200%;
+    left: -10000%;
 }
 
 .hidden_recipe_view {

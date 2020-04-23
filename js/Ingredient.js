@@ -42,9 +42,9 @@ class Ingredient {
         this.piecesNumberRef = htmlIng.querySelector("[name='piecesNumber']");
         this.plusButtonRef = htmlIng.querySelector("[name='plusButton']");
         this.minusButtonRef = htmlIng.querySelector("[name='minusButton']");
-        this.gramsPPRef = htmlIng.querySelector("[id='gramsPP']");
-        this.breadUnitsPPRef = htmlIng.querySelector("[id='breadUnitsPP']");
-        this.carbsPPRef = htmlIng.querySelector("[id='carbsPP']");
+        this.gramsPPRef = htmlIng.querySelector(".gramsPP");
+        this.breadUnitsPPRef = htmlIng.querySelector(".breadUnitsPP");
+        this.carbsPPRef = htmlIng.querySelector(".carbsPP");
         this.warningSpan = htmlIng.querySelector(".warningSpan");
 
         var t = this; //t is this ingredient object, while "this" in the inline function is the input element that called the event, so this.value is the value of that input element
