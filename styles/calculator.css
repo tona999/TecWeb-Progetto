@@ -120,7 +120,7 @@ input[type="text"] {
 /*invalid data was inserted by user*/
 
 .invalidInput {
-    background: red;
+    background: rgb(206, 43, 43);
     color: white;
 }
 
@@ -174,6 +174,10 @@ input[type=number] {
     text-align: center;
     color: #546e7a;
     margin: 1em;
+}
+
+#recipeView .ingredient {
+    border: 4px solid #7792BC;
 }
 
 .recipe_with_view {

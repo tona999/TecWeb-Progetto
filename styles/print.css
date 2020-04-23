@@ -54,7 +54,9 @@ fieldset legend {
 footer {
     text-align: center;
     margin-top: 12pt;
+    padding-top: 6pt;
     font-style: italic;
+    border-top: 1pt dotted black;
 }
 
 td,
@@ -84,4 +86,9 @@ h2 {
 
 #aLogin {
     display: none;
+}
+
+#tutorial img {
+    margin: 2pt;
+    max-width: 400pt;
 }
