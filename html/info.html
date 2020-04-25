@@ -1,86 +1,106 @@
-<section id="info">
-    <!-- info -->
-</section>
+<main>
+    <section id="tutorial">
+        <h2> Calculator Instructions</h2>
+        <div>
+            In this page we will describe how our calculator works. To do so, we are going to save a recipe for an Apple Pie, step by step!<br/> This is the list of ingredients we are going to use:
+            <table>
+                <tr>
+                    <th>Ingredient</th>
+                    <th>Quantity</th>
+                </tr>
+                <tr>
+                    <td>Apples (peeled, cored and sliced)</td>
+                    <td>440g</td>
+                </tr>
+                <tr>
+                    <td>Brown Sugar</td>
+                    <td>50g</td>
+                </tr>
+                <tr>
+                    <td>All-purpose Flour</td>
+                    <td>1/4 cup (32g)</td>
+                </tr>
+                <tr>
+                    <td>Ground Nutmeg</td>
+                    <td>20g</td>
+                </tr>
+                <tr>
+                    <td>store-bought Pie Crusts</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Unsalted Butter</td>
+                    <td>1 tablespoon (15g)</td>
+                </tr>
+                <tr>
+                    <td>Eggs</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>Milk</td>
+                    <td>1 tablespoon</td>
+                </tr>
+            </table>
+        </div>
 
-<section id="tutorial">
-<h1> Calculator Instructions</h1>
-<p>
-In this section we will describe how our calculator works.
-To do so, we are going to save a recipe for an Apple Pie, step by step!</br>
-This is the list of ingredients we are going to use:
-</p>
-<table>
-	<tr><th>Ingredient</th><th>Quantity</th></tr>
-	<tr><td>Apples (peeled, cored and sliced)</td><td>440g</td></tr>
-	<tr><td>Brown Sugar</td><td>50g</td></tr>
-	<tr><td>All-purpose Flour</td><td>1/4 cup (32g)</td></tr>
-	<tr><td>Ground Nutmeg</td><td>20g</td></tr>
-	<tr><td>store-bought Pie Crusts</td><td>2</td></tr>
-	<tr><td>Unsalted Butter</td><td>1 tablespoon (15g)</td></tr>
-	<tr><td>Eggs</td><td>1</td></tr>
-	<tr><td>Milk</td><td>1 tablespoon</td></tr>
-</table>
-<p>
-First of all, head over to <i><a href="ingredients.php">Your Ingredients</a></i> section and save the new ingredients by filling in the necessary information and clicking the <i>Save New Ingredient</i> button.</br>
-For each ingredient insert its name and the quantity of carbs in 100g of product. You can find this information in the nutritional table on the product’s package. The value we are interested in is the quantity of cabohydrates (<i>carbs</i> for short), and <b>not</b> the quantity of sugar[IMAGE].</br> If you fail finding this information, or if the product does not come in a package, try looking it up on <a href="https://www.calorieking.com/us/en/">Calorie King</a> or simply <a href="http://www.google.com">google it</a>.</br><img src="img/instructions/2.png"/></br>
-For example, all-purpose flour contains 6g of carbs in 100g of flour, so saving the new ingredient will look like this:</br><img src="img/instructions/3.png"/></br>
-On the other hand, unsalted butter has approximately 0.1g of carbs in 100g of product. In this case butter is irrelevant for our calculations but we are going to insert it anyway for the sake of completeness.</br>
-<i>Your Ingredients</i> section should now look like this:</br><img src="img/instructions/4.png"/></br>
+        <div id="tut_ingredients">
+            <h3>Ingredients</h3>
+            First of all, head over to <em><a href="ingredients.php">Your Ingredients</a></em> section and save the new ingredients by filling in the necessary information and clicking the <em>Save New Ingredient</em> button.<br/> For each ingredient
+            insert its name and the quantity of carbs in 100g of product. You can find this information in the nutritional table on the product’s package. The value we are interested in is the quantity of cabohydrates (<em>carbs</em> for short), and <strong>not</strong>            the quantity of sugar[IMAGE].<br/> If you fail finding this information, or if the product does not come in a package, try looking it up on <a href="https://www.calorieking.com/us/en/">Calorie King</a> or simply
+            <a href="http://www.google.com">google it</a>.<img src="img/instructions/2.png" /> For example, all-purpose flour contains 6g of carbs in 100g of flour, so saving the new ingredient will look like this:<img src="img/instructions/3.png" />            On the other hand, unsalted butter has approximately 0.1g of carbs in 100g of product. In this case butter is irrelevant for our calculations but we are going to insert it anyway for the sake of completeness.
+            <em>Your Ingredients</em> section should now look like this:<img src="img/instructions/4.png" /> After you are done saving the ingredients we can proceed making the recipe. To do so, open the Calculator either by clicking the <em>Calculator</em>            button or the <em>Make a New Recipe</em> button in <em>Your Recipes</em> section.
+        </div>
+        <div id="tut_calc">
+            <h3>Calculator</h3>
+            Initially the recipe in the Calculator is empty and we need to <strong>add the ingredients</strong>.<br/> In the Calculator window you can see a dropdown list. Click on the list and <strong>pick the ingredients</strong> you just created, one
+            by one. Notice that a new card appears for each ingredient, like so: <img src="img/instructions/5.png" /> Each card is composed of four sections. The first section contains the <strong>name of the ingredient.</strong>
+        </div>
+        <div id="tut_card_desc">
+            <h3>Fields</h3>
+            The Nutrition Facts section contains the quantity of <strong>carbs in 100g of product</strong>, which is the information you inserted before. These two sections are already filled out when you insert the ingredient from the dropdown list.<img
+                src="img/instructions/6.png" /> The Grammage section is the most important one. In the Grams field insert the <strong>quantity of ingredient</strong> needed for your recipe. For example, we need 840g of apples for our Apple Pie, so we will
+            insert the number 840 in the Grams field. Note that the Insulin Units field, on the right, now contains a value. This value represents the <strong>of insulin required</strong> for 840g of apples. This is perhaps the value you will care about
+            the most.<img src="img/instructions/7.png" /> The last section allows you to cut your ingredient into a number of pieces. Press the plus button to increase the number of pieces or directly write in the number in the pieces field. Note that
+            the table now contains three values:
+            <ul>
+                <li>carbs: the quantity of carbs of one piece measured in grams;</li>
+                <li>grams: the weight of one piece measured in grams;</li>
+                <li>units: the insulin units needed for one piece.</li>
+            </ul>
+            This sections is not particularly interesting at the moment, but it will be soon!<img src="img/instructions/8.png" /> Note that liquids, for example milk, are measured in <em>milliliters</em> and not in <em>grams</em>, but don't worry, it
+            is the proportion between the Nutritional Facts data that counts, and not the unit of measurement, therefore the calculator can be used for liquids as well!<br/> After
+        </div>
 
-After you are done saving the ingredients we can proceed making the recipe. To do so, open the Calculator either by clicking the <i>Calculator</i> button or the <i>Make a New Recipe</i> button in <i>Your Recipes</i> section.</br>
-Initially the recipe in the Calculator is empty and we need to add the ingredients.</br>
-In the Calculator window you can see a dropdown list. Click on the list and pick the ingredients you just created, one by one. Notice that a new form appears for each ingredient, like so: </br><img src="img/instructions/5.png"/></br>
-
-
-Each form is composed of four sections.
-The first section contains the name of the ingredient.</br>
-The Nutrition Facts section contains the quantity of carbs in 100g of product, which is the information you inserted before. These two sections are already filled out when you insert the ingredient from the dropdown list.</br><img src="img/instructions/6.png"/></br>
-The Grammage section is the most important one. In the Grams field insert the quantity of ingredient needed for your recipe. For example, we need 840g of apples for our Apple Pie, so we will insert the number 840 in the Grams field. Note that the Insulin Units field, on the right, now contains a value. This value represents the units of insulin required for 840g of apples. This is perhaps the value you will care about the most.</br><img src="img/instructions/7.png"/></br>
-
-The last section allows you to cut your ingredient into a number of pieces. Press the plus button to increase the number of pieces or directly write in the number in the pieces field. Note that the table now contains three values:
-<ul>
-	<li>carbs: the quantity of carbs of one piece measured in grams;</li>
-	<li>grams: the weight of one piece measured in grams;</li>
-	<li>units: the insulin units needed for one piece.</li>
-</ul>
-This sections is not particularly interesting at the moment, but it will be soon!</br><img src="img/instructions/8.png"/></br>
-
-Note that liquids, for example milk, are measured in <i>milliliters</i> and not in <i>grams</i>, but don't worry, it is the proportion between the Nutritional Facts data that counts, and not the unit of measurement, therefore the calculator can be used for liquids as well!</br>
-
-After Inserting all the ingredients your calculator should look like this:</br><img src="img/instructions/9.png"/></br>
-
-Now that we have inserted all the ingredients in the Calculator it’s time to combine them together! On the bottom of the page you can see the calculator’s control panel. Find the <i>Combine</i> button and click it. A new ingredient-like form will be shown.
-This form describes your recipe as a homogeneous combination of ingredients or, simply put, it describes the recipe as a single ingredient/product.
-
-We still haven’t saved our recipe though. To do so, insert the name “Grandma’s Apple Pie” in the <i>Recipe Name</i> field of the form and click the <i>Save</i> button.
-</br><img src="img/instructions/10.png"/></br>
-The recipe has now been saved and can be found in <i><a href="recipes.php">Your Recipes</a></i> section.</br>
-
-Now let's look closely at the Recipe form that was displayed in the calculator.</br>
-In the Nutrition Facts section the Calculator has automatically calculated the quantity of carbs per 100g of Apple Pie, based on the ingredients data we inserted before.</br>
-
-The Grammage section is the most important part of the whole Calculator. Here you can calculate the dose of insulin units you need to inject for eating a certain quantity of Apple Pie, and vice versa. Also, the Grammage field determines how much of that particular ingredient you are going to use for your recipe.</br>
-Let’s say you plan on eating 50g of Apple Pie. Insert 50 in the Grammage field and note that the Insulin Units field now contains 1.51. This means that for 50 grams of Apple Pie you need to inject 1.51 units of insulin. </br><img src="img/instructions/11.png"/></br>
-A unit and a half is not very useful though, as you can not inject half a unit. In this case, you could for example decide to eat the equivalent of 2 insulin units.
-No problem, just insert the number of insulin units you plan on injecting in the Insulin Units field. The Grams field will then tell you how much Apple Pie to eat for that particular dose of insulin.</br>
-Insert the number 2 in the Insulin Units field and note that the Grammage field contains the number 66. This means that if you inject 2 insulin units you need to eat 66g of Apple Pie.
-Cool, right?</br><img src="img/instructions/12.png"/></br>
-
-You can also apply the same procedure if you follow a strict diet and the quantity of food you eat depends on a fixed dose of insulin.</br> 
-
-Last but not least, the last section allows you to cut the Apple Pie into pieces.</br>
-
-Before we do that though, we need to tell the Calculator how much of the Apple Pie we actually have, exactly as we did before with the ingredients. Insert the grammage of your Apple Pie in the Grammage field. If you haven't already eaten any  of the Apple Pie then the grammage is equivalent to the sum of the ingredients grammages. This sum has already been automatically calculated in the Nutrition Facts section of the Recipe form.
-If you haven't eaten any of the Apple Pie yet, insert 782 in the Grammage Field in the Grammage section, otherwise weigh how much of the apple cake you have left and insert that value in the Grammage Field. </br><img src="img/instructions/14.png"/></br>
-
-One way to use the last section is to determine the number of pieces you need to cut your cake into in order to have a certain dose of insulin for each piece. Let’s say you want every piece of cake to require approximately 2 insulin units. Click on the plus sign to increase the number of pieces until every piece requires approximately 2 insulin units. In our case, you would need to cut the Apple Pie into 12 equivalent pieces in order for each piece to require 2 insuilin units approximately. Moreover, each piece should weight approximately 65 grams and has approximately 24 grams of carbs in it.
-</br><img src="img/instructions/15.png"/></br>
-Another way to use this section is to calculate the information for every piece given the number of pieces you have already cut your cake into.</br>
-
-Please note that for the Calculator to work properly you need to make homogeneous recipes, which means that all the ingredients need to be evenly distributed in the recipe. For example, a piece of cake with an apple on top of it will have more carbs than a piece of Pie without an apple, which is not what we want.</br>
-
-You can edit, save and delete your recipes at any time from <i><a href="recipes.php">Your Recipes</a></i> section.</br>
-
-Please note that the calculations are approximated. Use with caution.
-</p>
-</section>
+        <div id="tut_recipe">
+            <h3>Recipe</h3>
+            Inserting all the ingredients your calculator should look like this:<img src="img/instructions/9.png" /> Now that we have inserted all the ingredients in the Calculator it’s time to combine them together! On the bottom of the page you can
+            see the <strong>calculator’s control panel</strong>. Find the <em>Combine</em> button and click it. A new ingredient-like card will be shown. This card describes your recipe as a homogeneous combination of ingredients or, simply put, it describes
+            the recipe as a single ingredient/product. We still haven’t saved our recipe though. To do so, insert the name “Grandma’s Apple Pie” in the <em>Recipe Name</em> field of the card and click the <em>Save</em> button.
+            <img src="img/instructions/10.png" /> The recipe has now been saved and can be found in <em><a href="recipes.php">Your Recipes</a></em> section.
+        </div>
+        <div id="tut_recipe_desc">
+            <h3>Recipe fields</h3>
+            Now let's look closely at the Recipe card that was displayed in the calculator.<br/> In the Nutrition Facts section the Calculator has automatically calculated the quantity of carbs per 100g of Apple Pie, based on the ingredients data we inserted
+            before. <br/> The Grammage section is the most important part of the whole Calculator. Here you can <strong> calculate the dose of insulin units</strong> you need to inject for eating a certain quantity of Apple Pie, and <strong> vice versa</strong>.
+            Also, the Grammage field determines how much of that particular ingredient you are going to use for your recipe.<br/> Let’s say you plan on eating 50g of Apple Pie. Insert 50 in the Grammage field and note that the Insulin Units field now
+            contains 1.51. This means that for 50 grams of Apple Pie you need to inject 1.51 units of insulin. <img src="img/instructions/11.png" /> A unit and a half is not very useful though, as you can not inject half a unit. In this case, you could
+            for example decide to eat the equivalent of 2 insulin units. No problem, just insert the number of insulin units you plan on injecting in the Insulin Units field. The Grams field will then tell you how much Apple Pie to eat for that particular
+            dose of insulin. Insert the number 2 in the Insulin Units field and note that the Grammage field contains the number 66. This means that if you inject 2 insulin units you need to eat 66g of Apple Pie. Cool, right?<img src="img/instructions/12.png"
+            /> You can also apply the same procedure if you follow a strict diet and the quantity of food you eat depends on a fixed dose of insulin.
+        </div>
+        <div id="tut_pieces">
+            <h3>Pieces number</h3>
+            The last section allows you to cut the Apple Pie into pieces. Before we do that though, we need to tell the Calculator how much of the Apple Pie we actually have, exactly as we did before with the ingredients. Insert the grammage of your Apple Pie in
+            the Grammage field. If you haven't already eaten any of the Apple Pie then the grammage is equivalent to the sum of the ingredients grammages. This sum has already been automatically calculated in the Nutrition Facts section of the Recipe
+            card. If you haven't eaten any of the Apple Pie yet, insert 782 in the Grammage Field in the Grammage section, otherwise weigh how much of the apple cake you have left and insert that value in the Grammage Field. <img src="img/instructions/14.png"
+            /> One way to use the last section is to <strong> determine the number of pieces you need to cut your cake into</strong> in order to have a certain dose of <strong>insulin for each piece</strong>. Let’s say you want every piece of cake to
+            require approximately 2 insulin units. Click on the plus sign to increase the number of pieces until every piece requires approximately 2 insulin units. In our case, you would need to cut the Apple Pie into 12 equivalent pieces in order for
+            each piece to require 2 insuilin units approximately. Moreover, each piece should weight approximately 65 grams and has approximately 24 grams of carbs in it.
+            <img src="img/instructions/15.png" /> Another way to use this section is to <strong>calculate the information for every piece</strong> given the number of pieces you have already cut your cake into. Please note that for the Calculator to work
+            properly you need to make homogeneous recipes, which means that all the ingredients need to be evenly distributed in the recipe. For example, a piece of cake with an apple on top of it will have more carbs than a piece of Pie without an apple,
+            which is not what we want. You can edit, save and delete your recipes at any time from <em><a href="recipes.php">Your Recipes</a></em> section.
+            <br/>
+            <strong>Please note that the calculations are approximated. Use with caution!</strong>
+        </div>
+    </section>
+</main>
