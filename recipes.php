@@ -60,6 +60,5 @@ foreach ($grouped as $recipe){
 $html->body = str_replace("<_RECIPES_LIST/>", $recipesList, $html->body);
   
 $html->header = str_replace('<body>','<body onload="start();">',$html->header);
-$html->toHtml5();
 $html->printHtml();
 ?>
