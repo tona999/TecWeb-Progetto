@@ -20,7 +20,7 @@ h3 {
     margin-left: 1em;
 }
 
-div {
+#tutorial div {
     margin: 2em .5em;
     padding: 1em;
     height: max-content;
@@ -43,10 +43,10 @@ th {
 }
 
 ul {
-    margin: 1em;
+    list-style-position: inside;
 }
 
-section {
+#tutorial {
     max-width: max-content;
     margin: auto;
 }

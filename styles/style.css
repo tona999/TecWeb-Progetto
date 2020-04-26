@@ -22,19 +22,19 @@ h1 {
 
 /* Header */
 
-header {
+.header {
     padding: .5em;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-header h1 img {
+.header h1 img {
     height: 1.3em;
     vertical-align: middle;
 }
 
-header a {
+.header a {
     text-decoration: none;
     color: #7792BC;
 }
@@ -46,19 +46,19 @@ h3 {
 
 /* Menu */
 
-menu {
+.menu {
     background-color: #7792BC;
     list-style: none;
     padding: .5em;
 }
 
-menu li,
+.menu li,
 #aLogin {
     font-size: .9em;
     display: inline-block;
 }
 
-menu a,
+.menu a,
 #aLogin {
     display: inline-block;
     text-decoration: none;
@@ -66,20 +66,20 @@ menu a,
     padding: .5em;
 }
 
-.disabled * {
+.menu .disabled * {
     color: rgba(230, 244, 241, 0.726);
 }
 
-.disabled:hover {
+.menu .disabled:hover {
     background-color: initial;
     box-shadow: initial;
 }
 
-menu img {
+.menu img {
     display: none;
 }
 
-menu li:hover {
+.menu li:hover {
     background-color: #F2FAFF;
     box-shadow: 0 1px 4px #00000030;
     border-radius: 4px;
@@ -112,8 +112,8 @@ menu li:hover {
 
 /* Main */
 
-main p,
-main h2 {
+.main p,
+.main h2 {
     margin: 1em;
 }
 
@@ -147,6 +147,10 @@ form {
     color: red;
 }
 
+#login fieldset {
+    border: none;
+}
+
 input {
     text-align: center;
     height: 2em;
@@ -168,7 +172,7 @@ button:hover {
     cursor: pointer;
 }
 
-footer {
+.footer {
     clear: both;
     font-size: .7em;
     background-color: #CF7B56;
@@ -177,7 +181,7 @@ footer {
     text-align: center;
 }
 
-footer * {
+.footer * {
     white-space: nowrap;
 }
 

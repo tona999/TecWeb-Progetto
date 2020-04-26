@@ -3,10 +3,10 @@ require_once("php/page.php");
 $html = new Page();
 $html->setTitle("Your Ingredients");
 $html->setMeta(
-    "<link rel='stylesheet' type='text/css' href='styles/ingredient-description.css' media='screen'>".
-    "<link rel='stylesheet' type='text/css' href='styles/buttons.css' media='screen'>".
-    "<script src='js/IngredientDescription.js'></script>".
-    "<script src='js/Ingredients.js'></script>");
+    "<link rel='stylesheet' type='text/css' href='styles/ingredient-description.css' media='screen' />".
+    "<link rel='stylesheet' type='text/css' href='styles/buttons.css' media='screen' />".
+    "<script type='text/javascript' src='js/IngredientDescription.js'></script>".
+    "<script type='text/javascript' src='js/Ingredients.js'></script>");
 $html->setBodyPath("html/ingredients.html");
 
     require_once("php/connection.php");
@@ -36,5 +36,6 @@ $html->header = str_replace(
     '<body onload="start();">',
         $html->header);
         
+$html->toHtml5();
 $html->printHtml();
 ?>

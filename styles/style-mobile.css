@@ -1,21 +1,21 @@
-menu {
+.menu {
     float: none;
     width: 100%;
     padding: .5em 0;
     border-radius: 0;
 }
 
-menu {
+.menu {
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
 
-menu li {
+.menu li {
     text-align: center;
 }
 
-menu img {
+.menu img {
     display: block;
     height: 1.7em;
     width: 100%;
@@ -67,7 +67,7 @@ menu img {
     margin: .5em auto;
 }
 
-main {
+.main {
     float: none;
     width: 100%;
 }

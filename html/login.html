@@ -1,15 +1,17 @@
-<main>
+<div class="main">
     <!-- Contenuto specifico della pagina -->
     <form id="login" action="php/login.php" method="post">
-        <label>
-            E-mail:
-            <input type="text" name="email" id="email" required="required">
-        </label>
-        <label>
-            Password:
-            <input type="password" name="password" id="password" required="required">
-        </label>
-        <ERROR/>
-        <input type="submit" value="Login">
+        <fieldset>
+            <label>
+                E-mail:
+                <input type="text" name="email" id="email" />
+            </label>
+            <label>
+                Password:
+                <input type="password" name="password" id="password" />
+            </label>
+            <ERROR/>
+            <input type="submit" value="Login" />
+        </fieldset>
     </form>
-</main>
+</div>

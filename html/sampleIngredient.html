@@ -8,7 +8,7 @@
     <fieldset class="carbs">
         <legend>Nutrition Facts</legend>
         <label>
-			<input type="number" maxlength="4" min="0" name="sampleGrams" value="100" placeholder="100"/>	
+			<input type="number" min="0" name="sampleGrams" value="100" placeholder="100"/>	
 			g contains
 		</label>
         <label> 
@@ -20,12 +20,12 @@
     <fieldset class="bread-units">
         <legend>Grammage/Insulin Units</legend>
         <label>
-			<input type="number" maxlength="4"  min="0" name="totalGrams" placeholder="0"/>
+			<input type="number" min="0" name="totalGrams" placeholder="0"/>
 			g require
 		</label>
 
         <label> 
-			<input type="number" maxlength="4" min="0" name="totalBreadUnits" placeholder="0"/>
+			<input type="number" min="0" name="totalBreadUnits" placeholder="0"/>
 			insulin units
 		</label>
     </fieldset>
@@ -41,7 +41,7 @@
             <input class="action-btn" type="button" value="+" name="plusButton" />
         </div>
 
-        <table summary="Values per piece of product" class="ingredient-report">
+        <table class="ingredient-report">
             <caption>Values per piece of product</caption>
             <tr>
                 <th>grams</th>
