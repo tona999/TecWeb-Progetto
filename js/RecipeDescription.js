@@ -3,7 +3,7 @@ class RecipeDescription{
 	connect(recDescHtml){
 		this.form = recDescHtml;
 		this.recipeId = recDescHtml.querySelector("[name='recipeId']").value;
-		this.recipeName = recDescHtml.querySelector("[name='recipeName']").innerHTML;
+		this.recipeName = recDescHtml.querySelector("[name='recipeName']").value;
 		this.removeBtn = recDescHtml.querySelector("input[name='removeBtn']");
 
 		var t = this;
