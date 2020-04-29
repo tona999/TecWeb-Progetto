@@ -235,3 +235,14 @@ button:hover {
 div.card{
     max-width: 50em;
 }
+
+.breadcrumb{
+    font-size: .8em;
+    padding: .5em 1em;
+    background-color: #3b5386;
+    color: white;
+}
+
+.breadcrumb .path{
+    color: white;
+}
