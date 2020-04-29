@@ -246,3 +246,15 @@ div.card{
 .breadcrumb .path{
     color: white;
 }
+
+#profile label{
+    width: max-content;
+    margin-left: auto;
+    box-sizing: border-box;
+    display: block;
+    padding: 1em;
+}
+
+#profile input{
+    margin-left: auto;
+}
