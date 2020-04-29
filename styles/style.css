@@ -12,7 +12,7 @@ body {
 }
 
 body.dark {
-    background-color: #7792BC;
+    background-color: #6886c5;
 }
 
 h1 {
@@ -36,7 +36,7 @@ h1 {
 
 .header a {
     text-decoration: none;
-    color: #7792BC;
+    color: #6886c5;
 }
 
 h3 {
@@ -47,7 +47,7 @@ h3 {
 /* Menu */
 
 .menu {
-    background-color: #7792BC;
+    background-color: #6886c5;
     list-style: none;
     padding: .5em;
 }
@@ -86,7 +86,7 @@ h3 {
 }
 
 #aLogin:hover {
-    background-color: #7792BC;
+    background-color: #6886c5;
     color: white;
     box-shadow: 0 1px 4px #00000030;
     border-radius: 4px;
@@ -111,22 +111,35 @@ h3 {
 
 
 /* Main */
+h2{
+    color: #6886c5;
+}
+
+.main{
+    width: max-content;
+    max-width: 100%;
+    margin: auto;
+}
 
 .main p,
 .main h2 {
     margin: 1em;
 }
 
+.main a{
+    color: #c06c84;
+}
+
 
 /* Login form */
 
-form {
+/*form {
     background-color: #fff;
     box-shadow: 0 1px 4px #00000030;
     border-radius: 8px;
     margin: 1em;
     padding: 1em;
-}
+}*/
 
 #login {
     width: max-content;
@@ -168,14 +181,16 @@ button {
 input[type="button"]:hover,
 input[type="submit"]:hover,
 button:hover {
-    background-color: #7792BC;
+    box-shadow: 0 2px 5px #00000050;
+    transform: translateY(-2px);
+    background-color: #6886c5;
     cursor: pointer;
 }
 
 .footer {
     clear: both;
     font-size: .7em;
-    background-color: #CF7B56;
+    background-color: #c06c84;
     color: white;
     padding: .5em;
     text-align: center;
@@ -206,4 +221,17 @@ button:hover {
 #warningSpan {
     line-height: 2em;
     color: red;
+}
+
+.card, form{
+    background-color: #fff;
+    margin: 2em .5em;
+    padding: 1em;
+    height: max-content;
+    border-radius: 8px;
+    box-shadow: 0 1px 10px rgba(83, 102, 133, 0.2);
+}
+
+div.card{
+    max-width: 50em;
 }

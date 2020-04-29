@@ -15,20 +15,6 @@
     width: 100%;
 }
 
-h3 {
-    color: #7792BC;
-    margin-left: 1em;
-}
-
-#tutorial div {
-    margin: 2em .5em;
-    padding: 1em;
-    height: max-content;
-    max-width: 50em;
-    border-radius: 8px;
-    box-shadow: 0 1px 10px rgba(83, 102, 133, 0.2);
-}
-
 table {
     border-collapse: collapse;
     margin: 1em;
@@ -44,9 +30,4 @@ th {
 
 ul {
     list-style-position: inside;
-}
-
-#tutorial {
-    max-width: max-content;
-    margin: auto;
 }

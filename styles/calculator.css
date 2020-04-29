@@ -60,7 +60,7 @@ input[type="number"] {
 
 input[type="button"] {
     min-width: 2em;
-    padding: 0.5em;
+    padding: 0 .5em;
 }
 
 input[type="text"] {
@@ -154,11 +154,13 @@ input[type=number] {
     left: 0;
     padding: .5em;
     background-color: #ECECEC;
-    border-top: 1px solid black;
+    border-top: 2px solid #6886c5;
+    box-shadow: 0 -2px 5px #00000030;
 }
 
-#controlPanel * {
-    margin: .2em 0 .2em 0;
+#controlPanel p, #controlPanel div {
+    margin-top: .2em;
+    margin-bottom: .2em;
     display: inline-block;
 }
 
@@ -177,7 +179,7 @@ input[type=number] {
 }
 
 #recipeView .ingredient {
-    border: 4px solid #7792BC;
+    border: 4px solid #6886c5;
 }
 
 .recipe_with_view {
@@ -201,6 +203,11 @@ input[type=number] {
     background-position: center;
     background-size: 1.3em;
     color: #00000000;
+    background-color: white;
+}
+
+.buttons{
+    margin-left: 1em;
 }
 
 .non_editable {
@@ -246,6 +253,7 @@ select {
     border: none;
     border-radius: 4px;
     box-shadow: 0 1px 2px #00000030;
+    cursor: pointer;
 }
 
 select:click {

@@ -52,6 +52,10 @@ fieldset legend {
     align-self: stretch;
 }
 
+#ingredientDescriptions form{
+    margin: 1em;
+}
+
 #ingredientDescriptions form fieldset>*,
 #insertForm>*,
 #insertForm fieldset>* {
@@ -91,6 +95,7 @@ th {
 }
 
 #recipesList form {
+    margin: 1em;
     flex-grow: 1;
     min-width: 30%;
     max-width: 40em;
