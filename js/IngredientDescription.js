@@ -139,12 +139,12 @@ class IngredientDescription{
 
 	switchEditToSave(){
 		this.editBtn.value="Save";
-		this.editBtn.className="saveBtn"
+		this.editBtn.className="btn saveBtn"
 	}
 
 	switchSaveToEdit(){
 		this.editBtn.value="Edit";
-		this.editBtn.className="editBtn"
+		this.editBtn.className="btn editBtn"
 	}
 
 	checkInputFormat()

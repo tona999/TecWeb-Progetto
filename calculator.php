@@ -20,7 +20,7 @@ if (isset($_SESSION["userId"]))
 }
 else
 {
-    $html->body = "<h2>Please <a href='login.php'><button>Log in</button></a> or <a href='registerPage.php'><button>Register</button></a> to use the calculator.</h2>";
+    $html->body = "<h2>Please <a href='login.php'><button class='btn'>Log in</button></a> or <a href='registerPage.php'><button class='btn'>Register</button></a> to use the calculator.</h2>";
 }
 
 $html->toHtml5();

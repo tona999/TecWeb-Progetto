@@ -41,7 +41,7 @@ class Page{
                 $this->header);
         }
         else{
-            $login_r = '<a id="aLogin" href="login.php">LOGIN</a>';
+            $login_r = '<a class="btn" id="aLogin" href="login.php">LOGIN</a>';
             $menu_r = "";
         }
         $this->header = str_replace("<LOGIN/>", $login_r, $this->header);
@@ -115,6 +115,17 @@ class Page{
                 // breadcrumb
                 $this->menu = str_replace('<_PATH/>',
                 '<a href="index.php" class="path"> Home</a> &gt; <span class="path"> Login </span>', 
+                $this->menu);
+                break;
+            case "profile":
+                $this->menu = str_replace(
+                    '<li><a href="profile.php">PROFILE</a></li>',
+                    '<li class="disabled"><a>PROFILE</a></li>',
+                    $this->menu
+                );
+                // breadcrumb
+                $this->menu = str_replace('<_PATH/>',
+                '<a href="index.php" class="path"> Home</a> &gt; <span class="path"> Profile </span>', 
                 $this->menu);
                 break;
             case "register":

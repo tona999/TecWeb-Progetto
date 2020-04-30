@@ -3,8 +3,7 @@ require_once("php/page.php");
 $html = new Page();
 $html->setTitle("Your Recipes");
 $html->setMeta(
-    "<link rel='stylesheet' type='text/css' href='styles/buttons.css' media='screen' />
-    <link rel='stylesheet' type='text/css' href='styles/ingredient-description.css' media='screen' />
+    "<link rel='stylesheet' type='text/css' href='styles/ingredient-description.css' media='screen' />
     <script type='text/javascript' src='js/Recipes.js'></script>
     <script type='text/javascript' src='js/RecipeDescription.js'></script>");
 $html->setBodyPath("html/recipes.html");

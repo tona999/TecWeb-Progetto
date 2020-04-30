@@ -29,6 +29,7 @@
     background-image: url(../img/icons/menu.svg);
     background-repeat: no-repeat;
     width: 2em;
+    height: 2em;
     border: none;
 }
 
@@ -76,4 +77,11 @@
 
 .main {
     float: none;
+}
+
+#tips{
+    position: relative;
+    text-align: left;
+    width: auto;
+    margin: 1em .5em;
 }

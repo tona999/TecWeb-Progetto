@@ -74,7 +74,6 @@ input[type="text"] {
  .ingredient input[name="closeButton"]{
     border-radius: 100px;
     float: right;
-    background-color: #c06c84;
     color: transparent;
     background-image: url(../img/icons/close.svg);
     width: 2em;
@@ -238,7 +237,7 @@ input[type=number] {
     background-image: url(../img/icons/upload.svg);
 }
 
-.saveBtn {
+#controlPanel .saveBtn {
     background-image: url(../img/icons/save.svg);
 }
 
