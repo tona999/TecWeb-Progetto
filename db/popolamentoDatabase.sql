@@ -34,19 +34,19 @@ INSERT INTO Recipe (Id, UserId, Name) VALUES
 (4, 3, 'Torta di mele'),
 (5, 4, 'Torta con i Pan Di Stelle');
 
-INSERT INTO Contains (RecipeId, IngredientId, GramsIngredient, Units, Pieces) VALUES
-(1, 1, 100, 1, 1),
-(1, 2, 50, 1, 1),
-(2, 3, 50, 1, 1),
-(2, 4, 50, 1, 1),
-(2, 5, 50, 1, 1),
-(3, 7, 50, 1, 1),
-(3, 8, 50, 1, 1),
-(3, 11, 50, 1, 1),
-(4, 12, 50, 1, 1),
-(4, 13, 50, 1, 1),
-(4, 14, 50, 1, 1),
-(5, 17, 50, 1, 1),
-(5, 18, 50, 1, 1),
-(5, 19, 50, 1, 1),
-(5, 20, 50, 1, 1);
+INSERT INTO Contains (RecipeId, IngredientId, GramsIngredient) VALUES
+(1, 1, 100),
+(1, 2, 50),
+(2, 3, 50),
+(2, 4, 50),
+(2, 5, 50),
+(3, 7, 50),
+(3, 8, 50),
+(3, 11, 50),
+(4, 12, 50),
+(4, 13, 50),
+(4, 14, 50),
+(5, 17, 50),
+(5, 18, 50),
+(5, 19, 50),
+(5, 20, 50);

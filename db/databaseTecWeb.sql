@@ -43,8 +43,6 @@ CREATE TABLE Contains(
   RecipeId INT NOT NULL,
   IngredientId INT NOT NULL,
   GramsIngredient INT NOT NULL,
-  Units DECIMAL(3,2) NOT NULL,
-  Pieces INT NOT NULL,
   PRIMARY KEY (RecipeId,IngredientId),
 
   CONSTRAINT fkContains1
