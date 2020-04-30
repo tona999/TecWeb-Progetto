@@ -1,22 +1,24 @@
 <div class="main">
-    <div class="card" id="profile">
+    <form id="profile" action="php/saveProfile.php" method="post">
         <h2>My Profile</h2>
-        <label>
-            Name
-            <input type="text" name="name" id="name" value="&name">
-        </label>
-        <label>
-            Surname
-            <input type="text" name="surname" id="surname" value="&surname">
-        </label>
-        <label>
-            Birth Date
-            <input type="date" name="birthdate" id="birthdate" value="&birthdate">
-        </label>
-        <label>
-            Email
-            <input type="email" name="email" id="email" value="&email">
-        </label>
-
-    </div>
+        <fieldset>
+            <label>
+                Name
+                <input type="text" name="name" id="name" value="&name">
+            </label>
+            <label>
+                Surname
+                <input type="text" name="surname" id="surname" value="&surname">
+            </label>
+            <label>
+                Birth Date
+                <input type="date" name="birthdate" id="birthdate" value="&birthdate">
+            </label>
+            <label>
+                Email
+                <input type="email" name="email" id="email" value="&email">
+            </label>
+            <input type="submit" value="SAVE">
+        </fieldset>
+    </form>
 </div>
