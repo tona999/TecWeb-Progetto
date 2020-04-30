@@ -71,8 +71,20 @@ input[type="text"] {
     width: 2em;
 }
 
-.ingredient input[name="closeButton"] {
+ .ingredient input[name="closeButton"]{
+    border-radius: 100px;
     float: right;
+    background-color: #c06c84;
+    color: transparent;
+    background-image: url(../img/icons/close.svg);
+    width: 2em;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 1.3em;
+}
+
+.ingredient input[name="closeButton"]:hover{
+    background-color: #6886c5;
 }
 
 .ingredient legend {
@@ -202,7 +214,6 @@ input[type=number] {
     background-position: center;
     background-size: 1.3em;
     color: #00000000;
-    background-color: white;
 }
 
 .buttons{

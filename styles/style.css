@@ -113,6 +113,7 @@ h3 {
 /* Main */
 h2{
     color: #6886c5;
+    margin: 1em;
 }
 
 .main{
@@ -121,8 +122,7 @@ h2{
     margin: auto;
 }
 
-.main p,
-.main h2 {
+.main p{
     margin: 1em;
 }
 
@@ -136,13 +136,14 @@ h2{
 #login label *, #profile label * {    
     display: block;
     width: 15em;
-    max-width: 1000%;
+    max-width: 100%;
     margin: 0 0 1em;
     text-align: start;
     padding: 0 .2em;
 }
 
-#login input[type="submit"], #profile input[type="submit"] {
+#login input[type="submit"], 
+#profile input[type="submit"] {
     display: block;
     padding: 0 1em;
     margin: auto;
@@ -155,7 +156,7 @@ h2{
 #login fieldset, #profile fieldset {
     width: max-content;
     border: none;
-    margin: auto;
+    margin: 1em auto;
 }
 
 input {
@@ -166,6 +167,7 @@ input {
 input[type="button"],
 input[type="submit"],
 button {
+    background-color: #c1cadb;
     padding: .5em;
     height: 2.5em;
     min-width: 2.5em;

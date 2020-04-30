@@ -117,6 +117,12 @@ class Page{
                 '<a href="index.php" class="path"> Home</a> &gt; <span class="path"> Login </span>', 
                 $this->menu);
                 break;
+            case "register":
+                // breadcrumb
+                $this->menu = str_replace('<_PATH/>',
+                '<a href="index.php" class="path"> Home</a> &gt; <span class="path"> Register </span>', 
+                $this->menu);
+                break;
         }
     }
 
