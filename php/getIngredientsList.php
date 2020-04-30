@@ -5,6 +5,7 @@
 	$q = "SELECT * FROM Ingredient WHERE UserId='{$_SESSION["userId"]}'";
     $res = $mysql->query($q);
 
+	$ings = array();
 	while($row = $res->fetch_assoc()){
 		$ing = new \stdClass();
 		$ing->id = $row['Id'];
