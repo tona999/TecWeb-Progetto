@@ -2,6 +2,7 @@
     font-family: sans-serif;
     margin: 0;
     padding: 0;
+    line-height: 1.5em;
 }
 
 body {
@@ -11,7 +12,7 @@ body {
 }
 
 body.dark {
-    background-color: #7792BC;
+    background-color: #6886c5;
 }
 
 h1 {
@@ -21,21 +22,21 @@ h1 {
 
 /* Header */
 
-header {
+.header {
     padding: .5em;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-header h1 img {
+.header h1 img {
     height: 1.3em;
     vertical-align: middle;
 }
 
-header a {
+.header a {
     text-decoration: none;
-    color: #7792BC;
+    color: #6886c5;
 }
 
 h3 {
@@ -45,47 +46,51 @@ h3 {
 
 /* Menu */
 
-menu {
-    background-color: #7792BC;
+.menu {
+    background-color: #6886c5;
     list-style: none;
     padding: .5em;
 }
 
-menu li,
+.menu li,
 #aLogin {
     font-size: .9em;
     display: inline-block;
 }
 
-menu a,
+.menu a,
 #aLogin {
     display: inline-block;
     text-decoration: none;
-    color: black;
+    color: white;
     padding: .5em;
 }
 
-.disabled * {
+.menu .disabled * {
     color: rgba(230, 244, 241, 0.726);
 }
 
-.disabled:hover {
+.menu .disabled:hover {
     background-color: initial;
     box-shadow: initial;
 }
 
-menu img {
+.menu img {
     display: none;
 }
 
-menu li:hover {
+.menu li:hover {
     background-color: #F2FAFF;
     box-shadow: 0 1px 4px #00000030;
     border-radius: 4px;
 }
 
+.menu :not(.disabled):hover a {
+    color: black;
+}
+
 #aLogin:hover {
-    background-color: #7792BC;
+    background-color: #6886c5;
     color: white;
     box-shadow: 0 1px 4px #00000030;
     border-radius: 4px;
@@ -110,22 +115,35 @@ menu li:hover {
 
 
 /* Main */
+h2{
+    color: #6886c5;
+}
 
-main p,
-main h2 {
+.main{
+    width: max-content;
+    max-width: 100%;
+    margin: auto;
+}
+
+.main p,
+.main h2 {
     margin: 1em;
+}
+
+.main a{
+    color: #c06c84;
 }
 
 
 /* Login form */
 
-form {
+/*form {
     background-color: #fff;
     box-shadow: 0 1px 4px #00000030;
     border-radius: 8px;
     margin: 1em;
     padding: 1em;
-}
+}*/
 
 #login {
     width: max-content;
@@ -146,6 +164,10 @@ form {
     color: red;
 }
 
+#login fieldset {
+    border: none;
+}
+
 input {
     text-align: center;
     height: 2em;
@@ -163,20 +185,22 @@ button {
 input[type="button"]:hover,
 input[type="submit"]:hover,
 button:hover {
-    background-color: #7792BC;
+    box-shadow: 0 2px 5px #00000050;
+    transform: translateY(-2px);
+    background-color: #6886c5;
     cursor: pointer;
 }
 
-footer {
+.footer {
     clear: both;
     font-size: .7em;
-    background-color: #CF7B56;
+    background-color: #c06c84;
     color: white;
     padding: .5em;
     text-align: center;
 }
 
-footer * {
+.footer * {
     white-space: nowrap;
 }
 
@@ -201,4 +225,28 @@ footer * {
 #warningSpan {
     line-height: 2em;
     color: red;
+}
+
+.card, form{
+    background-color: #fff;
+    margin: 2em .5em;
+    padding: 1em;
+    height: max-content;
+    border-radius: 8px;
+    box-shadow: 0 1px 10px rgba(83, 102, 133, 0.2);
+}
+
+div.card{
+    max-width: 50em;
+}
+
+.breadcrumb{
+    font-size: .8em;
+    padding: .5em 1em;
+    background-color: #3b5386;
+    color: white;
+}
+
+.breadcrumb .path{
+    color: white;
 }

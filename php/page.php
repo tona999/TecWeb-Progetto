@@ -30,14 +30,14 @@ class Page{
         if(isset($_SESSION["userId"])){
             $login_r = '<button id="hamburger" onclick="hideMenu();"></button>';    //hamburger button
             $menu_r = 
-                '<menu id="profileMenu" class="hidden">'."\n".  //profile menu (dark blue)
+                '<ul id="profileMenu" class="menu hidden">'."\n".  //profile menu (dark blue)
                 '   <li><a href="profile.php">PROFILE</a></li>'."\n".
                 '   <li><a href="ingredients.php">INGREDIENTS</a></li>'."\n".
                 '   <li><a href="recipes.php">RECIPES</a></li>'."\n".
                 '   <li><a href="php/logout.php">LOGOUT</a></li>'."\n".
-                '</menu>';
+                '</ul>';
             $this->header = str_replace('</head>',
-                "<script src='js/Hamburger.js'></script>\n</head>",     //import hamburger script before </head>
+                "<script type='text/javascript' src='js/Hamburger.js'></script>\n</head>",     //import hamburger script before </head>
                 $this->header);
         }
         else{
@@ -53,24 +53,36 @@ class Page{
         switch($entry){
             case "home":
                 $this->menu = str_replace( 
-                    '<li><a href="index.php"><img src="img/icons/home.svg" alt=""/>HOME</a></li>',
-                    '<li class="disabled"><a><img src="img/icons/home.svg" alt=""/>HOME</a></li>',
+                    '<li><a href="index.php"><img src="img/icons/home.svg" alt="" />HOME</a></li>',
+                    '<li class="disabled"><a><img src="img/icons/home.svg" alt="" />HOME</a></li>',
                     $this->menu
                 );
+                // breadcrumb
+                $this->menu = str_replace('<_PATH/>',
+                '<span class="path"> Home </span>', 
+                $this->menu);
                 break;
             case "info":
                 $this->menu = str_replace(
-                    '<li><a href="info.php"><img src="img/icons/info.svg" alt=""/>INFO</a></li>',
-                    '<li class="disabled"><a><img src="img/icons/info.svg" alt=""/>INFO</a></li>',
+                    '<li><a href="info.php"><img src="img/icons/info.svg" alt="" />INFO</a></li>',
+                    '<li class="disabled"><a><img src="img/icons/info.svg" alt="" />INFO</a></li>',
                     $this->menu
                 );
+                // breadcrumb
+                $this->menu = str_replace('<_PATH/>',
+                '<a href="index.php" class="path"> Home</a> &gt; <span class="path"> Info </span>', 
+                $this->menu);
                 break;
             case "calculator":
                 $this->menu = str_replace(
-                    '<li><a href="calculator.php"><img src="img/icons/tool.svg" alt=""/>CALC</a></li>',
-                    '<li class="disabled"><a><img src="img/icons/tool.svg" alt=""/>CALC</a></li>',
+                    '<li><a href="calculator.php"><img src="img/icons/tool.svg" alt="" />CALC</a></li>',
+                    '<li class="disabled"><a><img src="img/icons/tool.svg" alt="" />CALC</a></li>',
                     $this->menu
                 );
+                // breadcrumb
+                $this->menu = str_replace('<_PATH/>',
+                '<a href="index.php" class="path"> Home</a> &gt; <span class="path"> Calculator </span>', 
+                $this->menu);
                 break;
             case "your recipes":
                 $this->menu = str_replace(
@@ -78,6 +90,10 @@ class Page{
                     '<li class="disabled"><a>RECIPES</a></li>',
                     $this->menu
                 );
+                // breadcrumb
+                $this->menu = str_replace('<_PATH/>',
+                '<a href="index.php" class="path"> Home</a> &gt; <a href="profile.php" class="path"> Profile</a> &gt; <span class="path"> Recipes </span>', 
+                $this->menu);
                 break;
             case "your ingredients":
                 $this->menu = str_replace(
@@ -85,6 +101,10 @@ class Page{
                     '<li class="disabled"><a>INGREDIENTS</a></li>',
                     $this->menu
                 );
+                // breadcrumb
+                $this->menu = str_replace('<_PATH/>',
+                '<a href="index.php" class="path"> Home</a> &gt; <a href="profile.php" class="path"> Profile</a> &gt; <span class="path"> Ingredients </span>', 
+                $this->menu);
                 break;
             case "login":
                 $this->header = str_replace(
@@ -92,6 +112,10 @@ class Page{
                     '',
                     $this->header
                 );
+                // breadcrumb
+                $this->menu = str_replace('<_PATH/>',
+                '<a href="index.php" class="path"> Home</a> &gt; <span class="path"> Login </span>', 
+                $this->menu);
                 break;
         }
     }
@@ -103,6 +127,16 @@ class Page{
 
     public function noFooter(){
         $this->footer = "";
+    }
+
+    public function toHtml5(){ 
+        $this->header = str_replace(
+            '<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">', 
+            '<!DOCTYPE html>', 
+            $this->header);
     }
 
     /** print the whole page with echo function */

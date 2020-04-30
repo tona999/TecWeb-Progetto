@@ -3,10 +3,10 @@ require_once("php/page.php");
 $html = new Page();
 $html->setTitle("Calculator");
 $html->setMeta(
-    '<script src="js/Calculator.js"></script>'.
-    '<script src="js/Ingredient.js"></script>'.
-    '<script src="js/MathUtilities.js"></script>'.
-    '<script src="js/Recipe.js"></script>'.
+    '<script type="text/javascript" src="js/Calculator.js"></script>'.
+    '<script type="text/javascript" src="js/Ingredient.js"></script>'.
+    '<script type="text/javascript" src="js/MathUtilities.js"></script>'.
+    '<script type="text/javascript" src="js/Recipe.js"></script>'.
     '<link rel="stylesheet" type="text/css" href="styles/calculator.css" media="screen">');
     $html->noFooter();
 
@@ -22,6 +22,8 @@ else
 {
     $html->body = "<h1>Please <a href='register.php'>register</a> or <a href='login.php'>log in</a> to use the calculator.</h1>";
 }
+
+$html->toHtml5();
 
 $html->printHtml();
 ?>

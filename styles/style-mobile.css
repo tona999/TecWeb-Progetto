@@ -1,21 +1,21 @@
-menu {
+.menu {
     float: none;
     width: 100%;
     padding: .5em 0;
     border-radius: 0;
 }
 
-menu {
+.menu {
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
 
-menu li {
+.menu li {
     text-align: center;
 }
 
-menu img {
+.menu img {
     display: block;
     height: 1.7em;
     width: 100%;
@@ -32,13 +32,17 @@ menu img {
     border: none;
 }
 
+#hamburger:hover{
+    box-shadow: none;
+}
+
 .hidden {
     position: fixed;
     top: -100%;
 }
 
 #profileMenu {
-    background-color: rgb(87, 106, 136);
+    background-color:  #4866a5;
     padding: 0;
 }
 
@@ -47,6 +51,10 @@ menu img {
     padding: .9em;
     width: 100%;
     color: white;
+}
+
+#profileMenu a:hover{
+    color: black;
 }
 
 #profileMenu li {
@@ -58,7 +66,6 @@ menu img {
 
 #profileMenu li:hover {
     background-color: #f6f8facc;
-    color: #2F4858;
     font-weight: bold;
 }
 
@@ -67,7 +74,7 @@ menu img {
     margin: .5em auto;
 }
 
-main {
+.main {
     float: none;
     width: 100%;
 }

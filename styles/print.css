@@ -11,13 +11,13 @@ body {
     margin: 6pt;
 }
 
-header img {
+.header img {
     width: 20pt;
     margin-right: 12pt;
     vertical-align: middle;
 }
 
-menu {
+.menu {
     display: none;
 }
 
@@ -51,7 +51,7 @@ fieldset legend {
     display: none;
 }
 
-footer {
+.footer {
     text-align: center;
     margin-top: 12pt;
     padding-top: 6pt;
