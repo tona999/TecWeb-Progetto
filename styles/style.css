@@ -62,7 +62,7 @@ h3 {
 #aLogin {
     display: inline-block;
     text-decoration: none;
-    color: black;
+    color: white;
     padding: .5em;
 }
 
@@ -83,6 +83,10 @@ h3 {
     background-color: #F2FAFF;
     box-shadow: 0 1px 4px #00000030;
     border-radius: 4px;
+}
+
+.menu :not(.disabled):hover a {
+    color: black;
 }
 
 #aLogin:hover {
