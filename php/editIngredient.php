@@ -1,6 +1,5 @@
 <?php
 	require_once("connection.php");
-	
 	session_start();
 
 	$id = $_POST['id'];
@@ -14,9 +13,8 @@
 		return;
 	}
 
-	$q = "UPDATE Ingredient SET Name='" . $name . "', GramsProduct=". $sg . ", GramsCarbs=" . $sc . " WHERE UserId=" . $_SESSION["userId"] . " AND Id=" . $id;
-
-        $update = $mysql->query($q);
+	$q = "UPDATE Ingredient SET Name='{$name}', GramsProduct='{$sg}', GramsCarbs='{$sc}' WHERE UserId='{$_SESSION['userId']}' AND Id={$id}";
+    $update = $mysql->query($q);
 
 	if(!$update)
 		echo 0;	

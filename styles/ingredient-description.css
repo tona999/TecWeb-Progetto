@@ -1,54 +1,111 @@
-
-input[type="number"], input[type="text"]{
-	padding:0.25em 0.5em 0.25em 0.5em;
-	text-align:center;
+input {
+    text-align: center;
+    padding: 0.25em 0em 0.25em 0em;
 }
 
-.non_editable{
-	border:none;
+fieldset {
+    border: none;
 }
 
-.non_editable:disabled{
-	background-color:white;
-	color:black;
+.non_editable {
+    border: none;
 }
 
-#insertForm{
-	width: initial;
-	display: flex;
-	flex-wrap: wrap;
-	align-items: center;
-}
-#insertForm > *{
-	margin: .5em;
+.non_editable:read-only {
+    background-color: #ececec;
+    color: black;
 }
 
-#ingredientDescriptions, #recipesList {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	align-self: stretch;
-}
-form{
-	width: max-content;
-}
-form > *{
-	display: block;
-	margin: .3em auto;
-}
-input[type="number"]{
-	font-weight: bold;
-	text-align: right;
-	width: 5em;
-}
-input[type="text"]{
-	font-weight: bold;
+#insertForm {
+    width: initial;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
 }
 
-table{border-collapse: collapse;}
-td, th{
-	border: 1px solid lightgrey;
-	padding: .3em;
-	text-align: center;
-	font-size: 1em;
+#insertForm h3 {
+    width: 100%;
+}
+
+#insertForm input[type="text"] {
+    max-width: 40em;
+}
+
+#insertForm input[type="number"] {
+    width: 7em;
+}
+
+#insertForm fieldset {
+    width: 100%;
+}
+
+fieldset legend {
+    font-size: 0.9em;
+    color: grey;
+}
+
+#ingredientDescriptions,
+#recipesList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-self: stretch;
+}
+
+#ingredientDescriptions form{
+    margin: 1em;
+}
+
+#ingredientDescriptions form fieldset>*,
+#insertForm>*,
+#insertForm fieldset>* {
+    display: inline-block;
+    margin: .2em;
+}
+
+#insertForm input[name="sampleGrams"] {
+    margin-bottom: .4em;
+}
+
+input[type="number"] {
+    font-weight: bold;
+    width: 5em;
+}
+
+input[type="text"] {
+    font-weight: bold;
+    width: 100%;
+}
+
+.ingredientDescriptions form input[type="button"] {
+    margin: .3em;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td,
+th {
+    border: 1px solid lightgrey;
+    padding: .3em;
+    text-align: center;
+    font-size: 1em;
+}
+
+#recipesList form {
+    margin: 1em;
+    flex-grow: 1;
+    min-width: 30%;
+    max-width: 40em;
+}
+
+#recipesList form h3 {
+    display: inline-block;
+    padding: .2em 0em .2em 0em;
+}
+
+#recipesList input {
+    margin: .5em .5em .5em 0em;
 }

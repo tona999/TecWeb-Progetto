@@ -75,7 +75,7 @@ class IngredientDescription{
 
 	onRemoveRequested()
 	{
-		if (!confirm("Are you sure you want to remove " + this.nameIF.value + "?"))
+		if (!confirm(this.nameIF.value + " will be removed from all recipes.\nAre you sure you want to remove " + this.nameIF.value + "?"))
 			return false;
 		var params = 	"id="+this.ingredientId;
 		var xhttp = new XMLHttpRequest();
@@ -108,9 +108,10 @@ class IngredientDescription{
 
 
 	setEditable(status){
-		this.nameIF.disabled = !status;
-		this.sampleGramsIF.disabled = !status;
-		this.sampleCarbsIF.disabled = !status;
+		this.nameIF.readOnly = !status;
+		this.sampleGramsIF.readOnly = !status;
+		this.sampleCarbsIF.readOnly = !status;
+
 		this.loadBtn.disabled=status;
 		this.removeBtn.disabled=status;
 

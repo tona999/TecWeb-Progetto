@@ -3,46 +3,62 @@ require_once("php/page.php");
 $html = new Page();
 $html->setTitle("Your Recipes");
 $html->setMeta(
-    "<link rel='stylesheet' type='text/css' href='styles/buttons.css'>
-    <link rel='stylesheet' type='text/css' href='styles/ingredient-description.css'>");
+    "<link rel='stylesheet' type='text/css' href='styles/buttons.css' media='screen' />
+    <link rel='stylesheet' type='text/css' href='styles/ingredient-description.css' media='screen' />
+    <script type='text/javascript' src='js/Recipes.js'></script>
+    <script type='text/javascript' src='js/RecipeDescription.js'></script>");
 $html->setBodyPath("html/recipes.html");
 
-    require_once("php/connection.php");
+require_once("php/connection.php");
 
-    $q ="SELECT R.Id AS RId, R.Name AS RName, I.Name AS IName, C.GramsIngredient AS GI
-	 FROM Recipe as R, Ingredient as I, Contains as C
-	 WHERE C.RecipeId = R.Id AND C.IngredientId = I.Id AND R.UserId = I.UserId = {$_SESSION['userId']}";
+$q="SELECT recipe.Id AS RId, recipe.Name AS RName, ingredient.Name AS IName, contains.GramsIngredient AS GI FROM recipe LEFT JOIN contains ON recipe.Id = contains.RecipeId LEFT JOIN ingredient ON contains.IngredientId = ingredient.Id WHERE recipe.UserId = {$_SESSION['userId']} ORDER BY RName";
+$result = $mysql->query($q);
 
-    $result = $mysql->query($q);
-
-    //START INGREDIENTS LIST
-    $recipesList = "";
-    $recipeDescription = file_get_contents("html/recipeDescription.html");
-    $currentId = -1;
-    $ingredientsList = "";
-    $tmpDescr = $recipeDescription;
-    while ($row = $result->fetch_assoc()){
-	if ($currentId!=$row["RId"])
-	{	
-		if ($currentId!=-1){
-			$ingredientsList = $ingredientsList."</table>";
-			$tmpDescr = str_replace("<_INGREDIENTS_LIST/>", $ingredientsList, $tmpDescr);
-			$recipesList = $recipesList . $tmpDescr;
-		}
-		$tmpDescr = $recipeDescription;
-		$tmpDescr = str_replace("<_RECIPE_ID/>", $row["RId"], $tmpDescr);
-		$tmpDescr = str_replace("<_RECIPE_NAME/>", $row["RName"], $tmpDescr);
-		$currentId = $row["RId"];
-		$ingredientsList = "<table><tr><th>Ingredient Name</th><th>Grams</th></tr>";
-	}
-	$ingredientsList = $ingredientsList."<tr><td>{$row['IName']}</td><td>{$row['GI']}</td></tr>";
+//Formatting the query result
+$grouped = array();
+while ($row = $result->fetch_assoc()){
+    if (!array_key_exists($row["RId"], $grouped)){
+        $grouped[$row["RId"]] = new stdClass();
+        $grouped[$row["RId"]]->ingredients = array();
     }
-    $ingredientsList = $ingredientsList."</table>";
-    $tmpDescr = str_replace("<_INGREDIENTS_LIST/>", $ingredientsList, $tmpDescr);
-    $recipesList = $recipesList . $tmpDescr;
-    //END INGREDIENTS LIST
 
-    $html->body = str_replace("<_RECIPES_LIST/>", $recipesList, $html->body);
+    $grouped[$row["RId"]]->id = $row["RId"];
+    $grouped[$row["RId"]]->name = $row["RName"];
 
+    //Empty Recipe
+    if ($row["IName"]!="" && $row["GI"]!=""){
+        $ingredient = new stdClass();
+        $ingredient->IName = $row['IName'];
+        $ingredient->GI = $row['GI'];
+        array_push($grouped[$row["RId"]]->ingredients, $ingredient);
+    }
+}
+
+//Populating the page
+$recipeDescription = file_get_contents("html/recipeDescription.html");
+$recipesList = "";
+$ingredientsList = "";
+
+foreach ($grouped as $recipe){
+    $recDescr = $recipeDescription;
+    $recDescr = str_replace("<_RECIPE_ID/>", $recipe->id, $recDescr);
+    $recDescr = str_replace("<_RECIPE_NAME/>", $recipe->name, $recDescr);
+
+    if (count($recipe->ingredients)>0){
+        $ingredientsList = "<table><tr><th>Ingredient Name</th><th>Grams</th></tr>";
+        foreach ($recipe->ingredients as $ingr)
+            $ingredientsList = $ingredientsList."<tr><td>{$ingr->IName}</td><td>{$ingr->GI}</td></tr>";
+        $ingredientsList = $ingredientsList."</table>";
+    }
+    else{
+        $ingredientsList = "<p>This recipe does not contain any ingredients yet.</p>";
+    }
+
+    $recDescr = str_replace("<_INGREDIENTS_LIST/>", $ingredientsList, $recDescr);
+    $recipesList = $recipesList.$recDescr;
+}
+$html->body = str_replace("<_RECIPES_LIST/>", $recipesList, $html->body);
+  
+$html->header = str_replace('<body>','<body onload="start();">',$html->header);
 $html->printHtml();
 ?>

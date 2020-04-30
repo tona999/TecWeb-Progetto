@@ -1,12 +1,4 @@
-Ricordarsi di scrivere nella relazione che il file degli ingredienti caricato dinamicamente non è tracciato dai motori di ricerca(?).
-[Modifica: l'ingrediente ora è inserito nella pagina ma è nascosto (display:hidden), così è facile clonarlo. Dire che ora è visibile dal motore di ricerca ed è più veloce perchè non deve fare richieste al server]
-
 Usare Balsamiq (obbligatorio)
-Per igni istanza di ingrediente che fa parte di una ricetta memorizzare anche se era stato modificato il totalGrams o i totalBreadUnits. 
-Facendo così se viene modidicato sampleGrams/sampleCarbs va aggiornato il campo giusto (totalGrams/totalBreadUnuts) in base alle preferenze dell'utente.
-Esempio: l'utente vuole dedicare k unità di insulina ad un ingrediente, allora quando carico l'ingrediente nella ricetta e modifico sampleGrams/sampleCarbs viene aggiornato il totalGrams mentre il totalBreadUnits rimane k.
-
-Usare trim($stringa) per evitare di avere solo uno spazio in un campo required
 
 -css stampa
 -bottone registrati
@@ -15,13 +7,3 @@ Usare trim($stringa) per evitare di avere solo uno spazio in un campo required
 -password hash (federico e nicola)
 -relazione
 -xhtml per pagine statiche (no calcolatore, ingredienti e ricette)
--ERRORI in rosso
--click logo
-
-
-
-
-
--calculator logged in vs logged out
--remove ingredient
--order by name

@@ -1,23 +1,28 @@
-<div id="recipe"></div>
+<div id="recipe_screen">
+    <select id='ingredientsSelect'>
+		<option>Loading...</option>
+	</select>
+    <div id="recipe"></div>
+</div>
 <div id="controlPanel">
-	<p>
-		Grams:
-		<span id="totalRecipeGrams">0</span>
-	</p>
-	<p>
-		Carbs:
-		<span id="totalRecipeCarbs">0</span>
-	</p>
+    <p>
+        Grams:
+        <span id="totalRecipeGrams">0</span>
+    </p>
+    <p>
+        Carbs:
+        <span id="totalRecipeCarbs">0</span>
+    </p>
 
-	<div class="buttons">
-	<input type="button" class="calcBarBtn showBtn" id="showRecipeViewBtn" value="SHOW"/>
-	<input type="button" class="calcBarBtn loadBtn" id="loadRecipeBtn" value="LOAD"/>
-	<input type="button" class="calcBarBtn resetBtn" id="resetRecipeBtn" value="RESET"/>
-	<input type="button" class="calcBarBtn saveBtn" id="saveRecipeBtn" value="SAVE"/>
-	<input type="button" class="calcBarBtn addBtn" id="addNewIngredientBtn" value="ADD"/>
-	</div>
+    <div class="buttons">
+        <input type="button" class="calcBarBtn showBtn" id="showRecipeViewBtn" value="BAKE" title="Combine recipe" />
+        <input type="button" class="calcBarBtn saveBtn" id="saveRecipeBtn" value="SAVE" title="Save recipe" />
+        <input type="button" class="calcBarBtn addBtn" id="addNewIngredientBtn" value="ADD" title="New ingredient" />
+    </div>
 </div>
 
-<fieldset id="recipeView"></fieldset>
+<div id="recipeView" class="hidden_recipe_view">
+    <p>Here you see your recipe as a homogeneous combination of Ingredients. You can save the recipe and work on it later!</p>
+</div>
 
 <_SAMPLE_INGREDIENT/>

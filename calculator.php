@@ -1,27 +1,29 @@
 <?php
 require_once("php/page.php");
 $html = new Page();
-$html->setTitle("Calc");
+$html->setTitle("Calculator");
 $html->setMeta(
-    '<script src="js/Calculator.js"></script>'.
-    '<script src="js/Ingredient.js"></script>'.
-    '<script src="js/MathUtilities.js"></script>'.
-    '<script src="js/Recipe.js"></script>'.
-    '<link rel="stylesheet" type="text/css" href="styles/calculator.css">');
-$html->setBodyPath("html/calculator.html");
-$html->noFooter();
+    '<script type="text/javascript" src="js/Calculator.js"></script>'.
+    '<script type="text/javascript" src="js/Ingredient.js"></script>'.
+    '<script type="text/javascript" src="js/MathUtilities.js"></script>'.
+    '<script type="text/javascript" src="js/Recipe.js"></script>'.
+    '<link rel="stylesheet" type="text/css" href="styles/calculator.css" media="screen">');
+    $html->noFooter();
 
-//set body for starting on load
-$html->header = str_replace(
-    '<body onload="',
-    '<body onload="start(); ',
-    $html->header);
-$html->header = str_replace(
-    '<body>',
-    '<body onload="start();">',
-        $html->header);
+if (isset($_SESSION["userId"]))
+{
+    $html->setBodyPath("html/calculator.html");
 
-$html->body = str_replace("<_SAMPLE_INGREDIENT/>", file_get_contents("html/sampleIngredient.html"), $html->body);
+    //set body for starting on load
+    $html->header = str_replace('<body>','<body onload="start();">',$html->header);
+    $html->body = str_replace("<_SAMPLE_INGREDIENT/>", file_get_contents("html/sampleIngredient.html"), $html->body);
+}
+else
+{
+    $html->body = "<h1>Please <a href='register.php'>register</a> or <a href='login.php'>log in</a> to use the calculator.</h1>";
+}
+
+$html->toHtml5();
 
 $html->printHtml();
 ?>
