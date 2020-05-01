@@ -137,8 +137,7 @@ class Recipe{
 			return;
 		}
 
-
-		if(arr.length==0) //Nothing to save, 
+		if(arr.length==0) //Nothing to save
 		{
 			this.onAutomaticIngredientSaveSuccess();
 			return;
@@ -204,9 +203,10 @@ class Recipe{
 				var id = parseInt(this.responseText);
 				if (id<0)
 					t.recipeViewRef.setWarning("Saving Failed.");
-				else
+				else{
 					t.recipeViewRef.setWarning("");
 					t.recipeViewRef.convertToSavedRecipeView(id);
+				}
 			}
 		}
 		var params = "";
