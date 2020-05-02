@@ -67,6 +67,7 @@ h3 {
 #aLogin {
     display: inline-block;
     text-decoration: none;
+    font-weight: bold;
     color: white;
     padding: .5em;
 }
@@ -90,12 +91,16 @@ h3 {
 
 .menu li:hover {
     background-color: #F2FAFF;
-    box-shadow: 0 1px 4px #00000030;
+    box-shadow: 0 1px 5px #3b4f5f18;
     border-radius: 4px;
 }
 
 .menu :not(.disabled):hover a {
     color: black;
+}
+
+.menu a:visited:hover{
+    color: #c06c84;
 }
 
 #aLogin{
@@ -105,7 +110,7 @@ h3 {
 #aLogin:hover {
     background-color: #6886c5;
     color: white;
-    box-shadow: 0 1px 4px #00000030;
+    box-shadow: 0 1px 5px #3b4f5f18;
     border-radius: 4px;
 }
 
@@ -144,11 +149,11 @@ h2{
 }
 
 .main a{
-    color: #c06c84;
+    color: #3b5386;
 }
 
 .main a:visited{
-    color: #3b5386;
+    color: #c06c84;
 }
 
 .home img{
@@ -190,6 +195,9 @@ input {
 }
 
 .btn {
+    text-decoration: none;
+    color: #000000;
+    font-size: .9em;
     background-color: #c1cadb;
     padding: .5em;
     height: 2.5em;
@@ -199,7 +207,7 @@ input {
 }
 
 .btn:hover {
-    box-shadow: 0 2px 5px #00000050;
+    box-shadow: 0 1px 5px #3b4f5f18;
     background-color: #6886c5;
     cursor: pointer;
 }
@@ -241,12 +249,12 @@ input {
 }
 
 .card, form{
-    background-color: #fff;
+    background-color: #ffffff;
     margin: 2em .5em;
     padding: 1em;
     height: max-content;
     border-radius: 8px;
-    box-shadow: 0 1px 10px rgba(83, 102, 133, 0.2);
+    box-shadow: 0 1px 5px #3b4f5f18;
 }
 
 div.card{
@@ -291,16 +299,16 @@ div.card{
 #tips{
     font-size: 1.3em;
     position: fixed;
-    text-align: right;
+    text-align: center;
     margin: 1em;
     bottom: 0;
     right: 0;
     width: 10em;
 }
 
-#tips button{
-    width: 2.5em;
-    height: 2.5em;
+#tips .btn{
+    width: 1em;
+    height: 1em;
     color: transparent;
     background-image: url(../img/icons/arrow.svg);
     background-repeat: no-repeat;

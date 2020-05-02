@@ -28,4 +28,5 @@ while($row = $result->fetch_assoc()){
     );
 }
 
+$html->toHtml5();
 $html->printHtml();

@@ -60,5 +60,6 @@ else{
     $html->body = str_replace("<ERROR/>","",$html->body);
 }
 
+$html->toHtml5();
 $html->printHtml();
 ?>
