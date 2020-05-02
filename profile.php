@@ -5,6 +5,32 @@ $html->setTitle("Profile");
 $html->setMeta("");
 $html->setBodyPath("html/profile.html");
 
+//checks for errors in login
+if(isset($_GET["err"])){
+    if($_GET["err"]=="nameOrSurname"){
+      $html->body = str_replace(
+          "<ERROR/>",
+          "<span class='error'>Invalid Name or Surname!</span>",
+          $html->body);
+    }
+    else if($_GET["err"]=="date"){
+        $html->body = str_replace(
+            "<ERROR/>",
+            "<span class='error'>Invalid Date: use the formate yyyy/mm/dd</span>",
+            $html->body);
+    }
+    else if($_GET["err"]=="email"){
+        $html->body = str_replace(
+            "<ERROR/>",
+            "<span class='error'>Invalid email!</span>",
+            $html->body);
+    }
+}
+else{
+    $html->body = str_replace("<ERROR/>","",$html->body);
+}
+
+
 require_once("php/connection.php");
 
 $ingredientsList = "";

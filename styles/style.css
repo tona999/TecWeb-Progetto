@@ -181,10 +181,6 @@ h2{
     margin: auto;
 }
 
-#login span {
-    color: red;
-}
-
 #login fieldset, #profile fieldset {
     width: max-content;
     border: none;
@@ -245,9 +241,15 @@ input {
 }
 
 .warningSpan,
-#warningSpan {
-    line-height: 2em;
-    color: red;
+#warningSpan,
+.error {
+    box-sizing: border-box;
+    display: inline-block;
+    background-color: #e64343;
+    color: white;
+    width: 100%;
+    border-radius: 4px;
+    text-align: center;
 }
 
 .card, form{
