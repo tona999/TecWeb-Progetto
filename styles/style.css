@@ -116,6 +116,7 @@ h3 {
 }
 
 #hamburger {
+    color: transparent;
     display: none;
 }
 

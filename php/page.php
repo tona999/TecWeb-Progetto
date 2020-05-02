@@ -28,7 +28,7 @@ class Page{
     public function setLogged(){
         session_start();
         if(isset($_SESSION["userId"])){
-            $login_r = '<button id="hamburger" onclick="hideMenu();"></button>';    //hamburger button
+            $login_r = '<button id="hamburger" onclick="hideMenu();">User</button>';    //hamburger button
             $menu_r = 
                 '<ul id="profileMenu" class="menu hidden">'."\n".  //profile menu (dark blue)
                 '   <li><a href="profile.php">PROFILE</a></li>'."\n".
