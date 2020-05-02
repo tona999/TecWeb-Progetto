@@ -1,4 +1,5 @@
 * {
+    word-wrap: break-word;
     font-family: sans-serif;
     margin: 0;
     padding: 0;
@@ -313,4 +314,19 @@ div.card{
     background-image: url(../img/icons/arrow.svg);
     background-repeat: no-repeat;
     background-position: center;
+}
+
+.faq dl{
+    margin: 1em;
+}
+
+.faq dt{
+    font-size: 1.2em;
+    margin-bottom: .5em;
+}
+
+.faq dd{
+    margin-bottom: 2em;
+    padding-left: 1.2em;
+    border-left: 4px solid #6886c5;
 }
