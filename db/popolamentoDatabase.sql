@@ -1,9 +1,9 @@
 INSERT INTO User (Id, Name, Surname, Email, Password_hash, Admin, Birthdate) VALUES
-(1, 'Admin', 'Admin', 'admin@admin.com', 'admin', true, '1998-02-03'),
-(2, 'Mario', 'Rossi', 'mariorossi@gmail.com', 'password', false, '1999-05-24'),
-(3, 'Luigi', 'Verdi', 'luigiverdi87@gmail.com', 'password2', false, '1987-09-01'),
-(4, 'Guido', 'LaVespa', 'guido.veloce@libero.it', 'passwordComplessa', false, '1969-11-19'),
-(5, 'Ben', 'Solo', 'kyloren@gmail.com', 'nasoGrosso', false, '1991-03-30');
+(1, 'Admin', 'Admin', 'admin@admin.com', 'f865b53623b121fd34ee5426c792e5c33af8c227', true, '1998-02-03'),
+(2, 'Mario', 'Rossi', 'mariorossi@gmail.com', 'f865b53623b121fd34ee5426c792e5c33af8c227', false, '1999-05-24'),
+(3, 'Luigi', 'Verdi', 'luigiverdi87@gmail.com', 'f865b53623b121fd34ee5426c792e5c33af8c227', false, '1987-09-01'),
+(4, 'Guido', 'LaVespa', 'guido.veloce@libero.it', 'f865b53623b121fd34ee5426c792e5c33af8c227', false, '1969-11-19'),
+(5, 'Ben', 'Solo', 'kyloren@gmail.com', 'f865b53623b121fd34ee5426c792e5c33af8c227', false, '1991-03-30');
 
 INSERT INTO Ingredient (Id, UserId, Name, GramsProduct, GramsCarbs) VALUES
 (1, 1, 'Pasta', 100, 75),

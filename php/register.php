@@ -1,9 +1,5 @@
 <?php
 
-
-
-/* TODO: save the hashed password on db */
-
 require_once("connection.php");
 
 if(!isset($_POST["email"]) || !isset($_POST["password"]) || !isset($_POST["password2"]) || !isset($_POST["name"]) || !isset($_POST["surname"]) || !isset($_POST["birthdate"])) {
@@ -74,6 +70,7 @@ validateEmail($email);
 validateDate($dateFormatted);
 validatePassword($password, $password2);
 
+$password = sha1($password);
 
 $checkDuplicateEmail = $mysql->query(
     "SELECT * FROM User
