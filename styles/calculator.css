@@ -54,6 +54,11 @@ label {
     min-width: 45%;
 }
 
+input[name="ingredientName"]{
+    font-weight: bold;
+    text-align: left;
+}
+
 input[type="number"] {
     width: 4em;
 }
