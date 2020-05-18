@@ -33,7 +33,7 @@
     border: none;
 }
 
-#hamburger:hover{
+#hamburger:hover {
     box-shadow: none;
 }
 
@@ -43,7 +43,7 @@
 }
 
 #profileMenu {
-    background-color:  #4866a5;
+    background-color: #3a4a6b;
     padding: 0;
 }
 
@@ -54,7 +54,7 @@
     color: white;
 }
 
-#profileMenu a:hover{
+#profileMenu a:hover {
     color: black;
 }
 
@@ -79,7 +79,7 @@
     float: none;
 }
 
-#tips{
+#tips {
     position: relative;
     width: auto;
     margin: 1em .5em;

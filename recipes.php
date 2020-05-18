@@ -10,26 +10,28 @@ $html->setBodyPath("html/recipes.html");
 
 require_once("php/connection.php");
 
-$q="SELECT recipe.Id AS RId, recipe.Name AS RName, ingredient.Name AS IName, contains.GramsIngredient AS GI FROM recipe LEFT JOIN contains ON recipe.Id = contains.RecipeId LEFT JOIN ingredient ON contains.IngredientId = ingredient.Id WHERE recipe.UserId = {$_SESSION['userId']} ORDER BY RName";
+$q="SELECT Recipe.Id AS RId, Recipe.Name AS RName, Ingredient.Name AS IName, Contains.GramsIngredient AS GI FROM Recipe LEFT JOIN Contains ON Recipe.Id = Contains.RecipeId LEFT JOIN Ingredient ON Contains.IngredientId = Ingredient.Id WHERE Recipe.UserId = {$_SESSION['userId']} ORDER BY RName";
 $result = $mysql->query($q);
 
 //Formatting the query result
 $grouped = array();
-while ($row = $result->fetch_assoc()){
-    if (!array_key_exists($row["RId"], $grouped)){
-        $grouped[$row["RId"]] = new stdClass();
-        $grouped[$row["RId"]]->ingredients = array();
-    }
+if($result != false) {
+    while ($row = $result->fetch_assoc()){
+        if (!array_key_exists($row["RId"], $grouped)){
+            $grouped[$row["RId"]] = new stdClass();
+            $grouped[$row["RId"]]->ingredients = array();
+        }
 
-    $grouped[$row["RId"]]->id = $row["RId"];
-    $grouped[$row["RId"]]->name = $row["RName"];
+        $grouped[$row["RId"]]->id = $row["RId"];
+        $grouped[$row["RId"]]->name = $row["RName"];
 
-    //Empty Recipe
-    if ($row["IName"]!="" && $row["GI"]!=""){
-        $ingredient = new stdClass();
-        $ingredient->IName = $row['IName'];
-        $ingredient->GI = $row['GI'];
-        array_push($grouped[$row["RId"]]->ingredients, $ingredient);
+        //Empty Recipe
+        if ($row["IName"]!="" && $row["GI"]!=""){
+            $ingredient = new stdClass();
+            $ingredient->IName = $row['IName'];
+            $ingredient->GI = $row['GI'];
+            array_push($grouped[$row["RId"]]->ingredients, $ingredient);
+        }
     }
 }
 
@@ -60,4 +62,3 @@ $html->body = str_replace("<_RECIPES_LIST/>", $recipesList, $html->body);
   
 $html->header = str_replace('<body>','<body onload="start();">',$html->header);
 $html->printHtml();
-?>

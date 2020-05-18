@@ -9,6 +9,7 @@
     flex-wrap: wrap;
     justify-content: center;
     margin-bottom: 4em;
+    list-style: none;
     /* needed to avoid bottom bar override */
 }
 
@@ -54,7 +55,7 @@ label {
     min-width: 45%;
 }
 
-input[name="ingredientName"]{
+input[name="ingredientName"] {
     font-weight: bold;
     text-align: left;
 }
@@ -76,7 +77,7 @@ input[type="text"] {
     width: 2em;
 }
 
- .ingredient input[name="closeButton"]{
+.ingredient input[name="closeButton"] {
     border-radius: 100px;
     float: right;
     color: transparent;
@@ -87,13 +88,8 @@ input[type="text"] {
     background-size: 1.3em;
 }
 
-.ingredient input[name="closeButton"]:hover{
+.ingredient input[name="closeButton"]:hover {
     background-color: #6886c5;
-}
-
-.ingredient legend {
-    color: grey;
-    line-height: 1.5em;
 }
 
 
@@ -154,7 +150,8 @@ input[type="text"] {
     box-shadow: 0 -2px 5px #00000030;
 }
 
-#controlPanel p, #controlPanel div {
+#controlPanel p,
+#controlPanel div {
     margin-top: .2em;
     margin-bottom: .2em;
     display: inline-block;
@@ -201,7 +198,7 @@ input[type="text"] {
     color: #00000000;
 }
 
-.buttons{
+.buttons {
     margin-left: 1em;
 }
 
@@ -249,4 +246,9 @@ select {
     border-radius: 4px;
     box-shadow: 0 1px 2px #00000030;
     cursor: pointer;
+}
+
+label[for="ingredientsSelect"] {
+    position: fixed;
+    top: -1000px;
 }

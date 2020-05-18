@@ -1,8 +1,12 @@
-<form id="sampleIngredient" class="ingredient">
+<li id="sampleIngredient" class="ingredient">
     <fieldset>
-        <input type="text" maxlength="40" name="ingredientName" placeholder="Ingredient Name" />
+        <legend>Ingredient</legend>
+        <label>
+            Name:
+            <input type="text" maxlength="40" name="ingredientName" placeholder="Ingredient" />
+        </label>
         <input class="btn saveBtn" type="button" value="SAVE" name="saveButton" title="Save ingredient" />
-        <input class="btn closeBtn" type="button" name="closeButton" title="Remove ingredient" />
+        <input class="btn closeBtn" type="button" value="Close" name="closeButton" title="Remove ingredient" />
     </fieldset>
 
     <fieldset class="carbs">
@@ -31,6 +35,7 @@
     </fieldset>
 
     <fieldset class="divided">
+        <legend>Subdivision</legend>
         <label>
 			Divided in
 			<input type="number" min="0" name="piecesNumber" placeholder="0"/>
@@ -57,4 +62,4 @@
     </fieldset>
 
     <span class="warningSpan"></span>
-</form>
+</li>

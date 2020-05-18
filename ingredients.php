@@ -14,13 +14,15 @@ $html->setBodyPath("html/ingredients.html");
     $result = $mysql->query("SELECT * FROM Ingredient WHERE UserId={$_SESSION['userId']} ORDER BY NAME");
 
     $ingredientDescription = file_get_contents("html/ingredientDescription.html");
-    while($row = $result->fetch_assoc()){
-    	$tmpDescr = $ingredientDescription;
-	$tmpDescr = str_replace("<_INGREDIENT_ID/>", $row["Id"], $tmpDescr);
-	$tmpDescr = str_replace("<_INGREDIENT_NAME/>", $row["Name"], $tmpDescr);
-	$tmpDescr = str_replace("<_SAMPLE_GRAMS/>", $row["GramsProduct"], $tmpDescr);
-	$tmpDescr = str_replace("<_SAMPLE_CARBS/>", $row["GramsCarbs"], $tmpDescr);
-	$ingredientsList = $ingredientsList . $tmpDescr;
+    if($result) {
+        while($row = $result->fetch_assoc()){
+            $tmpDescr = $ingredientDescription;
+            $tmpDescr = str_replace("<_INGREDIENT_ID/>", $row["Id"], $tmpDescr);
+            $tmpDescr = str_replace("<_INGREDIENT_NAME/>", $row["Name"], $tmpDescr);
+            $tmpDescr = str_replace("<_SAMPLE_GRAMS/>", $row["GramsProduct"], $tmpDescr);
+            $tmpDescr = str_replace("<_SAMPLE_CARBS/>", $row["GramsCarbs"], $tmpDescr);
+            $ingredientsList = $ingredientsList . $tmpDescr;
+        }
     }
 
     $html->body = str_replace("<_INGREDIENTS_LIST/>", $ingredientsList, $html->body);
