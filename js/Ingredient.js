@@ -23,7 +23,7 @@ class Ingredient {
         this.ingredientId = id;
 
         if (connect)
-            this.connect(Calculator.getNewIngredientBody());
+            this.connect(getNewIngredientBody());
     }
 
     connect(htmlIng, isRecipeView = false) {
@@ -257,18 +257,28 @@ class Ingredient {
     /*USER INTERACTION*/
     convertToSaved(id) {
         this.setId(id);
-        this.removeSaveButton();
+        this.hideSaveButton();
         this.ingredientNameRef.readOnly = this.sampleGramsRef.readOnly = this.sampleCarbsRef.readOnly = true;
         this.ingredientNameRef.className = this.sampleGramsRef.className = this.sampleCarbsRef.className = "non_editable";
     }
 
+    convertToNotSaved()
+    {
+        this.setId(-1);
+        this.ingredientNameRef.readOnly = this.sampleGramsRef.readOnly = this.sampleCarbsRef.readOnly = false;
+        this.ingredientNameRef.classList.remove("non_editable");
+        this.sampleGramsRef.classList.remove("non_editable");
+        this.sampleCarbsRef.classList.remove("non_editable");
+        this.showSaveButton();
+    }
+
     convertToRecipeView() {
         this.removeCloseButton();
-        this.saveButtonRef.removeEventListener("click", function() {});
+        this.saveButtonRef.removeEventListener("click", function() {}); // recipe view saving procedure is different from the standard ingredient saving procedure
         this.sampleGramsRef.readOnly = this.sampleCarbsRef.readOnly = true;
         this.sampleGramsRef.className = this.sampleCarbsRef.className = "non_editable"
-        this.ingredientNameRef.placeholder = "RECIPE NAME";
-        this.saveButtonRef.value = "SAVE RECIPE";
+        this.ingredientNameRef.placeholder = "Recipe Name";
+        this.saveButtonRef.value = "Save Recipe";
     }
 
     convertToSavedRecipeView(id, name = "") {
@@ -280,11 +290,12 @@ class Ingredient {
         this.convertToRecipeView();
         this.ingredientNameRef.readOnly = this.sampleGramsRef.readOnly = this.sampleCarbsRef.readOnly = true;
         this.ingredientNameRef.className = this.sampleGramsRef.className = this.sampleCarbsRef.className = "non_editable"
-        this.saveButtonRef.value = "SAVE CHANGES";
+        this.saveButtonRef.value = "Save Changes";
     }
 
     removeCloseButton() { this.closeButtonRef.remove(); }
-    removeSaveButton() { this.saveButtonRef.remove(); }
+    hideSaveButton() { this.saveButtonRef.disabled = true; }
+    showSaveButton() { this.saveButtonRef.disabled = false;}
 
     save() {
         if (this.isReadyForSave()) {
@@ -302,7 +313,6 @@ class Ingredient {
             xhttp.open("POST", "php/insertIngredientCalc.php", true);
             xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xhttp.send(params);
-
             this.setWarning("");
         }
     }
@@ -330,6 +340,7 @@ class Ingredient {
 
     toSaveableEntity() {
         var tmp = {};
+        tmp.id = this.ingredientId;
         tmp.ingredientName = this.ingredientName;
         tmp.sampleGrams = this.sampleGrams;
         tmp.sampleCarbs = this.sampleCarbs;

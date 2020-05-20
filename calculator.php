@@ -19,11 +19,18 @@ if (isset($_SESSION["userId"]))
     $html->body = str_replace("<_SAMPLE_INGREDIENT/>", file_get_contents("html/sampleIngredient.html"), $html->body);
 }
 else
-{
     $html->body = "<h2>Please <a href='login.php'><button class='btn'>Log in</button></a> or <a href='registerPage.php'><button class='btn'>Register</button></a> to use the calculator.</h2>";
-}
+
+if (isset($_POST['ingredientId']))
+    $html->body = str_replace("<_REQUESTED_INGREDIENT_ID/>", $_POST['ingredientId'], $html->body);
+else
+    $html->body = str_replace("<_REQUESTED_INGREDIENT_ID/>", '-1', $html->body);
+
+if (isset($_POST['recipeId']))
+    $html->body = str_replace("<_REQUESTED_RECIPE_ID/>", $_POST['recipeId'], $html->body);
+else
+    $html->body = str_replace("<_REQUESTED_RECIPE_ID/>", '-1', $html->body);
 
 $html->toHtml5();
-
 $html->printHtml();
 ?>

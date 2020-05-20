@@ -44,17 +44,20 @@ class IngredientDescription{
 		if(!this.checkInputFormat())
 			return;
 
-		var params = 	"id="+this.ingredientId+"&name="+this.nameIF.value+"&sg="+this.sampleGramsIF.value+"&sc="+this.sampleCarbsIF.value;
+		var params = "id="+this.ingredientId+"&name="+this.nameIF.value+"&sg="+this.sampleGramsIF.value+"&sc="+this.sampleCarbsIF.value;
 		var xhttp = new XMLHttpRequest();
 
 		var t = this;
 		xhttp.onreadystatechange = function(){
 			if(this.readyState == 4 && this.status == 200)
 			{
-				if(this.responseText == 1)
+				const response = JSON.parse(this.responseText);
+				if (response.savingSuccessful != undefined)
 					t.onSaveSuccessful();
-				else
-					t.onSaveFailed();
+				else if(response.invalidData != undefined)
+					t.warning("Please insert valid values before saving.");
+				else if (response.ingredientNotFound != undefined)
+					t.warning("Saving failed. The ingredient could not be found.");
 			}
 		}
 
@@ -66,11 +69,6 @@ class IngredientDescription{
 	onSaveSuccessful(){
 		this.setEditable(false);
 		this.warning("");	
-	}
-
-	onSaveFailed()
-	{
-		this.warning("Saving Failed");
 	}
 
 	onRemoveRequested()

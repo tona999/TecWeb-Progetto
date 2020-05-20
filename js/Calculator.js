@@ -3,85 +3,111 @@ var currentRecipe;
 var ingSel;
 var rv;
 var ingList;
-var ingredientsLoaded = false;
+var requestLoaded = false;
 
+// environment initialization
 function start() {
     sampleIngredientCopy = document.getElementById("sampleIngredient").cloneNode(true);
     document.getElementById("sampleIngredient").remove();
 
-    //recipe VIEW
+    // recipe view setup
     rv = new Ingredient(false);
-    rv.connect(Calculator.getNewIngredientBody("recipeView", true), true);
-    rv.convertToRecipeView();
+    rv.connect(getNewIngredientBody("recipeView", true), true); // connect rv object to html element
+    rv.convertToRecipeView(); // convert rv from ingredient to recipe representation
     rv.saveButtonRef.addEventListener('click', saveCurrentRecipe);
 
+    // recipe setup
     currentRecipe = new Recipe();
-    currentRecipe.connect(document.getElementById("totalRecipeGrams"), document.getElementById("totalRecipeCarbs"), rv);
+    currentRecipe.connect(document.getElementById("totalRecipeGrams"), document.getElementById("totalRecipeCarbs"), rv); // connect recipe object to the relative html elements
 
-    //Add Ingredient To Receipt Event, Save Receipt Event, View Receipt Event
+    // events setup: Add Ingredient To Recipe, Save Recipe, View Recipe
     document.getElementById("addNewIngredientBtn").addEventListener('click', function() { currentRecipe.addEmptyIngredient(); });
     document.getElementById("showRecipeViewBtn").addEventListener('click', switchRecipeView);
     document.getElementById("saveRecipeBtn").addEventListener('click', saveCurrentRecipe);
 
-    //Load Ingredients For In-Calculator Selection
+    // ingredients select setup
     ingSel = document.getElementById("ingredientsSelect");
-    ingSel.addEventListener('click', getIngredientsList);
-    ingSel.addEventListener('change', function() {
-        var selected = this.options[this.selectedIndex];
-        var id = selected.getAttribute('data-id');
-        var name = selected.getAttribute('data-name');
+    ingSel.addEventListener('click', refreshIngredientsList);
+    ingSel.addEventListener('change', onIngredientSelected);
 
-        if (id == -1) return false;
-
-        if (currentRecipe.hasIngredientWithId(id)) {
-            window.alert(name + " is already in your recipe.");
-            return false;
-        }
-
-        var sg = selected.getAttribute('data-sg');
-        var sc = selected.getAttribute('data-sc');
-
-        var Ing = new Ingredient(true, name, sg, sc, 0, -1, 1, id);
-        currentRecipe.addIngredient(Ing);
-
-        ingSel.selectedIndex = '0';
-    });
-
-    getIngredientsList();
+    // load current user's ingredients list
+    refreshIngredientsList();
 }
 
-function onIngredientsLoaded() {
-    if (ingredientsLoaded) return;
-    //Ingredients are loaded correctly, now load any necessary ingredients or a recipe.
-    const urlParams = new URLSearchParams(window.location.search);
-    var id = urlParams.get('ingredientId');
-    if (id != null) {
-        //Load Ingredient
-        loadIngredient(id);
-    } else {
-        id = urlParams.get('recipeId');
-        if (id != null) {
-            var name = urlParams.get('recipeName');
-            //Load Recipe
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    var ings = JSON.parse(this.responseText);
-                    for (var i = 0; i < ings.length; i++) {
-                        loadIngredient(ings[i].id, ings[i].grams);
-                    }
-                    rv.convertToSavedRecipeView(id, name);
-                }
+// reloads the ingredients list and consequently refreshes the ingredients select box
+function refreshIngredientsList() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            ingList = JSON.parse(this.responseText);
+            
+            var s = "<option data-id='-1'> SELECT INGREDIENT </option>";
+            for (i = 0; i < ingList.length; i++) {
+                s = s + "<option data-id='" + ingList[i].id + "' data-name='" + ingList[i].name + "'>" + ingList[i].name + "</option>";
             }
-            xhttp.open("GET", "php/getRecipeIngredients.php?recipeId=" + id, true);
-            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhttp.send();
+            ingSel.innerHTML = s;
+            
+            if (!requestLoaded)
+                loadRequestedIngredientOrRecipe();
         }
     }
-    ingredientsLoaded = true;
+
+    xhttp.open("GET", "php/getIngredientsList.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send();
 }
 
-function loadIngredient(id, grams = 0) {
+// load the requested ingredient or recipe, if any.
+function loadRequestedIngredientOrRecipe() {
+    var idIng = document.getElementById("requestedIngredientId");
+    var idRec = document.getElementById("requestedRecipeId");
+    // load an ingredient
+    if (idIng != null && idIng.innerHTML != '-1') {
+        loadIngredientWithId(idIng.innerHTML);
+    } else if (idRec != null && idRec.innerHTML != '-1') { // load a recipe
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                if (this.response == -1){
+                    window.alert("The recipe you requested was not found.");
+                     return;
+                }
+                recipeData = JSON.parse(this.responseText);
+                for (var i = 0; i < recipeData.ingredientsList.length; i++) {
+                    loadIngredientWithId(recipeData.ingredientsList[i].id, recipeData.ingredientsList[i].grams);
+                }
+                currentRecipe.convertToSaved(recipeData.id, recipeData.name);
+            }
+        }
+            xhttp.open("GET", "php/getRecipeIngredients.php?recipeId=" + idRec.innerHTML, true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send();
+    }
+    requestLoaded = true;
+    idIng.remove();
+    idRec.remove();
+}
+
+// an ingredient was clicked in ingSel select box
+function onIngredientSelected() {
+    var selected = this.options[this.selectedIndex];
+    var id = selected.getAttribute('data-id');
+    var name = selected.getAttribute('data-name');
+
+    if (id == -1) return false;
+
+    if (currentRecipe.hasIngredientWithId(id)) {
+        window.alert(name + " is already in your recipe.");
+        return false;
+    }
+
+    loadIngredientWithId(id);
+
+    ingSel.selectedIndex = '0';
+}
+
+// load an ingredient from the ingredients list
+function loadIngredientWithId(id, grams = 0) {
     var tmpIng = getIngredientWithId(id);
     if (tmpIng != null) {
         var Ing = new Ingredient(true, tmpIng.name, tmpIng.sampleGrams, tmpIng.sampleCarbs, grams, -1, 1, id);
@@ -89,13 +115,35 @@ function loadIngredient(id, grams = 0) {
     }
 }
 
+// returns an ingredient object with the specified id if it exists
+function getIngredientWithId(id) {
+    for (i = 0; i < ingList.length; i++) {
+        if (ingList[i].id == id)
+            return ingList[i];
+    }
+    return null;
+}
+
+// saves the current recipe if possible
 function saveCurrentRecipe() {
     if (!rv.isReadyForSave())
-        setRecipeView(true);
+        setRecipeView(true); // switch to recipe view where an error is visualized
     else
         currentRecipe.save()
 }
 
+// returns a new copy of the sample ingredient element which can be connected to an ingredient object
+function getNewIngredientBody(parentId = "recipe", insertAsFirstChild = false) {
+    var htmlIng = sampleIngredientCopy.cloneNode(true);
+    var parent = document.getElementById(parentId);
+    if (insertAsFirstChild)
+        parent.insertBefore(htmlIng, parent.childNodes[0]);
+    else
+        parent.appendChild(htmlIng);
+    return htmlIng;
+}
+
+// utilities used to switch between ingredients view and recipe view
 function switchRecipeView() {
     var r = document.getElementById("recipe_screen");
     if (r.classList.contains("recipe_with_view"))
@@ -122,50 +170,4 @@ function setRecipeViewVisibility(visible) {
             rv.classList.remove("hidden_recipe_view");
     } else if (!(rv.classList.contains("hidden_recipe_view")))
         rv.classList.add("hidden_recipe_view");
-}
-
-function getIngredientsList() {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            ingList = JSON.parse(this.responseText);
-            refreshIngredientsSelect();
-
-            //Force Repaint The Selection Box Somehow Here If Possible
-            if (!ingredientsLoaded)
-                onIngredientsLoaded();
-        }
-    }
-
-    xhttp.open("GET", "php/getIngredientsList.php", true);
-    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send();
-}
-
-function refreshIngredientsSelect() {
-    var s = "<option data-id='-1'> SELECT INGREDIENT </option>";
-    for (i = 0; i < ingList.length; i++) {
-        s = s + "<option data-id='" + ingList[i].id + "' data-sg='" + ingList[i].sampleGrams + "' data-sc='" + ingList[i].sampleCarbs + "' data-name='" + ingList[i].name + "'>" + ingList[i].name + "</option>";
-    }
-    ingSel.innerHTML = s;
-}
-
-function getIngredientWithId(id) {
-    for (i = 0; i < ingList.length; i++) {
-        if (ingList[i].id == id)
-            return ingList[i];
-    }
-    return null;
-}
-
-class Calculator {
-    static getNewIngredientBody(parentId = "recipe", insertAsFirstChild = false) {
-        var htmlIng = sampleIngredientCopy.cloneNode(true);
-        var parent = document.getElementById(parentId);
-        if (insertAsFirstChild)
-            parent.insertBefore(htmlIng, parent.childNodes[0]);
-        else
-            parent.appendChild(htmlIng);
-        return htmlIng;
-    }
 }

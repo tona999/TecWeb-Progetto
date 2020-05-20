@@ -2,20 +2,22 @@
 	require_once("connection.php");
 	session_start();
 
+	$request = json_decode($_POST['request']);
+
 	$userId = $_SESSION['userId'];
-	$recipeId = $_POST["recipeId"];
-	$recipeName = substr(trim($_POST['recipeName']), 0, 40);
-	$ingredients = json_decode($_POST["json"]);
+	$recipeId = $request->recipeId;
+	$recipeName = substr(trim($request->recipeName), 0, 40);
+	$ingredients = $request->ingredientsJson;
 
 	$result=$mysql->query("SELECT UserId as uId FROM Recipe WHERE Id={$recipeId}");
 	$data = mysqli_fetch_assoc($result);
 	$uId = $data['uId'];
 
-	if ($uId=="") //No recipe with that id. Create it.
+	if ($uId=="") // no recipe with id = recipeId. Create it.
 	{
-		if ($recipeId<0)
+		if ($recipeId<0) // the recipe is being saved for the first time, the id is -1
 			$mysql->query("INSERT INTO Recipe (UserId, Name) VALUES ($userId, '{$recipeName}')");
-		else
+		else // the recipe was removed by the user but it was already loaded in the calculator. Save the recipe with the id already used in the calculator.
 			$mysql->query("INSERT INTO Recipe (Id, UserId, Name) VALUES ($recipeId, $userId, '{$recipeName}')");
 
 		$recipeId = $mysql->insert_id;
@@ -23,6 +25,48 @@
 	else if ($uId!= $userId) //Another user owns the recipe with that id. Abort.
 	{
 		echo $recipeId;
+		return;
+	}
+
+	// check if all the ingredients are actually in the database. The user could have removed them after opening the calculator.
+	// in this case, return the ids of the ingredients that were not found in the database. An error will be shown on the client side on these ingredient.
+	$idString = '(';
+	for($i=0; $i<count($ingredients); $i++)
+	{
+		if ($i>0)
+			$idString = $idString.',';
+		$idString=$idString.$ingredients[$i]->id;
+	}
+	$idString=$idString.')';
+
+	$ingrsInDbResult = $mysql->query("SELECT Id FROM Ingredient WHERE UserId={$userId} AND Id IN $idString");
+	$ingrsInDb = array();
+
+	if ($ingrsInDbResult){
+		while(($row =  mysqli_fetch_assoc($ingrsInDbResult))) {
+			$ingrsInDb[] = $row['Id'];
+		}
+	}
+
+	// check if save was requested for an ingredient(s) that was not found in the database
+	if (count($ingrsInDb)<count($ingredients)){
+		$ingrsNotInDb = array();
+		foreach($ingredients as $ing)
+		{
+			$found = false;
+			for ($i = 0; $i<count($ingrsInDb); $i++)
+			{
+				if ($ing->id == $ingrsInDb[$i]){
+					$found = true;
+					break;
+				}
+			}
+			if ($found == false)
+				$ingrsNotInDb[] = $ing->id;
+		}
+		$response = new stdClass();
+		$response->ingredientsNotFound = $ingrsNotInDb;
+		echo json_encode($response);
 		return;
 	}
 
