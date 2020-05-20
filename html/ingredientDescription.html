@@ -2,7 +2,10 @@
     <fieldset>
         <legend>Ingredient Data</legend>
         <input type="hidden" name="ingredientId" value="<_INGREDIENT_ID/>" />
-        <input class="non_editable" readonly type="text" name="ingredientName" placeholder="Ingredient Name" value="<_INGREDIENT_NAME/>" />
+        <label>
+            Name
+            <input class="non_editable" readonly type="text" name="ingredientName" placeholder="Ingredient Name" value="<_INGREDIENT_NAME/>" />
+        </label>
         <label>
 			<input class="non_editable" type="number" min='0' readonly placeholder="Grams" name="sampleGrams" value="<_SAMPLE_GRAMS/>"/> g product has
 		</label>

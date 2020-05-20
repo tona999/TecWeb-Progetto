@@ -14,7 +14,7 @@ body {
 }
 
 body.dark {
-    background-color: #6886c5;
+    background-color: #5a74ac;
 }
 
 h1 {
@@ -38,7 +38,7 @@ h1 {
 
 .header a {
     text-decoration: none;
-    color: #6886c5;
+    color: #5a74ac;
 }
 
 .header h1 {
@@ -53,7 +53,7 @@ h3 {
 /* Menu */
 
 .menu {
-    background-color: #6886c5;
+    background-color: #5a74ac;
     list-style: none;
     padding: .5em;
 }
@@ -73,7 +73,7 @@ h3 {
     padding: .5em;
 }
 
-#aLogin{
+#aLogin {
     height: initial;
 }
 
@@ -100,16 +100,16 @@ h3 {
     color: black;
 }
 
-.menu a:visited:hover{
+.menu a:visited:hover {
     color: #c06c84;
 }
 
-#aLogin{
+#aLogin {
     color: black;
 }
 
 #aLogin:hover {
-    background-color: #6886c5;
+    background-color: #5a74ac;
     color: white;
     box-shadow: 0 1px 5px #3b4f5f18;
     border-radius: 4px;
@@ -135,37 +135,40 @@ h3 {
 
 
 /* Main */
-h2{
-    color: #6886c5;
+
+h2 {
+    color: #5a74ac;
     margin: 1em;
 }
 
-.main{
+.main {
     width: max-content;
     max-width: 100%;
     margin: auto;
 }
 
-.main p{
+.main p {
     margin: 1em;
 }
 
-.main a{
+.main a {
     color: #3b5386;
 }
 
-.main a:visited{
+.main a:visited {
     color: #c06c84;
 }
 
-.home img{
+.home img {
     width: 100%;
     border-radius: 8px;
 }
 
+
 /* Login form */
 
-#login label *, #profile label * {    
+#login label *,
+#profile label * {
     display: block;
     width: 15em;
     max-width: 100%;
@@ -174,14 +177,15 @@ h2{
     padding: 0 .2em;
 }
 
-#login .btn, 
+#login .btn,
 #profile .btn {
     display: block;
     padding: 0 1em;
     margin: auto;
 }
 
-#login fieldset, #profile fieldset {
+#login fieldset,
+#profile fieldset {
     width: max-content;
     border: none;
     margin: 1em auto;
@@ -206,14 +210,14 @@ input {
 
 .btn:hover {
     box-shadow: 0 1px 5px #3b4f5f18;
-    background-color: #6886c5;
+    background-color: #5a74ac;
     cursor: pointer;
 }
 
 .footer {
     clear: both;
     font-size: .7em;
-    background-color: #c06c84;
+    background-color: #ac5a61;
     color: white;
     padding: .5em;
     text-align: center;
@@ -252,7 +256,8 @@ input {
     text-align: center;
 }
 
-.card, form{
+.card,
+form {
     background-color: #ffffff;
     margin: 2em .5em;
     padding: 1em;
@@ -261,18 +266,18 @@ input {
     box-shadow: 0 1px 5px #3b4f5f18;
 }
 
-div.card{
+div.card {
     max-width: 50em;
 }
 
-.breadcrumb{
+.breadcrumb {
     font-size: .8em;
     padding: .5em 1em;
     background-color: #3b5386;
     color: white;
 }
 
-.breadcrumb .path{
+.breadcrumb .path {
     color: white;
 }
 
@@ -290,7 +295,7 @@ div.card{
     background-color: grey;
 }
 
-.btn:disabled:hover{
+.btn:disabled:hover {
     box-shadow: none;
     cursor: default;
 }
@@ -300,7 +305,7 @@ div.card{
     color: white;
 }
 
-#tips{
+#tips {
     font-size: 1.3em;
     position: fixed;
     text-align: center;
@@ -310,7 +315,7 @@ div.card{
     width: 10em;
 }
 
-#tips .btn{
+#tips .btn {
     width: 1em;
     height: 1em;
     color: transparent;
@@ -319,11 +324,11 @@ div.card{
     background-position: center;
 }
 
-.faq dl{
+.faq dl {
     margin: 1em;
 }
 
-.faq dt{
+.faq dt {
     font-size: 1.2em;
     margin-bottom: .5em;
     background-color: #f5f5f5;
@@ -331,12 +336,17 @@ div.card{
     border-radius: 10px;
 }
 
-.faq dd{
+.faq dd {
     margin-bottom: 2em;
     padding-left: 1.2em;
-    border-left: 4px solid #6886c5;
+    border-left: 4px solid #5a74ac;
 }
 
-.faq ul{
+.faq ul {
     padding-left: 1em;
+}
+
+legend {
+    color: #535353;
+    font-size: 0.9em;
 }

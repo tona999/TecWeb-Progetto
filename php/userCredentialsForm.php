@@ -7,8 +7,6 @@ if(!isset($_POST["email"]) || !isset($_POST["password1"]) || !isset($_POST["pass
     die;
 }
 
-error_log("dd");
-
 $email = filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
 $password1 = $_POST["password1"];
 $password2 = $_POST["password2"];
