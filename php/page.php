@@ -30,7 +30,7 @@ class Page{
         if(isset($_SESSION["userId"])){
             $login_r = '<button id="hamburger" onclick="hideMenu();" title="Profile">User</button>';    //hamburger button
             $menu_r = 
-                '<ul role="navigation" id="profileMenu" class="menu hidden">'."\n".  //profile menu (dark blue)
+                '<ul id="profileMenu" class="menu hidden">'."\n".  //profile menu (dark blue)
                 '   <li><a href="profile.php">PROFILE</a></li>'."\n".
                 '   <li><a href="ingredients.php">INGREDIENTS</a></li>'."\n".
                 '   <li><a href="recipes.php">RECIPES</a></li>'."\n".
@@ -154,8 +154,7 @@ class Page{
 
     public function toHtml5(){ 
         $this->header = str_replace(
-'<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">', 
             '<!DOCTYPE html>
