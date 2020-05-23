@@ -46,10 +46,10 @@ foreach ($grouped as $recipe){
     $recDescr = str_replace("<_RECIPE_NAME/>", $recipe->name, $recDescr);
 
     if (count($recipe->ingredients)>0){
-        $ingredientsList = "<table><tr><th>Ingredient Name</th><th>Grams</th></tr>";
+        $ingredientsList = "<table><thead><tr><th>Ingredient Name</th><th>Grams</th></tr></thead><tbody>";
         foreach ($recipe->ingredients as $ingr)
             $ingredientsList = $ingredientsList."<tr><td>{$ingr->IName}</td><td>{$ingr->GI}</td></tr>";
-        $ingredientsList = $ingredientsList."</table>";
+        $ingredientsList = $ingredientsList."</tbody></table>";
     }
     else{
         $ingredientsList = "<p>This recipe does not contain any ingredients yet.</p>";

@@ -29,7 +29,6 @@ input[type="button"] {
 
 input {
     border: none;
-    text-decoration: underline;
 }
 
 .ingredient {
@@ -37,7 +36,7 @@ input {
     margin-bottom: 12pt;
 }
 
-form {
+form, .ingredient {
     border: 1px solid black;
     margin: 6pt 0;
     padding: 6pt;
@@ -48,7 +47,7 @@ fieldset {
 }
 
 fieldset legend {
-    display: none;
+    text-decoration: underline;
 }
 
 .footer {
@@ -91,4 +90,12 @@ h2 {
 #tutorial img {
     margin: 2pt;
     max-width: 400pt;
+}
+
+.home img {
+    display: none;
+}
+
+#tutorial img {
+    display: block;
 }

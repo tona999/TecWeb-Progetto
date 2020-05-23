@@ -4,7 +4,7 @@
     padding: 0;
 }
 
-#recipe {
+#recipe, #recipeView {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -80,7 +80,7 @@ input[type="text"] {
 .ingredient input[name="closeButton"] {
     border-radius: 100px;
     float: right;
-    color: transparent;
+    color: rgba(0,0,0,0);
     background-image: url(../img/icons/close.svg);
     width: 2em;
     background-repeat: no-repeat;
@@ -195,7 +195,7 @@ input[type="text"] {
     background-repeat: no-repeat;
     background-position: center;
     background-size: 1.3em;
-    color: #00000000;
+    color: rgba(0,0,0,0);
 }
 
 .buttons {
@@ -260,3 +260,4 @@ label[for="ingredientsSelect"] {
     position: fixed;
     top: -1000px;
 }
+
