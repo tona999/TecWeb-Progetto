@@ -33,16 +33,23 @@ h1 {
 
 .header h1 img {
     height: 1.3em;
+    margin: 0 .2em;
     vertical-align: middle;
 }
 
 .header a {
     text-decoration: none;
-    color: #5a74ac;
 }
 
 .header h1 {
     font-size: 1.5em;
+    color: #5a74ac;
+}
+
+.header abbr {
+    text-decoration: none;
+    font-weight: bold;
+    color: #5a74ac;
 }
 
 h3 {
@@ -116,7 +123,7 @@ h3 {
 }
 
 #hamburger {
-    color: rgba(0,0,0,0);
+    color: rgba(0, 0, 0, 0);
     display: none;
 }
 
@@ -307,7 +314,6 @@ div.card {
 }
 
 #tips {
-    font-size: 1.3em;
     position: fixed;
     text-align: center;
     margin: 1em;
@@ -316,10 +322,29 @@ div.card {
     width: 10em;
 }
 
+#tips p {
+    font-size: 1.2em;
+    text-align: left;
+    margin: 1em auto;
+    width: max-content;
+    max-width: 100%;
+
+}
+
+#tips h2 {
+    background-color: #5a74ac;
+    color: white;
+    border-radius: 4px;
+    margin: 0;
+}
+
 #tips .btn {
-    width: 1em;
-    height: 1em;
-    color: rgba(0,0,0,0);
+    display: block;
+    margin: auto;
+    width: 3em;
+    height: 3em;
+    border-radius: 100px;
+    color: rgba(0, 0, 0, 0);
     background-image: url(../img/icons/arrow.svg);
     background-repeat: no-repeat;
     background-position: center;
@@ -354,7 +379,7 @@ legend {
 }
 
 #go_top {
-    color: rgba(0,0,0,0);
+    color: rgba(0, 0, 0, 0);
     position: fixed;
     right: 2em;
     bottom: 2em;
