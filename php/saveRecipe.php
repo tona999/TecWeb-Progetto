@@ -13,21 +13,6 @@
 	$data = mysqli_fetch_assoc($result);
 	$uId = $data['uId'];
 
-	if ($uId=="") // no recipe with id = recipeId. Create it.
-	{
-		if ($recipeId<0) // the recipe is being saved for the first time, the id is -1
-			$mysql->query("INSERT INTO Recipe (UserId, Name) VALUES ($userId, '{$recipeName}')");
-		else // the recipe was removed by the user but it was already loaded in the calculator. Save the recipe with the id already used in the calculator.
-			$mysql->query("INSERT INTO Recipe (Id, UserId, Name) VALUES ($recipeId, $userId, '{$recipeName}')");
-
-		$recipeId = $mysql->insert_id;
-	}
-	else if ($uId!= $userId) //Another user owns the recipe with that id. Abort.
-	{
-		echo $recipeId;
-		return;
-	}
-
 	// check if all the ingredients are actually in the database. The user could have removed them after opening the calculator.
 	// in this case, return the ids of the ingredients that were not found in the database. An error will be shown on the client side on these ingredient.
 	$idString = '(';
@@ -67,6 +52,21 @@
 		$response = new stdClass();
 		$response->ingredientsNotFound = $ingrsNotInDb;
 		echo json_encode($response);
+		return;
+	}
+
+	if ($uId=="") // no recipe with id = recipeId. Create it.
+	{
+		if ($recipeId<0) // the recipe is being saved for the first time, the id is -1
+			$mysql->query("INSERT INTO Recipe (UserId, Name) VALUES ($userId, '{$recipeName}')");
+		else // the recipe was removed by the user but it was already loaded in the calculator. Save the recipe with the id already used in the calculator.
+			$mysql->query("INSERT INTO Recipe (Id, UserId, Name) VALUES ($recipeId, $userId, '{$recipeName}')");
+
+		$recipeId = $mysql->insert_id;
+	}
+	else if ($uId!= $userId) //Another user owns the recipe with that id. Abort.
+	{
+		echo $recipeId;
 		return;
 	}
 
