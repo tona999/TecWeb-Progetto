@@ -4,7 +4,7 @@
     padding: 0;
 }
 
-#recipe, #recipeView {
+#recipe {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -32,7 +32,8 @@ body>h1>a {
 
 .ingredient {
     font-size: 0.9em;
-    width: 90%;
+    width: 100%;
+    box-sizing: border-box;
     max-width: 30em;
     background-color: #fff;
     box-shadow: 0 1px 4px #00000030;
@@ -162,7 +163,9 @@ input[type="text"] {
 }
 
 #recipeView {
+    list-style: none;
     padding: 1em 0.25em 1em 0.25em;
+    margin-bottom: 5em;
 }
 
 #recipeView p {
@@ -173,6 +176,7 @@ input[type="text"] {
 
 #recipeView .ingredient {
     border: 4px solid #6886c5;
+    margin: auto;
 }
 
 .recipe_with_view {
@@ -183,10 +187,6 @@ input[type="text"] {
 .hidden_recipe_view {
     position: fixed;
     top: -200%;
-}
-
-#recipeView .ingredient {
-    margin: auto;
 }
 
 .calcBarBtn,
