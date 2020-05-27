@@ -161,6 +161,13 @@ class Page{
 <html lang="en">', 
             $this->header);
     }
+    
+    /** Redirects to Login page if the current page requires Login */
+    public function requireLogin() {
+        if (!isset($_SESSION['userId'])) {
+            header("location: login.php");
+        }
+    }
 
     /** print the whole page with echo function */
     public function printHtml(){

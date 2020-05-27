@@ -1,6 +1,7 @@
 <?php
 require_once("php/page.php");
 $html = new Page();
+$html->requireLogin();
 $html->setTitle("Calculator");
 $html->setMeta(
     '<script type="text/javascript" src="js/Calculator.js"></script>'.
@@ -10,16 +11,11 @@ $html->setMeta(
     '<link rel="stylesheet" type="text/css" href="styles/calculator.css" media="screen">');
     $html->noFooter();
 
-if (isset($_SESSION["userId"]))
-{
-    $html->setBodyPath("html/calculator.html");
+$html->setBodyPath("html/calculator.html");
 
-    //set body for starting on load
-    $html->header = str_replace('<body>','<body onload="start();">',$html->header);
-    $html->body = str_replace("<_SAMPLE_INGREDIENT/>", file_get_contents("html/sampleIngredient.html"), $html->body);
-}
-else
-    $html->body = "<h2>Please <a href='login.php'><button class='btn'>Log in</button></a> or <a href='registerPage.php'><button class='btn'>Register</button></a> to use the calculator.</h2>";
+// run start function on body load
+$html->header = str_replace('<body>','<body onload="start();">',$html->header);
+$html->body = str_replace("<_SAMPLE_INGREDIENT/>", file_get_contents("html/sampleIngredient.html"), $html->body);
 
 if (isset($_POST['ingredientId']))
     $html->body = str_replace("<_REQUESTED_INGREDIENT_ID/>", $_POST['ingredientId'], $html->body);

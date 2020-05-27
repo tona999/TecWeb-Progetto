@@ -1,6 +1,7 @@
 <?php
 require_once("php/page.php");
 $html = new Page();
+$html->requireLogin();
 $html->setTitle("Your Recipes");
 $html->setMeta(
     "<link rel='stylesheet' type='text/css' href='styles/ingredient-description.css' media='screen' />
