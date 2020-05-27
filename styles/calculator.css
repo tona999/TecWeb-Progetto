@@ -252,7 +252,7 @@ select {
     cursor: pointer;
 }
 
-.init{
+#init{
     display: none;
 }
 

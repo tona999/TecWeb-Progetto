@@ -1,4 +1,7 @@
 var sampleIngredientCopy;
+var idIng;
+var idRec;
+
 var currentRecipe;
 var ingSel;
 var rv;
@@ -8,7 +11,9 @@ var requestLoaded = false;
 // environment initialization
 function start() {
     sampleIngredientCopy = document.getElementById("sampleIngredient").cloneNode(true);
-    document.getElementById("sampleIngredient").remove();
+    idIng = document.getElementById("requestedIngredientId");
+    idRec = document.getElementById("requestedRecipeId");
+    document.getElementById('init').remove();
 
     // recipe view setup
     rv = new Ingredient(false);
@@ -59,8 +64,6 @@ function refreshIngredientsList() {
 
 // load the requested ingredient or recipe, if any.
 function loadRequestedIngredientOrRecipe() {
-    var idIng = document.getElementById("requestedIngredientId");
-    var idRec = document.getElementById("requestedRecipeId");
     // load an ingredient
     if (idIng != null && idIng.innerHTML != '-1') {
         loadIngredientWithId(idIng.innerHTML);
@@ -84,8 +87,6 @@ function loadRequestedIngredientOrRecipe() {
             xhttp.send();
     }
     requestLoaded = true;
-    idIng.remove();
-    idRec.remove();
 }
 
 // an ingredient was clicked in ingSel select box
