@@ -221,6 +221,10 @@ input {
     cursor: pointer;
 }
 
+.main a.btn:visited {
+    color: #000000;
+}
+
 .footer {
     clear: both;
     font-size: .7em;
