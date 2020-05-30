@@ -73,8 +73,8 @@ validatePassword($password, $password2);
 $password = sha1($password);
 
 $checkDuplicateEmail = $mysql->query(
-    "SELECT * FROM User
-    WHERE Email = '$email' ");
+    "SELECT * FROM user
+    WHERE email = '$email' ");
 
 if($checkDuplicateEmail->num_rows > 0) {
   header("Location: ../registerPage.php?err=emailInUse");
@@ -83,20 +83,20 @@ if($checkDuplicateEmail->num_rows > 0) {
 
 // insertion query
 $insert = $mysql->query(
-    "INSERT INTO User (Name, Surname, Email, Password_hash, Admin, Birthdate)
+    "INSERT INTO user (name, surname, email, password_hash, admin, birthdate)
     VALUES ('$name', '$surname','$email','$password',false,'$dateFormatted')");
 
 // check if has been inserted and gives the Id for this session
 $isInserted = $mysql->query(
-        "SELECT * FROM User
-        WHERE Email = '$email' ");
+        "SELECT * FROM user
+        WHERE email = '$email' ");
 
 if($insert){
     session_start();
 
     while($row = $isInserted->fetch_assoc()){
-        $_SESSION["userId"] = $row["Id"];
-        $_SESSION["admin"] = $row["Admin"];
+        $_SESSION["userId"] = $row["id"];
+        $_SESSION["admin"] = $row["admin"];
     }
     /* TODO: edit pages for logged users */
     header("Location: ../index.php");

@@ -7,10 +7,8 @@ function mostraErrore(testoErrore){
 }
 
 function togliErrori(){
-
   Array.from(document.getElementsByClassName("error")).forEach(
       function(element, index, array) {
-          // do stuff
           element.parentNode.removeChild(element);
       }
   );
@@ -43,7 +41,7 @@ function checkName(nomeInput){
     // togliErrore(nomeInput);
     return true;
   } else {
-    mostraErrore("Name not valid")
+    mostraErrore("The name you inserted is not valid")
     return false;
   }
 }
@@ -54,7 +52,7 @@ function checkSurname(surnameInput){
   if (regex.test(surnameInput.value)) {
     return true;
   } else {
-    mostraErrore("Surname not valid")
+    mostraErrore("The surname you inserted is not valid")
     return false;
   }
 }
@@ -65,7 +63,7 @@ function checkEmail(emailInput) {
   if (regex.test(emailInput.value.toLowerCase())) {
     return true;
   } else {
-    mostraErrore("Email not valid")
+    mostraErrore("The email you inserted is not valid")
     return false;
   }
 }
@@ -76,7 +74,7 @@ function checkDate(dataInput){
   if (regex.test(dataInput.value)) {
     return true;
   } else {
-    mostraErrore("Date format not valid");
+    mostraErrore("The date format is not valid");
     return false;
   }
 }
@@ -85,27 +83,14 @@ function checkPassword(p1,p2) {
   var pwd1 = p1.value;
   var pwd2 = p2.value;
   if (pwd1.length<6 || pwd2.length>15) {
-    mostraErrore("Password length must be beetween 6 and 15 characters");
+    mostraErrore("The password length must be beetween 6 and 15 characters");
     return false
   } else {
     if (pwd1!=pwd2) {
-      mostraErrore("Passwords don't match");
+      mostraErrore("The passwords don't match");
       return false;
     } else {
       return true;
     }
   }
-
 }
-
-// function checkRealData(dd,mm,yyyy) {
-//   if (yyyy >= 2020 || yyyy < 1870) {
-//     return false;
-//   } else if ( mm > 12 || mm < 1) {
-//     return false;
-//   } else if (dd > 31 || dd < 1) {
-//     return false;
-//   } else {
-//     return true;
-//   }
-// }

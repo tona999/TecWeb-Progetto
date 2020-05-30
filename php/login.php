@@ -15,16 +15,16 @@ if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
 $password = sha1($_POST["password"]);
 
 $result = $mysql->query(
-    "SELECT * FROM User 
-    WHERE Email = '$email'
-    AND Password_hash = '$password' ");
+    "SELECT * FROM user 
+    WHERE email = '$email'
+    AND password_hash = '$password' ");
 
 if($result->num_rows > 0){
     session_start();    
 
     while($row = $result->fetch_assoc()){
-        $_SESSION["userId"] = $row["Id"];
-        $_SESSION["admin"] = $row["Admin"];
+        $_SESSION["userId"] = $row["id"];
+        $_SESSION["admin"] = $row["admin"];
     }
 
     /* TODO: edit pages for logged users */

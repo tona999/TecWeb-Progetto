@@ -1,11 +1,11 @@
-INSERT INTO User (Id, Name, Surname, Email, Password_hash, Admin, Birthdate) VALUES
+INSERT INTO user (id, name, surname, email, password_hash, admin, birthdate) VALUES
 (1, 'Admin', 'Admin', 'admin@admin.com', 'f865b53623b121fd34ee5426c792e5c33af8c227', true, '1998-02-03'),
 (2, 'Mario', 'Rossi', 'mariorossi@gmail.com', 'f865b53623b121fd34ee5426c792e5c33af8c227', false, '1999-05-24'),
 (3, 'Luigi', 'Verdi', 'luigiverdi87@gmail.com', 'f865b53623b121fd34ee5426c792e5c33af8c227', false, '1987-09-01'),
 (4, 'Guido', 'LaVespa', 'guido.veloce@libero.it', 'f865b53623b121fd34ee5426c792e5c33af8c227', false, '1969-11-19'),
 (5, 'Ben', 'Solo', 'kyloren@gmail.com', 'f865b53623b121fd34ee5426c792e5c33af8c227', false, '1991-03-30');
 
-INSERT INTO Ingredient (Id, UserId, Name, GramsProduct, GramsCarbs) VALUES
+INSERT INTO ingredient (id, userId, name, gramsProduct, gramsCarbs) VALUES
 (1, 1, 'Pasta', 100, 75),
 (2, 1, 'Sugo al pomodoro', 100, 7),
 (3, 1, 'Fette Biscottate', 100, 82),
@@ -27,14 +27,14 @@ INSERT INTO Ingredient (Id, UserId, Name, GramsProduct, GramsCarbs) VALUES
 (19, 4, 'Latte', 100, 5),
 (20, 4, 'Budino al cioccolato', 100, 19);
 
-INSERT INTO Recipe (Id, UserId, Name) VALUES
+INSERT INTO recipe (id, userId, name) VALUES
 (1, 1, 'Pasta al pomodoro'),
 (2, 1, 'Colazione'),
 (3, 2, 'Pasta con pancetta e piselli'),
 (4, 3, 'Torta di mele'),
 (5, 4, 'Torta con i Pan Di Stelle');
 
-INSERT INTO Contains (RecipeId, IngredientId, GramsIngredient) VALUES
+INSERT INTO contains (recipeId, ingredientId, gramsIngredient) VALUES
 (1, 1, 100),
 (1, 2, 50),
 (2, 3, 50),

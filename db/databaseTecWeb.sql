@@ -1,57 +1,57 @@
-DROP TABLE IF EXISTS Contains;
-DROP TABLE IF EXISTS Recipe;
-DROP TABLE IF EXISTS Ingredient;
-DROP TABLE IF EXISTS User;
+DROP TABLE IF EXISTS contains;
+DROP TABLE IF EXISTS recipe;
+DROP TABLE IF EXISTS ingredient;
+DROP TABLE IF EXISTS user;
 
 CREATE TABLE User(
-  Id int PRIMARY KEY AUTO_INCREMENT,
-  Name varchar(50) NOT NULL,
-  Surname varchar(50) NOT NULL,
-  Email varchar(100) NOT NULL UNIQUE,
-  Password_hash varchar(100) NOT NULL,
-  Admin boolean NOT NULL,
-  Birthdate DATE NOT NULL
+  id int PRIMARY KEY AUTO_INCREMENT,
+  name varchar(50) NOT NULL,
+  surname varchar(50) NOT NULL,
+  email varchar(100) NOT NULL UNIQUE,
+  password_hash varchar(100) NOT NULL,
+  admin boolean NOT NULL,
+  birthdate DATE NOT NULL
 );
 
 CREATE TABLE Ingredient(
-  Id INT NOT NULL AUTO_INCREMENT,
-  UserId INT NOT NULL,
-  Name varchar(50) NOT NULL,
-  GramsProduct INT NOT NULL,
-  GramsCarbs INT NOT NULL,
-  PRIMARY KEY (Id, UserId),
+  id INT NOT NULL AUTO_INCREMENT,
+  userId INT NOT NULL,
+  name varchar(50) NOT NULL,
+  gramsProduct INT NOT NULL,
+  gramsCarbs INT NOT NULL,
+  PRIMARY KEY (id, userId),
 
   CONSTRAINT fkIngredient
-  FOREIGN KEY (UserId)
-  REFERENCES User(Id)
+  FOREIGN KEY (userId)
+  REFERENCES user(id)
   ON DELETE CASCADE
 );
 
 CREATE TABLE Recipe(
-  Id INT NOT NULL AUTO_INCREMENT,
-  UserId INT NOT NULL,
-  Name varchar(50) NOT NULL,
-  PRIMARY KEY (Id, UserId),
+  id INT NOT NULL AUTO_INCREMENT,
+  userId INT NOT NULL,
+  name varchar(50) NOT NULL,
+  PRIMARY KEY (id, userId),
 
   CONSTRAINT fkRecipe
-  FOREIGN KEY (UserId)
-  REFERENCES User(Id)
+  FOREIGN KEY (userId)
+  REFERENCES User(id)
   ON DELETE CASCADE
 );
 
 CREATE TABLE Contains(
-  RecipeId INT NOT NULL,
-  IngredientId INT NOT NULL,
-  GramsIngredient INT NOT NULL,
-  PRIMARY KEY (RecipeId,IngredientId),
+  recipeId INT NOT NULL,
+  ingredientId INT NOT NULL,
+  gramsIngredient INT NOT NULL,
+  PRIMARY KEY (recipeId, ingredientId),
 
   CONSTRAINT fkContains1
-  FOREIGN KEY (RecipeId)
-  REFERENCES Recipe(Id)
+  FOREIGN KEY (recipeId)
+  REFERENCES recipe(id)
   ON DELETE CASCADE,
 
   CONSTRAINT fkContains2
-  FOREIGN KEY (IngredientId)
-  REFERENCES Ingredient(Id)
+  FOREIGN KEY (ingredientId)
+  REFERENCES ingredient(id)
   ON DELETE CASCADE
 );

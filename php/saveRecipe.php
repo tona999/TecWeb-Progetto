@@ -9,7 +9,7 @@
 	$recipeName = substr(trim($request->recipeName), 0, 40);
 	$ingredients = $request->ingredientsJson;
 
-	$result=$mysql->query("SELECT UserId as uId FROM Recipe WHERE Id={$recipeId}");
+	$result=$mysql->query("SELECT userId as uId FROM recipe WHERE id={$recipeId}");
 	$data = mysqli_fetch_assoc($result);
 	$uId = $data['uId'];
 
@@ -24,12 +24,12 @@
 	}
 	$idString=$idString.')';
 
-	$ingrsInDbResult = $mysql->query("SELECT Id FROM Ingredient WHERE UserId={$userId} AND Id IN $idString");
+	$ingrsInDbResult = $mysql->query("SELECT id FROM ingredient WHERE userId={$userId} AND id IN $idString");
 	$ingrsInDb = array();
 
 	if ($ingrsInDbResult){
 		while(($row =  mysqli_fetch_assoc($ingrsInDbResult))) {
-			$ingrsInDb[] = $row['Id'];
+			$ingrsInDb[] = $row['id'];
 		}
 	}
 
@@ -58,19 +58,19 @@
 	if ($uId=="") // no recipe with id = recipeId. Create it.
 	{
 		if ($recipeId<0) // the recipe is being saved for the first time, the id is -1
-			$mysql->query("INSERT INTO Recipe (UserId, Name) VALUES ($userId, '{$recipeName}')");
+			$mysql->query("INSERT INTO recipe (userId, name) VALUES ($userId, '{$recipeName}')");
 		else // the recipe was removed by the user but it was already loaded in the calculator. Save the recipe with the id already used in the calculator.
-			$mysql->query("INSERT INTO Recipe (Id, UserId, Name) VALUES ($recipeId, $userId, '{$recipeName}')");
+			$mysql->query("INSERT INTO Recipe (id, userId, name) VALUES ($recipeId, $userId, '{$recipeName}')");
 
 		$recipeId = $mysql->insert_id;
 	}
-	else if ($uId!= $userId) //Another user owns the recipe with that id. Abort.
+	else if ($uId != $userId) //Another user owns the recipe with that id. Abort.
 	{
 		echo $recipeId;
 		return;
 	}
 
-	$mysql->query("DELETE FROM Contains WHERE RecipeId={$recipeId}");
+	$mysql->query("DELETE FROM contains WHERE recipeId={$recipeId}");
     $ingList = "";
     foreach($ingredients as $ing)
 	{
@@ -80,7 +80,7 @@
 			$ingList = $ingList.',';
 		$ingList = $ingList."($recipeId, $id, $grams)";
 	}
-    $mysql->query("INSERT INTO Contains (RecipeId, IngredientId, GramsIngredient) VALUES $ingList");
+    $mysql->query("INSERT INTO contains (recipeId, ingredientId, gramsIngredient) VALUES $ingList");
 
 	echo $recipeId;
 ?>

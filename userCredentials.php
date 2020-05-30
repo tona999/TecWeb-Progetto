@@ -13,11 +13,10 @@ if(!isset($_SESSION["userId"])) {
 }
 $id = $_SESSION["userId"];
 
-
 $user = $mysql->query(
     "SELECT *
-    FROM User
-    WHERE Id = '$id'");
+    FROM user
+    WHERE id = '$id'");
 
 
 function replacePlaceholder($user, $html) {

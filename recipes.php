@@ -11,7 +11,7 @@ $html->setBodyPath("html/recipes.html");
 
 require_once("php/connection.php");
 
-$q="SELECT Recipe.Id AS RId, Recipe.Name AS RName, Ingredient.Name AS IName, Contains.GramsIngredient AS GI FROM Recipe LEFT JOIN Contains ON Recipe.Id = Contains.RecipeId LEFT JOIN Ingredient ON Contains.IngredientId = Ingredient.Id WHERE Recipe.UserId = {$_SESSION['userId']} ORDER BY RName";
+$q="SELECT recipe.id AS RId, recipe.name AS RName, ingredient.name AS IName, contains.gramsIngredient AS GI FROM recipe LEFT JOIN contains ON recipe.id = contains.recipeId LEFT JOIN ingredient ON contains.ingredientId = ingredient.id WHERE recipe.userId = {$_SESSION['userId']} ORDER BY RName";
 $result = $mysql->query($q);
 
 //Formatting the query result

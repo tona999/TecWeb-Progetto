@@ -11,16 +11,16 @@
 
     require_once("php/connection.php");
     $ingredientsList = "";
-    $result = $mysql->query("SELECT * FROM Ingredient WHERE UserId={$_SESSION['userId']} ORDER BY NAME");
+    $result = $mysql->query("SELECT * FROM ingredient WHERE userId={$_SESSION['userId']} ORDER BY NAME");
 
     $ingredientDescription = file_get_contents("html/ingredientDescription.html");
     if($result) {
         while($row = $result->fetch_assoc()){
             $tmpDescr = $ingredientDescription;
-            $tmpDescr = str_replace("<_INGREDIENT_ID/>", $row["Id"], $tmpDescr);
-            $tmpDescr = str_replace("<_INGREDIENT_NAME/>", $row["Name"], $tmpDescr);
-            $tmpDescr = str_replace("<_SAMPLE_GRAMS/>", $row["GramsProduct"], $tmpDescr);
-            $tmpDescr = str_replace("<_SAMPLE_CARBS/>", $row["GramsCarbs"], $tmpDescr);
+            $tmpDescr = str_replace("<_INGREDIENT_ID/>", $row["id"], $tmpDescr);
+            $tmpDescr = str_replace("<_INGREDIENT_NAME/>", $row["name"], $tmpDescr);
+            $tmpDescr = str_replace("<_SAMPLE_GRAMS/>", $row["gramsProduct"], $tmpDescr);
+            $tmpDescr = str_replace("<_SAMPLE_CARBS/>", $row["gramsCarbs"], $tmpDescr);
             $ingredientsList = $ingredientsList . $tmpDescr;
         }
     }

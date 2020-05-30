@@ -34,23 +34,23 @@ else{
 require_once("php/connection.php");
 
 $ingredientsList = "";
-$result = $mysql->query("SELECT * FROM User WHERE Id={$_SESSION['userId']}");
+$result = $mysql->query("SELECT * FROM user WHERE Id={$_SESSION['userId']}");
 
 while($row = $result->fetch_assoc()){
     $html->body = str_replace(
-        '&name', $row['Name'], $html->body
+        '&name', $row['name'], $html->body
     );
     $html->body = str_replace(
-        '&surname', $row['Surname'], $html->body
+        '&surname', $row['surname'], $html->body
     );
     $html->body = str_replace(
-        '&email', $row['Email'], $html->body
+        '&email', $row['email'], $html->body
     );
     $html->body = str_replace(
-        '&birthdate', $row['Birthdate'], $html->body
+        '&birthdate', $row['birthdate'], $html->body
     );
     $html->body = str_replace(
-        '&admin', $row['Birthdate']==1? "checked" : "false", $html->body
+        '&admin', $row['birthdate']==1? "checked" : "false", $html->body
     );
 }
 

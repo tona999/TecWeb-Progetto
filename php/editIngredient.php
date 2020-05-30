@@ -15,7 +15,7 @@
 		return;
 	}
 
-	$q = "UPDATE Ingredient SET Name='{$name}', GramsProduct='{$sg}', GramsCarbs='{$sc}' WHERE UserId='{$_SESSION['userId']}' AND Id={$id}";
+	$q = "UPDATE ingredient SET name='{$name}', gramsProduct='{$sg}', gramsCarbs='{$sc}' WHERE userId='{$_SESSION['userId']}' AND id={$id}";
 	$update = $mysql->query($q);
 	
 	if(!$update || $mysql->affected_rows < 1)

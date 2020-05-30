@@ -3,11 +3,11 @@
 	session_start();
 
 	$id = $_GET['recipeId'];
-	$q = "SELECT DISTINCT IngredientId as id, GramsIngredient as grams FROM contains JOIN recipe WHERE UserId={$_SESSION['userId']} AND RecipeId={$id}";
+	$q = "SELECT DISTINCT ingredientId as id, gramsIngredient as grams FROM contains JOIN recipe WHERE userId={$_SESSION['userId']} AND recipeId={$id}";
 	$result = $mysql->query($q);
 
-	$nq = $mysql->query("SELECT Name FROM recipe WHERE UserId={$_SESSION['userId']} AND Id={$id}"); 
-	$recName = mysqli_fetch_assoc($nq)['Name'];
+	$nq = $mysql->query("SELECT name FROM recipe WHERE userId={$_SESSION['userId']} AND id={$id}"); 
+	$recName = mysqli_fetch_assoc($nq)['name'];
 
 	$ings = array();
 	$rec = new \stdClass();

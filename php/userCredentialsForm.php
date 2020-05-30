@@ -79,9 +79,9 @@ if(!isset($_SESSION["userId"])) {
 $id = $_SESSION["userId"];
 
 $checkDuplicateEmail = $mysql->query(
-    "SELECT * FROM User
-    WHERE Email = '$email'
-    AND Id != '$id'");
+    "SELECT * FROM user
+    WHERE email = '$email'
+    AND id != '$id'");
 
 if($checkDuplicateEmail->num_rows > 0) {
       header("Location: ../userCredentials.php?err=emailInUse");
@@ -89,8 +89,8 @@ if($checkDuplicateEmail->num_rows > 0) {
     }
 
 $checkOldPassword = $mysql->query(
-        "SELECT Password_hash FROM User
-        WHERE Id = '$id'");
+        "SELECT password_hash FROM user
+        WHERE id = '{$id}'");
 
 
 if($checkOldPassword->num_rows > 0) {
@@ -104,27 +104,22 @@ else {
   error_log("user not found");
 }
 
-// error_log("UPDATE User
-// SET Name = '".$name."', Surname = '".$surname."', Email = '".$email."', Password_hash = '".$password1."', Birthdate = '".$dateFormatted."'
-// WHERE Id = ".$id);
 // insertion query
 $update = $mysql->query(
-  "UPDATE User
-  SET Name = '".$name."', Surname = '".$surname."', Email = '".$email."', Password_hash = '".$password1."', Birthdate = '".$dateFormatted."'
-  WHERE Id = ".$id
+  "UPDATE user
+  SET name = '{$name}', surname = '{$surname}', email = '{$email}', password_hash = '{$password1}', birthdate = '{$dateFormatted}'
+  WHERE id = {$id}";
 );
 
 // check if has been inserted and gives the Id for this session
-
 if($update){
     header("Location: ../userCredentials.php?err=updated");
     die;
 }
-else { //gets login page and add message
+else { // gets login page and add message
     header("Location: ../userCredentials.php?err=onInsert");
     die;
 }
 
 error_log("dd");
-
 ?>

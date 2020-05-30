@@ -13,6 +13,6 @@
 		return;
 	}
 
-	$q = "INSERT INTO Ingredient (UserId, Name, GramsProduct, GramsCarbs) VALUES ($userId, '{$name}', $sg, $sc)";
+	$q = "INSERT INTO ingredient (userId, Name, gramsProduct, gramsCarbs) VALUES ($userId, '{$name}', $sg, $sc)";
     $mysql->query($q);
 ?>

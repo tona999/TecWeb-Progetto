@@ -60,9 +60,9 @@ validateDate($dateFormatted);
 
 // update query
 $update = $mysql->query(
-    "UPDATE User 
-    SET Name='$name', Surname='$surname', Email='$email', Birthdate='$dateFormatted'
-    WHERE Id=$id");
+    "UPDATE user 
+    SET name='$name', surname='$surname', email='$email', birthdate='$dateFormatted'
+    WHERE id=$id");
 
 if(!$update){ //gets profile page and add message
     header("Location: ../profile.php?err=onUpdate");
@@ -70,6 +70,5 @@ if(!$update){ //gets profile page and add message
 else{
     header("Location: ../profile.php");
 }
-
 
 ?>

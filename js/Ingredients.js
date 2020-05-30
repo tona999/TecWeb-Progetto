@@ -1,7 +1,7 @@
 function start()
 {
 	document.getElementById("insertForm").onsubmit = function() {
-    		if (parseInt(document.getElementById("newSampleGrams").value) < parseInt(document.getElementById("newSampleCarbs").value))
+    	if (parseInt(document.getElementById("newSampleGrams").value) < parseInt(document.getElementById("newSampleCarbs").value))
 		{
 			document.getElementById("warningSpan").innerHTML = "Invalid Data Inserted. The ingredient was not saved.";
 			return false;
