@@ -1,17 +1,8 @@
 <?php
 
-/*
-//LAB:
-$host = "localhost";
-$username = "fcarboni";
-$passwd = "aeWai3veeyiach8F";
-$dbname = "fcarboni";
-*/
-
-//LOCAL:
 $host = "localhost";
 $username = "root";
-$passwd = "";
+$passwd = "root";
 $dbname = "tecweb";
 
 $mysql = new mysqli($host, $username, $passwd, $dbname);

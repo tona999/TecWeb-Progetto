@@ -22,6 +22,11 @@
     padding-bottom: .5em;
 }
 
+<<<<<<< HEAD
+main{
+    float: none;
+    width: 100%;
+=======
 #hamburger {
     display: block;
     background-color: #00000000;
@@ -83,4 +88,5 @@
     position: relative;
     width: auto;
     margin: 1em .5em;
+>>>>>>> develop
 }

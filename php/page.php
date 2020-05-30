@@ -10,13 +10,11 @@ class Page{
         $this->header = file_get_contents("html/header.html");
         $this->menu = file_get_contents("html/menu.html");
         $this->footer = file_get_contents("html/footer.html");
-        $this->setLogged();
     }
 
     /** Set the title of the document */
     public function setTitle($title){
         $this->header = str_replace("<TITLE/>", $title, $this->header);
-        $this->setCurrent(strtolower($title));
     }
 
     /** Add metatags */
@@ -28,6 +26,15 @@ class Page{
     public function setLogged(){
         session_start();
         if(isset($_SESSION["userId"])){
+<<<<<<< HEAD
+            $login_r = '<a href="php/logout.php">Logout</a>';
+            $menu_r = 
+                '<li><a href="ingredients.php"><img src="img/icons/tool.svg" alt=""> Ingredients </a></li>'.
+                '<li><a href="recipes.php"><img src="img/icons/tool.svg" alt=""> Recipes </a></li>';
+        }
+        else{
+            $login_r = '<a href="login.php">Login</a>';
+=======
             $login_r = '<button id="hamburger" onclick="hideMenu();" title="Profile">User</button>';    //hamburger button
             $menu_r = 
                 '<ul id="profileMenu" class="menu hidden">'."\n".  //profile menu (dark blue)
@@ -42,10 +49,13 @@ class Page{
         }
         else{
             $login_r = '<a class="btn" id="aLogin" href="login.php">LOGIN</a>';
+>>>>>>> develop
             $menu_r = "";
         }
         $this->header = str_replace("<LOGIN/>", $login_r, $this->header);
         $this->menu = str_replace("<MENU_LOGGED/>", $menu_r, $this->menu);
+<<<<<<< HEAD
+=======
     } 
 
     /** Set current page and remove the menu link*/
@@ -141,6 +151,7 @@ class Page{
                 $this->menu);
                 break;
         }
+>>>>>>> develop
     }
 
     /** Sets the content of the body (require the html path) */
@@ -177,3 +188,8 @@ class Page{
             $this->footer;
     }
 }
+<<<<<<< HEAD
+
+?>
+=======
+>>>>>>> develop
