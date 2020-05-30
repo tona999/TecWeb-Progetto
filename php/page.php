@@ -75,8 +75,8 @@ class Page{
                 break;
             case "calculator":
                 $this->menu = str_replace(
-                    '<li><a href="calculator.php"><img src="img/icons/tool.svg" alt="" />CALC</a></li>',
-                    '<li class="disabled"><a><img src="img/icons/tool.svg" alt="" />CALC</a></li>',
+                    '<li><a href="calculator.php"><img src="img/icons/tool.svg" alt="" />CALCULATOR</a></li>',
+                    '<li class="disabled"><a><img src="img/icons/tool.svg" alt="" />CALCULATOR</a></li>',
                     $this->menu
                 );
                 // breadcrumb
