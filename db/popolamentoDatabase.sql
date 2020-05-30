@@ -1,5 +1,5 @@
 INSERT INTO user (id, name, surname, email, password_hash, admin, birthdate) VALUES
-(1, 'Admin', 'Admin', 'admin@admin.com', 'f865b53623b121fd34ee5426c792e5c33af8c227', true, '1998-02-03'),
+(1, 'User', 'User', 'user@user.com', '95c946bf622ef93b0a211cd0fd028dfdfcf7e39e', true, '1998-02-03'),
 (2, 'Mario', 'Rossi', 'mariorossi@gmail.com', 'f865b53623b121fd34ee5426c792e5c33af8c227', false, '1999-05-24'),
 (3, 'Luigi', 'Verdi', 'luigiverdi87@gmail.com', 'f865b53623b121fd34ee5426c792e5c33af8c227', false, '1987-09-01'),
 (4, 'Guido', 'LaVespa', 'guido.veloce@libero.it', 'f865b53623b121fd34ee5426c792e5c33af8c227', false, '1969-11-19'),
