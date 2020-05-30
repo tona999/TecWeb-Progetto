@@ -241,13 +241,11 @@ input {
 .e404 {
     text-align: center;
     max-width: 30em;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 1em auto;
 }
 
 .e404 a {
-    display: inline-block;
-    margin: 0 0 1em 1em;
+    margin: .5em;
 }
 
 .e404 img {

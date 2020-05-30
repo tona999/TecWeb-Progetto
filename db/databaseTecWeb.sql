@@ -3,7 +3,7 @@ DROP TABLE IF EXISTS recipe;
 DROP TABLE IF EXISTS ingredient;
 DROP TABLE IF EXISTS user;
 
-CREATE TABLE User(
+CREATE TABLE user(
   id int PRIMARY KEY AUTO_INCREMENT,
   name varchar(50) NOT NULL,
   surname varchar(50) NOT NULL,
@@ -13,7 +13,7 @@ CREATE TABLE User(
   birthdate DATE NOT NULL
 );
 
-CREATE TABLE Ingredient(
+CREATE TABLE ingredient(
   id INT NOT NULL AUTO_INCREMENT,
   userId INT NOT NULL,
   name varchar(50) NOT NULL,
@@ -27,7 +27,7 @@ CREATE TABLE Ingredient(
   ON DELETE CASCADE
 );
 
-CREATE TABLE Recipe(
+CREATE TABLE recipe(
   id INT NOT NULL AUTO_INCREMENT,
   userId INT NOT NULL,
   name varchar(50) NOT NULL,
@@ -35,11 +35,11 @@ CREATE TABLE Recipe(
 
   CONSTRAINT fkRecipe
   FOREIGN KEY (userId)
-  REFERENCES User(id)
+  REFERENCES user(id)
   ON DELETE CASCADE
 );
 
-CREATE TABLE Contains(
+CREATE TABLE contains(
   recipeId INT NOT NULL,
   ingredientId INT NOT NULL,
   gramsIngredient INT NOT NULL,
