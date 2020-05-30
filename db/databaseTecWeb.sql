@@ -9,7 +9,6 @@ CREATE TABLE user(
   surname varchar(50) NOT NULL,
   email varchar(100) NOT NULL UNIQUE,
   password_hash varchar(100) NOT NULL,
-  admin boolean NOT NULL,
   birthdate DATE NOT NULL
 );
 
