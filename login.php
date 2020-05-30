@@ -3,7 +3,6 @@ require_once("php/page.php");
 $html = new Page();
 $html->setTitle("Login");
 $html->setMeta("");
-$html->setLogged();
 $html->setBodyPath("html/login.html");
     
 //checks for errors in login

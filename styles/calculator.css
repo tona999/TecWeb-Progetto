@@ -4,13 +4,6 @@
     padding: 0;
 }
 
-<<<<<<< HEAD
-#recipe{
-	display: flex;
-	flex-wrap: wrap;
-    justify-content: start;
-    margin-bottom: 4em; /* needed to avoid bottom bar override */
-=======
 #recipe {
     display: flex;
     flex-wrap: wrap;
@@ -18,7 +11,6 @@
     margin-bottom: 4em;
     list-style: none;
     /* needed to avoid bottom bar override */
->>>>>>> develop
 }
 
 
@@ -37,71 +29,6 @@ body>h1>a {
 
 
 /*** INGREDIENT ***/
-<<<<<<< HEAD
-    
-    form{
-        font-size: 0.9em;
-        width: 90%;
-        max-width: 30em;
-    }
-    fieldset{
-        padding: .5em;
-        border: none;
-        border-bottom: 1px solid #00000030;
-    }
-
-    /* Label and inputs inside ingredients */
-    label{
-        display: inline-block;
-        min-width: 45%;
-    }
-    input{
-        text-align: center;
-        height: 2em;
-    }
-    input[type="number"]{
-        width: 3em;
-	}
-	input[type="button"]{
-		min-width: 2em;
-		padding:0.2em;
-    }
-	input[type="text"]{
-        width: 60%;
-    }
-    #controlPanel button{
-		height: 2em;
-		width: 2em;
-	}
-
-    /* Report table for ingredients */
-    .ingredient-report{
-        margin: auto;
-        margin-top: .5em;
-        border-collapse: collapse;
-    }
-    .ingredient-report td, .ingredient-report th{
-        border: 1px solid black;
-        padding: .3em;
-        text-align: center;
-        font-weight: normal;
-        font-size: 1em;
-    }
-
-    /* Pieces number buttons (+ -) */
-    .divided label *{
-        display: inline;
-    }
-
-    /*invalid data was inserted by user*/
-    .invalidInput
-    {
-    	background: red;
-    	color: white;
-    }
-    
-/******************/
-=======
 
 .ingredient {
     font-size: 0.9em;
@@ -209,7 +136,6 @@ input[type="text"] {
     color: white;
 }
 
->>>>>>> develop
 
 /* Bottom bar (controls container) */
 
@@ -242,13 +168,6 @@ input[type="text"] {
     margin-bottom: 5em;
 }
 
-<<<<<<< HEAD
-#recipeView .ingredient{
-    margin:auto;
-    margin-top: 1em;
-    margin-bottom: 1em;
-}
-=======
 #recipeView p {
     text-align: center;
     color: #546e7a;
@@ -342,4 +261,3 @@ label[for="ingredientsSelect"] {
     top: -1000px;
 }
 
->>>>>>> develop
