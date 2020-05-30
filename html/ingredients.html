@@ -1,0 +1,28 @@
+<div class="main">
+    <h2>Your Ingredients </h2>
+    <_ERROR/>
+    <form action="php/insertIngredientIngs.php" method="post" target="_self" id="insertForm">
+        <h3>Add Ingredient</h3>
+        <fieldset>
+            <legend>New Ingredient Data</legend>
+            <label>
+                Name
+                <input maxlength="40" type="text" placeholder="Ingredient Name" name="ingredientName" required/>
+            </label>
+            <label>
+				<input type="number" min='0' placeholder="Grams" value="100" name="sampleGrams" id="newSampleGrams" required/>
+                g of product have
+            </label>
+            <label>
+				<input type="number" min='0' placeholder="Carbs" name="sampleCarbs" id="newSampleCarbs" required/>
+				g carbs
+			</label>
+        </fieldset>
+        <input class="btn saveBtn" type="submit" value="SAVE NEW INGREDIENT" />
+        <span id="warningSpan"></span>
+    </form>
+
+    <div id="ingredientDescriptions">
+        <_INGREDIENTS_LIST/>
+    </div>
+</div>

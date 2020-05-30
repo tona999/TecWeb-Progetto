@@ -5,11 +5,18 @@ require_once("php/connection.php");
 $html = new Page();
 $html->setTitle("User Credentials");
 $html->setMeta("");
+<<<<<<< HEAD
 $html->setLogged();
 $html->setBodyPath("html/userCredentials.html");
 
 if(!isset($_SESSION["userId"])) {
   header("Location: ../userCredentials.php?err=notLogged");
+=======
+$html->setBodyPath("html/userCredentials.html");
+
+if(!isset($_SESSION["userId"])) {
+  header("Location: userCredentials.php?err=notLogged");
+>>>>>>> develop
   die;
 }
 $id = $_SESSION["userId"];

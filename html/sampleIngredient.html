@@ -1,0 +1,69 @@
+<li id="sampleIngredient" class="ingredient">
+    <fieldset>
+        <legend>Ingredient</legend>
+        <label>
+            Name:
+            <input type="text" maxlength="40" name="ingredientName" placeholder="Ingredient" />
+        </label>
+        <input class="btn saveBtn" type="button" value="SAVE" name="saveButton" title="Save ingredient" />
+        <input class="btn closeBtn" type="button" value="Close" name="closeButton" title="Remove ingredient" />
+    </fieldset>
+
+    <fieldset class="carbs">
+        <legend>Nutrition Facts</legend>
+        <label>
+			<input type="number" min="0" name="sampleGrams" value="100" placeholder="100"/>	
+			g contains
+		</label>
+        <label> 
+			<input type="number" min="0"  name="sampleCarbs" placeholder="0"/>
+			g of carbs
+		</label>
+    </fieldset>
+
+    <fieldset class="bread-units">
+        <legend>Grammage/Insulin Units</legend>
+        <label>
+			<input type="number" min="0" name="totalGrams" placeholder="0"/>
+			g require
+		</label>
+
+        <label> 
+			<input type="number" min="0" name="totalBreadUnits" placeholder="0"/>
+			insulin units
+		</label>
+    </fieldset>
+
+    <fieldset class="divided">
+        <legend>Subdivision</legend>
+        <label>
+			Divided in
+			<input type="number" min="0" name="piecesNumber" placeholder="0"/>
+			pieces
+        </label>
+        <div class="controls-container">
+            <input class="btn action-btn" type="button" value="-" name="minusButton" />
+            <input class="btn action-btn" type="button" value="+" name="plusButton" />
+        </div>
+
+        <table class="ingredient-report">
+            <caption>Values per piece of product</caption>
+            <thead>
+                <tr>
+                    <th>grams</th>
+                    <th>insulin units</th>
+                    <th>carbs</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="gramsPP">0</td>
+                    <td class="breadUnitsPP">0</td>
+                    <td class="carbsPP">0</td>
+                </tr>
+            </tbody>
+        </table>
+    </fieldset>
+
+    <span class="warningSpan"></span>
+</li>

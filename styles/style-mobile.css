@@ -1,26 +1,92 @@
-menu{
+.menu {
     float: none;
     width: 100%;
     padding: .5em 0;
     border-radius: 0;
 }
 
-menu{
+.menu {
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
-menu li{
+
+.menu li {
     text-align: center;
 }
-menu img{
+
+.menu img {
     display: block;
     height: 1.7em;
     width: 100%;
     padding-bottom: .5em;
 }
 
+<<<<<<< HEAD
 main{
     float: none;
     width: 100%;
+=======
+#hamburger {
+    display: block;
+    background-color: #00000000;
+    cursor: pointer;
+    background-image: url(../img/icons/menu.svg);
+    background-repeat: no-repeat;
+    width: 2em;
+    height: 2em;
+    border: none;
+}
+
+#hamburger:hover {
+    box-shadow: none;
+}
+
+.hidden {
+    position: fixed;
+    top: -100%;
+}
+
+#profileMenu {
+    background-color: #3a4a6b;
+    padding: 0;
+}
+
+#profileMenu a {
+    box-sizing: border-box;
+    padding: .9em;
+    width: 100%;
+    color: white;
+}
+
+#profileMenu a:hover {
+    color: black;
+}
+
+#profileMenu li {
+    margin: 0;
+    border-radius: 0;
+    text-align: left;
+    display: block;
+}
+
+#profileMenu li:hover {
+    background-color: #f6f8facc;
+    font-weight: bold;
+}
+
+#recipe_screen select {
+    display: block;
+    margin: .5em auto;
+}
+
+.main {
+    float: none;
+}
+
+#tips {
+    position: relative;
+    width: auto;
+    margin: 1em .5em;
+>>>>>>> develop
 }

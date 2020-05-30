@@ -12,12 +12,12 @@ if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
     header("Location: ../login.php?err=email");
     die;
 }
-$password = $_POST["password"];
+$password = sha1($_POST["password"]);
 
 $result = $mysql->query(
     "SELECT * FROM User 
     WHERE Email = '$email'
-    AND Password_hash = '$password' "); //TODO: change with actually the HASH!
+    AND Password_hash = '$password' ");
 
 if($result->num_rows > 0){
     session_start();    

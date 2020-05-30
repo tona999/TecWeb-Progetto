@@ -1,31 +1,76 @@
-*{
+* {
+    word-wrap: break-word;
     font-family: sans-serif;
     margin: 0;
     padding: 0;
+    line-height: 1.5em;
+    scroll-behavior: smooth;
 }
 
-body{
+body {
     max-width: 2048px;
     margin: auto;
     background-color: #f6f8fa;
 }
+<<<<<<< HEAD
 body.dark{
     background-color: #2F4858;
+=======
+
+body.dark {
+    background-color: #5a74ac;
+>>>>>>> develop
 }
-h1{
+
+h1 {
     font-weight: normal;
 }
 
+
 /* Header */
-header{
+
+.header {
     padding: .5em;
+<<<<<<< HEAD
     background-color: #00A4A8;
+=======
+>>>>>>> develop
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+<<<<<<< HEAD
+=======
+
+.header h1 img {
+    height: 1.3em;
+    margin: 0 .2em;
+    vertical-align: middle;
+}
+
+.header a {
+    text-decoration: none;
+}
+
+.header h1 {
+    font-size: 1.5em;
+    color: #5a74ac;
+}
+
+.header abbr {
+    text-decoration: none;
+    font-weight: bold;
+    color: #5a74ac;
+}
+
+h3 {
+    margin-bottom: .5em;
+}
+>>>>>>> develop
+
 
 /* Menu */
+<<<<<<< HEAD
 menu{
     background-color: #00C4B2;
     list-style: none;
@@ -34,12 +79,96 @@ menu{
 menu li{
     display: inline-block;
     margin: .5em;
+=======
+
+.menu {
+    background-color: #5a74ac;
+    list-style: none;
+    padding: .5em;
 }
-menu img{
+
+.menu li,
+#aLogin {
+    font-size: .9em;
+    display: inline-block;
+}
+
+.menu a,
+#aLogin {
+    display: inline-block;
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+    padding: .5em;
+}
+
+#aLogin {
+    height: initial;
+}
+
+.menu .disabled * {
+    color: rgba(230, 244, 241, 0.726);
+}
+
+.menu .disabled:hover {
+    background-color: initial;
+    box-shadow: initial;
+>>>>>>> develop
+}
+
+.menu img {
+    display: none;
+}
+<<<<<<< HEAD
+=======
+
+.menu li:hover {
+    background-color: #F2FAFF;
+    box-shadow: 0 1px 5px #3b4f5f18;
+    border-radius: 4px;
+}
+
+.menu :not(.disabled):hover a {
+    color: black;
+}
+
+.menu a:visited:hover {
+    color: #c06c84;
+}
+
+#aLogin {
+    color: black;
+}
+
+#aLogin:hover {
+    background-color: #5a74ac;
+    color: white;
+    box-shadow: 0 1px 5px #3b4f5f18;
+    border-radius: 4px;
+}
+
+#hamburger {
+    color: rgba(0, 0, 0, 0);
     display: none;
 }
 
+#hamburger:focus {
+    outline: none;
+}
+
+#profileMenu {
+    float: right;
+    display: block;
+}
+
+#profileMenu li {
+    margin: 0 .25em 0 .25em;
+}
+>>>>>>> develop
+
+
 /* Main */
+<<<<<<< HEAD
 main p, main h1, main h2, main a{
     display: block;
     margin: 1em;
@@ -53,31 +182,270 @@ form{
     border-radius: 8px;
     margin: 1em auto;
     padding: 1em;
-}
-#login * {
-    margin-bottom: 1em;
-    display: block;
-}
-#login input{
-    height: 2em;
-    padding: 0 1em;
-}
-#login span{
-    color: red;
+=======
+
+h2 {
+    color: #5a74ac;
+    margin: 1em;
 }
 
+.main {
+    width: max-content;
+    max-width: 100%;
+    margin: auto;
+}
+
+.main p {
+    margin: 1em;
+}
+
+.main a {
+    color: #3b5386;
+}
+
+.main a:visited {
+    color: #c06c84;
+>>>>>>> develop
+}
+
+.home img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+
+/* Login form */
+
+#login label *,
+#profile label * {
+    display: block;
+    width: 15em;
+    max-width: 100%;
+    margin: 0 0 1em;
+    text-align: start;
+    padding: 0 .2em;
+}
+
+#login .btn,
+#profile .btn {
+    display: block;
+    padding: 0 1em;
+    margin: auto;
+}
+
+#login fieldset,
+#profile fieldset {
+    width: max-content;
+    border: none;
+    margin: 1em auto;
+}
+
+<<<<<<< HEAD
 input[type="button"], input[type="submit"], button{
     background-color: lightgray;
     height: 2em;
     border-radius: 4px;
     border: none;
 }
+=======
+input {
+    text-align: center;
+    height: 2em;
+}
 
-footer{
+.btn {
+    text-decoration: none;
+    color: #000000;
+    font-size: .9em;
+    background-color: #c1cadb;
+    padding: .5em;
+    height: 2.5em;
+    min-width: 2.5em;
+    border-radius: 4px;
+    border: none;
+}
+
+.btn:hover {
+    box-shadow: 0 1px 5px #3b4f5f18;
+    background-color: #5a74ac;
+    cursor: pointer;
+}
+>>>>>>> develop
+
+.footer {
     clear: both;
     font-size: .7em;
+<<<<<<< HEAD
     background-color: #2F4858;
     color: white;
     padding: .5em;
     text-align: center;
+=======
+    background-color: #ac5a61;
+    color: white;
+    padding: .5em;
+    text-align: center;
+}
+
+.footer * {
+    white-space: nowrap;
+}
+
+.e404 {
+    text-align: center;
+    max-width: 30em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.e404 a {
+    display: inline-block;
+    margin: 0 0 1em 1em;
+}
+
+.e404 img {
+    max-width: 10em;
+    margin: 1em;
+}
+
+.warningSpan,
+#warningSpan,
+.error {
+    box-sizing: border-box;
+    display: inline-block;
+    background-color: #e64343;
+    color: white;
+    width: 100%;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.card,
+form {
+    display: block;
+    background-color: #ffffff;
+    margin: 2em .5em;
+    padding: 1em;
+    height: max-content;
+    border-radius: 8px;
+    box-shadow: 0 1px 5px #3b4f5f18;
+}
+
+div.card {
+    max-width: 50em;
+}
+
+.breadcrumb {
+    font-size: .8em;
+    padding: .5em 1em;
+    background-color: #3b5386;
+    color: white;
+}
+
+.breadcrumb .path {
+    color: white;
+}
+
+.closeBtn {
+    background-color: #ec407a;
+    color: white;
+}
+
+.editBtn {
+    background-color: #039be5;
+    color: white;
+}
+
+.btn:disabled {
+    background-color: grey;
+}
+
+.btn:disabled:hover {
+    box-shadow: none;
+    cursor: default;
+}
+
+.saveBtn {
+    background: #09bd66;
+    color: white;
+}
+
+#tips {
+    position: fixed;
+    text-align: center;
+    margin: 1em;
+    bottom: 0;
+    right: 0;
+    width: 10em;
+}
+
+#tips p {
+    font-size: 1.2em;
+    text-align: left;
+    margin: 1em auto;
+    width: max-content;
+    max-width: 100%;
+
+}
+
+#tips h2 {
+    background-color: #5a74ac;
+    color: white;
+    border-radius: 4px;
+    margin: 0;
+}
+
+#tips .btn {
+    display: block;
+    margin: auto;
+    width: 3em;
+    height: 3em;
+    border-radius: 100px;
+    color: rgba(0, 0, 0, 0);
+    background-image: url(../img/icons/arrow.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.faq dl {
+    margin: 1em;
+}
+
+.faq dt {
+    font-size: 1.2em;
+    margin-bottom: .5em;
+    background-color: #f5f5f5;
+    padding: 0.5em 0em 0.5em 0.5em;
+    border-radius: 10px;
+}
+
+.faq dd {
+    margin-bottom: 2em;
+    padding-left: 1.2em;
+    border-left: 4px solid #5a74ac;
+}
+
+.faq ul {
+    padding-left: 1em;
+}
+
+legend {
+    color: #535353;
+    font-size: 0.9em;
+    text-decoration: underline;
+}
+
+#go_top {
+    color: rgba(0, 0, 0, 0);
+    position: fixed;
+    right: 2em;
+    bottom: 2em;
+    height: 3em;
+    width: 3em;
+    border-radius: 100px;
+    background-image: url(../img/icons/arrow.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: rotate(-90deg);
+>>>>>>> develop
 }

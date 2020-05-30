@@ -1,15 +1,25 @@
-<main>
-    <!-- Contenuto specifico della pagina -->
+<div class="main">
+    <div class="card">
+        <a href="registerPage.php" class="btn">Register</a> if you don't have an account
+    </div>
     <form id="login" action="php/login.php" method="post">
-        <label>
-            E-mail:
-            <input type="text" name="email" id="email" required="required">
-        </label>
-        <label>
-            Password:
-            <input type="password" name="password" id="password" required="required">
-        </label>
+        <h2>Login</h2>
+        <fieldset>
+            <label>
+                E-mail:
+                <input type="text" name="email" id="email" />
+            </label>
+            <label>
+                Password:
+                <input type="password" name="password" id="password" />
+            </label>
+            <input class="btn" type="submit" value="Login" />
+        </fieldset>
         <ERROR/>
-        <input type="submit" value="Login">
     </form>
+<<<<<<< HEAD
 </main>
+=======
+    
+</div>
+>>>>>>> develop

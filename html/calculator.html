@@ -1,16 +1,27 @@
+<<<<<<< HEAD
 <main>
 <div id="recipe"></div>
 
+=======
+<div id="recipe_screen">
+    <label for="ingredientsSelect">Add Ingredient:</label>
+    <select id='ingredientsSelect'>
+		<option>Loading...</option>
+	</select>
+    <ul id="recipe"></ul>
+</div>
+>>>>>>> develop
 <div id="controlPanel">
-	<p>
-		Grams:
-		<span id="totalRecipeGrams">0</span>
-	</p>
-	<p>
-		Carbs:
-		<span id="totalRecipeCarbs">0</span>
-	</p>
+    <p>
+        Grams:
+        <span id="totalRecipeGrams">0</span>
+    </p>
+    <p>
+        Carbs:
+        <span id="totalRecipeCarbs">0</span>
+    </p>
 
+<<<<<<< HEAD
 	<div class="buttons">
 	<input type="button" id="showRecipeViewBtn" value="^"/>
 	<input type="button" id="loadRecipeBtn" value="LOAD"/>
@@ -19,10 +30,20 @@
 	<input type="button" id="addNewIngredientBtn" value="+"/>
 	</div>
 
+=======
+    <div class="buttons">
+        <input type="button" class="btn calcBarBtn showBtn" id="showRecipeViewBtn" value="BAKE" title="Combine recipe" />
+        <input type="button" class="btn calcBarBtn saveBtn" id="saveRecipeBtn" value="SAVE" title="Save recipe" />
+        <input type="button" class="btn calcBarBtn addBtn" id="addNewIngredientBtn" value="ADD" title="New ingredient" />
+    </div>
+>>>>>>> develop
 </div>
 
-<fieldset id="recipeView"></fieldset>
+<ul id="recipeView" class="hidden_recipe_view">
+    <li><p>Here you see your recipe as a homogeneous combination of Ingredients. You can save the recipe and work on it later!</p></li>
+</ul>
 
+<<<<<<< HEAD
 <!-- Ingredient -->
 <form id="sampleIngredient" action="" class = "ingredient">
 	<fieldset>
@@ -82,3 +103,10 @@
 
 
 </main>
+=======
+<ul id="init">
+    <li hidden id = "requestedIngredientId"><_REQUESTED_INGREDIENT_ID/></li>
+    <li hidden id = "requestedRecipeId"><_REQUESTED_RECIPE_ID/></li>
+    <_SAMPLE_INGREDIENT/>
+</ul>
+>>>>>>> develop

@@ -1,0 +1,22 @@
+<form action="calculator.php" method="post">
+    <fieldset>
+        <legend>Ingredient Data</legend>
+        <input type="hidden" name="ingredientId" value="<_INGREDIENT_ID/>" />
+        <label>
+            Name
+            <input class="non_editable" readonly type="text" name="ingredientName" placeholder="Ingredient Name" value="<_INGREDIENT_NAME/>" />
+        </label>
+        <label>
+			<input class="non_editable" type="number" min='0' readonly placeholder="Grams" name="sampleGrams" value="<_SAMPLE_GRAMS/>"/> g product has
+		</label>
+        <label>
+			<input class="non_editable" type="number" min='0' readonly placeholder="Carbs" name="sampleCarbs" value="<_SAMPLE_CARBS/>"/> g carbs
+		</label>
+        <span>
+		<input type="button" class="btn closeBtn" value="Delete" name="removeBtn"/>
+		<input type="button" class="btn editBtn" value="Edit" name="editBtn"/>
+		<input type="submit" class="btn saveBtn" value="Load In Calculator" name="loadBtn"/>
+		</span>
+    </fieldset>
+    <span class="warningSpan"></span>
+</form>

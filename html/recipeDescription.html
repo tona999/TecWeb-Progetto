@@ -1,0 +1,13 @@
+<form action="calculator.php" method="post">
+    <fieldset>
+        <legend>Recipe</legend>
+        <input type="hidden" value="<_RECIPE_ID/>" name="recipeId" />
+        <input type="hidden" value="<_RECIPE_NAME/>" name="recipeName" />
+        <h3 class="recipeName">
+            <_RECIPE_NAME/>
+        </h3>
+        <_INGREDIENTS_LIST/>
+        <input type="button" value="Remove" name="removeBtn" class="btn closeBtn" />
+        <input type="submit" value="Load In Calculator" class="btn saveBtn" />
+    </fieldset>
+</form>

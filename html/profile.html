@@ -1,0 +1,30 @@
+<div class="main">
+    <form id="profile" action="php/editProfile.php" method="post">
+        <h2>My Profile</h2>
+        <fieldset>
+            <label>
+                Name
+                <input type="text" name="name" id="name" value="&name" />
+            </label>
+            <label>
+                Surname
+                <input type="text" name="surname" id="surname" value="&surname" />
+            </label>
+            <label>
+                Birth Date
+                <input type="date" name="birthdate" id="birthdate" value="&birthdate" />
+            </label>
+            <label>
+                Email
+                <input type="email" name="email" id="email" value="&email" />
+            </label>
+            <input class="btn saveBtn" type="submit" value="Save changes" />
+        </fieldset>
+        <ERROR/>
+    </form>
+    <div class="card">
+        <h2>Go to..</h2>
+        <a class="btn" href="ingredients.php">My Ingredients</a>
+        <a class="btn" href="recipes.php">My Recipes</a>
+    </div>
+</div>
