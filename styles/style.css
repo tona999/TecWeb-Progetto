@@ -221,7 +221,7 @@ input {
     cursor: pointer;
 }
 
-.main a.btn:visited {
+.main a.btn {
     color: #000000;
 }
 
