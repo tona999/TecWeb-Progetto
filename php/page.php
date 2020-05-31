@@ -108,7 +108,7 @@ class Page{
                 break;
             case "login":
                 $this->header = str_replace(
-                    '<a id="aLogin" href="login.php">LOGIN</a>',
+                    '<a class="btn" id="aLogin" href="login.php">LOGIN</a>',
                     '',
                     $this->header
                 );
