@@ -4,7 +4,7 @@ $html = new Page();
 $html->setTitle("Login");
 $html->setMeta(
       '<meta name="author" content="FAJN">'.
-      '<meta name="description" content="Log in to store and retrive your ingredients and recipes">'.
+      '<meta name="description" content="Log in to use our calculator, save and retrieve your ingredients and recipes">'.
       '<meta name="robots" content="noindex">'.
       '<meta name="keywords" content="login,diabetes,T1D,calculator,recipes,ingredients" />'
 );

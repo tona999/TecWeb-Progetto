@@ -5,7 +5,7 @@
     $html->setTitle("Your Ingredients");
     $html->setMeta(
         '<meta name="author" content="FAJN">'.
-        '<meta name="description" content="User\'s ingredients saved">'.
+        '<meta name="description" content="Your ingredients">'.
         '<meta name="robots" content="noindex,nofollow">'.
         '<meta name="keywords" content="ingredients,diabetes,T1D,calculator" />'.
         '<link rel="stylesheet" type="text/css" href="styles/ingredient-description.css" media="screen" />'.

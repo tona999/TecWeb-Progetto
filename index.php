@@ -4,7 +4,7 @@ $html = new Page();
 $html->setTitle("Home");
 $html->setMeta(
       '<meta name="author" content="FAJN">'.
-      '<meta name="description" content="Calculate the amount of insulin needed for type 1 diabetes">'.
+      '<meta name="description" content="Calculate the dose of insulin needed for type 1 diabetes">'.
       '<meta name="robots" content="index,follow">'.
       '<meta name="keywords" content="diabetes,type 1 diabetes,T1D,calculator,insulin" />'
 );
