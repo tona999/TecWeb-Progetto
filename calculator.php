@@ -4,6 +4,10 @@ $html = new Page();
 $html->requireLogin();
 $html->setTitle("Calculator");
 $html->setMeta(
+    '<meta name="author" content="FAJN">'.
+    '<meta name="description" content="Insulin calculator">'.
+    '<meta name="robots" content="noindex">'.
+    '<meta name="keywords" content="calculate,insulin,diabetes,T1D,calculator" />'.
     '<script type="text/javascript" src="js/Calculator.js"></script>'.
     '<script type="text/javascript" src="js/Ingredient.js"></script>'.
     '<script type="text/javascript" src="js/MathUtilities.js"></script>'.

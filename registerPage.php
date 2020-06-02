@@ -2,7 +2,12 @@
 require_once("php/page.php");
 $html = new Page();
 $html->setTitle("Register");
-$html->setMeta("");
+$html->setMeta(
+  '<meta name="author" content="FAJN">'.
+  '<meta name="description" content="User registration is needed to use calculator, allows to store your ingredients and recipies">'.
+  '<meta name="robots" content="index">'.
+  '<meta name="keywords" content="profile,login,register,diabetes,T1D,calculator" />'
+);
 $html->setBodyPath("html/register.html");
 
 //checks for errors in login

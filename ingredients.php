@@ -4,9 +4,13 @@
     $html->requireLogin();
     $html->setTitle("Your Ingredients");
     $html->setMeta(
-        "<link rel='stylesheet' type='text/css' href='styles/ingredient-description.css' media='screen' />".
-        "<script type='text/javascript' src='js/IngredientDescription.js'></script>".
-        "<script type='text/javascript' src='js/Ingredients.js'></script>");
+        '<meta name="author" content="FAJN">'.
+        '<meta name="description" content="User\'s ingredients saved">'.
+        '<meta name="robots" content="noindex,nofollow">'.
+        '<meta name="keywords" content="ingredients,diabetes,T1D,calculator" />'.
+        '<link rel="stylesheet" type="text/css" href="styles/ingredient-description.css" media="screen" />'.
+        '<script type="text/javascript" src="js/IngredientDescription.js"></script>'.
+        '<script type="text/javascript" src="js/Ingredients.js"></script>');
     $html->setBodyPath("html/ingredients.html");
 
     require_once("php/connection.php");

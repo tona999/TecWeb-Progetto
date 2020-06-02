@@ -2,7 +2,12 @@
 require_once("php/page.php");
 $html = new Page();
 $html->setTitle("Profile");
-$html->setMeta("");
+$html->setMeta(
+      '<meta name="author" content="FAJN">'.
+      '<meta name="description" content="Modify user profile data">'.
+      '<meta name="robots" content="noindex">'.
+      '<meta name="keywords" content="profile,diabetes,T1D,calculator" />'
+);
 $html->setBodyPath("html/profile.html");
 
 //checks for errors in login

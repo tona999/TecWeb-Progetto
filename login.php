@@ -2,9 +2,14 @@
 require_once("php/page.php");
 $html = new Page();
 $html->setTitle("Login");
-$html->setMeta("");
+$html->setMeta(
+      '<meta name="author" content="FAJN">'.
+      '<meta name="description" content="Log in to store and retrive your ingredients and recipes">'.
+      '<meta name="robots" content="noindex">'.
+      '<meta name="keywords" content="login,diabetes,T1D,calculator,recipes,ingredients" />'
+);
 $html->setBodyPath("html/login.html");
-    
+
 //checks for errors in login
 if(isset($_GET["err"])){
     if($_GET["err"]=="pass"){
@@ -19,7 +24,7 @@ if(isset($_GET["err"])){
             "<span class='error'>Invalid email!</span>",
             $html->body);
     }
-} 
+}
 else{
     $html->body = str_replace("<ERROR/>","",$html->body);
 }

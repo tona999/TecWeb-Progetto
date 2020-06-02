@@ -4,6 +4,10 @@ $html = new Page();
 $html->requireLogin();
 $html->setTitle("Your Recipes");
 $html->setMeta(
+    '<meta name="author" content="FAJN">'.
+    '<meta name="description" content="User\'s recipies saved">'.
+    '<meta name="robots" content="noindex">'.
+    '<meta name="keywords" content="profile,diabetes,T1D,calculator" />'.
     "<link rel='stylesheet' type='text/css' href='styles/ingredient-description.css' media='screen' />
     <script type='text/javascript' src='js/Recipes.js'></script>
     <script type='text/javascript' src='js/RecipeDescription.js'></script>");
@@ -60,6 +64,6 @@ foreach ($grouped as $recipe){
     $recipesList = $recipesList.$recDescr;
 }
 $html->body = str_replace("<_RECIPES_LIST/>", $recipesList, $html->body);
-  
+
 $html->header = str_replace('<body>','<body onload="start();">',$html->header);
 $html->printHtml();
