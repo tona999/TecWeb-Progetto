@@ -1,4 +1,4 @@
-INSERT INTO user (id, name, surname, email, password_hash, birthdate) VALUES
+INSERT INTO client (id, name, surname, email, password_hash, birthdate) VALUES
 (1, 'User', 'User', 'user@user.com', '95c946bf622ef93b0a211cd0fd028dfdfcf7e39e', '1998-02-03'),
 (2, 'Mario', 'Rossi', 'mariorossi@gmail.com', 'f865b53623b121fd34ee5426c792e5c33af8c227', '1999-05-24'),
 (3, 'Luigi', 'Verdi', 'luigiverdi87@gmail.com', 'f865b53623b121fd34ee5426c792e5c33af8c227', '1987-09-01'),

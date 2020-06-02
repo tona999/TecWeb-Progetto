@@ -73,7 +73,7 @@ validatePassword($password, $password2);
 $password = sha1($password);
 
 $checkDuplicateEmail = $mysql->query(
-    "SELECT * FROM user
+    "SELECT * FROM client
     WHERE email = '$email' ");
 
 if($checkDuplicateEmail->num_rows > 0) {
@@ -83,12 +83,12 @@ if($checkDuplicateEmail->num_rows > 0) {
 
 // insertion query
 $insert = $mysql->query(
-    "INSERT INTO user (name, surname, email, password_hash, admin, birthdate)
+    "INSERT INTO client (name, surname, email, password_hash, admin, birthdate)
     VALUES ('$name', '$surname','$email','$password',false,'$dateFormatted')");
 
 // check if has been inserted and gives the Id for this session
 $isInserted = $mysql->query(
-        "SELECT * FROM user
+        "SELECT * FROM client
         WHERE email = '$email' ");
 
 if($insert){

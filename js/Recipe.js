@@ -155,6 +155,11 @@ class Recipe{
 			if(this.readyState == 4 && this.status == 200)
 			{
 				var response = JSON.parse(this.responseText);
+				if (response.emptyName != undefined){
+					t.recipeViewRef.setWarning("The recipe name can not be empty.");
+					return;
+				}
+				
 				if (response.ingredientsNotFound != undefined)
 				{
 					response.ingredientsNotFound.forEach(id => {

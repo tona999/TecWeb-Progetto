@@ -60,7 +60,7 @@ validateDate($dateFormatted);
 
 // update query
 $update = $mysql->query(
-    "UPDATE user 
+    "UPDATE client 
     SET name='$name', surname='$surname', email='$email', birthdate='$dateFormatted'
     WHERE id=$id");
 

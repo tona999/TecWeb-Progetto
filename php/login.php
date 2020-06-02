@@ -15,7 +15,7 @@ if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
 $password = sha1($_POST["password"]);
 
 $result = $mysql->query(
-    "SELECT * FROM user 
+    "SELECT * FROM client 
     WHERE email = '$email'
     AND password_hash = '$password' ");
 

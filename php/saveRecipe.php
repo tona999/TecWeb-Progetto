@@ -1,13 +1,20 @@
 <?php
 	require_once("connection.php");
 	session_start();
+	
+	$userId = $_SESSION['userId'];
 
 	$request = json_decode($_POST['request']);
-
-	$userId = $_SESSION['userId'];
 	$recipeId = $request->recipeId;
 	$recipeName = substr(trim($request->recipeName), 0, 40);
 	$ingredients = $request->ingredientsJson;
+
+	if ($recipeName == '') {
+		$response = new stdClass();
+		$response->emptyName = true;
+		echo json_encode($response);
+		return;
+	}
 
 	$result=$mysql->query("SELECT userId as uId FROM recipe WHERE id={$recipeId}");
 	$data = mysqli_fetch_assoc($result);

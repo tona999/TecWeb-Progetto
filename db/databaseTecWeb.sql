@@ -1,9 +1,9 @@
 DROP TABLE IF EXISTS contains;
 DROP TABLE IF EXISTS recipe;
 DROP TABLE IF EXISTS ingredient;
-DROP TABLE IF EXISTS user;
+DROP TABLE IF EXISTS client;
 
-CREATE TABLE user(
+CREATE TABLE client(
   id int PRIMARY KEY AUTO_INCREMENT,
   name varchar(50) NOT NULL,
   surname varchar(50) NOT NULL,
@@ -22,7 +22,7 @@ CREATE TABLE ingredient(
 
   CONSTRAINT fkIngredient
   FOREIGN KEY (userId)
-  REFERENCES user(id)
+  REFERENCES client(id)
   ON DELETE CASCADE
 );
 
@@ -34,7 +34,7 @@ CREATE TABLE recipe(
 
   CONSTRAINT fkRecipe
   FOREIGN KEY (userId)
-  REFERENCES user(id)
+  REFERENCES client(id)
   ON DELETE CASCADE
 );
 

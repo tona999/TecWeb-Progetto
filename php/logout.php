@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-unset($_SESSION["userID"]);
+unset($_SESSION["userId"]);
 unset($_SESSION["admin"]);
 session_destroy();
 
