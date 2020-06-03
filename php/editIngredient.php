@@ -15,13 +15,16 @@
 		return;
 	}
 
-	$q = "UPDATE ingredient SET name='{$name}', gramsProduct='{$sg}', gramsCarbs='{$sc}' WHERE userId='{$_SESSION['userId']}' AND id={$id}";
-	$update = $mysql->query($q);
-	
-	if(!$update || $mysql->affected_rows < 1)
+	$f = "SELECT name FROM ingredient WHERE userId='{$_SESSION['userId']}' AND id={$id}";
+	$found = $mysql->query($f);
+	if ($found != false && mysqli_num_rows($found) < 1)
 		$response->ingredientNotFound = true;
 	else
+	{
+		$q = "UPDATE ingredient SET name='{$name}', gramsProduct='{$sg}', gramsCarbs='{$sc}' WHERE userId='{$_SESSION['userId']}' AND id={$id}";
+		$update = $mysql->query($q);
 		$response->savingSuccessful = true;
+	}
 
 	echo json_encode($response);
 ?>

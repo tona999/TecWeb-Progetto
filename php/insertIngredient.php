@@ -6,10 +6,13 @@
 	$sg = intval($_POST['sampleGrams']);
 	$sc = intval($_POST['sampleCarbs']);
 	$userId = $_SESSION['userId'];
-	
+
+	// Used by insertIngredientCalc.php
+	$result = '';
+
 	//Input Check
 	if($name=="" || $sg<$sc || $sg < 0 || $sc < 0){
-		echo "Invalid Input";
+		$result = '{"invalidInput":"true"}';
 		return;
 	}
 

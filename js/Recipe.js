@@ -111,9 +111,9 @@ class Recipe{
 
 	isReadyForSave()
 	{
-		if (this.getName()=="")
+		if (this.getName().trim()=="")
 		{
-			this.recipeViewRef.setWarning("Please Assign A Name To Your Recipe And Try Again.");
+			this.recipeViewRef.setWarning("Please assign a valid name to your recipe and try again.");
 			return false;
 		}
 		else
@@ -181,8 +181,7 @@ class Recipe{
 				}
 			}
 		}
-
-		var request = {recipeId:t.getId(), recipeName:t.getName(), ingredientsJson:JSON.parse(this.getIngredientsComposition())};
+		var request = {recipeId:t.getId(), recipeName:t.getName().replace(/[^a-zA-Z ]/g, ""), ingredientsJson:JSON.parse(this.getIngredientsComposition())};
 
 		xhttp.open("POST", "php/saveRecipe.php", true);
 		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");

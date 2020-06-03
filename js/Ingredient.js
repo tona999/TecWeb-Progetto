@@ -304,8 +304,11 @@ class Ingredient {
             var t = this;
             xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
-                    if (parseInt(this.responseText) < 0)
-                        this.setWarning("Saving Failed");
+                    var result = JSON.parse(this.responseText);
+                    if (result.invalidInput != undefined)
+                        t.setWarning("Invalid data inserted. Saving Failed");
+                    else if (parseInt(this.responseText) < 0)
+                        t.setWarning("Saving Failed");
                     else
                         t.convertToSaved(parseInt(this.responseText));
                 }
