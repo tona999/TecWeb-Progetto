@@ -129,6 +129,10 @@ input[type="text"] {
 }
 
 
+.controls-container {
+    float: right;
+}
+
 /*invalid data was inserted by user*/
 
 .invalidInput {
@@ -137,7 +141,7 @@ input[type="text"] {
 }
 
 
-/* Bottom bar (controls container) */
+/* Bottom bar */
 
 #controlPanel {
     text-align: center;
@@ -260,4 +264,3 @@ label[for="ingredientsSelect"] {
     position: fixed;
     top: -1000px;
 }
-
