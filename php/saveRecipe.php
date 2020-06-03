@@ -67,7 +67,7 @@
 		if ($recipeId<0) // the recipe is being saved for the first time, the id is -1
 			$mysql->query("INSERT INTO recipe (userId, name) VALUES ($userId, '{$recipeName}')");
 		else // the recipe was removed by the user but it was already loaded in the calculator. Save the recipe with the id already used in the calculator.
-			$mysql->query("INSERT INTO Recipe (id, userId, name) VALUES ($recipeId, $userId, '{$recipeName}')");
+			$mysql->query("INSERT INTO recipe (id, userId, name) VALUES ($recipeId, $userId, '{$recipeName}')");
 
 		$recipeId = $mysql->insert_id;
 	}

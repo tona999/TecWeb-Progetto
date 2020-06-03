@@ -39,7 +39,7 @@ else{
 require_once("php/connection.php");
 
 $ingredientsList = "";
-$result = $mysql->query("SELECT * FROM client WHERE Id={$_SESSION['userId']}");
+$result = $mysql->query("SELECT * FROM client WHERE id={$_SESSION['userId']}");
 
 while($row = $result->fetch_assoc()){
     $html->body = str_replace(
