@@ -52,12 +52,12 @@ class IngredientDescription{
 			if(this.readyState == 4 && this.status == 200)
 			{
 				const response = JSON.parse(this.responseText);
-				if (response.savingSuccessful != undefined)
-					t.onSaveSuccessful();
-				else if(response.invalidData != undefined)
+				if(response.invalidData != undefined)
 					t.warning("Please insert valid values before saving.");
 				else if (response.ingredientNotFound != undefined)
 					t.warning("Saving failed. The ingredient could not be found.");
+				else if (response.savingSuccessful != undefined)
+					t.onSaveSuccessful();
 			}
 		}
 

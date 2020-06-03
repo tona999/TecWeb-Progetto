@@ -14,6 +14,8 @@
 		$response->emptyName = true;
 		echo json_encode($response);
 		return;
+		echo '{"inputError":"true"}';
+		return;
 	}
 
 	$result=$mysql->query("SELECT userId as uId FROM recipe WHERE id={$recipeId}");
