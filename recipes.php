@@ -4,9 +4,9 @@ $html = new Page();
 $html->requireLogin();
 $html->setTitle("Your Recipes");
 $html->setMeta(
-    '<meta name="author" content="FAJN">'.
-    '<meta name="description" content="Your recipies">'.
-    '<meta name="robots" content="noindex">'.
+    '<meta name="author" content="FAJN" />'.
+    '<meta name="description" content="Your recipies" />'.
+    '<meta name="robots" content="noindex" />'.
     '<meta name="keywords" content="profile,diabetes,T1D,calculator" />'.
     "<link rel='stylesheet' type='text/css' href='styles/ingredient-description.css' media='screen' />
     <script type='text/javascript' src='js/Recipes.js'></script>
