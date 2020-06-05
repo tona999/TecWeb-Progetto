@@ -10,11 +10,7 @@
 	$ingredients = $request->ingredientsJson;
 
 	if ($recipeName == '') {
-		$response = new stdClass();
-		$response->emptyName = true;
-		echo json_encode($response);
-		return;
-		echo '{"inputError":"true"}';
+		echo '{"emptyName":"true"}';
 		return;
 	}
 
