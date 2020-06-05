@@ -44,7 +44,7 @@ class IngredientDescription{
 		if(!this.checkInputFormat())
 			return;
 
-		var params = "id="+this.ingredientId+"&name="+this.nameIF.value+"&sg="+this.sampleGramsIF.value+"&sc="+this.sampleCarbsIF.value;
+		var params = "id="+this.ingredientId+"&name="+this.nameIF.value.replace(/[^a-zA-Z ]/g, "")+"&sg="+this.sampleGramsIF.value+"&sc="+this.sampleCarbsIF.value;
 		var xhttp = new XMLHttpRequest();
 
 		var t = this;

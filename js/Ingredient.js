@@ -299,7 +299,7 @@ class Ingredient {
 
     save() {
         if (this.isReadyForSave()) {
-            var params = "ingredientName=" + this.ingredientName + "&sampleGrams=" + this.sampleGrams + "&sampleCarbs=" + this.sampleCarbs;
+            var params = "ingredientName=" + this.ingredientName.replace(/[^a-zA-Z ]/g, "") + "&sampleGrams=" + this.sampleGrams + "&sampleCarbs=" + this.sampleCarbs;
             var xhttp = new XMLHttpRequest();
             var t = this;
             xhttp.onreadystatechange = function() {
