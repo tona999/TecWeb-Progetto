@@ -54,9 +54,6 @@ while($row = $result->fetch_assoc()){
     $html->body = str_replace(
         '&birthdate', $row['birthdate'], $html->body
     );
-    $html->body = str_replace(
-        '&admin', $row['birthdate']==1? "checked" : "false", $html->body
-    );
 }
 
 $html->toHtml5();

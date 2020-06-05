@@ -315,43 +315,6 @@ div.card {
     color: white;
 }
 
-#tips {
-    position: fixed;
-    text-align: center;
-    margin: 1em;
-    bottom: 0;
-    right: 0;
-    width: 10em;
-}
-
-#tips p {
-    font-size: 1.2em;
-    text-align: left;
-    margin: 1em auto;
-    width: max-content;
-    max-width: 100%;
-
-}
-
-#tips h2 {
-    background-color: #5a74ac;
-    color: white;
-    border-radius: 4px;
-    margin: 0;
-}
-
-#tips .btn {
-    display: block;
-    margin: auto;
-    width: 3em;
-    height: 3em;
-    border-radius: 100px;
-    color: rgba(0, 0, 0, 0);
-    background-image: url(../img/icons/arrow.svg);
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
 .faq dl {
     margin: 1em;
 }

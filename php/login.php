@@ -24,7 +24,6 @@ if($result->num_rows > 0){
 
     while($row = $result->fetch_assoc()){
         $_SESSION["userId"] = $row["id"];
-        $_SESSION["admin"] = $row["admin"];
     }
 
     /* TODO: edit pages for logged users */

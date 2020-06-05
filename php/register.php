@@ -83,8 +83,8 @@ if($checkDuplicateEmail->num_rows > 0) {
 
 // insertion query
 $insert = $mysql->query(
-    "INSERT INTO client (name, surname, email, password_hash, admin, birthdate)
-    VALUES ('$name', '$surname','$email','$password',false,'$dateFormatted')");
+    "INSERT INTO client (name, surname, email, password_hash, birthdate)
+    VALUES ('$name', '$surname','$email','$password','$dateFormatted')");
 
 // check if has been inserted and gives the Id for this session
 $isInserted = $mysql->query(
@@ -96,7 +96,6 @@ if($insert){
 
     while($row = $isInserted->fetch_assoc()){
         $_SESSION["userId"] = $row["id"];
-        $_SESSION["admin"] = $row["admin"];
     }
     /* TODO: edit pages for logged users */
     header("Location: ../index.php");

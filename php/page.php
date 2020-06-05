@@ -137,7 +137,7 @@ class Page{
             case "faq":
                 // breadcrumb
                 $this->menu = str_replace('<_PATH/>',
-                '<a href="index.php" class="path"> Home</a> &gt; <a href="info.php" class="path"> Info</a> &gt; <span class="path"> FAQ </span>', 
+                '<a href="index.php" class="path"> Home</a> &gt; <span class="path"> FAQ </span>', 
                 $this->menu);
                 break;
             case "page not found":
