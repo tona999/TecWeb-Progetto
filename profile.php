@@ -3,9 +3,9 @@ require_once("php/page.php");
 $html = new Page();
 $html->setTitle("Profile");
 $html->setMeta(
-      '<meta name="author" content="FAJN">'.
-      '<meta name="description" content="Edit user profile data">'.
-      '<meta name="robots" content="noindex">'.
+      '<meta name="author" content="FAJN" />'.
+      '<meta name="description" content="Edit user profile data" />'.
+      '<meta name="robots" content="noindex" />'.
       '<meta name="keywords" content="profile,diabetes,T1D,calculator" />'
 );
 $html->setBodyPath("html/profile.html");

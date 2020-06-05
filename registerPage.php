@@ -3,9 +3,9 @@ require_once("php/page.php");
 $html = new Page();
 $html->setTitle("Register");
 $html->setMeta(
-  '<meta name="author" content="FAJN">'.
-  '<meta name="description" content="Register to use our calculator and save your ingredients and recipes">'.
-  '<meta name="robots" content="index">'.
+  '<meta name="author" content="FAJN" />'.
+  '<meta name="description" content="Register to use our calculator and save your ingredients and recipes" />'.
+  '<meta name="robots" content="index" />'.
   '<meta name="keywords" content="profile,register,login,diabetes,T1D,calculator" />'
 );
 $html->setBodyPath("html/register.html");
