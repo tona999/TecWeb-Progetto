@@ -279,6 +279,7 @@ class Ingredient {
         this.sampleGramsRef.className = this.sampleCarbsRef.className = "non_editable"
         this.ingredientNameRef.placeholder = "Recipe Name";
         this.saveButtonRef.value = "Save Recipe";
+        this.htmlIngRef.querySelector("legend").innerHTML = "Recipe";
     }
 
     convertToSavedRecipeView(id, name = "") {
