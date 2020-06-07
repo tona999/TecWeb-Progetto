@@ -48,100 +48,115 @@ class Page{
         $this->menu = str_replace("<MENU_LOGGED/>", $menu_r, $this->menu);
     } 
 
-    /** Set current page and remove the menu link*/
+    /** Setup breadcrumb and remove the menu link*/
     public function setCurrent($entry){
         switch($entry){
+
+            // HOME
             case "home":
                 $this->menu = str_replace( 
                     '<li><a href="index.php"><img src="img/icons/home.svg" alt="" />HOME</a></li>',
                     '<li class="disabled"><a><img src="img/icons/home.svg" alt="" />HOME</a></li>',
                     $this->menu
                 );
-                // breadcrumb
                 $this->menu = str_replace('<_PATH/>',
                 '<span class="path"> Home </span>', 
                 $this->menu);
                 break;
+
+            // INFO
             case "info":
                 $this->menu = str_replace(
                     '<li><a href="info.php"><img src="img/icons/info.svg" alt="" />INFO</a></li>',
                     '<li class="disabled"><a><img src="img/icons/info.svg" alt="" />INFO</a></li>',
                     $this->menu
                 );
-                // breadcrumb
                 $this->menu = str_replace('<_PATH/>',
                 '<a href="index.php" class="path"> Home</a> &gt; <span class="path"> Info </span>', 
                 $this->menu);
                 break;
+
+            // CALCULATOR
             case "calculator":
                 $this->menu = str_replace(
                     '<li><a href="calculator.php"><img src="img/icons/tool.svg" alt="" />CALCULATOR</a></li>',
                     '<li class="disabled"><a><img src="img/icons/tool.svg" alt="" />CALCULATOR</a></li>',
                     $this->menu
                 );
-                // breadcrumb
                 $this->menu = str_replace('<_PATH/>',
                 '<a href="index.php" class="path"> Home</a> &gt; <span class="path"> Calculator </span>', 
                 $this->menu);
                 break;
+
+            // RECIPES
             case "your recipes":
                 $this->menu = str_replace(
                     '<li><a href="recipes.php">RECIPES</a></li>',
                     '<li class="disabled"><a>RECIPES</a></li>',
                     $this->menu
                 );
-                // breadcrumb
                 $this->menu = str_replace('<_PATH/>',
                 '<a href="index.php" class="path"> Home</a> &gt; <a href="profile.php" class="path"> Profile</a> &gt; <span class="path"> Recipes </span>', 
                 $this->menu);
                 break;
+
+            // INGREDIENTS
             case "your ingredients":
                 $this->menu = str_replace(
                     '<li><a href="ingredients.php">INGREDIENTS</a></li>',
                     '<li class="disabled"><a>INGREDIENTS</a></li>',
                     $this->menu
                 );
-                // breadcrumb
                 $this->menu = str_replace('<_PATH/>',
                 '<a href="index.php" class="path"> Home</a> &gt; <a href="profile.php" class="path"> Profile</a> &gt; <span class="path"> Ingredients </span>', 
                 $this->menu);
                 break;
+
+            // LOGIN
             case "login":
                 $this->header = str_replace(
                     '<a class="btn" id="aLogin" href="login.php">LOGIN</a>',
                     '',
                     $this->header
                 );
-                // breadcrumb
+                $this->menu = str_replace(
+                    '<li><a href="calculator.php"><img src="img/icons/tool.svg" alt="" />CALCULATOR</a></li>',
+                    '<li class="disabled"><a><img src="img/icons/tool.svg" alt="" />CALCULATOR</a></li>',
+                    $this->menu
+                );
                 $this->menu = str_replace('<_PATH/>',
                 '<a href="index.php" class="path"> Home</a> &gt; <span class="path"> Login </span>', 
                 $this->menu);
                 break;
+
+            // PROFILE
             case "profile":
                 $this->menu = str_replace(
                     '<li><a href="profile.php">PROFILE</a></li>',
                     '<li class="disabled"><a>PROFILE</a></li>',
                     $this->menu
                 );
-                // breadcrumb
                 $this->menu = str_replace('<_PATH/>',
                 '<a href="index.php" class="path"> Home</a> &gt; <span class="path"> Profile </span>', 
                 $this->menu);
                 break;
+
+            // REGISTRATION 
             case "register":
-                // breadcrumb
                 $this->menu = str_replace('<_PATH/>',
                 '<a href="index.php" class="path"> Home</a> &gt; <span class="path"> Register </span>', 
                 $this->menu);
                 break;
+
+            // FAQ
             case "faq":
-                // breadcrumb
                 $this->menu = str_replace('<_PATH/>',
                 '<a href="index.php" class="path"> Home</a> &gt; <span class="path"> FAQ </span>', 
                 $this->menu);
                 break;
+
+            // 404
             case "page not found":
-                // breadcrumb
                 $this->menu = str_replace('<_PATH/>',
                 '<a href="index.php" class="path"> Home</a> &gt; <span class="path"> Nowhere </span>', 
                 $this->menu);
