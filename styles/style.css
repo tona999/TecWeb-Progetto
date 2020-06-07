@@ -361,3 +361,8 @@ legend {
     background-repeat: no-repeat;
     transform: rotate(-90deg);
 }
+
+#skip-nav {
+    position: fixed;
+    right: -10000px;
+}

@@ -87,7 +87,7 @@ h2 {
     display: none;
 }
 
-#tutorial img {
+#main img {
     margin: 2pt;
     max-width: 400pt;
 }
@@ -96,6 +96,6 @@ h2 {
     display: none;
 }
 
-#tutorial img {
+#main img {
     display: block;
 }

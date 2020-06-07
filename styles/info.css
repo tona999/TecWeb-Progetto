@@ -1,4 +1,4 @@
-#tutorial img {
+#main img {
     display: block;
     margin: 1em auto;
     width: 35em;
@@ -9,7 +9,7 @@
     transition-duration: .2s;
 }
 
-#tutorial img:active {
+#main img:active {
     transition: ease;
     transition-duration: .4s;
     width: 100%;
